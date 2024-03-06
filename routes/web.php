@@ -48,6 +48,8 @@ Route::middleware(['auth', 'user-access:administrator,admin,moderator'])->name('
 
     Route::controller(CountryController::class)->name('country.')->prefix('country')->group(function () {
         Route::get('/index', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
         Route::patch('/{id}', 'update')->name('update');
     });
 

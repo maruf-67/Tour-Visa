@@ -26,4 +26,26 @@ class CountryController extends Controller
         return redirect()->route('admin.country.index');
 
     }
+
+    public function create()
+    {
+        return view('backend.setting.country.create');
+    }
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'iso' => 'required',
+            'name' => 'required',
+            'nicename' => 'required',
+            'iso3' => 'required',
+            'numcode' => 'required',
+            'phonecode' => 'required',
+            'status' => 'required',
+        ]);
+
+        $country = Country::create($validatedData);
+        return redirect()->route('admin.country.index');
+    }
+
 }

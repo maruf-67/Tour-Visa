@@ -29,34 +29,12 @@
                 <div class="container-fluid">
                     <div class="row mx-auto">
                         <!-- left column -->
+                        <a href="{{ route('admin.country.create') }}"><button class="btn btn-primary">Add New Country</button></a>
                         <div class="col-md-8 mx-auto">
-                            <!-- general form elements -->
+                            
                             <div class="card card-primary">
                                 <div class="card-header text-center">
-                                    <h3 class="card-title" style="float: none; font-size: 2rem;">Add Your Basic Setting</h3>
-                                </div>
-                                <!-- /.card-header -->
-                                <form>
-                                    <div class="card-body">
-
-                                        <div class="form-group row">
-                                            <label class="col-md-3 col-form-label"> Add New Country</label>
-                                            <div class="col-md-9">
-                                                <input type="text" class="form-control" id="staticEmail">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.card-body -->
-
-                                    <div class="card-footer text-right">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </div>
-                                </form>
-                                <!-- form start -->
-                            </div>
-                            <div class="card card-primary">
-                                <div class="card-header text-center">
-                                    <h3 class="card-title" style="float: none; font-size: 2rem;">User Table</h3>
+                                    <h3 class="card-title" style="float: none; font-size: 2rem;">Country List</h3>
                                 </div>
                             </div>
                             <table id="country" class="table table-striped" style="width:100%">
