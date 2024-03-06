@@ -17,6 +17,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->text('image')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('reference_id')->unique()->nullable();
+            $table->tinyInteger('application_count')->nullable();
+            $table->tinyInteger('type')->default(0)->comment('0 = user, 1 = administrator, 2 = admin , 3 = moderator' );
             $table->rememberToken();
             $table->timestamps();
         });
