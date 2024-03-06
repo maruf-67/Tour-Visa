@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CountryController;
+use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\SettingController;
 
 /*
@@ -51,6 +52,15 @@ Route::middleware(['auth', 'user-access:administrator,admin,moderator'])->name('
         Route::get('/create', 'create')->name('create');
         Route::post('/store', 'store')->name('store');
         Route::patch('/{id}', 'update')->name('update');
+    });
+
+    Route::controller(ServiceController::class)->name('service.')->prefix('service')->group(function () {
+        Route::get('/index', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::patch('/{id}', 'update')->name('update');
+        Route::delete('/{id}', 'destroy')->name('destroy');
     });
 
 });
