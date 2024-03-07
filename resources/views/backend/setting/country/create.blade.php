@@ -96,10 +96,10 @@
                                     </div>
 
                                     <div class="form-group row mt-4">
-                                        <label class="col-md-3 col-form-label">User Role</label>
+                                        <label class="col-md-3 col-form-label">Status</label>
                                         <div class="col-md-9">
                                             {{-- <input type="text" class="form-control" id="staticEmail"> --}}
-                                            <select class="form-control" name="type">
+                                            <select class="form-control" name="status">
                                                 <option value="1">Active</option>
                                                 <option value="0">Inactive</option>
                                             </select>
@@ -110,7 +110,7 @@
 
                                 <div class="d-flex justify-content-end align-items-baseline">
                                     {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
-                                    <button type="button" class="btn btn-outline-primary btn-icon-text me-4 mb-2 mb-md-0">Submit </button>
+                                    <button type="submit" class="btn btn-outline-primary btn-icon-text me-4 mb-2 mb-md-0">Submit </button>
                                 </div>
                             </form>
                         </div>

@@ -147,7 +147,7 @@
 
                                 <div class="d-flex justify-content-end align-items-baseline">
                                     {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
-                                    <button type="button" class="btn btn-outline-primary btn-icon-text me-4 mb-2 mb-md-0">Submit </button>
+                                    <button type="submit" class="btn btn-outline-primary btn-icon-text me-4 mb-2 mb-md-0">Submit </button>
                                 </div>
 
                             </form>

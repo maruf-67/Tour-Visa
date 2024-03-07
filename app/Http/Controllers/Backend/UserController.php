@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -12,14 +12,14 @@ class UserController extends Controller
     //give index page
     public function index()
     {
-        $users = User::where('type','user')->get();
-        return view('backend.setting.user.index',compact('users'));
+        $users = User::where('type', 'user')->get();
+        return view('backend.setting.user.index', compact('users'));
     }
 
-    public  function edit($id)
+    public function edit($id)
     {
         $user = User::find($id);
-        return view('backend.setting.user.edit',compact('user'));
+        return view('backend.setting.user.edit', compact('user'));
     }
 
     public function store(Request $request)
@@ -27,21 +27,33 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'image' => 'nullable|image|max:2048',
+            'phone' => 'required|min:10',
             'password' => 'required|string|min:8',
             'type' => 'required',
         ]);
 
         $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->type = $request->type;
+        $requestData = $request->all();
+        // dd($requestData);
+        $file = $request->image;
+        if ($file) {
+            $extension = $file->getClientOriginalExtension();
+            $fileName = time() . rand(1, 999999) . '.' . $extension;
+            $file->move('images/User/image', $fileName);
+            $path = '/images/User/image/' . $fileName;
 
+        } else {
+            $path = null;
+        }
+        $requestData['image'] = $path;
+        $requestData['password'] = bcrypt($request->password);
+
+        $user->fill($requestData);
         $user->save();
 
         return redirect()->route('admin.user.adminUser')->with('success', 'User created successfully.');
     }
-
 
     public function update(Request $request, $id)
     {
@@ -74,7 +86,7 @@ class UserController extends Controller
 
     public function admin_user()
     {
-        $users = User::where('type','!=' ,'user')->get();
+        $users = User::where('type', '!=', 'user')->get();
         return view('backend.setting.user.admin-user', compact('users'));
     }
 
@@ -95,7 +107,5 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', 'Password updated successfully');
     }
-
-
 
 }

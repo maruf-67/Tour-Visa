@@ -7,7 +7,7 @@
 
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
             <div>
-                <h4 class="mb-3 mb-md-0">Welcome to User</h4>
+                <h4 class="mb-3 mb-md-0">Welcome to Country</h4>
             </div>
             {{-- <div class="d-flex align-items-center flex-wrap text-nowrap">
                 <div class="input-group flatpickr wd-200 me-2 mb-2 mb-md-0" id="dashboardDate">
@@ -34,7 +34,7 @@
                 <div class="card overflow-hidden ">
                     <div class="card-body ">
                         <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3 ">
-                            <h6 class="card-title mb-0 text-primary">User List</h6>
+                            <h6 class="card-title mb-0 text-primary">Country List</h6>
                             <div class="dropdown">
                                 <a href="{{ route('admin.country.create') }}"><button class="btn btn-primary">Add New
                                         Country</button></a>
@@ -120,7 +120,7 @@
                                         <td valign='middle' class="d-flex justify-content-evenly">
                                             {{-- <button class="btn btn-primary" data-toggle="modal"
                                                 data-target="#editModal{{ $country->id }}">Edit</button> --}}
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                 data-bs-target="#editModal">Edit </button>
                                             <form action="#', $country->id) }}" method="POST">
                                                 @csrf
@@ -129,34 +129,44 @@
                                             </form>
 
                                             <!-- Modal -->
-                                            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="editModal" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
-                                                  <div class="modal-content">
-                                                    <div class="modal-header">
-                                                      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                      <form action="">
-                                                        <div class="form-group row mt-4">
-                                                            <label class="col-md-3 col-form-label">Status</label>
-                                                            <div class="col-md-9">
-                                                                {{-- <input type="text" class="form-control" id="staticEmail"> --}}
-                                                                <select class="form-control" name="type">
-                                                                    <option value="1">Active</option>
-                                                                    <option value="0">Inactive</option>
-                                                                </select>
-                                                            </div>
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
                                                         </div>
-                                                      </form>
+                                                        <div class="modal-body">
+                                                            <form
+                                                                action="{{ route('admin.country.update', $country->id) }}"
+                                                                method="post">
+                                                                @csrf
+                                                                @method('PATCH')
+                                                                <div class="form-group row mt-4">
+                                                                    <label class="col-md-3 col-form-label">Status</label>
+                                                                    <div class="col-md-9">
+                                                                        {{-- <input type="text" class="form-control" id="staticEmail"> --}}
+                                                                        <select class="form-control" name="status">
+                                                                            <option value="1">Active</option>
+                                                                            <option value="0">Inactive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-primary">Save
+                                                                        changes</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
                                                     </div>
-                                                    <div class="modal-footer">
-                                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                      <button type="button" class="btn btn-primary">Save changes</button>
-                                                    </div>
-                                                  </div>
                                                 </div>
-                                              </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

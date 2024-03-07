@@ -159,7 +159,7 @@
                             <a href="{{ route('admin.user.index') }}" class="nav-link">All User</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.country.country') }}" class="nav-link">Country</a>
+                            <a href="{{ route('admin.country.index') }}" class="nav-link">Country</a>
                         </li>
                     </ul>
                 </div>

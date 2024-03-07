@@ -43,7 +43,6 @@
 
                         </div>
 
-
                         {{-- Content --}}
                         <div class="col-12 mt-4">
                             <form method="POST" action="{{ route('admin.user.store') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
@@ -51,44 +50,49 @@
                                     <div class="card-body">
                                     <!-- Your form fields -->
 
-                                    <div class="form-group row">
+                                    <div class="form-group row {{ $errors->has('name') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label">User Name</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" id="name"  name="name" placeholder="Ajmain Akash">
-
+                                            <input type="text" class="form-control" id="name"  name="name" placeholder="Ajmain Akash" required>
+                                            {!! $errors->first('name', '<p class="help-block text-danger">:message</p>') !!}
                                         </div>
+
                                     </div>
 
-                                    <div class="form-group row mt-4">
+                                    <div class="form-group row mt-4 {{ $errors->has('email') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label">User Email</label>
                                         <div class="col-md-9">
                                             <input type="email" name="email" class="form-control" id="staticEmail" placeholder="ajmain@gmail.com">
 
+                                            {!! $errors->first('email', '<p class="help-block text-danger">:message</p>') !!}
                                         </div>
                                     </div>
 
-                                    <div class="form-group row mt-4">
+                                    <div class="form-group row mt-4 {{ $errors->has('password') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label">User Password</label>
                                         <div class="col-md-9">
                                             <input type="password" name="password" class="form-control" id="staticEmail" placeholder="Enter user password">
+                                            {!! $errors->first('password', '<p class="help-block text-danger">:message</p>') !!}
                                         </div>
                                     </div>
 
-                                    <div class="form-group row mt-4">
+                                    <div class="form-group row mt-4 {{ $errors->has('fav_icon') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label">User Image</label>
                                         <div class="col-md-9">
                                             <input type="file" name="fav_icon" id="fav_icon" class="form-control">
+                                            {!! $errors->first('fav_icon', '<p class="help-block text-danger">:message</p>') !!}
                                         </div>
                                     </div>
 
-                                    <div class="form-group row mt-4">
+                                    <div class="form-group row mt-4 {{ $errors->has('phone') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label">User Phone</label>
                                         <div class="col-md-9">
-                                            <input type="number" name="password" class="form-control" id="staticEmail" placeholder="+8801712******">
+                                            <input type="number" name="phone" class="form-control" id="staticEmail" placeholder="+8801712******">
+                                            {!! $errors->first('phone', '<p class="help-block text-danger">:message</p>') !!}
                                         </div>
                                     </div>
 
-                                    <div class="form-group row mt-4">
+                                    <div class="form-group row mt-4{{ $errors->has('type') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label">User Role</label>
                                         <div class="col-md-9">
                                             {{-- <input type="text" class="form-control" id="staticEmail"> --}}
@@ -98,13 +102,15 @@
                                                 <option value="3">Moderator</option>
                                             </select>
                                         </div>
+                                        {!! $errors->first('type', '<p class="help-block danger">:message</p>') !!}
+
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
 
                                 <div class="d-flex justify-content-end align-items-baseline">
                                     {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
-                                    <button type="button" class="btn btn-outline-primary btn-icon-text me-4 mb-2 mb-md-0">Submit </button>
+                                    <button type="submit" class="btn btn-outline-primary btn-icon-text me-4 mb-2 mb-md-0">Submit </button>
                                 </div>
                             </form>
                         </div>
