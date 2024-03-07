@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 @extends('backend.layouts.master')
 @section('title', 'Basic Setting')
 
@@ -43,7 +36,8 @@
                         <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3 ">
                             <h6 class="card-title mb-0 text-primary">User List</h6>
                             <div class="dropdown">
-                                <a href="{{ route('admin.country.create') }}"><button class="btn btn-primary">Add New Country</button></a>
+                                <a href="{{ route('admin.country.create') }}"><button class="btn btn-primary">Add New
+                                        Country</button></a>
                                 {{-- <a type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false">
                                     <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
@@ -96,7 +90,7 @@
                                     <td valign='middle'>{{ $user->type }}</td>
                                     <td valign='middle'>{{ $user->created_at }}</td>
                                     <td class="d-flex justify-content-around">
-                                        @if(auth()->user()->type == 'administrator')
+                                        @if (auth()->user()->type == 'administrator')
                                         <a href="{{ route('admin.user.edit',$user->id) }}"><button class="btn btn-primary">Edit</button></a>
                                         <a href="{{ route('admin.user.edit',$user->id) }}"><button class="btn btn-primary">View</button></a>
                                         <form action="{{ route('admin.user.destroy', $user->id) }}" method="POST">
@@ -112,55 +106,60 @@
                                 </tbody> --}}
 
                                 @foreach ($countries as $country)
-                                        <tr style="text-align:center">
-                                            <td  valign='middle'>{{ $loop->index + 1 }}</td>
-                                            <td  valign='middle'>{{$country->iso ??  ''}}</td>
-                                            <td  valign='middle'>{{$country->name ??  ''}}</td>
-                                            <td  valign='middle'>{{$country->nicename ??  ''}}</td>
-                                            <td  valign='middle'>{{$country->iso3 ??  ''}}</td>
-                                            <td  valign='middle'>{{$country->numcode??  ''}}</td>
-                                            <td  valign='middle'>{{$country->phonecode ??  ''}}</td>
-                                            <td  valign='middle'><span class="badge badge bg-{{ $country->status ? 'success' : 'danger' }}">{{ $country->status ? 'Active' : 'Inactive' }}</span></td>
-                                            <td  valign='middle' class="d-flex justify-content-evenly">
-                                                <button class="btn btn-primary" data-toggle="modal" data-target="#editModal{{ $country->id }}">Edit</button>
-                                                <form action="#', $country->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        <div class="modal fade" id="editModal{{ $country->id }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{ $country->id }}" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
+                                    <tr style="text-align:center">
+                                        <td valign='middle'>{{ $loop->index + 1 }}</td>
+                                        <td valign='middle'>{{ $country->iso ?? '' }}</td>
+                                        <td valign='middle'>{{ $country->name ?? '' }}</td>
+                                        <td valign='middle'>{{ $country->nicename ?? '' }}</td>
+                                        <td valign='middle'>{{ $country->iso3 ?? '' }}</td>
+                                        <td valign='middle'>{{ $country->numcode ?? '' }}</td>
+                                        <td valign='middle'>{{ $country->phonecode ?? '' }}</td>
+                                        <td valign='middle'><span
+                                                class="badge badge bg-{{ $country->status ? 'success' : 'danger' }}">{{ $country->status ? 'Active' : 'Inactive' }}</span>
+                                        </td>
+                                        <td valign='middle' class="d-flex justify-content-evenly">
+                                            {{-- <button class="btn btn-primary" data-toggle="modal"
+                                                data-target="#editModal{{ $country->id }}">Edit</button> --}}
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#editModal">Edit </button>
+                                            <form action="#', $country->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                  <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="editModalLabel{{ $country->id }}">Edit Status</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
+                                                      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                    <form action="{{ route('admin.country.update', $country->id) }}" method="POST">
-                                                        @csrf
-                                                        @method('PATCH')
-                                                        <div class="modal-body">
-                                                            <div class="form-group">
-                                                                <label>Status:</label>
-                                                                <select class="form-control" name="status">
-                                                                    <option value="1" {{ $country->status ? 'selected' : '' }}>Active</option>
-                                                                    <option value="0" {{ !$country->status ? 'selected' : '' }}>Inactive</option>
+                                                    <div class="modal-body">
+                                                      <form action="">
+                                                        <div class="form-group row mt-4">
+                                                            <label class="col-md-3 col-form-label">Status</label>
+                                                            <div class="col-md-9">
+                                                                {{-- <input type="text" class="form-control" id="staticEmail"> --}}
+                                                                <select class="form-control" name="type">
+                                                                    <option value="1">Active</option>
+                                                                    <option value="0">Inactive</option>
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-primary">Save changes</button>
-                                                        </div>
-                                                    </form>
+                                                      </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                      <button type="button" class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                  </div>
                                                 </div>
-                                            </div>
-                                        </div>
-
-                                    @endforeach
+                                              </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </table>
                         </div>
                         {{-- Content --}}
@@ -178,26 +177,3 @@
         new DataTable('#admintable');
     </script>
 @endpush
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

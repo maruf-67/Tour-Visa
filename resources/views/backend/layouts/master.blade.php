@@ -21,7 +21,6 @@
 
 	<!-- core:css -->
 	<link rel="stylesheet" href="{{ asset('vendors/core/core.css') }}">
-
 	<!-- endinject -->
 
 	<!-- Plugin css for this page -->
@@ -33,13 +32,17 @@
     <link rel="stylesheet" href="{{ asset('vendors/flag-icon-css/css/flag-icon.min.css') }}">
 	<!-- endinject -->
 
+    {{-- Datatable Start --}}
+    <link rel="stylesheet" href="{{ asset('css/dataTable/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dataTable/dataTables.bootstrap5.css') }}">
+    {{-- Datatable End --}}
+
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{ asset('css/demo1/style.css') }}">
     <!-- End layout styles -->
 
-    
+    <link rel="shortcut icon" href="{{ asset("images/favicon.png") }}" />
 
-  <link rel="shortcut icon" href="../assets/images/favicon.png" />
 </head>
 <body>
 
@@ -59,12 +62,7 @@
 
 </div>
 
-    <script src="{{ asset('js/dataTable/jquery-3.7.1.js') }}"></script>
-    <script src="{{ asset('js/dataTable/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('js/dataTable/dataTables.js') }}"></script>
-    <script src="{{ asset('js/dataTable/dataTables.bootstrap5.js') }}"></script>
 
-    @stack('script')
 
 	<!-- core:js -->
     <script src="{{ asset('vendors/core/core.js') }}"></script>
@@ -84,6 +82,13 @@
 	<!-- Custom js for this page -->
     <script src="{{ asset('js/dashboard-light.js') }}"></script>
 	<!-- End custom js for this page -->
+
+    <script src="{{ asset('js/dataTable/jquery-3.7.1.js') }}"></script>
+    <script src="{{ asset('js/dataTable/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/dataTable/dataTables.js') }}"></script>
+    <script src="{{ asset('js/dataTable/dataTables.bootstrap5.js') }}"></script>
+
+    @stack('script')
 
 </body>
 </html>
