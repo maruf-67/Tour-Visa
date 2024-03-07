@@ -1,109 +1,89 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="csrf-token" content="{{ csrf_token() }}" />
-  <title>AdminLTE 3 | Dashboard</title>
-@stack('style')
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="{{ asset("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback") }}">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="NobleUI">
+	<meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+	<title>NobleUI - HTML Bootstrap 5 Admin Dashboard Template</title>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset("plugins/fontawesome-free/css/all.min.css") }}">
+    @stack('style')
 
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <!-- End fonts -->
 
-  <link rel="stylesheet" href="{{ asset('css/dataTable/bootstrap.min.css') }}">
+	<!-- core:css -->
+	<link rel="stylesheet" href="{{ asset('vendors/core/core.css') }}">
 
-  <link rel="stylesheet" href="{{ asset('css/dataTable/dataTables.bootstrap5.css') }}">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="{{ asset('plugins/jqvmap/jqvmap.min.css') }}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
-  <!-- summernote -->
-  <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+	<!-- endinject -->
 
+	<!-- Plugin css for this page -->
+	<link rel="stylesheet" href="{{ asset('vendors/flatpickr/flatpickr.min.css') }}">
+	<!-- End plugin css for this page -->
 
+	<!-- inject:css -->
+    <link rel="stylesheet" href="{{ asset('fonts/feather-font/css/iconfont.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/flag-icon-css/css/flag-icon.min.css') }}">
+	<!-- endinject -->
 
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{{ asset('css/demo1/style.css') }}">
+    <!-- End layout styles -->
 
+    
+
+  <link rel="shortcut icon" href="../assets/images/favicon.png" />
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body>
 
-    @include('backend.layouts.navbar')
+<div class="main-wrapper">
 
     @include('backend.layouts.asidebar')
 
-    @yield('content')
+    <div class="page-wrapper">
 
-    @include('backend.layouts.footer')
+        @include('backend.layouts.navbar')
 
+        @yield('content')
 
+        @include('backend.layouts.footer')
 
-<!-- jQuery -->
-<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('dist/js/adminlte.js') }}"></script>
+    </div>
 
-<script src="{{ asset('js/dataTable/jquery-3.7.1.js') }}"></script>
-<script src="{{ asset('js/dataTable/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('js/dataTable/dataTables.js') }}"></script>
-<script src="{{ asset('js/dataTable/dataTables.bootstrap5.js') }}"></script>
+</div>
 
-@stack('script')
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<!-- jQuery -->
-<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- ChartJS -->
-<script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
-<!-- Sparkline -->
-<script src="{{ asset('plugins/sparklines/sparkline.js') }}"></script>
-<!-- JQVMap -->
-<script src="{{ asset('plugins/jqvmap/jquery.vmap.min.js') }}"></script>
-<script src="{{ asset('plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
-<!-- jQuery Knob Chart -->
-<script src="{{ asset('plugins/jquery-knob/jquery.knob.min.js') }}"></script>
-<!-- daterangepicker -->
-<script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
-<script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-<!-- Summernote -->
-<script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
-<!-- overlayScrollbars -->
-<script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('dist/js/adminlte.js') }}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ asset('dist/js/demo.js') }}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+    <script src="{{ asset('js/dataTable/jquery-3.7.1.js') }}"></script>
+    <script src="{{ asset('js/dataTable/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/dataTable/dataTables.js') }}"></script>
+    <script src="{{ asset('js/dataTable/dataTables.bootstrap5.js') }}"></script>
+
+    @stack('script')
+
+	<!-- core:js -->
+    <script src="{{ asset('vendors/core/core.js') }}"></script>
+	<!-- endinject -->
+
+	<!-- Plugin js for this page -->
+    <script src="{{ asset('vendors/flatpickr/flatpickr.min.js') }}"></script>
+    <script src="{{ asset('vendors/apexcharts/apexcharts.min.js') }}"></script>
+
+	<!-- End plugin js for this page -->
+
+	<!-- inject:js -->
+    <script src="{{ asset('vendors/feather-icons/feather.min.js') }}"></script>
+    <script src="{{ asset('js/template.js') }}"></script>
+	<!-- endinject -->
+
+	<!-- Custom js for this page -->
+    <script src="{{ asset('js/dashboard-light.js') }}"></script>
+	<!-- End custom js for this page -->
 
 </body>
 </html>

@@ -24,6 +24,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/new', function () {
+    return view('backend/testing');
+});
+
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -48,7 +52,7 @@ Route::middleware(['auth', 'user-access:administrator,admin,moderator'])->name('
     });
 
     Route::controller(CountryController::class)->name('country.')->prefix('country')->group(function () {
-        Route::get('/index', 'index')->name('index');
+        Route::get('/index', 'index')->name('country');
         Route::get('/create', 'create')->name('create');
         Route::post('/store', 'store')->name('store');
         Route::patch('/{id}', 'update')->name('update');

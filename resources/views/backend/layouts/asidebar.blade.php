@@ -1,247 +1,209 @@
- <!-- Main Sidebar Container -->
- <aside class="main-sidebar sidebar-dark-primary elevation-4">
-     <!-- Brand Logo -->
-     <a href="index3.html" class="brand-link">
-         <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-             style="opacity: .8">
-         <span class="brand-text font-weight-light">AdminLTE 3</span>
-     </a>
+<!-- partial:partials/_sidebar.html -->
+<nav class="sidebar">
+    <div class="sidebar-header">
+        <a href="#" class="sidebar-brand">
+            Noble<span>UI</span>
+        </a>
+        <div class="sidebar-toggler not-active">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="sidebar-body">
+        <ul class="nav">
+            <li class="nav-item nav-category">Main</li>
+            <li class="nav-item">
+                <a href="{{ route('admin.dashboard') }}" class="nav-link">
+                    <i class="link-icon" data-feather="box"></i>
+                    <span class="link-title">Dashboard</span>
+                </a>
+            </li>
 
-     <!-- Sidebar -->
-     <div class="sidebar">
-         <!-- Sidebar user panel (optional) -->
-         <div class="mb-3 d-flex">
-             {{-- <div class="image">
-                 <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
-             </div>
-             <div class="info">
-                 <a href="#" class="d-block">Alexander Pierce</a>
-             </div> --}}
-         </div>
-
-         <!-- SidebarSearch Form -->
-         <div class="form-inline">
-             <div class="input-group" data-widget="sidebar-search">
-                 <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                     aria-label="Search">
-                 <div class="input-group-append">
-                     <button class="btn btn-sidebar">
-                         <i class="fas fa-search fa-fw"></i>
-                     </button>
-                 </div>
-             </div>
-         </div>
-
-         <!-- Sidebar Menu -->
-         <nav class="mt-2">
-             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                 data-accordion="false">
-                 <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                 <li class="nav-item menu-open">
-                     <a href="#" class="nav-link active">
-                         <i class="nav-icon fas fa-tachometer-alt"></i>
-                         <p>
-                             Dashboard
-                         </p>
-                     </a>
-                 </li>
-
-
-                 {{-- Application data Filter --}}
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-                         <i class="nav-icon fas fa-chart-pie"></i>
-                         <p>
-                             Application Data Filter
-                             <i class="right fas fa-angle-left"></i>
-                         </p>
-                     </a>
-                     <ul class="nav nav-treeview">
-                         <li class="nav-item">
-                             <a href="#" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Todays Applications</p>
-                             </a>
-                         </li>
-                         <li class="nav-item">
-                             <a href="#" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Weekly Applications</p>
-                             </a>
-                         </li>
-                         <li class="nav-item">
-                             <a href="#" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Monthly Applications</p>
-                             </a>
-                         </li>
-                         <li class="nav-item">
-                             <a href="#" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Yearly Applications</p>
-                             </a>
-                         </li>
-                     </ul>
-                 </li>
-
-                 {{-- Application start here --}}
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-                         <i class="nav-icon fas fa-tree"></i>
-                         <p>
-                             Application
-                             <i class="fas fa-angle-left right"></i>
-                         </p>
-                     </a>
-                     <ul class="nav nav-treeview">
-                         <li class="nav-item">
-                             <a href="pages/UI/general.html" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Approved Application</p>
-                             </a>
-                         </li>
-                         <li class="nav-item">
-                             <a href="pages/UI/icons.html" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Processing Application</p>
-                             </a>
-                         </li>
-                         <li class="nav-item">
-                             <a href="pages/UI/buttons.html" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Paid Application</p>
-                             </a>
-                         </li>
-                         <li class="nav-item">
-                             <a href="pages/UI/sliders.html" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>On Hold Application</p>
-                             </a>
-                         </li>
-                         <li class="nav-item">
-                             <a href="pages/UI/modals.html" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Unpaid Application</p>
-                             </a>
-                         </li>
-                         <li class="nav-item">
-                             <a href="pages/UI/navbar.html" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Rejected Application</p>
-                             </a>
-                         </li>
-                         <li class="nav-item">
-                             <a href="pages/UI/timeline.html" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Refund</p>
-                             </a>
-                         </li>
-                     </ul>
-                 </li>
-                 {{-- Application End Here --}}
-
-
-                 {{--  tools Start --}}
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-                         <i class="nav-icon fas fa-edit"></i>
-                         <p>
-                             Tools
-                             <i class="fas fa-angle-left right"></i>
-                         </p>
-                     </a>
-                     <ul class="nav nav-treeview">
-                         <li class="nav-item">
-                             <a href="{{ route('admin.service.create') }}" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Add Service Type</p>
-                             </a>
-                         </li>
-                         <li class="nav-item">
-                             <a href="{{ route('admin.service.index') }}" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>View All Service type</p>
-                             </a>
-                         </li>
-                     </ul>
-                 </li>
-                 {{--  tools end --}}
-
-                 {{-- Transaction --}}
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-                         <i class="nav-icon fas fa-table"></i>
-                         <p>
-                             Transaction
-                             <i class="fas fa-angle-left right"></i>
-                         </p>
-                     </a>
-                     <ul class="nav nav-treeview">
-                         <li class="nav-item">
-                             <a href="#" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Paypal</p>
-                             </a>
-                         </li>
-                     </ul>
-                 </li>
-
-                 {{-- Settings --}}
-                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
-                        <p>
-                            Settings
-                            <i class="fas fa-angle-left right"></i>
-                            {{-- <span class="badge badge-info right">6</span> --}}
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
+            {{-- Application data Filter Start --}}
+            <li class="nav-item nav-category">Application Data Filter</li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false"
+                    aria-controls="tables">
+                    <i class="link-icon" data-feather="list"></i>
+                    <span class="link-title">Data Filter</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="emails">
+                    <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="{{ route('admin.setting.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Basic Settings</p>
-                            </a>
+                            <a href="#" class="nav-link">Today</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.user.edit',auth()->user()->id) }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Profile Setting</p>
-                            </a>
+                            <a href="#" class="nav-link">Weekly</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.user.create') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add Admin</p>
-                            </a>
+                            <a href="#" class="nav-link">Monthly</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.user.adminUser') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Admin User List</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.user.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>All User</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.country.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add Country for Visa</p>
-                            </a>
+                            <a href="#" class="nav-link">Yearly</a>
                         </li>
                     </ul>
-                </li>
-                {{-- Settings End  --}}
+                </div>
+            </li>
+            {{-- <li class="nav-item">
+                <a href="pages/apps/chat.html" class="nav-link">
+                    <i class="link-icon" data-feather="message-square"></i>
+                    <span class="link-title">Chat</span>
+                </a>
+            </li> --}}
+            {{-- Application data Filter End --}}
+
+            {{-- Application  Start --}}
+            <li class="nav-item nav-category">Application</li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#Application" role="button" aria-expanded="false"
+                    aria-controls="forms">
+                    <i class="link-icon" data-feather="inbox"></i>
+                    <span class="link-title">Application</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="Application">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="pages/email/inbox.html" class="nav-link">Approved</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/email/read.html" class="nav-link">Processing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Paid</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">On Hold</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Unpaid</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Rejected</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Refund</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            {{-- Application End --}}
 
 
-             </ul>
-         </nav>
-         <!-- /.sidebar-menu -->
-     </div>
-     <!-- /.sidebar -->
- </aside>
+            {{-- Tools Start --}}
+            <li class="nav-item nav-category">Tools</li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#tools" role="button" aria-expanded="false"
+                    aria-controls="advancedUI">
+                    <i class="link-icon" data-feather="anchor"></i>
+                    <span class="link-title">Data Filter</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="tools">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Add Service</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">All Service</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            {{-- Tools End --}}
+
+            {{-- Transaction Start --}}
+            <li class="nav-item nav-category">Transaction</li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#tools" role="button" aria-expanded="false"
+                    aria-controls="authPages">
+                    <i class="link-icon" data-feather="unlock"></i>
+                    <span class="link-title">List</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="tools">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Paypal</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            {{-- Transaction End --}}
+
+            {{-- Settings Start --}}
+            <li class="nav-item nav-category">Settings</li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#setting" role="button" aria-expanded="false"
+                    aria-controls="general-pages">
+                    <i class="link-icon" data-feather="tool"></i>
+                    <span class="link-title">Service</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="setting">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.setting.index') }}" class="nav-link">Basic</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.user.create') }}" class="nav-link">Add Admin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.user.adminUser') }}" class="nav-link">Admin User List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.user.index') }}" class="nav-link">All User</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.country.country') }}" class="nav-link">Country</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            {{-- Settings End --}}
+
+
+        </ul>
+    </div>
+</nav>
+
+
+{{-- <nav class="settings-sidebar">
+    <div class="sidebar-body">
+        <a href="#" class="settings-sidebar-toggler">
+            <i data-feather="settings"></i>
+        </a>
+        <h6 class="text-muted mb-2">Sidebar:</h6>
+        <div class="mb-3 pb-3 border-bottom">
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="sidebarThemeSettings" id="sidebarLight"
+                    value="sidebar-light" checked>
+                <label class="form-check-label" for="sidebarLight">
+                    Light
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="sidebarThemeSettings" id="sidebarDark"
+                    value="sidebar-dark">
+                <label class="form-check-label" for="sidebarDark">
+                    Dark
+                </label>
+            </div>
+        </div>
+        <div class="theme-wrapper">
+            <h6 class="text-muted mb-2">Light Theme:</h6>
+            <a class="theme-item active" href="../demo1/dashboard.html">
+                <img src="../assets/images/screenshots/light.jpg" alt="light theme">
+            </a>
+            <h6 class="text-muted mb-2">Dark Theme:</h6>
+            <a class="theme-item" href="../demo2/dashboard.html">
+                <img src="../assets/images/screenshots/dark.jpg" alt="light theme">
+            </a>
+        </div>
+    </div>
+</nav> --}}
+<!-- partial -->

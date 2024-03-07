@@ -1,17 +1,11 @@
- <!-- /.content-wrapper -->
- <footer class="main-footer text-center">
-    <strong>Copyright &copy;  <a href="#">S. M. Mahfujur Rahman</a>.</strong>
-    All rights reserved.
-    {{-- <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
-    </div> --}}
-  </footer>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+ <!-- partial:partials/_footer.html -->
+ <footer
+     class="footer d-flex flex-column flex-md-row align-items-center justify-content-center px-4 py-3 border-top small text-center">
+     <p class="text-muted mb-1 mb-md-0"><strong>Copyright &copy;  <a href="#" target="_blank">S. M. Mahfujur Rahman</a>.</strong>
+        All rights reserved.</p>
+ </footer>
+ <!-- partial -->
 
+ </div>
+ </div>

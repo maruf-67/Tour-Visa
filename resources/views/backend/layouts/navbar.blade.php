@@ -1,66 +1,64 @@
-<!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li>
-        {{-- <li class="nav-item d-none d-sm-inline-block">
-            <a href="index3.html" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
-        </li> --}}
-    </ul>
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-            <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                <i class="fas fa-expand-arrows-alt"></i>
-            </a>
-        </li>
-        <li class="nav-item">
-            {{-- <div class="image user-panel">
-                <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
-            </div> --}}
-            <div class="dropdown">
-                <div class="image user-panel" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">
-                    <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
-                </div>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="left: -150px ">
-                  <li>
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-           onclick="event.preventDefault();
-                         document.getElementById('logout-form').submit();">
-            {{ __('Logout') }}
-        </a>
-
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-        </form>
-                  </li>
-                </ul>
-            </div>
-        </li>
-    </ul>
-</nav>
-<!-- /.navbar -->
-
-
-{{-- <li class="nav-item dropdown">
-    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-        {{ Auth::user()->name }}
+<!-- partial:partials/_navbar.html -->
+<nav class="navbar">
+    <a href="#" class="sidebar-toggler">
+        <i data-feather="menu"></i>
     </a>
-
-    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="{{ route('logout') }}"
-           onclick="event.preventDefault();
-                         document.getElementById('logout-form').submit();">
-            {{ __('Logout') }}
-        </a>
-
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-        </form>
+    <div class="navbar-content">
+        {{-- <form class="search-form">
+            <div class="input-group">
+                <div class="input-group-text">
+                    <i data-feather="search"></i>
+                </div>
+                <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
+            </div>
+        </form> --}}
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30"
+                        alt="profile">
+                </a>
+                <div class="dropdown-menu p-0" aria-labelledby="profileDropdown">
+                    <div class="d-flex flex-column align-items-center border-bottom px-5 py-3">
+                        <div class="mb-3">
+                            <img class="wd-80 ht-80 rounded-circle" src="https://via.placeholder.com/80x80"
+                                alt="">
+                        </div>
+                        <div class="text-center">
+                            <p class="tx-16 fw-bolder">Amiah Burton</p>
+                            <p class="tx-12 text-muted">amiahburton@gmail.com</p>
+                        </div>
+                    </div>
+                    <ul class="list-unstyled p-1">
+                        <li class="dropdown-item py-2">
+                            <a href="{{ route('admin.user.edit',auth()->user()->id) }}" class="text-body ms-0">
+                                <i class="me-2 icon-md" data-feather="user"></i>
+                                <span>Profile</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-item py-2">
+                            <a href="javascript:;" class="text-body ms-0">
+                                <i class="me-2 icon-md" data-feather="edit"></i>
+                                <span>Edit Profile</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-item py-2">
+                            <a href="javascript:;" class="text-body ms-0">
+                                <i class="me-2 icon-md" data-feather="repeat"></i>
+                                <span>Switch User</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-item py-2">
+                            <a href="javascript:;" class="text-body ms-0">
+                                <i class="me-2 icon-md" data-feather="log-out"></i>
+                                <span>Log Out</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
     </div>
-</li> --}}
+</nav>
+<!-- partial -->

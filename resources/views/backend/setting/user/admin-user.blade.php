@@ -1,53 +1,78 @@
+
+
+
+
+
+
 @extends('backend.layouts.master')
-@section('title', 'Tour-Visa')
+@section('title', 'Basic Setting')
 
 @section('content')
 
-    <div class="wrapper">
+    <div class="page-content">
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>Add New User</h1>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Admin List</li>
-                            </ol>
-                        </div>
-
-                    </div>
-                </div><!-- /.container-fluid -->
-            </section>
-
-            <!-- Main content -->
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row mx-auto">
-                        <!-- left column -->
-                        <div class="col-md-6 mx-2">
-                            <a href="{{ route('admin.user.create') }}"><button class="btn btn-primary">Add New Admin</button></a>
-                        </div>
-
-                        <div class="col-md-8 mx-auto">
-                            <!-- general form elements -->
-                             <div class="card card-primary">
-                                <div class="card-header text-center">
-                                    <h3 class="card-title" style="float: none; font-size: 2rem;">Admin List</h3>
-
-                                </div>
-                                {{-- give me a button for adding new admin --}}
+        <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+            <div>
+                <h4 class="mb-3 mb-md-0">Welcome to Admin User</h4>
+            </div>
+            {{-- <div class="d-flex align-items-center flex-wrap text-nowrap">
+                <div class="input-group flatpickr wd-200 me-2 mb-2 mb-md-0" id="dashboardDate">
+                    <span class="input-group-text input-group-addon bg-transparent border-primary" data-toggle><i
+                            data-feather="calendar" class="text-primary"></i></span>
+                    <input type="text" class="form-control bg-transparent border-primary" placeholder="Select date"
+                        data-input>
+                </div>
+                <button type="button" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
+                    <i class="btn-icon-prepend" data-feather="printer"></i>
+                    Print
+                </button>
+                <button type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
+                    <i class="btn-icon-prepend" data-feather="download-cloud"></i>
+                    Download Report
+                </button>
+            </div> --}}
+        </div>
 
 
+
+        <div class="row">
+            <div class="col-12 col-xl-12 grid-margin stretch-card ">
+                <div class="card overflow-hidden ">
+                    <div class="card-body ">
+                        <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3 ">
+                            <h6 class="card-title mb-0 text-primary">Admin User List</h6>
+                            <div class="dropdown">
+                                <a href="{{ route('admin.user.create') }}"><button class="btn btn-primary me-2">Add Admin</button></a>
+                                {{-- <a type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                            data-feather="eye" class="icon-sm me-2"></i> <span
+                                            class="">View</span></a>
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                            data-feather="edit-2" class="icon-sm me-2"></i> <span
+                                            class="">Edit</span></a>
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                            data-feather="trash" class="icon-sm me-2"></i> <span
+                                            class="">Delete</span></a>
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                            data-feather="printer" class="icon-sm me-2"></i> <span
+                                            class="">Print</span></a>
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                            data-feather="download" class="icon-sm me-2"></i> <span
+                                            class="">Download</span></a>
+                                </div> --}}
                             </div>
+                        </div>
+
+
+                        {{-- Content --}}
+                        <div class="col-12 mt-4">
                             <table id="admintable" class="table table-striped" style="width:100%">
                                 <thead>
-                                    <tr>
+                                    <tr style="text-align:center">
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Email</th>
@@ -59,15 +84,15 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($users as $user)
-                                    <tr>
-                                    <td>{{ $loop->index +1 }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
+                                    <tr style="text-align:center">
+                                    <td valign='middle'>{{ $loop->index +1 }}</td>
+                                    <td valign='middle'>{{ $user->name }}</td>
+                                    <td valign='middle'>{{ $user->email }}</td>
 
-                                    <td><img src="{{ asset($user->email) ?? ''}}" height="60px" alt="Image"></td>
-                                    <td>{{ $user->type }}</td>
-                                    <td>{{ $user->created_at }}</td>
-                                    <td style="vertical-align: middle; text-align:center" style="vertical-align: middle; text-align:center">
+                                    <td valign='middle'><img src="{{ asset($user->email) ?? ''}}" height="60px" alt="Image"></td>
+                                    <td valign='middle'>{{ $user->type }}</td>
+                                    <td valign='middle'>{{ $user->created_at }}</td>
+                                    <td class="d-flex justify-content-around">
                                         @if(auth()->user()->type == 'administrator')
                                         <a href="{{ route('admin.user.edit',$user->id) }}"><button class="btn btn-primary">Edit</button></a>
 
@@ -83,18 +108,17 @@
                                     @endforeach
                                 </tbody>
                             </table>
-
-
                         </div>
+                        {{-- Content --}}
+
                     </div>
-                </div><!-- /.container-fluid -->
-            </section>
-            <!-- /.content -->
-        </div>
+                </div>
+            </div>
+        </div> <!-- row -->
     </div>
 
-
 @endsection
+
 @push('script')
     <script>
         new DataTable('#admintable');
