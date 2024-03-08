@@ -1,41 +1,4 @@
-@extends('backend.layouts.master')
-@section('title', 'Service List')
-
-@section('content')
-
-    <div class="wrapper">
-
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>Add New Service</h1>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Service List</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div><!-- /.container-fluid -->
-            </section>
-
-            <!-- Main content -->
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row mx-auto">
-                        <!-- left column -->
-                        <div class="col-md-8 mx-auto">
-                            <!-- general form elements -->
-                            <div class="card card-primary">
-                                <div class="card-header text-center">
-                                    <h3 class="card-title" style="float: none; font-size: 2rem;">Service List</h3>
-                                </div>
-                            </div>
+{{--
                             <table id="servicetable" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
@@ -74,22 +37,115 @@
                                             </td>
                                         </tr>
                                     @endforeach
+                                </tbody> --}}
+
+
+
+
+
+
+@extends('backend.layouts.master')
+@section('title', 'Basic Setting')
+
+@section('content')
+
+    <div class="page-content">
+
+        <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+            <div>
+                <h4 class="mb-3 mb-md-0">Welcome to service</h4>
+            </div>
+            {{-- <div class="d-flex align-items-center flex-wrap text-nowrap">
+                                                <div class="input-group flatpickr wd-200 me-2 mb-2 mb-md-0" id="dashboardDate">
+                                                    <span class="input-group-text input-group-addon bg-transparent border-primary" data-toggle><i
+                                                            data-feather="calendar" class="text-primary"></i></span>
+                                                    <input type="text" class="form-control bg-transparent border-primary" placeholder="Select date"
+                                                        data-input>
+                                                </div>
+                                                <button type="button" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
+                                                    <i class="btn-icon-prepend" data-feather="printer"></i>
+                                                    Print
+                                                </button>
+                                                <button type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
+                                                    <i class="btn-icon-prepend" data-feather="download-cloud"></i>
+                                                    Download Report
+                                                </button>
+                                            </div> --}}
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-12 col-xl-12 grid-margin stretch-card ">
+                <div class="card overflow-hidden ">
+                    <div class="card-body ">
+                        <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3 ">
+                            <h6 class="card-title mb-0 text-primary">service List</h6>
+                            <div class="dropdown">
+                                <a href="{{ route('admin.service.create') }}"><button class="btn btn-primary me-2">Add
+                                        Service</button></a>
+
+                            </div>
+                        </div>
+
+
+                        {{-- Content --}}
+                        <div class="col-12 mt-4">
+                            <table id="admintable" class="table table-striped" style="width:100%">
+                                <thead>
+                                    <tr style="text-align:center">
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Time</th>
+                                        <th>Price</th>
+                                        <th>Deccription</th>
+                                        <th>Status</th>
+                                        <th>Created Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($services as $service)
+                                        <tr style="text-align:center">
+                                            <td valign='middle'>{{ $loop->index + 1 }}</td>
+                                            <td valign='middle'>{{ $service->name }}</td>
+                                            <td valign='middle'>{{ $service->time }} Days</td>
+                                            <td valign='middle'>{{ $service->price }}</td>
+                                            <td valign='middle'>{{ $service->description }}</td>
+                                            <td valign='middle'><span
+                                                    class="badge badge bg-{{ $service->status ? 'success' : 'danger' }}">{{ $service->status ? 'Active' : 'Inactive' }}</span>
+
+                                            </td>
+                                            <td valign='middle'>{{ $service->created_at }}</td>
+                                            <td valign='middle' class="d-flex justify-content-around">
+
+                                                <a href="{{ route('admin.service.edit', $service->id) }}"><button
+                                                        class="btn btn-primary">Edit</button></a>
+
+                                                <form action="{{ route('admin.service.destroy', $service->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
-
-
                         </div>
+                        {{-- Content --}}
+
                     </div>
-                </div><!-- /.container-fluid -->
-            </section>
-            <!-- /.content -->
-        </div>
+                </div>
+            </div>
+        </div> <!-- row -->
     </div>
 
-
 @endsection
+
 @push('script')
     <script>
-        new DataTable('#servicetable');
+        new DataTable('#admintable');
     </script>
 @endpush

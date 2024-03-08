@@ -103,11 +103,11 @@
                 </a>
                 <div class="collapse" id="tools">
                     <ul class="nav sub-menu">
+                        {{-- <li class="nav-item">
+                            <a href="{{ route('admin.service.create') }}" class="nav-link">Add Service</a>
+                        </li> --}}
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Add Service</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">All Service</a>
+                            <a href="{{ route('admin.service.index') }}" class="nav-link">All Service</a>
                         </li>
                     </ul>
                 </div>
@@ -148,9 +148,6 @@
                     <ul class="nav sub-menu">
                         <li class="nav-item">
                             <a href="{{ route('admin.setting.index') }}" class="nav-link">Basic</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.user.create') }}" class="nav-link">Add Admin</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.user.adminUser') }}" class="nav-link">Admin User List</a>

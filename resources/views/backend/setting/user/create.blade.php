@@ -40,6 +40,7 @@
                     <div class="card-body ">
                         <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3 ">
                             <h6 class="card-title mb-0 text-primary">Add New User</h6>
+                            <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
 
                         </div>
 
