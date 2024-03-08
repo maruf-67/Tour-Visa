@@ -30,7 +30,7 @@
 
                         {{-- Content --}}
                         <div class="col-12 mt-4">
-                            <table id="admintable" class="table table-striped" style="width:100%">
+                            <table id="application-approve" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr style="text-align:center">
                                         <th>#ID</th>
@@ -95,7 +95,7 @@
 
 @push('script')
     <script>
-        new DataTable('#admintable');
+        new DataTable('#application-approve');
         responsive;
     </script>
 @endpush
