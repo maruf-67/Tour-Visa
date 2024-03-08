@@ -48,6 +48,7 @@ Route::middleware(['auth', 'user-access:administrator,admin,moderator'])->name('
         Route::patch('/{id}', 'update')->name('update');
         Route::delete('/{id}', 'destroy')->name('destroy');
         Route::get('/password', 'change_password')->name('password');
+        Route::post('/update-password', 'update_password')->name('update_password');
     });
 
     Route::controller(CountryController::class)->name('country.')->prefix('country')->group(function () {

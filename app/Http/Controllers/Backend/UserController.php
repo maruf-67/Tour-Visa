@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -117,6 +118,26 @@ class UserController extends Controller
         // ]);
 
         // $user = User::find($id);
+        return view('backend.setting.user.password');
+    }
+
+    public function update_password(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'old_password' => 'required|min:8',
+            'new_password' => 'required|min:8',
+            'c_password' => 'required|same:new_password',
+        ]);
+
+        // check old_password is matching for the current user by auth
+        if (Hash::check($request->old_password, auth()->user()->password)) {
+            // update password
+            $user = User::find(auth()->user()->id);
+            $user->password = Hash::make($request->new_password);
+            $user->save();
+        }   else {
+            return redirect()->back()->with('error', 'Old password is not matching');
+        }
         return view('backend.setting.user.password');
     }
 

@@ -84,7 +84,7 @@
 	<!-- End custom js for this page -->
 
     <script src="{{ asset('js/dataTable/jquery-3.7.1.js') }}"></script>
-    <script src="{{ asset('js/dataTable/bootstrap.bundle.min.js') }}"></script>
+    {{-- <script src="{{ asset('js/dataTable/bootstrap.bundle.min.js') }}"></script> --}}
     <script src="{{ asset('js/dataTable/dataTables.js') }}"></script>
     <script src="{{ asset('js/dataTable/dataTables.bootstrap5.js') }}"></script>
 

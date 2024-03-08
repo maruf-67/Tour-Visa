@@ -69,17 +69,16 @@
                                         <label class="col-md-3 col-form-label">User Image</label>
                                         <div class="col-md-9">
                                             <input type="file" name="image" id="image" class="form-control" value="{{ isset($user->image) ? $user->image : '' }}">
+                                            @isset($user->image)
+                                                <img src="{{ asset($user->image) }}" alt="image" class="wd-80 ht-80" >
+                                            @endisset
                                         </div>
-                                        {{-- @isset($user->image)
-                                            <img src="{{ asset($user->image) }}" alt="image" width="150px"
-                                                height="100px">
-                                        @endisset --}}
                                     </div>
 
                                     <div class="form-group row mt-4">
                                         <label class="col-md-3 col-form-label">User Phone</label>
                                         <div class="col-md-9">
-                                            <input type="number" name="password" class="form-control" id="staticEmail" placeholder="+8801712******" value="{{ isset($user->phone) ? $user->phone : '' }}">
+                                            <input type="number" name="phone" class="form-control" id="staticEmail" placeholder="+8801712******" value="{{ isset($user->phone) ? $user->phone : '' }}">
                                         </div>
                                     </div>
 

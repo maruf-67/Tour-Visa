@@ -42,8 +42,8 @@
 
                         {{-- Content --}}
                         <div class="col-12 ">
-                            <form method="POST" action="#" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
-                                {{ method_field('PATCH') }}
+                            <form method="POST" action="{{ route('admin.user.update_password') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                                {{-- {{ method_field('PATCH') }} --}}
                                 {{-- {{ csrf_field() }} --}}
                                 @csrf
                                     <div class="card-body">
