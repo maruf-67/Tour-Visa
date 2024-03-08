@@ -88,13 +88,13 @@
                                     <td valign='middle'>{{ $user->name }}</td>
                                     <td valign='middle'>{{ $user->email }}</td>
 
-                                    <td valign='middle'><img src="{{ asset($user->email) ?? ''}}" height="60px" alt="Image"></td>
+                                    <td valign='middle'><img src="{{ asset($user->image) ?? ''}}" height="60px" alt="Image"></td>
                                     <td valign='middle'>{{ $user->type }}</td>
                                     <td valign='middle'>{{ $user->created_at }}</td>
                                     <td class="d-flex justify-content-around">
                                         @if(auth()->user()->type == 'administrator')
-                                        <a href="{{ route('admin.user.edit',$user->id) }}"><button class="btn btn-primary">Edit</button></a>
-                                        <a href="{{ route('admin.user.edit',$user->id) }}"><button class="btn btn-primary">View</button></a>
+                                        {{-- <a href="{{ route('admin.user.edit',$user->id) }}"><button class="btn btn-primary">Edit</button></a> --}}
+                                        {{-- <a href="{{ route('admin.user.edit',$user->id) }}"><button class="btn btn-primary">View</button></a> --}}
                                         <form action="{{ route('admin.user.destroy', $user->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')

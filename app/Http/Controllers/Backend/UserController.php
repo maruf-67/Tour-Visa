@@ -81,7 +81,7 @@ class UserController extends Controller
         $requestData['image'] = $path;
         $user->update($requestData);
 
-        return redirect()->back()->with('success', 'User updated successfully');
+        return redirect()->route('admin.user.adminUser')->with('success', 'User updated successfully');
     }
 
     public function admin_user()
@@ -107,5 +107,19 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', 'Password updated successfully');
     }
+
+    public function change_password()
+    {
+        // $validator = Validator::make($request->all(), [
+        //     'old_password' => 'required|min:8',
+        //     'new_password' => 'required|min:8',
+        //     'c_password' => 'required|same:new_password',
+        // ]);
+
+        // $user = User::find($id);
+        return view('backend.setting.user.password');
+    }
+
+
 
 }

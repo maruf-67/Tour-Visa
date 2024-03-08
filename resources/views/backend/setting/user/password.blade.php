@@ -7,7 +7,7 @@
 
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
             <div>
-                <h4 class="mb-3 mb-md-0">Welcome to Admin User</h4>
+                <h4 class="mb-3 mb-md-0">Welcome to Password Section</h4>
             </div>
             {{-- <div class="d-flex align-items-center flex-wrap text-nowrap">
                 <div class="input-group flatpickr wd-200 me-2 mb-2 mb-md-0" id="dashboardDate">
@@ -34,66 +34,42 @@
                 <div class="card overflow-hidden ">
                     <div class="card-body ">
                         <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3 ">
-                            <h6 class="card-title mb-0 text-primary">Edit User</h6>
+                            <h6 class="card-title mb-0 text-primary">Change Password</h6>
                             <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
 
                         </div>
 
 
                         {{-- Content --}}
-                        <div class="col-12 mt-4">
-                            <form method="POST" action="{{ route('admin.user.update',$user->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                        <div class="col-12 ">
+                            <form method="POST" action="#" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                                 {{ method_field('PATCH') }}
                                 {{-- {{ csrf_field() }} --}}
                                 @csrf
                                     <div class="card-body">
                                     <!-- Your form fields -->
 
-                                    <div class="form-group row">
-                                        <label class="col-md-3 col-form-label">User Name</label>
+                                    <div class="form-group row mt-4">
+                                        <label class="col-md-3 col-form-label">Old Password</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" id="name"  name="name" placeholder="Ajmain Akash" value="{{ isset($user->name) ? $user->name : '' }}">
-
+                                            <input type="password" name="old_password" class="form-control" id="staticEmail" placeholder="Enter Old password">
                                         </div>
                                     </div>
 
                                     <div class="form-group row mt-4">
-                                        <label class="col-md-3 col-form-label">User Email</label>
+                                        <label class="col-md-3 col-form-label">New Password</label>
                                         <div class="col-md-9">
-                                            <input type="email" name="email" class="form-control" id="staticEmail" placeholder="ajmain@gmail.com" value="{{ isset($user->email) ? $user->email : '' }}">
-
+                                            <input type="password" name="new_password" class="form-control" id="staticEmail" placeholder="Enter New password">
                                         </div>
                                     </div>
 
                                     <div class="form-group row mt-4">
-                                        <label class="col-md-3 col-form-label">User Image</label>
+                                        <label class="col-md-3 col-form-label">Confirm Password</label>
                                         <div class="col-md-9">
-                                            <input type="file" name="image" id="image" class="form-control" value="{{ isset($user->image) ? $user->image : '' }}">
-                                        </div>
-                                        {{-- @isset($user->image)
-                                            <img src="{{ asset($user->image) }}" alt="image" width="150px"
-                                                height="100px">
-                                        @endisset --}}
-                                    </div>
-
-                                    <div class="form-group row mt-4">
-                                        <label class="col-md-3 col-form-label">User Phone</label>
-                                        <div class="col-md-9">
-                                            <input type="number" name="password" class="form-control" id="staticEmail" placeholder="+8801712******" value="{{ isset($user->phone) ? $user->phone : '' }}">
+                                            <input type="password" name="c_password" class="form-control" id="staticEmail" placeholder="Enter Confirm password">
                                         </div>
                                     </div>
 
-                                    <div class="form-group row mt-4">
-                                        <label class="col-md-3 col-form-label">User Role</label>
-                                        <div class="col-md-9">
-                                            {{-- <input type="text" class="form-control" id="staticEmail"> --}}
-                                            <select class="form-control" name="type">
-                                                <option value="1">Administrator</option>
-                                                <option value="2">Admin</option>
-                                                <option value="3">Moderator</option>
-                                            </select>
-                                        </div>
-                                    </div>
                                 </div>
                                 <!-- /.card-body -->
 

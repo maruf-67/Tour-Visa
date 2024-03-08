@@ -89,7 +89,7 @@
                                     <td valign='middle'>{{ $user->name }}</td>
                                     <td valign='middle'>{{ $user->email }}</td>
 
-                                    <td valign='middle'><img src="{{ asset($user->email) ?? ''}}" height="60px" alt="Image"></td>
+                                    <td valign='middle'><img src="{{ asset($user->image) ?? ''}}" height="100px" width="100px" alt="Image"></td>
                                     <td valign='middle'>{{ $user->type }}</td>
                                     <td valign='middle'>{{ $user->created_at }}</td>
                                     <td class="d-flex justify-content-around">

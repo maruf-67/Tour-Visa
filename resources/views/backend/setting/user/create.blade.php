@@ -77,11 +77,11 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group row mt-4 {{ $errors->has('fav_icon') ? 'has-error' : ''}}">
+                                    <div class="form-group row mt-4 {{ $errors->has('image') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label">User Image</label>
                                         <div class="col-md-9">
-                                            <input type="file" name="fav_icon" id="fav_icon" class="form-control">
-                                            {!! $errors->first('fav_icon', '<p class="help-block text-danger">:message</p>') !!}
+                                            <input type="file" name="image" id="image" class="form-control">
+                                            {!! $errors->first('image', '<p class="help-block text-danger">:message</p>') !!}
                                         </div>
                                     </div>
 
