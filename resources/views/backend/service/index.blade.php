@@ -1,49 +1,3 @@
-{{--
-                            <table id="servicetable" class="table table-striped" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Name</th>
-                                        <th>Time</th>
-                                        <th>Price</th>
-                                        <th>Deccription</th>
-                                        <th>Status</th>
-                                        <th>Created Date</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($services as $service)
-                                        <tr>
-                                            <td>{{ $loop->index + 1 }}</td>
-                                            <td>{{ $service->name }}</td>
-                                            <td>{{ $service->time }} Days</td>
-                                            <td>{{ $service->price }}</td>
-                                            <td>{{ $service->description }}</td>
-                                            <td><span class="badge badge-{{ $service->status ? 'success' : 'danger' }}">{{ $service->status ? 'Active' : 'Inactive' }}</span></td>
-                                            <td>{{ $service->created_at }}</td>
-                                            <td style="vertical-align: middle; text-align:center"
-                                                style="vertical-align: middle; text-align:center">
-
-                                                <a href="{{ route('admin.service.edit', $service->id) }}"><button
-                                                        class="btn btn-primary">Edit</button></a>
-
-                                                <form action="{{ route('admin.service.destroy', $service->id) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody> --}}
-
-
-
-
-
-
 @extends('backend.layouts.master')
 @section('title', 'Basic Setting')
 
@@ -55,22 +9,7 @@
             <div>
                 <h4 class="mb-3 mb-md-0">Welcome to service</h4>
             </div>
-            {{-- <div class="d-flex align-items-center flex-wrap text-nowrap">
-                                                <div class="input-group flatpickr wd-200 me-2 mb-2 mb-md-0" id="dashboardDate">
-                                                    <span class="input-group-text input-group-addon bg-transparent border-primary" data-toggle><i
-                                                            data-feather="calendar" class="text-primary"></i></span>
-                                                    <input type="text" class="form-control bg-transparent border-primary" placeholder="Select date"
-                                                        data-input>
-                                                </div>
-                                                <button type="button" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
-                                                    <i class="btn-icon-prepend" data-feather="printer"></i>
-                                                    Print
-                                                </button>
-                                                <button type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
-                                                    <i class="btn-icon-prepend" data-feather="download-cloud"></i>
-                                                    Download Report
-                                                </button>
-                                            </div> --}}
+
         </div>
 
 

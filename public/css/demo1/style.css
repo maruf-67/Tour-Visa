@@ -20024,7 +20024,8 @@ body {
   color: #fff;
 }
 .sidebar-dark .sidebar .sidebar-body .nav .nav-item .nav-link {
-  color: #7987a1;
+  color: #96bbff;
+  /* color: #7987a1; */
 }
 .sidebar-dark .sidebar .sidebar-body .nav .nav-item .nav-link svg {
   fill: none;
@@ -20036,7 +20037,8 @@ body {
   fill: rgba(101, 113, 255, 0.2);
 }
 .sidebar-dark .sidebar .sidebar-body .nav .nav-item:hover .nav-link .link-title, .sidebar-dark .sidebar .sidebar-body .nav .nav-item.active .nav-link .link-title {
-  color: #6571ff;
+  /* color: #6571ff; */
+  color: white;
 }
 
 .settings-sidebar {
@@ -21698,8 +21700,8 @@ div.apexcharts-canvas .apexcharts-yaxistooltip-right:after {
 }
 div.apexcharts-canvas .apexcharts-tooltip-marker {
   /*rtl:raw:
-  margin-right: 0; 
-  margin-left: 10px; 
+  margin-right: 0;
+  margin-left: 10px;
   */
 }
 
@@ -22410,7 +22412,7 @@ div.tox .tox-dialog__body {
 
 .wizard > .actions {
   /*rtl:raw:
-    text-align: left; 
+    text-align: left;
   */
 }
 

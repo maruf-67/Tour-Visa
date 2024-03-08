@@ -44,7 +44,7 @@
     <link rel="shortcut icon" href="{{ asset("images/favicon.png") }}" />
 
 </head>
-<body>
+<body class="sidebar-dark">
 
 <div class="main-wrapper">
 

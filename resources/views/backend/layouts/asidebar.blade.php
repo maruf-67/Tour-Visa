@@ -66,22 +66,22 @@
                 <div class="collapse" id="Application">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="pages/email/inbox.html" class="nav-link">Approved</a>
+                            <a href="{{ route('admin.application.index') }}" class="nav-link">Approved</a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/email/read.html" class="nav-link">Processing</a>
+                            <a href="{{ route('admin.application.processing') }}" class="nav-link">Processing</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Paid</a>
+                            <a href="{{ route('admin.application.paid') }}" class="nav-link">Paid</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">On Hold</a>
+                            <a href="{{ route('admin.application.onhold') }}" class="nav-link">On Hold</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Unpaid</a>
+                            <a href="{{ route('admin.application.unpaid') }}" class="nav-link">Unpaid</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Rejected</a>
+                            <a href="{{ route('admin.application.rejected') }}" class="nav-link">Rejected</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">Refund</a>
@@ -118,13 +118,13 @@
             {{-- Transaction Start --}}
             <li class="nav-item nav-category">Transaction</li>
             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="#tools" role="button" aria-expanded="false"
+                <a class="nav-link" data-bs-toggle="collapse" href="#transaction" role="button" aria-expanded="false"
                     aria-controls="authPages">
                     <i class="link-icon" data-feather="unlock"></i>
                     <span class="link-title">List</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
-                <div class="collapse" id="tools">
+                <div class="collapse" id="transaction">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
                             <a href="#" class="nav-link">Paypal</a>
