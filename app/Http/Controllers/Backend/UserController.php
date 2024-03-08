@@ -6,7 +6,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
+
+
 
 class UserController extends Controller
 {
@@ -81,6 +84,9 @@ class UserController extends Controller
         }
         $requestData['image'] = $path;
         $user->update($requestData);
+        // Alert::toast('User Information Updated Successfully', 'success');
+        Alert::success('Success Title', 'Success Message');
+
 
         return redirect()->route('admin.user.adminUser')->with('success', 'User updated successfully');
     }

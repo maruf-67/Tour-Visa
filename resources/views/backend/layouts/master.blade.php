@@ -45,6 +45,7 @@
 
 </head>
 <body class="sidebar-dark">
+    @include('sweetalert::alert')
 
 <div class="main-wrapper">
 
