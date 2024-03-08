@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Backend\ApplicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/new', function () {
-    return view('backend/testing');
-});
 
 Auth::routes();
 
@@ -56,6 +54,7 @@ Route::middleware(['auth', 'user-access:administrator,admin,moderator'])->name('
         Route::get('/create', 'create')->name('create');
         Route::post('/store', 'store')->name('store');
         Route::patch('/{id}', 'update')->name('update');
+        Route::delete('/{id}', 'destroy')->name('destroy');
     });
 
     Route::controller(ServiceController::class)->name('service.')->prefix('service')->group(function () {
@@ -65,6 +64,16 @@ Route::middleware(['auth', 'user-access:administrator,admin,moderator'])->name('
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::patch('/{id}', 'update')->name('update');
         Route::delete('/{id}', 'destroy')->name('destroy');
+    });
+
+    Route::controller(ApplicationController::class)->name('application.')->prefix('application')->group(function () {
+        Route::get('/index', 'index')->name('index');
+        Route::get('/view', 'view')->name('view');
+        Route::get('/onhold', 'onhold')->name('onhold');
+        Route::get('/paid', 'paid')->name('paid');
+        Route::get('/processing', 'processing')->name('processing');
+        Route::get('/rejected', 'rejected')->name('rejected');
+        Route::get('/unpaid', 'unpaid')->name('unpaid');
     });
 
 });

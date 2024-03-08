@@ -48,4 +48,11 @@ class CountryController extends Controller
         return redirect()->route('admin.country.index');
     }
 
+    public function destroy($id)
+    {
+        $Country = Country::find($id);
+        $Country->delete();
+        return redirect()->back();
+    }
+
 }

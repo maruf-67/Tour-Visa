@@ -1,44 +1,38 @@
 @extends('backend.layouts.master')
-@section('title', 'Service List')
+@section('title', 'Basic Setting')
 
 @section('content')
 
-    <div class="wrapper">
+    <div class="page-content">
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>Add New Service</h1>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Service List</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div><!-- /.container-fluid -->
-            </section>
+        <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+            <div>
+                <h4 class="mb-3 mb-md-0">Welcome to service</h4>
+            </div>
 
-            <!-- Main content -->
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row mx-auto">
-                        <!-- left column -->
-                        <div class="col-md-8 mx-auto">
-                            <!-- general form elements -->
-                            <div class="card card-primary">
-                                <div class="card-header text-center">
-                                    <h3 class="card-title" style="float: none; font-size: 2rem;">Service List</h3>
-                                </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-12 col-xl-12 grid-margin stretch-card ">
+                <div class="card overflow-hidden ">
+                    <div class="card-body ">
+                        <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3 ">
+                            <h6 class="card-title mb-0 text-primary">service List</h6>
+                            <div class="dropdown">
+                                <a href="{{ route('admin.service.create') }}"><button class="btn btn-primary me-2">Add
+                                        Service</button></a>
+
                             </div>
-                            <table id="servicetable" class="table table-striped" style="width:100%">
+                        </div>
+
+
+                        {{-- Content --}}
+                        <div class="col-12 mt-4">
+                            <table id="admintable" class="table table-striped" style="width:100%">
                                 <thead>
-                                    <tr>
+                                    <tr style="text-align:center">
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Time</th>
@@ -51,16 +45,18 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($services as $service)
-                                        <tr>
-                                            <td>{{ $loop->index + 1 }}</td>
-                                            <td>{{ $service->name }}</td>
-                                            <td>{{ $service->time }} Days</td>
-                                            <td>{{ $service->price }}</td>
-                                            <td>{{ $service->description }}</td>
-                                            <td><span class="badge badge-{{ $service->status ? 'success' : 'danger' }}">{{ $service->status ? 'Active' : 'Inactive' }}</span></td>
-                                            <td>{{ $service->created_at }}</td>
-                                            <td style="vertical-align: middle; text-align:center"
-                                                style="vertical-align: middle; text-align:center">
+                                        <tr style="text-align:center">
+                                            <td valign='middle'>{{ $loop->index + 1 }}</td>
+                                            <td valign='middle'>{{ $service->name }}</td>
+                                            <td valign='middle'>{{ $service->time }} Days</td>
+                                            <td valign='middle'>{{ $service->price }}</td>
+                                            <td valign='middle'>{{ $service->description }}</td>
+                                            <td valign='middle'><span
+                                                    class="badge badge bg-{{ $service->status ? 'success' : 'danger' }}">{{ $service->status ? 'Active' : 'Inactive' }}</span>
+
+                                            </td>
+                                            <td valign='middle'>{{ $service->created_at }}</td>
+                                            <td valign='middle' class="d-flex justify-content-around">
 
                                                 <a href="{{ route('admin.service.edit', $service->id) }}"><button
                                                         class="btn btn-primary">Edit</button></a>
@@ -76,20 +72,19 @@
                                     @endforeach
                                 </tbody>
                             </table>
-
-
                         </div>
+                        {{-- Content --}}
+
                     </div>
-                </div><!-- /.container-fluid -->
-            </section>
-            <!-- /.content -->
-        </div>
+                </div>
+            </div>
+        </div> <!-- row -->
     </div>
 
-
 @endsection
+
 @push('script')
     <script>
-        new DataTable('#servicetable');
+        new DataTable('#admintable');
     </script>
 @endpush

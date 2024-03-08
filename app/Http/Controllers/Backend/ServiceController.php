@@ -28,6 +28,7 @@ class ServiceController extends Controller
             'time' => 'required|integer|min:0',
             'price' => 'required|numeric|min:0',
             'description' => 'required|string',
+            'status' => 'required', // Example of status being either active or inactive
         ]);
 
         $service = Service::create($validatedData);
@@ -47,8 +48,17 @@ class ServiceController extends Controller
             'time' => 'required|integer|min:0',
             'price' => 'required|numeric|min:0',
             'description' => 'required|string',
+            'status' => 'required', // Example of status being either active or inactive
         ]);
+
         $service = Service::find($id);
+
+        // dd($validatedData);
+
+        if (!$service) {
+            // Handle if service is not found, such as redirecting back with an error message
+            return redirect()->back()->with('error', 'Service not found');
+        }
         $service->update($validatedData);
         $service->save();
 
@@ -61,6 +71,7 @@ class ServiceController extends Controller
     {
         $service = Service::find($id);
         $service->delete();
+        return redirect()->back();
     }
 
 }

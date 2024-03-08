@@ -106,7 +106,7 @@
                                 </tbody> --}}
 
                                 @foreach ($countries as $country)
-                                    <tr style="text-align:center">
+                                    <tr >
                                         <td valign='middle'>{{ $loop->index + 1 }}</td>
                                         <td valign='middle'>{{ $country->iso ?? '' }}</td>
                                         <td valign='middle'>{{ $country->name ?? '' }}</td>
@@ -117,12 +117,13 @@
                                         <td valign='middle'><span
                                                 class="badge badge bg-{{ $country->status ? 'success' : 'danger' }}">{{ $country->status ? 'Active' : 'Inactive' }}</span>
                                         </td>
-                                        <td valign='middle' class="d-flex justify-content-evenly">
+                                        <td valign='middle' class="d-flex justify-content-around">
                                             {{-- <button class="btn btn-primary" data-toggle="modal"
                                                 data-target="#editModal{{ $country->id }}">Edit</button> --}}
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                 data-bs-target="#editModal">Edit </button>
-                                            <form action="#', $country->id) }}" method="POST">
+                                            <form action="{{ route('admin.country.destroy', $country->id ) }}" method="POST">
+
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Delete</button>
