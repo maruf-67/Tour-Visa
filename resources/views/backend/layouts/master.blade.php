@@ -93,7 +93,9 @@
     <script src="{{ asset('js/dataTable/responsive.bootstrap5.js') }}"></script>
 
     @stack('script')
-
+<!-- core:js -->
+<script src="{{ asset('vendors/core/core.js') }}"></script>
+<!-- endinject -->
 </body>
 </html>
 
