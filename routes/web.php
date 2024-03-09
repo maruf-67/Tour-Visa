@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Backend\ApplicationController;
 
 /*
@@ -24,6 +25,9 @@ use App\Http\Controllers\Backend\ApplicationController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/app', [FrontendController::class, 'index'])->name('app');
+Route::get('/application', [FrontendController::class, 'application'])->name('application');
 
 
 Auth::routes();
