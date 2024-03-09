@@ -22,17 +22,18 @@ use App\Http\Controllers\Backend\ApplicationController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/app', [FrontendController::class, 'index'])->name('app');
-Route::get('/application', [FrontendController::class, 'application'])->name('application');
+// Route::get('/app', [FrontendController::class, 'index'])->name('app');
+
 
 
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index']);
 
 Route::middleware(['auth', 'user-access:administrator,admin,moderator'])->name('admin.')->group(function () {
 
@@ -80,6 +81,18 @@ Route::middleware(['auth', 'user-access:administrator,admin,moderator'])->name('
         Route::get('/processing', 'processing')->name('processing');
         Route::get('/rejected', 'rejected')->name('rejected');
         Route::get('/unpaid', 'unpaid')->name('unpaid');
+    });
+
+});
+
+Route::middleware(['auth', 'user-access:user'])->group(function () {
+
+
+    Route::controller(FrontendController::class)->name('user.')->prefix('user')->group(function () {
+        // Route::get('/index', 'index')->name('index');
+        // Route::post('/store', 'store')->name('store');
+        Route::get('/application','application')->name('application');
+        Route::post('/application-store','application_store')->name('application_store');
     });
 
 });

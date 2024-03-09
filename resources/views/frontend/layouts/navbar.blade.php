@@ -37,7 +37,7 @@
                       <li><a href="properties.html">Properties</a></li>
                       <li><a href="property-details.html">Property Details</a></li>
                       <li><a href="contact.html">Contact Us</a></li>
-                      <li><a href="{{ route('application') }}"><i class="fa fa-calendar"></i> Apply Now</a></li>
+                      <li><a href="{{ route('user.application') }}"><i class="fa fa-calendar"></i> Apply Now</a></li>
                   </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>

@@ -3,7 +3,7 @@
 @section('title', 'Contact Us | PrepBook')
 
 @push('style')
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
 @endpush
 
 
@@ -50,9 +50,13 @@
                                         <label class="d-block mb-4 ">
                                             <span class="form-label d-block">Service Type *</span>
                                             <select class="form-select" id="service" name="service">
-                                                <option>Rush</option>
+                                                @foreach ($services as $service)
+                                                    <option value="{{ $service->id }}">{{ $service->name }}</option>
+
+                                                @endforeach
+                                                {{-- <option>Rush</option>
                                                 <option>Fast</option>
-                                                <option>Normal</option>
+                                                <option>Normal</option> --}}
                                             </select>
                                         </label>
                                     </div>
@@ -361,6 +365,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
         </script>
-        <script src="js/script.js"></script>
+        <script src="{{ asset('js/script.js') }}"></script>
     @endpush
 @endsection
