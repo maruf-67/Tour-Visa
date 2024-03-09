@@ -1778,7 +1778,7 @@ progress {
     --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
     width: 100%;
     margin-bottom: 1rem;
-    vertical-align: middle;
+    vertical-align: top;
     border-color: var(--bs-table-border-color);
 }
 .table > :not(caption) > * > * {
@@ -1796,10 +1796,10 @@ progress {
         );
 }
 .table > tbody {
-    vertical-align: middle;
+    vertical-align: inherit;
 }
 .table > thead {
-    vertical-align: middle;
+    vertical-align: bottom;
 }
 .table-group-divider {
     border-top: calc(var(--bs-border-width) * 2) solid currentcolor;
@@ -2279,7 +2279,7 @@ textarea.form-control-lg {
     width: 1em;
     height: 1em;
     margin-top: 0.25em;
-    vertical-align: middle;
+    vertical-align: top;
     background-color: var(--bs-form-check-bg);
     background-image: var(--bs-form-check-bg-image);
     background-repeat: no-repeat;

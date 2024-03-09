@@ -1,11 +1,6 @@
-
-
-
-
-
-
 @extends('backend.layouts.master')
 @section('title', 'Basic Setting')
+
 
 @section('content')
 
@@ -70,13 +65,14 @@
 
                         {{-- Content --}}
                         <div class="col-12 mt-4">
-                            <table id="admintable" class="table table-striped" style="width:100%">
+                            <table id="admintable" class="table table-striped nowrap" style="width:100%">
                                 <thead>
                                     <tr style="text-align:center">
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Image</th>
+                                        <th>Phone</th>
                                         <th>Type</th>
                                         <th>Created Date</th>
                                         <th>Action</th>
@@ -88,11 +84,11 @@
                                     <td valign='middle'>{{ $loop->index +1 }}</td>
                                     <td valign='middle'>{{ $user->name }}</td>
                                     <td valign='middle'>{{ $user->email }}</td>
-
                                     <td valign='middle'><img src="{{ asset($user->image) ?? ''}}" height="100px" width="100px" alt="Image"></td>
+                                    <td valign='middle'>{{ $user->phone }}</td>
                                     <td valign='middle'>{{ $user->type }}</td>
                                     <td valign='middle'>{{ $user->created_at }}</td>
-                                    <td class="d-flex justify-content-around">
+                                    <td class="d-flex justify-content-center">
                                         @if(auth()->user()->type == 'administrator')
                                         <a href="{{ route('admin.user.edit',$user->id) }}"><button class="btn btn-primary">Edit</button></a>
 
@@ -120,7 +116,14 @@
 @endsection
 
 @push('script')
+
+
     <script>
-        new DataTable('#admintable');
+        new DataTable('#admintable', {
+        responsive: true
+        });
     </script>
+
+
+
 @endpush

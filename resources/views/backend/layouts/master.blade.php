@@ -35,6 +35,7 @@
     {{-- Datatable Start --}}
     <link rel="stylesheet" href="{{ asset('css/dataTable/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dataTable/dataTables.bootstrap5.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dataTable/responsive.bootstrap5.css') }}">
     {{-- Datatable End --}}
 
     <!-- Layout styles -->
@@ -85,9 +86,11 @@
 	<!-- End custom js for this page -->
 
     <script src="{{ asset('js/dataTable/jquery-3.7.1.js') }}"></script>
-    {{-- <script src="{{ asset('js/dataTable/bootstrap.bundle.min.js') }}"></script> --}}
+    <script src="{{ asset('js/dataTable/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/dataTable/dataTables.js') }}"></script>
     <script src="{{ asset('js/dataTable/dataTables.bootstrap5.js') }}"></script>
+    <script src="{{ asset('js/dataTable/dataTables.responsive.js') }}"></script>
+    <script src="{{ asset('js/dataTable/responsive.bootstrap5.js') }}"></script>
 
     @stack('script')
 
