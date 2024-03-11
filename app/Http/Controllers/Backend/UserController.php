@@ -56,6 +56,8 @@ class UserController extends Controller
         $user->fill($requestData);
         $user->save();
 
+        Alert::toast('Created!', 'success');
+
         return redirect()->route('admin.user.adminUser')->with('success', 'User created successfully.');
     }
 
@@ -84,9 +86,8 @@ class UserController extends Controller
         }
         $requestData['image'] = $path;
         $user->update($requestData);
-        // Alert::toast('User Information Updated Successfully', 'success');
-        Alert::success('Success Title', 'Success Message');
 
+            Alert::toast('Updated!', 'success');
 
         return redirect()->route('admin.user.adminUser')->with('success', 'User updated successfully');
     }
@@ -147,6 +148,13 @@ class UserController extends Controller
         return view('backend.setting.user.password');
     }
 
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        Alert::toast('Deteled!', 'error');
+        return redirect()->back();
+    }
 
 
 }

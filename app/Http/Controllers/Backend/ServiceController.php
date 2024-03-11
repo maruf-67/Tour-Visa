@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ServiceController extends Controller
 {
@@ -32,6 +33,8 @@ class ServiceController extends Controller
         ]);
 
         $service = Service::create($validatedData);
+
+        Alert::toast('Created!', 'success');
         return redirect()->route('admin.service.index');
     }
 
@@ -62,6 +65,7 @@ class ServiceController extends Controller
         $service->update($validatedData);
         $service->save();
 
+        Alert::toast('Updated!', 'success');
         session()->flash('success','Service has been updated successfully !!');
         return redirect()->route('admin.service.index');
 
@@ -71,6 +75,7 @@ class ServiceController extends Controller
     {
         $service = Service::find($id);
         $service->delete();
+        Alert::toast('Deleted!', 'error');
         return redirect()->back();
     }
 
