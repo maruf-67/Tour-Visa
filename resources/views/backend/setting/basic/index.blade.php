@@ -9,22 +9,6 @@
             <div>
                 <h4 class="mb-3 mb-md-0">Welcome to Dashboard</h4>
             </div>
-            {{-- <div class="d-flex align-items-center flex-wrap text-nowrap">
-                <div class="input-group flatpickr wd-200 me-2 mb-2 mb-md-0" id="dashboardDate">
-                    <span class="input-group-text input-group-addon bg-transparent border-primary" data-toggle><i
-                            data-feather="calendar" class="text-primary"></i></span>
-                    <input type="text" class="form-control bg-transparent border-primary" placeholder="Select date"
-                        data-input>
-                </div>
-                <button type="button" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
-                    <i class="btn-icon-prepend" data-feather="printer"></i>
-                    Print
-                </button>
-                <button type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
-                    <i class="btn-icon-prepend" data-feather="download-cloud"></i>
-                    Download Report
-                </button>
-            </div> --}}
         </div>
 
 
@@ -68,32 +52,27 @@
                                 @csrf
                                 <div class="card-body">
                                     <!-- Your form fields -->
-                                    <div class="form-group row">
+                                    <div class="form-group row {{ $errors->has('fav_icon') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label">Add Your Website Favicon Icon</label>
                                         <div class="col-md-8">
-                                            {{-- <input type="file" name="fav_icon" id="fav_icon"
-                                                class="custom-file-input"
-                                                value="{{ isset($data->fav_icon) ? $data->fav_icon : '' }}">
-                                            <label class="custom-file-label" for="exampleInputFile"
-                                                style="right:8px; left:8px;">Choose file</label> --}}
-
                                             <input type="file" name="fav_icon" id="fav_icon" class="form-control"
                                                 value="{{ isset($data->fav_icon) ? $data->fav_icon : '' }}">
+                                                {!! $errors->first('fav_icon', '<p class="help-block text-danger">:message</p>') !!}
                                         </div>
                                         @isset($data->fav_icon)
                                             <div class="col-md-1">
                                                 <img src="{{ asset($data->fav_icon) }}" alt="Fav Icon" width="100px"
-                                                height="100px">
+                                                    height="100px">
                                             </div>
                                         @endisset
                                     </div>
 
-
-                                    <div class="form-group row mt-4">
+                                    <div class="form-group row mt-4 {{ $errors->has('logo') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label">Add Your Website Logo</label>
                                         <div class="col-md-8">
                                             <input type="file" name="logo" id="logo" class="form-control"
                                                 value="{{ isset($data->logo) ? $data->logo : '' }}">
+                                            {!! $errors->first('logo', '<p class="help-block text-danger">:message</p>') !!}
                                         </div>
                                         @isset($data->logo)
                                             <div class="col-md-1">
@@ -103,43 +82,47 @@
                                         @endisset
                                     </div>
 
-                                    <div class="form-group row mt-4">
+                                    <div class="form-group row mt-4 {{ $errors->has('title') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label">Site Title</label>
                                         <div class="col-md-9">
                                             <input class="form-control" name="title" type="text" id="title"
                                                 value="{{ isset($data->title) ? $data->title : '' }}">
+                                            {!! $errors->first('title', '<p class="help-block text-danger">:message</p>') !!}
                                         </div>
                                     </div>
 
-                                    <div class="form-group row mt-4">
+                                    <div class="form-group row mt-4 {{ $errors->has('description') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label">Site Description</label>
                                         <div class="col-md-9">
                                             <textarea class="form-control" id="editor" rows="5" cols="80" name="description">{{ $data->description ?? '' }}</textarea>
-                                            {{-- <input type="text" class="form-control" id="staticEmail"> --}}
+                                            {!! $errors->first('description', '<p class="help-block text-danger">:message</p>') !!}
                                         </div>
                                     </div>
 
-                                    <div class="form-group row mt-4">
+                                    <div class="form-group row mt-4 {{ $errors->has('keywords') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label">Add Your Keywords</label>
                                         <div class="col-md-9">
                                             <textarea class="form-control" id="editor" rows="3" cols="80" name="keywords">{{ $data->keywords ?? '' }}</textarea>
+                                            {!! $errors->first('keywords', '<p class="help-block text-danger">:message</p>') !!}
                                         </div>
                                     </div>
 
-                                    <div class="form-group row mt-4">
+                                    <div class="form-group row mt-4 {{ $errors->has('head_tag') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label"> Head Tag</label>
                                         <div class="col-md-9">
                                             <input class="form-control" name="head_tag" type="text" id="head_tag"
                                                 value="{{ isset($data->head_tag) ? $data->head_tag : '' }}">
+                                            {!! $errors->first('head_tag', '<p class="help-block text-danger">:message</p>') !!}
                                         </div>
                                     </div>
 
-                                    <div class="form-group row mt-4">
+                                    <div class="form-group row mt-4 {{ $errors->has('author_name') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label"> Author Name</label>
                                         <div class="col-md-9">
                                             <input class="form-control" name="author_name" type="text"
                                                 id="author_name"
                                                 value="{{ isset($data->author_name) ? $data->author_name : '' }}">
+                                            {!! $errors->first('author_name', '<p class="help-block text-danger">:message</p>') !!}
                                         </div>
                                     </div>
                                 </div>
@@ -147,7 +130,8 @@
 
                                 <div class="d-flex justify-content-end align-items-baseline">
                                     {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
-                                    <button type="submit" class="btn btn-outline-primary btn-icon-text me-4 mb-2 mb-md-0">Submit </button>
+                                    <button type="submit"
+                                        class="btn btn-outline-primary btn-icon-text me-4 mb-2 mb-md-0">Submit </button>
                                 </div>
 
                             </form>

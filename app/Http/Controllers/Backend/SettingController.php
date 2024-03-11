@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Models\Homepage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SettingController extends Controller
 {
@@ -25,7 +26,6 @@ class SettingController extends Controller
             $fileName = time() . rand(1, 999999) . '.' . $extension;
             $file1->move('images/Homepage/fav_icon', $fileName);
             $path1 = '/images/Homepage/fav_icon/' . $fileName;
-
 
             if (file_exists(public_path($data->fav_icon)) && $data->fav_icon) {
                 unlink(public_path($data->fav_icon));
@@ -52,6 +52,9 @@ class SettingController extends Controller
 
         $data->update($requestData);
 
+        Alert::toast('Updated!', 'success');
+
         return redirect()->back()->with('success', 'Homepage updated successfully');
     }
+
 }

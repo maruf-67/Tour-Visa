@@ -49,40 +49,43 @@
                                     <div class="card-body">
                                     <!-- Your form fields -->
 
-                                    <div class="form-group row">
+                                    <div class="form-group row {{ $errors->has('name') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label">User Name</label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" id="name"  name="name" placeholder="Ajmain Akash" value="{{ isset($user->name) ? $user->name : '' }}">
-
+                                            {!! $errors->first('name', '<p class="help-block text-danger">:message</p>') !!}
                                         </div>
                                     </div>
 
-                                    <div class="form-group row mt-4">
+
+                                    <div class="form-group row mt-4 {{ $errors->has('email') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label">User Email</label>
                                         <div class="col-md-9">
                                             <input type="email" name="email" class="form-control" id="staticEmail" placeholder="ajmain@gmail.com" value="{{ isset($user->email) ? $user->email : '' }}">
-
+                                            {!! $errors->first('email', '<p class="help-block text-danger">:message</p>') !!}
                                         </div>
                                     </div>
 
-                                    <div class="form-group row mt-4">
+                                    <div class="form-group row mt-4 {{ $errors->has('image') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label">User Image</label>
                                         <div class="col-md-9">
                                             <input type="file" name="image" id="image" class="form-control" value="{{ isset($user->image) ? $user->image : '' }}">
                                             @isset($user->image)
                                                 <img src="{{ asset($user->image) }}" alt="image" class="wd-80 ht-80" >
+                                                {!! $errors->first('image', '<p class="help-block text-danger">:message</p>') !!}
                                             @endisset
                                         </div>
                                     </div>
 
-                                    <div class="form-group row mt-4">
+                                    <div class="form-group row mt-4 {{ $errors->has('phone') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label">User Phone</label>
                                         <div class="col-md-9">
                                             <input type="number" name="phone" class="form-control" id="staticEmail" placeholder="+8801712******" value="{{ isset($user->phone) ? $user->phone : '' }}">
+                                            {!! $errors->first('phone', '<p class="help-block text-danger">:message</p>') !!}
                                         </div>
                                     </div>
 
-                                    <div class="form-group row mt-4">
+                                    <div class="form-group row mt-4 {{ $errors->has('type') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label">User Role</label>
                                         <div class="col-md-9">
                                             {{-- <input type="text" class="form-control" id="staticEmail"> --}}
@@ -91,6 +94,7 @@
                                                 <option value="2">Admin</option>
                                                 <option value="3">Moderator</option>
                                             </select>
+                                            {!! $errors->first('type', '<p class="help-block text-danger">:message</p>') !!}
                                         </div>
                                     </div>
                                 </div>

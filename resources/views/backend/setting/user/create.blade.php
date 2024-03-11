@@ -57,14 +57,12 @@
                                             <input type="text" class="form-control" id="name"  name="name" placeholder="Ajmain Akash" required>
                                             {!! $errors->first('name', '<p class="help-block text-danger">:message</p>') !!}
                                         </div>
-
                                     </div>
 
                                     <div class="form-group row mt-4 {{ $errors->has('email') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label">User Email</label>
                                         <div class="col-md-9">
-                                            <input type="email" name="email" class="form-control" id="staticEmail" placeholder="ajmain@gmail.com">
-
+                                            <input type="email" name="email" class="form-control" id="staticEmail" placeholder="ajmain@gmail.com" required>
                                             {!! $errors->first('email', '<p class="help-block text-danger">:message</p>') !!}
                                         </div>
                                     </div>
@@ -72,7 +70,7 @@
                                     <div class="form-group row mt-4 {{ $errors->has('password') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label">User Password</label>
                                         <div class="col-md-9">
-                                            <input type="password" name="password" class="form-control" id="staticEmail" placeholder="Enter user password">
+                                            <input type="password" name="password" class="form-control" id="staticEmail" placeholder="Enter user password" required>
                                             {!! $errors->first('password', '<p class="help-block text-danger">:message</p>') !!}
                                         </div>
                                     </div>
@@ -80,7 +78,7 @@
                                     <div class="form-group row mt-4 {{ $errors->has('image') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label">User Image</label>
                                         <div class="col-md-9">
-                                            <input type="file" name="image" id="image" class="form-control">
+                                            <input type="file" name="image" id="image" class="form-control" required>
                                             {!! $errors->first('image', '<p class="help-block text-danger">:message</p>') !!}
                                         </div>
                                     </div>
@@ -88,7 +86,7 @@
                                     <div class="form-group row mt-4 {{ $errors->has('phone') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label">User Phone</label>
                                         <div class="col-md-9">
-                                            <input type="number" name="phone" class="form-control" id="staticEmail" placeholder="+8801712******">
+                                            <input type="number" name="phone" class="form-control" id="staticEmail" placeholder="+8801712******" required>
                                             {!! $errors->first('phone', '<p class="help-block text-danger">:message</p>') !!}
                                         </div>
                                     </div>
@@ -97,7 +95,7 @@
                                         <label class="col-md-3 col-form-label">User Role</label>
                                         <div class="col-md-9">
                                             {{-- <input type="text" class="form-control" id="staticEmail"> --}}
-                                            <select class="form-control" name="type">
+                                            <select class="form-control" name="type" required>
                                                 <option value="1">Administrator</option>
                                                 <option value="2">Admin</option>
                                                 <option value="3">Moderator</option>

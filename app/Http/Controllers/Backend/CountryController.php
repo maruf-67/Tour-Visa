@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CountryController extends Controller
 {
@@ -22,6 +23,7 @@ class CountryController extends Controller
         $country->update($request->all());
         $country->save();
 
+        Alert::toast('Updated!', 'success');
         session()->flash('success','Country has been updated successfully !!');
         return redirect()->route('admin.country.index');
 
@@ -45,6 +47,7 @@ class CountryController extends Controller
         ]);
 
         $country = Country::create($validatedData);
+        Alert::toast('Created!', 'success');
         return redirect()->route('admin.country.index');
     }
 
@@ -52,6 +55,7 @@ class CountryController extends Controller
     {
         $Country = Country::find($id);
         $Country->delete();
+        Alert::toast('Delete!', 'error');
         return redirect()->back();
     }
 

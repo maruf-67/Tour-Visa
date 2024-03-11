@@ -24,13 +24,13 @@
                         </div>
 
                         {{-- Content --}}
-                        <div class="col-12 mt-4 {{ $errors->has('iso') ? 'has-error' : ''}}">
+                        <div class="col-12 mt-4">
                             <form method="POST" action="{{ route('admin.country.store') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                                 @csrf
                                     <div class="card-body">
                                     <!-- Your form fields -->
 
-                                    <div class="form-group row">
+                                    <div class="form-group row {{ $errors->has('iso') ? 'has-error' : ''}}">
                                         <label class="col-md-3 col-form-label">ISO</label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" id="iso" name="iso" required>
