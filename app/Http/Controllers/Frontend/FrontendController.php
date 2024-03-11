@@ -9,10 +9,10 @@ use App\Http\Controllers\Controller;
 
 class FrontendController extends Controller
 {
-    // public function index(){
+    public function index(){
 
-    //     return view ('frontend.index');
-    // }
+        return view('backend.Application.approved.index');
+    }
 
     public function application(){
 

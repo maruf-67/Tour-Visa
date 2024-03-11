@@ -22,9 +22,9 @@ use App\Http\Controllers\Backend\ApplicationController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/welcome', function () {
+    return view('welcome');
+});
 
 // Route::get('/app', [FrontendController::class, 'index'])->name('app');
 
@@ -85,15 +85,9 @@ Route::middleware(['auth', 'user-access:administrator,admin,moderator'])->name('
 
 });
 
-Route::middleware(['auth', 'user-access:user'])->group(function () {
-
-
-    Route::controller(FrontendController::class)->name('user.')->prefix('user')->group(function () {
-        // Route::get('/index', 'index')->name('index');
-        // Route::post('/store', 'store')->name('store');
-        Route::get('/application','application')->name('application');
-        Route::post('/application-store','application_store')->name('application_store');
-    });
-
+Route::controller(FrontendController::class)->name('user.')->prefix('user')->group(function () {
+    Route::get('/index', 'index')->name('index');
+    // Route::post('/store', 'store')->name('store');
+    Route::get('/application','application')->name('application');
+    Route::post('/application-store','application_store')->name('application_store');
 });
-

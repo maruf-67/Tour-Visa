@@ -8,10 +8,10 @@ use App\Http\Controllers\Controller;
 
 class ApplicationController extends Controller
 {
-    public function index()
-    {
-        return view('backend.Application.approved.index');
-    }
+    // public function index()
+    // {
+    //     return view('backend.Application.approved.index');
+    // }
     public function view()
     {
         return view('backend.Application.approved.view');
