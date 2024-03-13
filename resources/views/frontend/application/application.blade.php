@@ -110,6 +110,7 @@
                 }
 
                 function generateForm(formIndex) {
+                    console.log(formIndex);
                     return `
                 <form class="form" id="form${formIndex}" style="display: ${formIndex === 1 ? 'block' : 'none'};">
                     <h2>Form ${formIndex}</h2>
@@ -121,6 +122,9 @@
                             </li>
                             <li id="step2">
                                 <strong>Step 2</strong>
+                            </li>
+                            <li id="step3">
+                                <strong>Step 3</strong>
                             </li>
                         </ul>
                         <div class="progress mt-4" id="progressBar${formIndex}">
@@ -248,72 +252,151 @@
                                 </div>
                             </div>
                             <input type="button" class="next-step me-4 next-btn" value="Next" />
-                        </div>
-                    </fieldset>
-                </div>
+
+                        </fieldset>
+                    </div>
 
                     <div id="step2${formIndex}" class="form-step" style="display: none;">
                         <fieldset>
-                        <div class="container py-4 px-4">
-                            <h1 class="text-center mb-5 text-success">Passport & Travel Details</h1>
-                            <div class="row section-padding justify-content-center">
-                                <div class="col-md-12">
-                                    <!-- Country names and Country Code -->
-                                    <label class="d-block mb-4 ">
-                                        <span class="form-label d-block">Country of Passport *</span>
-                                        <select class="form-select" id="country" name="country">
-                                            <option value="">Enter Your Country</option>
-                                            <option value="AF">Afghanistan</option>
-                                            <option value="AX">Aland Islands</option>
-                                            <option value="AL">Albania</option>
-                                            <option value="DZ">Algeria</option>
-                                            <option value="AS">American Samoa</option>
-                                            <option value="AD">Andorra</option>
-                                        </select>
-                                    </label>
+                            <div class="container py-4 px-4">
+                                <h1 class="text-center mb-5 text-success">Passport & Travel Details</h1>
+                                <div class="row section-padding justify-content-center">
+                                    <div class="col-md-12">
+                                        <!-- Country names and Country Code -->
+                                        <label class="d-block mb-4 ">
+                                            <span class="form-label d-block">Country of Passport *</span>
+                                            <select class="form-select" id="country" name="country">
+                                                <option value="">Enter Your Country</option>
+                                                <option value="AF">Afghanistan</option>
+                                                <option value="AX">Aland Islands</option>
+                                                <option value="AL">Albania</option>
+                                                <option value="DZ">Algeria</option>
+                                                <option value="AS">American Samoa</option>
+                                                <option value="AD">Andorra</option>
+                                            </select>
+                                        </label>
 
-                                    <div class="form-group mb-3">
-                                        <label for="exampleInputNumber" class="form-label">Passport Number</label>
-                                        <input type="text" class="form-control" id="exampleInputNumber"
-                                            placeholder="Enter Passport Number">
-                                        <small id="phone" class="form-text text-muted">We'll never share your number
-                                            with
-                                            anyone
-                                            else.</small>
-                                    </div>
+                                        <div class="form-group mb-3">
+                                            <label for="exampleInputNumber" class="form-label">Passport Number</label>
+                                            <input type="text" class="form-control" id="exampleInputNumber"
+                                                placeholder="Enter Passport Number">
+                                            <small id="phone" class="form-text text-muted">We'll never share your number
+                                                with
+                                                anyone
+                                                else.</small>
+                                        </div>
 
-                                    <label class="d-block mb-4">
-                                        <span class="form-label d-block">Issue Date *</span>
-                                        <input name="date" type="date" class="form-control"
-                                            placeholder="Rahman" />
-                                    </label>
+                                        <label class="d-block mb-4">
+                                            <span class="form-label d-block">Issue Date *</span>
+                                            <input name="date" type="date" class="form-control"
+                                                placeholder="Rahman" />
+                                        </label>
 
-                                    <label class="d-block mb-4">
-                                        <span class="form-label d-block">Expiry Date *</span>
-                                        <input name="date" type="date" class="form-control"
-                                            placeholder="Rahman" />
-                                    </label>
+                                        <label class="d-block mb-4">
+                                            <span class="form-label d-block">Expiry Date *</span>
+                                            <input name="date" type="date" class="form-control"
+                                                placeholder="Rahman" />
+                                        </label>
 
-                                    <label class="d-block mb-4">
-                                        <span class="form-label d-block">Intended Date of Entry *</span>
-                                        <input name="date" type="date" class="form-control"
-                                            placeholder="Rahman" />
-                                    </label>
+                                        <label class="d-block mb-4">
+                                            <span class="form-label d-block">Intended Date of Entry *</span>
+                                            <input name="date" type="date" class="form-control"
+                                                placeholder="Rahman" />
+                                        </label>
 
 
-                                    <div class="d-block text-end">
-                                        <div class="small">
-                                            <a href="#" class="text-dark text-decoration-none"
-                                                target="_blank">Developed By Mahfujur Rahman</a>
+                                        <div class="d-block text-end">
+                                            <div class="small">
+                                                <a href="#" class="text-dark text-decoration-none"
+                                                    target="_blank">Developed By Mahfujur Rahman</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                    <input type="submit" name="next-step" class="next-step me-4 next-btn" value="Next" />
-                    <input type="button" name="previous-step" class="previous-step prev-btn" value="Previous" />
-                </fieldset>
+
+                            <input type="button" class="next-step me-4 next-btn1" value="Next" />
+                            <input type="button" name="previous-step" class="previous-step prev-btn" value="Previous" />
+                        </fieldset>
+                    </div>
+
+                    <div id="step3${formIndex}" class="form-step" style="display: none;">
+                        <fieldset>
+                            <div class="container py-4 px-4">
+                                <h1 class="text-center mb-5 text-success">Declaration of Application</h1>
+                                <div class="row section-padding justify-content-center">
+                                    <div class="col-md-12">
+
+                                        <label class="d-block mb-4 ">
+                                            <span class="form-label d-block">Have you ever had a criminal conviction? *</span>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                    id="inlineRadio1" value="option1">
+                                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                    id="inlineRadio2" value="option2">
+                                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                            </div>
+                                        </label>
+
+                                        <label class="d-block mb-4 ">
+                                            <span class="form-label d-block">Have you ever been involved in, or suspected of
+                                                war
+                                                crimes, genocide or crimes against humanity; terrosim including support for, or
+                                                membership of, terrorist groups; supporting extremist groups or expressing
+                                                extremist
+                                                views? *</span>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                    id="inlineRadio1" value="option1">
+                                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                    id="inlineRadio2" value="option2">
+                                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                            </div>
+                                        </label>
+
+                                        <div class="mb-4">
+                                            <div>
+                                                <div class="form-check">
+                                                    <label class="d-block">
+                                                        <input type="checkbox" class="form-check-input" name="remote"
+                                                            value="yes" checked />
+                                                        <span class="form-check-label">I declare that the information I have
+                                                            given
+                                                            in this application is truthful, complete and correct.</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <label class="form-check">
+                                                    <input type="checkbox" class="form-check-input" name="remote"
+                                                        value="no" />
+                                                    <span class="form-check-label">I have read and understand the <b>Terms and
+                                                            conditions</b>, and the <b>Privacy Policy</b>.</span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-block text-end">
+                                            <div class="small">
+                                                <a href="#" class="text-dark text-decoration-none"
+                                                    target="_blank">Developed By Mahfujur Rahman</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <input type="submit" name="next-step" class="next-step me-4" value="Final" />
+                            <input type="button" name="previous-step" class="previous-step prev-btn1" value="Previous " />
+                        </fieldset>
                     </div>
                 </form>
                 `;
@@ -353,7 +436,7 @@
                     $form.find('.form-step').hide();
                     $('#step3' + formIndex).show();
                     $('#progressBar' + formIndex).show();
-                    $form.find('.form-progress').css('width', '750%').attr('aria-valuenow', 50);
+                    $form.find('.form-progress').css('width', '100%').attr('aria-valuenow', 100);
 
                 });
 
@@ -362,7 +445,16 @@
                     var formIndex = $form.attr('id').replace('form', '');
                     $form.find('.form-step').hide();
                     $('#step1' + formIndex).show();
-                    $('#progressBar' + formIndex).hide();
+                    $('#progressBar' + formIndex).show();
+                    $form.find('.form-progress').css('width', '50%').attr('aria-valuenow', 50);
+                });
+
+                $(document).on('click', '.prev-btn1', function() {
+                    var $form = $(this).closest('.form');
+                    var formIndex = $form.attr('id').replace('form', '');
+                    $form.find('.form-step').hide();
+                    $('#step2' + formIndex).show();
+                    $('#progressBar' + formIndex).show();
                     $form.find('.form-progress').css('width', '0%').attr('aria-valuenow', 0);
                 });
 
