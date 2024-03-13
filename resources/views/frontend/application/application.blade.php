@@ -4,7 +4,8 @@
 
 @push('style')
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/demo1/style.css') }}"/>
 @endpush
 
 @section('navbar')
@@ -125,6 +126,9 @@
                             </li>
                             <li id="step3">
                                 <strong>Step 3</strong>
+                            </li>
+                            <li id="step4">
+                                <strong>Step 4</strong>
                             </li>
                         </ul>
                         <div class="progress mt-4" id="progressBar${formIndex}">
@@ -390,10 +394,312 @@
                             </div>
 
 
+                            <input type="button" class="next-step me-4 next-btn2" value="Next" />
+                            <input type="button" name="previous-step" class="previous-step prev-btn1" value="Previous " />
+                        </fieldset>
+                    </div>
+
+                    <div id="step4${formIndex}" class="form-step" style="display: none;">
+                        <fieldset>
+                            <div class="page-content">
+                                <div class="col-md-12 grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body container">
+                                            <div class="row">
+                                                <div class="col-12 col-md-12 col-xl-12">
+                                                    <div class="card mt-3">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <H1 class="card-text text-center text-primary">Preview Form 1</H1>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="col-6 col-md-12 col-xl-6">
+                                                    <div class="card mt-3">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-4">
+                                                                    <h5 class="card-title">Reference Id</h5>
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <p class="card-text">Etajs45646</p>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="row">
+                                                                <div class="col-4">
+                                                                    <h5 class="card-title">Service Type</h5>
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <select class="form-select" id="service" name="service">
+                                                                        <option>Rush</option>
+                                                                        <option>Fast</option>
+                                                                        <option>Normal</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card mt-3">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-5">
+                                                                    <h5 class="">Full Name</h5>
+                                                                </div>
+                                                                <div class="col-7">
+                                                                    <input type="text" class="form-control" name="name" id="name"
+                                                                        required placeholder="Ajmain Akash">
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="row">
+                                                                <div class="col-5">
+                                                                    <h5 class="card-title">Email</h5>
+                                                                </div>
+                                                                <div class="col-7">
+                                                                    <input type="mail" class="form-control" id="exampleInputEmail1"
+                                                                        aria-describedby="emailHelp" placeholder="Enter Your Email Here"
+                                                                        name="email">
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="row">
+                                                                <div class="col-5">
+                                                                    <h5 class="card-title">Phone</h5>
+                                                                </div>
+                                                                <div class="col-7">
+                                                                    <input type="tel" class="form-control" id="exampleInputNumber"
+                                                                        placeholder="Enter Phone Number" name="phone">
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="row">
+                                                                <div class="col-5">
+                                                                    <h5 class="card-title">Sex</h5>
+                                                                </div>
+                                                                <div class="col-7">
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                                            id="inlineRadio1" value="option1">
+                                                                        <label class="form-check-label" for="inlineRadio1">Male</label>
+                                                                    </div>
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                                            id="inlineRadio2" value="option2">
+                                                                        <label class="form-check-label" for="inlineRadio2">Female</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="row">
+                                                                <div class="col-5">
+                                                                    <h5 class="card-title">Birth Country</h5>
+                                                                </div>
+                                                                <div class="col-7">
+                                                                    <select class="form-select" id="country" name="country">
+                                                                        <option value="">Enter Your Country</option>
+                                                                        <option value="AF">Afghanistan</option>
+                                                                        <option value="AX">Aland Islands</option>
+                                                                        <option value="AL">Albania</option>
+                                                                        <option value="DZ">Algeria</option>
+                                                                        <option value="AS">American Samoa</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="row">
+                                                                <div class="col-5">
+                                                                    <h5 class="card-title">Citizen Country</h5>
+                                                                </div>
+                                                                <div class="col-7">
+                                                                    <select class="form-select" id="country" name="country">
+                                                                        <option value="">Enter Your Country</option>
+                                                                        <option value="AF">Afghanistan</option>
+                                                                        <option value="AX">Aland Islands</option>
+                                                                        <option value="AL">Albania</option>
+                                                                        <option value="DZ">Algeria</option>
+                                                                        <option value="AS">American Samoa</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="row">
+                                                                <div class="col-5">
+                                                                    <h5 class="card-title">Address</h5>
+                                                                </div>
+                                                                <div class="col-7">
+                                                                    <p class="card-text">123 Main St, City, Country</p>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="row">
+                                                                <div class="col-5">
+                                                                    <h5 class="card-title">Date of Birth</h5>
+                                                                </div>
+                                                                <div class="col-7">
+                                                                    <input required name="date" type="date" class="form-control"
+                                                                        placeholder="Rahman" />
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card mt-3">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-4">
+                                                                    <h5 class="card-title">Tell us more about yourself</h5>
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <textarea name="message" class="form-control" rows="3" placeholder="What motivates you?"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-6 col-md-12 col-xl-6">
+
+                                                    <div class="card mt-3">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-5">
+                                                                    <h5 class="card-title">Passport Country</h5>
+                                                                </div>
+                                                                <div class="col-7">
+                                                                    <select class="form-select" id="country" name="country">
+                                                                        <option value="">Enter Your Country</option>
+                                                                        <option value="AF">Afghanistan</option>
+                                                                        <option value="AX">Aland Islands</option>
+                                                                        <option value="AL">Albania</option>
+                                                                        <option value="DZ">Algeria</option>
+                                                                        <option value="AS">American Samoa</option>
+                                                                        <option value="AD">Andorra</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="row">
+                                                                <div class="col-5">
+                                                                    <h5 class="card-title">Passport Number</h5>
+                                                                </div>
+                                                                <div class="col-7">
+                                                                    <input type="text" class="form-control" id="exampleInputNumber"
+                                                                        placeholder="Enter Passport Number">
+                                                                    <small id="phone" class="form-text text-muted">We'll never share your
+                                                                        number
+                                                                        with
+                                                                        anyone
+                                                                        else.</small>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="row">
+                                                                <div class="col-5">
+                                                                    <h5 class="card-title">Issue Date</h5>
+                                                                </div>
+                                                                <div class="col-7">
+                                                                    <input required name="date" type="date" class="form-control"
+                                                                        placeholder="Rahman" />
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="row">
+                                                                <div class="col-5">
+                                                                    <h5 class="card-title">Expiry Date</h5>
+                                                                </div>
+                                                                <div class="col-7">
+                                                                    <input required name="date" type="date" class="form-control"
+                                                                        placeholder="Rahman" />
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="row">
+                                                                <div class="col-5">
+                                                                    <h5 class="card-title">Intended Date</h5>
+                                                                </div>
+                                                                <div class="col-7">
+                                                                    <input required name="date" type="date" class="form-control"
+                                                                        placeholder="Rahman" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card mt-3">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-5">
+                                                                    <h5 class="card-title">Criminal Record</h5>
+                                                                </div>
+                                                                <div class="col-7">
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                                            id="inlineRadio1" value="option1">
+                                                                        <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                                                    </div>
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                                            id="inlineRadio2" value="option2">
+                                                                        <label class="form-check-label" for="inlineRadio2">No</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="row">
+                                                                <div class="col-5">
+                                                                    <h5 class="card-title">War Crime</h5>
+                                                                </div>
+                                                                <div class="col-7">
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                                            id="inlineRadio1" value="option1">
+                                                                        <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                                                    </div>
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                                            id="inlineRadio2" value="option2">
+                                                                        <label class="form-check-label" for="inlineRadio2">No</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card mt-3">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-12 text-center">
+
+                                                                    <input type="submit" class="btn btn-primary col-12" value="Confirm Submit" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                             <input type="submit" name="next-step" class="next-step me-4" value="Final" />
                             <input type="button" name="previous-step" class="previous-step prev-btn1" value="Previous " />
                         </fieldset>
                     </div>
+
                 </form>
                 `;
                 }
@@ -422,7 +728,7 @@
                     $form.find('.form-step').hide();
                     $('#step2' + formIndex).show();
                     $('#progressBar' + formIndex).show();
-                    $form.find('.form-progress').css('width', '50%').attr('aria-valuenow', 50);
+                    $form.find('.form-progress').css('width', '33%').attr('aria-valuenow', 33);
 
                 });
 
@@ -431,6 +737,16 @@
                     var formIndex = $form.attr('id').replace('form', '');
                     $form.find('.form-step').hide();
                     $('#step3' + formIndex).show();
+                    $('#progressBar' + formIndex).show();
+                    $form.find('.form-progress').css('width', '66%').attr('aria-valuenow', 66);
+
+                });
+
+                $(document).on('click', '.next-btn2', function() {
+                    var $form = $(this).closest('.form');
+                    var formIndex = $form.attr('id').replace('form', '');
+                    $form.find('.form-step').hide();
+                    $('#step4' + formIndex).show();
                     $('#progressBar' + formIndex).show();
                     $form.find('.form-progress').css('width', '100%').attr('aria-valuenow', 100);
 
@@ -454,11 +770,46 @@
                     $form.find('.form-progress').css('width', '0%').attr('aria-valuenow', 0);
                 });
 
+                // $(document).on('submit', '.form', function(event) {
+                //     event.preventDefault();
+                //     var formData = new FormData(this); // Create FormData object with the form data
+                //     var formIndex = $(this).attr('id').replace('form', '');
+                //     drafts[formIndex - 1] = formData; // Save draft data
+                //     formsFilled++;
+                //     updateProgressBar();
+                //     $(this).hide(); // Hide the submitted form
+                //     // Show next form if available
+                //     if (formsFilled < numForms) {
+                //         $('#form' + (parseInt(formIndex) + 1)).show();
+                //     }
+                //     // console.log('Form ' + formIndex + ' data:', Object.fromEntries(formData.entries()));
+                // });
+
+                // $('#submitAll').click(function() {
+                //     console.log('Submitting all forms:');
+                //     for (var i = 0; i < drafts.length; i++) {
+                //         var formIndex = i + 1;
+                //         var formData = drafts[i];
+                //         console.log(formData);
+                //         console.log('Form ' + formIndex + ' data:', Object.fromEntries(formData.entries()));
+                //         // Here you can send formData to the server for further processing
+                //     }
+
+                // });
+
+                var formData = []; // Array to store form data
+
                 $(document).on('submit', '.form', function(event) {
                     event.preventDefault();
-                    var formData = new FormData(this); // Create FormData object with the form data
+                    var currentFormData = new FormData(this); // Create FormData object with the form data
                     var formIndex = $(this).attr('id').replace('form', '');
-                    drafts[formIndex - 1] = formData; // Save draft data
+                    var formObject = {}; // Object to store form data
+                    for (var pair of currentFormData.entries()) {
+                        formObject[pair[0]] = pair[1]; // Store form input values with their names as keys
+                    }
+                    formData[formIndex - 1] =
+                    formObject; // Save form data into the correct index of formData array
+                    drafts[formIndex - 1] = formObject; // Also save form data into the drafts array
                     formsFilled++;
                     updateProgressBar();
                     $(this).hide(); // Hide the submitted form
@@ -466,18 +817,19 @@
                     if (formsFilled < numForms) {
                         $('#form' + (parseInt(formIndex) + 1)).show();
                     }
-                    console.log('Form ' + formIndex + ' data:', Object.fromEntries(formData.entries()));
+                    console.log(formData[formData.length - 1]);
                 });
-
                 $('#submitAll').click(function() {
                     console.log('Submitting all forms:');
-                    for (var i = 0; i < drafts.length; i++) {
+                    // console.log(formData);
+                    for (var i = 0; i < formData.length; i++) {
                         var formIndex = i + 1;
-                        var formData = drafts[i];
-                        console.log('Form ' + formIndex + ' data:', Object.fromEntries(formData.entries()));
-                        // Here you can send formData to the server for further processing
+                        var currentFormData = formData[i];
+                        console.log('Form ' + formIndex + ' data:', currentFormData);
+                        // Here you can send currentFormData to the server for further processing
                     }
                 });
+
             });
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -485,5 +837,3 @@
         </script>
     @endpush
 @endsection
-
-
