@@ -27,6 +27,7 @@ Route::get('/', function () {
 });
 
 Route::get('/app', [FrontendController::class, 'index'])->name('app');
+Route::get('/homes', [FrontendController::class, 'home'])->name('homes');
 Route::get('/application', [FrontendController::class, 'application'])->name('application');
 
 
