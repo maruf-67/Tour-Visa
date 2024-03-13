@@ -344,6 +344,17 @@
                     $('#step2' + formIndex).show();
                     $('#progressBar' + formIndex).show();
                     $form.find('.form-progress').css('width', '50%').attr('aria-valuenow', 50);
+
+                });
+
+                $(document).on('click', '.next-btn1', function() {
+                    var $form = $(this).closest('.form');
+                    var formIndex = $form.attr('id').replace('form', '');
+                    $form.find('.form-step').hide();
+                    $('#step3' + formIndex).show();
+                    $('#progressBar' + formIndex).show();
+                    $form.find('.form-progress').css('width', '750%').attr('aria-valuenow', 50);
+
                 });
 
                 $(document).on('click', '.prev-btn', function() {
@@ -354,7 +365,6 @@
                     $('#progressBar' + formIndex).hide();
                     $form.find('.form-progress').css('width', '0%').attr('aria-valuenow', 0);
                 });
-
 
                 $(document).on('submit', '.form', function(event) {
                     event.preventDefault();
@@ -387,3 +397,5 @@
         </script>
     @endpush
 @endsection
+
+

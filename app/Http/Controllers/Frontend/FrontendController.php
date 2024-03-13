@@ -17,8 +17,8 @@ class FrontendController extends Controller
         return view ('frontend.application.application');
     }
 
-    public function home(){
+    public function application_view(){
 
-        return view ('frontend.application.test');
+        return view ('frontend.application.view');
     }
 }
