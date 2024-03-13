@@ -67,4 +67,9 @@ class FrontendController extends Controller
         return redirect()->route('home')
                          ->with('success', 'Application created successfully');
     }
+
+    public function application_view(){
+
+        return view ('frontend.application.view');
+    }
 }

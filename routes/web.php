@@ -26,8 +26,9 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-// Route::get('/app', [FrontendController::class, 'index'])->name('app');
-
+Route::get('/app', [FrontendController::class, 'index'])->name('app');
+Route::get('/application', [FrontendController::class, 'application'])->name('application');
+Route::get('/view', [FrontendController::class, 'application_view'])->name('application_view');
 
 
 Auth::routes();
