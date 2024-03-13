@@ -24,7 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $services = Service::where('status',1)->get();
-        return view ('frontend.application.application',compact('services'));
+        // $services = Service::where('status',1)->get();
+        // return view ('frontend.application.application',compact('services'));
+        return view ('frontend.application.application');
     }
 }

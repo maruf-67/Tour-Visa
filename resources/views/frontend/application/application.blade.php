@@ -166,17 +166,15 @@
                                                 </label>
                                             </div>
                                             <div class="col-md-6 col-sm-12">
-                                                <label class="d-block mb-4 ">
+                                                <label class="d-block mb-4">
                                                     <span class="form-label d-block">Sex *</span>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                            id="inlineRadio1" value="option1">
-                                                        <label class="form-check-label" for="inlineRadio1">Male</label>
+                                                        <input class="form-check-input" type="radio" name='sex' id="sex1" value="Male">
+                                                        <label class="form-check-label" for="sex1">Male</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                            id="inlineRadio2" value="option2">
-                                                        <label class="form-check-label" for="inlineRadio2">Female</label>
+                                                        <input class="form-check-input" type="radio" name="sex" id="sex2" value="Female">
+                                                        <label class="form-check-label" for="sex2">Female</label>
                                                     </div>
                                                 </label>
                                             </div>
@@ -187,7 +185,7 @@
                                                 <!-- Country names and Country Code -->
                                                 <label class="d-block mb-4 ">
                                                     <span class="form-label d-block">Country of Birth *</span>
-                                                    <select class="form-select" id="country" name="country">
+                                                    <select class="form-select" id="country_birth" name="country_birth">
                                                         <option value="">Enter Your Country</option>
                                                         <option value="AF">Afghanistan</option>
                                                         <option value="AX">Aland Islands</option>
@@ -201,7 +199,7 @@
                                                 <!-- Country names and Country Code -->
                                                 <label class="d-block mb-4 ">
                                                     <span class="form-label d-block">Country of Citizenship *</span>
-                                                    <select class="form-select" id="country" name="country">
+                                                    <select class="form-select" id="country_citizen" name="country_citizen">
                                                         <option value="">Enter Your Country</option>
                                                         <option value="AF">Afghanistan</option>
                                                         <option value="AX">Aland Islands</option>
@@ -265,7 +263,7 @@
                                         <!-- Country names and Country Code -->
                                         <label class="d-block mb-4 ">
                                             <span class="form-label d-block">Country of Passport *</span>
-                                            <select class="form-select" id="country" name="country">
+                                            <select class="form-select" id="country_passport" name="country_passport">
                                                 <option value="">Enter Your Country</option>
                                                 <option value="AF">Afghanistan</option>
                                                 <option value="AX">Aland Islands</option>
@@ -278,7 +276,7 @@
 
                                         <div class="form-group mb-3">
                                             <label for="exampleInputNumber" class="form-label">Passport Number</label>
-                                            <input type="text" class="form-control" id="exampleInputNumber"
+                                            <input type="text" class="form-control" id="exampleInputNumber" name="passport_num"
                                                 placeholder="Enter Passport Number">
                                             <small id="phone" class="form-text text-muted">We'll never share your number
                                                 with
@@ -288,19 +286,19 @@
 
                                         <label class="d-block mb-4">
                                             <span class="form-label d-block">Issue Date *</span>
-                                            <input name="date" type="date" class="form-control"
+                                            <input type="date" class="form-control" name="issueDate"
                                                 placeholder="Rahman" />
                                         </label>
 
                                         <label class="d-block mb-4">
                                             <span class="form-label d-block">Expiry Date *</span>
-                                            <input name="date" type="date" class="form-control"
+                                            <input type="date" class="form-control" name="expiryDate"
                                                 placeholder="Rahman" />
                                         </label>
 
                                         <label class="d-block mb-4">
                                             <span class="form-label d-block">Intended Date of Entry *</span>
-                                            <input name="date" type="date" class="form-control"
+                                            <input type="date" class="form-control" name="intendDate"
                                                 placeholder="Rahman" />
                                         </label>
 
@@ -331,13 +329,11 @@
                                         <label class="d-block mb-4 ">
                                             <span class="form-label d-block">Have you ever had a criminal conviction? *</span>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                    id="inlineRadio1" value="option1">
+                                                <input class="form-check-input" type="radio" name="criminal" id="criminal1" value="option1">
                                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                    id="inlineRadio2" value="option2">
+                                                <input class="form-check-input" type="radio" name="criminal" id="criminal2" value="option2">
                                                 <label class="form-check-label" for="inlineRadio2">No</label>
                                             </div>
                                         </label>
@@ -350,13 +346,13 @@
                                                 extremist
                                                 views? *</span>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                    id="inlineRadio1" value="option1">
+                                                <input class="form-check-input" type="radio" name="war"
+                                                    id="war1" value="option1">
                                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                    id="inlineRadio2" value="option2">
+                                                <input class="form-check-input" type="radio" name="war"
+                                                    id="war2" value="option2">
                                                 <label class="form-check-label" for="inlineRadio2">No</label>
                                             </div>
                                         </label>
