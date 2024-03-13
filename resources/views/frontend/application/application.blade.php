@@ -96,10 +96,12 @@
     @push('script')
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script>
+            var formData = [];
             $(document).ready(function() {
                 var $numFormsInput = $('#numFormsInput');
                 var $formsContainer = $('#formsContainer');
                 var $progressBar = $('#progressBar');
+                var $finalform = $('#finalform');
 
                 var numForms = 1;
                 var formsFilled = 0;
@@ -329,7 +331,6 @@
                                 <h1 class="text-center mb-5 text-success">Declaration of Application</h1>
                                 <div class="row section-padding justify-content-center">
                                     <div class="col-md-12">
-
                                         <label class="d-block mb-4 ">
                                             <span class="form-label d-block">Have you ever had a criminal conviction? *</span>
                                             <div class="form-check form-check-inline">
@@ -394,14 +395,119 @@
                             </div>
 
 
-                            <input type="button" class="next-step me-4 next-btn2" value="Next" />
+                            <input type="submit" class="next-step me-4" value="Next" />
                             <input type="button" name="previous-step" class="previous-step prev-btn1" value="Previous " />
                         </fieldset>
                     </div>
 
                     <div id="step4${formIndex}" class="form-step" style="display: none;">
-                        <fieldset>
-                            <div class="page-content">
+                        <fieldset id="finalform">
+
+
+
+                            <input type="submit" name="next-step" class="next-step me-4" value="Final" />
+                            <input type="button" name="previous-step" class="previous-step prev-btn1" value="Previous " />
+                        </fieldset>
+                    </div>
+
+                </form>
+                `;
+                }
+                // function generateFinalForm(formIndex,ItemData) {
+                //     console.log(formIndex);
+                //     return `
+
+                //         `;
+                // }
+
+                $('#generateForms').click(function() {
+                    numForms = parseInt($numFormsInput.val());
+                    $formsContainer.empty();
+                    drafts = []; // Reset drafts when generating new forms
+                    for (var i = 1; i <= numForms; i++) {
+                        $formsContainer.append(generateForm(i));
+                    }
+                    $formsContainer.show(); // Show forms container after generating forms
+                    formsFilled = 0; // Reset formsFilled when generating new forms
+                    updateProgressBar(); // Update progress bar after generating forms
+                });
+
+                document.getElementById("generateForms").addEventListener("click", function() {
+                    // Hide the code block
+                    document.querySelector("div.generateForms").style.display = "none";
+                    document.getElementById("generateForms").style.display = "none";
+                });
+
+                $(document).on('click', '.next-btn', function() {
+                    var $form = $(this).closest('.form');
+                    var formIndex = $form.attr('id').replace('form', '');
+                    $form.find('.form-step').hide();
+                    $('#step2' + formIndex).show();
+                    $('#progressBar' + formIndex).show();
+                    $form.find('.form-progress').css('width', '33%').attr('aria-valuenow', 33);
+
+                });
+
+                $(document).on('click', '.next-btn1', function() {
+                    var $form = $(this).closest('.form');
+                    var formIndex = $form.attr('id').replace('form', '');
+                    $form.find('.form-step').hide();
+                    $('#step3' + formIndex).show();
+                    $('#progressBar' + formIndex).show();
+                    $form.find('.form-progress').css('width', '66%').attr('aria-valuenow', 66);
+
+                });
+
+                $(document).on('click', '.next-btn2', function() {
+                    var $form = $(this).closest('.form');
+                    var formIndex = $form.attr('id').replace('form', '');
+                    $form.find('.form-step').hide();
+                    $('#step4' + formIndex).show();
+                    $('#progressBar' + formIndex).show();
+                    $form.find('.form-progress').css('width', '100%').attr('aria-valuenow', 100);
+
+                });
+
+                $(document).on('click', '.prev-btn', function() {
+                    var $form = $(this).closest('.form');
+                    var formIndex = $form.attr('id').replace('form', '');
+                    $form.find('.form-step').hide();
+                    $('#step1' + formIndex).show();
+                    $('#progressBar' + formIndex).show();
+                    $form.find('.form-progress').css('width', '50%').attr('aria-valuenow', 50);
+                });
+
+                $(document).on('click', '.prev-btn1', function() {
+                    var $form = $(this).closest('.form');
+                    var formIndex = $form.attr('id').replace('form', '');
+                    $form.find('.form-step').hide();
+                    $('#step2' + formIndex).show();
+                    $('#progressBar' + formIndex).show();
+                    $form.find('.form-progress').css('width', '0%').attr('aria-valuenow', 0);
+                });
+
+
+
+                // Array to store form data
+
+                $(document).on('submit', '.form', function(event) {
+                    event.preventDefault();
+                    console.log('submit working');
+                    var currentFormData = new FormData(this); // Create FormData object with the form data
+                    var formIndex = $(this).attr('id').replace('form', '');
+                    var formObject = {}; // Object to store form data
+                    for (var pair of currentFormData.entries()) {
+                        formObject[pair[0]] = pair[1]; // Store form input values with their names as keys
+                    }
+                    formData[formIndex - 1] =
+                    formObject; // Save form data into the correct index of formData array
+                    drafts[formIndex - 1] = formObject; // Also save form data into the drafts array
+                    console.log(formData[formData.length - 1]);
+
+                    var formIndex = $('#finalform').closest('[id^="step"]').attr('id').replace('step', '').slice(-1);
+                    var ItemData = formData[formData.length - 1];
+
+                    var htmlContent = `<div class="page-content">
                                 <div class="col-md-12 grid-margin stretch-card">
                                     <div class="card">
                                         <div class="card-body container">
@@ -411,7 +517,7 @@
                                                         <div class="card-body">
                                                             <div class="row">
                                                                 <div class="col-12">
-                                                                    <H1 class="card-text text-center text-primary">Preview Form 1</H1>
+                                                                    <H1 class="card-text text-center text-primary">Preview Form ${formIndex}}</H1>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -429,7 +535,7 @@
                                                                     <h5 class="card-title">Reference Id</h5>
                                                                 </div>
                                                                 <div class="col-8">
-                                                                    <p class="card-text">Etajs45646</p>
+                                                                    <p class="card-text">${ItemData.l_name}</p>
                                                                 </div>
                                                             </div>
                                                             <hr>
@@ -456,7 +562,7 @@
                                                                 </div>
                                                                 <div class="col-7">
                                                                     <input type="text" class="form-control" name="name" id="name"
-                                                                        required placeholder="Ajmain Akash">
+                                                                           placeholder="Ajmain Akash">
                                                                 </div>
                                                             </div>
                                                             <hr>
@@ -545,7 +651,7 @@
                                                                     <h5 class="card-title">Date of Birth</h5>
                                                                 </div>
                                                                 <div class="col-7">
-                                                                    <input required name="date" type="date" class="form-control"
+                                                                    <input    name="date" type="date" class="form-control"
                                                                         placeholder="Rahman" />
                                                                 </div>
                                                             </div>
@@ -608,7 +714,7 @@
                                                                     <h5 class="card-title">Issue Date</h5>
                                                                 </div>
                                                                 <div class="col-7">
-                                                                    <input required name="date" type="date" class="form-control"
+                                                                    <input    name="date" type="date" class="form-control"
                                                                         placeholder="Rahman" />
                                                                 </div>
                                                             </div>
@@ -618,7 +724,7 @@
                                                                     <h5 class="card-title">Expiry Date</h5>
                                                                 </div>
                                                                 <div class="col-7">
-                                                                    <input required name="date" type="date" class="form-control"
+                                                                    <input    name="date" type="date" class="form-control"
                                                                         placeholder="Rahman" />
                                                                 </div>
                                                             </div>
@@ -628,7 +734,7 @@
                                                                     <h5 class="card-title">Intended Date</h5>
                                                                 </div>
                                                                 <div class="col-7">
-                                                                    <input required name="date" type="date" class="form-control"
+                                                                    <input    name="date" type="date" class="form-control"
                                                                         placeholder="Rahman" />
                                                                 </div>
                                                             </div>
@@ -692,132 +798,25 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>`;
 
+                    console.log(htmlContent);
+                    $finalform.empty();
+                    $finalform.append(htmlContent);
 
-                            <input type="submit" name="next-step" class="next-step me-4" value="Final" />
-                            <input type="button" name="previous-step" class="previous-step prev-btn1" value="Previous " />
-                        </fieldset>
-                    </div>
-
-                </form>
-                `;
-                }
-
-                $('#generateForms').click(function() {
-                    numForms = parseInt($numFormsInput.val());
-                    $formsContainer.empty();
-                    drafts = []; // Reset drafts when generating new forms
-                    for (var i = 1; i <= numForms; i++) {
-                        $formsContainer.append(generateForm(i));
-                    }
-                    $formsContainer.show(); // Show forms container after generating forms
-                    formsFilled = 0; // Reset formsFilled when generating new forms
-                    updateProgressBar(); // Update progress bar after generating forms
-                });
-
-                document.getElementById("generateForms").addEventListener("click", function() {
-                    // Hide the code block
-                    document.querySelector("div.generateForms").style.display = "none";
-                    document.getElementById("generateForms").style.display = "none";
-                });
-
-                $(document).on('click', '.next-btn', function() {
-                    var $form = $(this).closest('.form');
-                    var formIndex = $form.attr('id').replace('form', '');
-                    $form.find('.form-step').hide();
-                    $('#step2' + formIndex).show();
-                    $('#progressBar' + formIndex).show();
-                    $form.find('.form-progress').css('width', '33%').attr('aria-valuenow', 33);
-
-                });
-
-                $(document).on('click', '.next-btn1', function() {
-                    var $form = $(this).closest('.form');
-                    var formIndex = $form.attr('id').replace('form', '');
-                    $form.find('.form-step').hide();
-                    $('#step3' + formIndex).show();
-                    $('#progressBar' + formIndex).show();
-                    $form.find('.form-progress').css('width', '66%').attr('aria-valuenow', 66);
-
-                });
-
-                $(document).on('click', '.next-btn2', function() {
                     var $form = $(this).closest('.form');
                     var formIndex = $form.attr('id').replace('form', '');
                     $form.find('.form-step').hide();
                     $('#step4' + formIndex).show();
                     $('#progressBar' + formIndex).show();
                     $form.find('.form-progress').css('width', '100%').attr('aria-valuenow', 100);
-
-                });
-
-                $(document).on('click', '.prev-btn', function() {
-                    var $form = $(this).closest('.form');
-                    var formIndex = $form.attr('id').replace('form', '');
-                    $form.find('.form-step').hide();
-                    $('#step1' + formIndex).show();
-                    $('#progressBar' + formIndex).show();
-                    $form.find('.form-progress').css('width', '50%').attr('aria-valuenow', 50);
-                });
-
-                $(document).on('click', '.prev-btn1', function() {
-                    var $form = $(this).closest('.form');
-                    var formIndex = $form.attr('id').replace('form', '');
-                    $form.find('.form-step').hide();
-                    $('#step2' + formIndex).show();
-                    $('#progressBar' + formIndex).show();
-                    $form.find('.form-progress').css('width', '0%').attr('aria-valuenow', 0);
-                });
-
-                // $(document).on('submit', '.form', function(event) {
-                //     event.preventDefault();
-                //     var formData = new FormData(this); // Create FormData object with the form data
-                //     var formIndex = $(this).attr('id').replace('form', '');
-                //     drafts[formIndex - 1] = formData; // Save draft data
-                //     formsFilled++;
-                //     updateProgressBar();
-                //     $(this).hide(); // Hide the submitted form
-                //     // Show next form if available
-                //     if (formsFilled < numForms) {
-                //         $('#form' + (parseInt(formIndex) + 1)).show();
-                //     }
-                //     // console.log('Form ' + formIndex + ' data:', Object.fromEntries(formData.entries()));
-                // });
-
-                // $('#submitAll').click(function() {
-                //     console.log('Submitting all forms:');
-                //     for (var i = 0; i < drafts.length; i++) {
-                //         var formIndex = i + 1;
-                //         var formData = drafts[i];
-                //         console.log(formData);
-                //         console.log('Form ' + formIndex + ' data:', Object.fromEntries(formData.entries()));
-                //         // Here you can send formData to the server for further processing
-                //     }
-
-                // });
-
-                var formData = []; // Array to store form data
-
-                $(document).on('submit', '.form', function(event) {
-                    event.preventDefault();
-                    var currentFormData = new FormData(this); // Create FormData object with the form data
-                    var formIndex = $(this).attr('id').replace('form', '');
-                    var formObject = {}; // Object to store form data
-                    for (var pair of currentFormData.entries()) {
-                        formObject[pair[0]] = pair[1]; // Store form input values with their names as keys
-                    }
-                    formData[formIndex - 1] =
-                    formObject; // Save form data into the correct index of formData array
-                    drafts[formIndex - 1] = formObject; // Also save form data into the drafts array
-                    formsFilled++;
-                    updateProgressBar();
-                    $(this).hide(); // Hide the submitted form
-                    // Show next form if available
-                    if (formsFilled < numForms) {
-                        $('#form' + (parseInt(formIndex) + 1)).show();
-                    }
-                    console.log(formData[formData.length - 1]);
+                    // formsFilled++;
+                    // updateProgressBar();
+                    // $(this).hide(); // Hide the submitted form
+                    // // Show next form if available
+                    // if (formsFilled < numForms) {
+                    //     $('#form' + (parseInt(formIndex) + 1)).show();
+                    // }
                 });
                 $('#submitAll').click(function() {
                     console.log('Submitting all forms:');
