@@ -101,7 +101,7 @@
                 var $numFormsInput = $('#numFormsInput');
                 var $formsContainer = $('#formsContainer');
                 var $progressBar = $('#progressBar');
-                var $finalform = $('#finalform');
+
 
                 var numForms = 1;
                 var formsFilled = 0;
@@ -503,7 +503,7 @@
                     formObject; // Save form data into the correct index of formData array
                     drafts[formIndex - 1] = formObject; // Also save form data into the drafts array
                     console.log(formData[formData.length - 1]);
-
+                    $('#finalform').empty();
                     var formIndex = $('#finalform').closest('[id^="step"]').attr('id').replace('step', '').slice(-1);
                     var ItemData = formData[formData.length - 1];
 
@@ -517,7 +517,7 @@
                                                         <div class="card-body">
                                                             <div class="row">
                                                                 <div class="col-12">
-                                                                    <H1 class="card-text text-center text-primary">Preview Form ${formIndex}}</H1>
+                                                                    <H1 class="card-text text-center text-primary">Preview Form ${formIndex}</H1>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -800,9 +800,9 @@
                                 </div>
                             </div>`;
 
-                    console.log(htmlContent);
-                    $finalform.empty();
-                    $finalform.append(htmlContent);
+
+
+                    $('#finalform').append(htmlContent);
 
                     var $form = $(this).closest('.form');
                     var formIndex = $form.attr('id').replace('form', '');

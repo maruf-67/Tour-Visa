@@ -1,41 +1,4 @@
-@extends('frontend.layouts.master')
-@section('title', 'Basic Setting')
-
-@push('style')
-    <!-- Layout styles -->
-    <link rel="stylesheet" href="{{ asset('css/demo1/style.css') }}">
-    <!-- End layout styles -->
-@endpush
-
-@section('navbar')
-
-@endsection
-
-@push('nav')
-    <div class="sub-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-8">
-                    <ul class="info">
-                        <li><i class="fa fa-envelope"></i> info@company.com</li>
-                        <li><i class="fa fa-map"></i> Sunny Isles Beach, FL 33160</li>
-                    </ul>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <ul class="social-links">
-                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                        <li><a href="https://x.com/minthu" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-@endpush
-
-@section('content')
-
+@push('content')
     <div class="page-content">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
@@ -327,4 +290,4 @@
             </div>
         </div>
     </div>
-@endsection
+@endpush
