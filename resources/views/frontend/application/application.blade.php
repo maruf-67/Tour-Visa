@@ -98,6 +98,7 @@
         <script>
             var formData = [];
             var countries = [];
+
             $(document).ready(function() {
                 var $numFormsInput = $('#numFormsInput');
                 var $formsContainer = $('#formsContainer');
@@ -109,9 +110,6 @@
                     success: function(response) {
                         // Handle successful response here
                         countries = response;
-
-
-
 
                         // countries.forEach(function(country) {
                         //     console.log(country);
@@ -212,7 +210,7 @@
 
                                                                 // Add options for each country
                                                                 countries.forEach(function(country) {
-                                                                    formHtml += `<option value="${country.id}">${country.name}</option>`;
+                                                                    formHtml += `<option value="${country.name}">${country.name}</option>`;
                                                                 });
 
                                                                 formHtml += `
@@ -229,7 +227,7 @@
 
 
                                                                     countries.forEach(function(country) {
-                                                                        formHtml += `<option value="${country.id}">${country.name}</option>`;
+                                                                        formHtml += `<option value="${country.name}">${country.name}</option>`;
                                                                     });
 
                                                                     formHtml += `
@@ -263,11 +261,26 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-sm-12">
+                                                            <div class="form-group mb-3">
+                                                                <label class="d-block mb-4">
+                                                                    <span class="form-label d-block">Address</span>
+                                                                    <textarea name="address" class="form-control" rows="2" placeholder="Where do you live?"></textarea>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-12">
+                                                            <div class="form-group mb-3">
+                                                                <label class="d-block mb-4">
+                                                                    <span class="form-label d-block">Tell us more about yourself</span>
+                                                                    <textarea name="message" class="form-control" rows="2" placeholder="What motivates you?"></textarea>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                                                    <label class="d-block mb-4">
-                                                        <span class="form-label d-block">Tell us more about yourself</span>
-                                                        <textarea name="message" class="form-control" rows="3" placeholder="What motivates you?"></textarea>
-                                                    </label>
+
 
                                                     <div class="d-block text-end">
                                                         <div class="small">
@@ -297,7 +310,7 @@
 
 
                                                             countries.forEach(function(country) {
-                                                                formHtml += `<option value="${country.id}">${country.name}</option>`;
+                                                                formHtml += `<option value="${country.name}">${country.name}</option>`;
                                                             });
 
                                                             formHtml += `
@@ -359,12 +372,12 @@
                                                     <label class="d-block mb-4 ">
                                                         <span class="form-label d-block">Have you ever had a criminal conviction? *</span>
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="criminal" id="criminal1" value="option1">
-                                                            <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                                            <input class="form-check-input" type="radio" name="criminal" id="criminal1" value="Yes">
+                                                            <label class="form-check-label" for="criminal1">Yes</label>
                                                         </div>
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="criminal" id="criminal2" value="option2">
-                                                            <label class="form-check-label" for="inlineRadio2">No</label>
+                                                            <input class="form-check-input" type="radio" name="criminal" id="criminal2" value="No">
+                                                            <label class="form-check-label" for="criminal2">No</label>
                                                         </div>
                                                     </label>
 
@@ -377,13 +390,13 @@
                                                             views? *</span>
                                                         <div class="form-check form-check-inline">
                                                             <input class="form-check-input" type="radio" name="war"
-                                                                id="war1" value="option1">
-                                                            <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                                                id="war1" value="Yes">
+                                                            <label class="form-check-label" for="war1">Yes</label>
                                                         </div>
                                                         <div class="form-check form-check-inline">
                                                             <input class="form-check-input" type="radio" name="war"
-                                                                id="war2" value="option2">
-                                                            <label class="form-check-label" for="inlineRadio2">No</label>
+                                                                id="war2" value="No">
+                                                            <label class="form-check-label" for="war2">No</label>
                                                         </div>
                                                     </label>
 
@@ -531,8 +544,7 @@
                                 formObject[pair[0]] = pair[
                                 1]; // Store form input values with their names as keys
                             }
-                            formData[formIndex - 1] =
-                                formObject; // Save form data into the correct index of formData array
+                            formData[formIndex - 1] = formObject; // Save form data into the correct index of formData array
                             drafts[formIndex - 1] =
                             formObject; // Also save form data into the drafts array
                             console.log(formData[formData.length - 1]);
@@ -542,7 +554,8 @@
                                 .slice(-1);
                             var ItemData = formData[formData.length - 1];
 
-                            var htmlContent = `<div class="page-content">
+                            var htmlContent = `
+                            <div class="page-content">
                                 <div class="col-md-12 grid-margin stretch-card">
                                     <div class="card">
                                         <div class="card-body container">
@@ -628,15 +641,16 @@
                                                                 </div>
                                                                 <div class="col-7">
                                                                     <div class="form-check form-check-inline">
-                                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                                        <input class="form-check-input" type="radio" name="sex" id="sex1"
                                                                             id="inlineRadio1" value="option1" value="Male" ${ItemData.sex==='Male' ? 'checked' : ''}>
-                                                                        <label class="form-check-label" for="inlineRadio1">Male</label>
+                                                                        <label class="form-check-label" for="sex1">Male</label>
                                                                     </div>
                                                                     <div class="form-check form-check-inline">
-                                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                                            id="inlineRadio2" value="option2" value="Female" ${ItemData.sex==='Female' ? 'checked':''}>
-                                                                        <label class="form-check-label" for="inlineRadio2">Female</label>
+                                                                        <input class="form-check-input" type="radio" name="sex" id="sex2"
+                                                                            value="Female" ${ItemData.sex==='Female' ? 'checked':''}>
+                                                                        <label class="form-check-label" for="sex2">Female</label>
                                                                     </div>
+
                                                                 </div>
                                                             </div>
                                                             <hr>
@@ -645,14 +659,16 @@
                                                                     <h5 class="card-title">Birth Country</h5>
                                                                 </div>
                                                                 <div class="col-7">
-                                                                    <select class="form-select" id="country" name="country" value="${ItemData.country_birth}">
-                                                                        <option value="">Enter Your Country</option>
-                                                                        <option value="AF">Afghanistan</option>
-                                                                        <option value="AX">Aland Islands</option>
-                                                                        <option value="AL">Albania</option>
-                                                                        <option value="DZ">Algeria</option>
-                                                                        <option value="AS">American Samoa</option>
+                                                                    <select class="form-select" id="country_birth" name="country_birth" value="${ItemData.country_birth}">
+                                                                        <option value="">${ItemData.country_birth}</option>`;
+
+                                                                        countries.forEach(function(country) {
+                                                                            htmlContent += `<option value="${country.id}">${country.name}</option>`;
+                                                                        });
+
+                                                                        htmlContent += `
                                                                     </select>
+
                                                                 </div>
                                                             </div>
                                                             <hr>
@@ -662,12 +678,14 @@
                                                                 </div>
                                                                 <div class="col-7">
                                                                     <select class="form-select" id="country" name="country" value="${ItemData.country_citizen}">
-                                                                        <option value="">Enter Your Country</option>
-                                                                        <option value="AF">Afghanistan</option>
-                                                                        <option value="AX">Aland Islands</option>
-                                                                        <option value="AL">Albania</option>
-                                                                        <option value="DZ">Algeria</option>
-                                                                        <option value="AS">American Samoa</option>
+                                                                        <option value="">${ItemData.country_citizen}</option>`;
+
+                                                                        countries.forEach(function(country) {
+                                                                            htmlContent += `<option value="${country.id}">${country.name}</option>`;
+                                                                        });
+
+                                                                        htmlContent += `
+
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -677,7 +695,14 @@
                                                                     <h5 class="card-title">Address</h5>
                                                                 </div>
                                                                 <div class="col-7">
-                                                                    <p class="card-text">123 Main St, City, Country</p>
+
+                                                                    <div class="form-group mb-3">
+                                                                        <label class="d-block mb-4">
+                                                                            <span class="form-label d-block">Tell us more about yourself</span>
+                                                                            <textarea name="address" class="form-control" rows="2" placeholder="What motivates you?" value="${ItemData.address}">${ItemData.address}</textarea>
+                                                                        </label>
+                                                                    </div>
+
                                                                 </div>
                                                             </div>
                                                             <hr>
@@ -697,11 +722,11 @@
                                                     <div class="card mt-3">
                                                         <div class="card-body">
                                                             <div class="row">
-                                                                <div class="col-4">
+                                                                <div class="col-5">
                                                                     <h5 class="card-title">Tell us more about yourself</h5>
                                                                 </div>
-                                                                <div class="col-8">
-                                                                    <textarea name="message" class="form-control" rows="3" placeholder="What motivates you?"></textarea value="${ItemData.description}">
+                                                                <div class="col-7">
+                                                                    <textarea name="message" class="form-control" rows="3" placeholder="What motivates you?" value="${ItemData.message}">${ItemData.message}</textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -718,13 +743,14 @@
                                                                 </div>
                                                                 <div class="col-7">
                                                                     <select class="form-select" id="country" name="country" value="${ItemData.country_passport}">
-                                                                        <option value="">${ItemData.country_passport}</option>
-                                                                        <option value="AF">Afghanistan</option>
-                                                                        <option value="AX">Aland Islands</option>
-                                                                        <option value="AL">Albania</option>
-                                                                        <option value="DZ">Algeria</option>
-                                                                        <option value="AS">American Samoa</option>
-                                                                        <option value="AD">Andorra</option>
+                                                                        <option value="">${ItemData.country_passport}</option>`;
+
+                                                                        countries.forEach(function(country) {
+                                                                        htmlContent += `<option value="${country.id}">${country.name}</option>`;
+                                                                        });
+
+                                                                        htmlContent += `
+
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -785,12 +811,12 @@
                                                                 <div class="col-7">
                                                                     <div class="col-7">
                                                                         <div class="form-check form-check-inline">
-                                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" ${ItemData.intendDate =='Male' ? 'checked' : ''}>
-                                                                            <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                                                            <input class="form-check-input" type="radio" name="criminal" id="criminal1" value="Yes" ${ItemData.criminal ==='Yes' ? 'checked' : ''}>
+                                                                            <label class="form-check-label" for="criminal1">Yes</label>
                                                                         </div>
                                                                         <div class="form-check form-check-inline">
-                                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" ${ItemData.intendDate == 'option2' ? 'checked' : ''}>
-                                                                            <label class="form-check-label" for="inlineRadio2">No</label>
+                                                                            <input class="form-check-input" type="radio" name="criminal" id="criminal2" value="No" ${ItemData.criminal ==='No' ? 'checked' : ''}>
+                                                                            <label class="form-check-label" for="criminal2">No</label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -802,14 +828,14 @@
                                                                 </div>
                                                                 <div class="col-7">
                                                                     <div class="form-check form-check-inline">
-                                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                                            id="inlineRadio1" value="option1">
-                                                                        <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                                                        <input class="form-check-input" type="radio" name="war"
+                                                                            id="war1" value="Yes" ${ItemData.war ==='Yes' ? 'checked' : ''}>
+                                                                        <label class="form-check-label" for="war1">Yes</label>
                                                                     </div>
                                                                     <div class="form-check form-check-inline">
-                                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                                            id="inlineRadio2" value="option2">
-                                                                        <label class="form-check-label" for="inlineRadio2">No</label>
+                                                                        <input class="form-check-input" type="radio" name="war"
+                                                                            id="war2" value="No" ${ItemData.war === 'No' ? 'checked' : ''}>
+                                                                        <label class="form-check-label" for="war2">No</label>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -820,8 +846,7 @@
                                                         <div class="card-body">
                                                             <div class="row">
                                                                 <div class="col-12 text-center">
-
-                                                                    <input type="submit" class="btn btn-primary col-12" value="Confirm Submit" />
+                                                                    <input type="submit" class="btn btn-primary col-12 next-btn" value="Confirm Submit" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -833,7 +858,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>`;
+                            </div>
+                            `;
+
 
 
 
