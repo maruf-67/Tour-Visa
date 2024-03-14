@@ -3,7 +3,8 @@
 @section('title', 'Contact Us | PrepBook')
 
 @push('style')
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/demo1/style.css') }}" />
 @endpush
@@ -698,8 +699,7 @@
 
                                                                     <div class="form-group mb-3">
                                                                         <label class="d-block mb-4">
-                                                                            <span class="form-label d-block">Tell us more about yourself</span>
-                                                                            <textarea name="address" class="form-control" rows="2" placeholder="What motivates you?" value="${ItemData.address}">${ItemData.address}</textarea>
+                                                                            <textarea name="address" class="form-control" rows="2" placeholder="San Franscisko 7/2A Austria" value="${ItemData.address}">${ItemData.address}</textarea>
                                                                         </label>
                                                                     </div>
 
@@ -901,8 +901,9 @@
 
             });
         </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
+        </script> --}}
+        <script src={{ asset('assets/js/bootstrap.bundle.min.js') }}></script>
     @endpush
 @endsection
