@@ -29,6 +29,7 @@ Route::get('/welcome', function () {
 Route::get('/app', [FrontendController::class, 'index'])->name('app');
 Route::get('/application', [FrontendController::class, 'application'])->name('application');
 Route::get('/view', [FrontendController::class, 'application_view'])->name('application_view');
+Route::get('/countries', [FrontendController::class, 'countries'])->name('countries');
 
 
 Auth::routes();

@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\Service;
 use App\Models\Application;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Country;
 
 class FrontendController extends Controller
 {
@@ -17,7 +19,14 @@ class FrontendController extends Controller
     public function application(){
 
         $services = Service::where('status',1)->get();
-        return view ('frontend.application.application',compact('services'));
+        $countries = Country::where('status',1)->get();
+        return view ('frontend.application.application',compact('services', 'countries'));
+    }
+
+    public function countries(){
+
+        $countries = Country::where('status',1)->get();
+        return response()->json($countries);
     }
 
     public function application_store(Request $request)
@@ -71,5 +80,15 @@ class FrontendController extends Controller
     public function application_view(){
 
         return view ('frontend.application.view');
+    }
+
+    private function generateOrderNumber()
+    {
+        $timestamp = now()->timestamp;
+        $randomNumber = mt_rand(1000, 9999);
+        $randomString = Str::random(6);
+        $orderNumber = $timestamp . $randomNumber . $randomString;
+        $orderNumber = substr($orderNumber, 0, 12);
+        return $orderNumber;
     }
 }
