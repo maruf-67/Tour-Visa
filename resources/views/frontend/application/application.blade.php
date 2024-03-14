@@ -558,11 +558,11 @@
                                                         <div class="card-body">
                                                             <div class="row">
                                                                 <div class="col-5">
-                                                                    <h5 class="">Full Name</h5>
+                                                                    <h5 class="card-title">Full Name</h5>
                                                                 </div>
                                                                 <div class="col-7">
                                                                     <input type="text" class="form-control" name="name" id="name"
-                                                                           placeholder="Ajmain Akash">
+                                                                    value='${ItemData.f_name} ${ItemData.l_name}'>
                                                                 </div>
                                                             </div>
                                                             <hr>
@@ -573,7 +573,7 @@
                                                                 <div class="col-7">
                                                                     <input type="mail" class="form-control" id="exampleInputEmail1"
                                                                         aria-describedby="emailHelp" placeholder="Enter Your Email Here"
-                                                                        name="email">
+                                                                        name="email" value='${ItemData.email}'>
                                                                 </div>
                                                             </div>
                                                             <hr>
@@ -583,7 +583,7 @@
                                                                 </div>
                                                                 <div class="col-7">
                                                                     <input type="tel" class="form-control" id="exampleInputNumber"
-                                                                        placeholder="Enter Phone Number" name="phone">
+                                                                        placeholder="Enter Phone Number" name="phone" value='${ItemData.phone}'>
                                                                 </div>
                                                             </div>
                                                             <hr>
@@ -594,12 +594,12 @@
                                                                 <div class="col-7">
                                                                     <div class="form-check form-check-inline">
                                                                         <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                                            id="inlineRadio1" value="option1">
+                                                                            id="inlineRadio1" value="option1" value="${ItemData.sex}">
                                                                         <label class="form-check-label" for="inlineRadio1">Male</label>
                                                                     </div>
                                                                     <div class="form-check form-check-inline">
                                                                         <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                                            id="inlineRadio2" value="option2">
+                                                                            id="inlineRadio2" value="option2" value="${ItemData.sex}">
                                                                         <label class="form-check-label" for="inlineRadio2">Female</label>
                                                                     </div>
                                                                 </div>
@@ -610,7 +610,7 @@
                                                                     <h5 class="card-title">Birth Country</h5>
                                                                 </div>
                                                                 <div class="col-7">
-                                                                    <select class="form-select" id="country" name="country">
+                                                                    <select class="form-select" id="country" name="country" value="${ItemData.country_birth}">
                                                                         <option value="">Enter Your Country</option>
                                                                         <option value="AF">Afghanistan</option>
                                                                         <option value="AX">Aland Islands</option>
@@ -626,7 +626,7 @@
                                                                     <h5 class="card-title">Citizen Country</h5>
                                                                 </div>
                                                                 <div class="col-7">
-                                                                    <select class="form-select" id="country" name="country">
+                                                                    <select class="form-select" id="country" name="country" value="${ItemData.country_citizen}">
                                                                         <option value="">Enter Your Country</option>
                                                                         <option value="AF">Afghanistan</option>
                                                                         <option value="AX">Aland Islands</option>
@@ -652,7 +652,7 @@
                                                                 </div>
                                                                 <div class="col-7">
                                                                     <input    name="date" type="date" class="form-control"
-                                                                        placeholder="Rahman" />
+                                                                        placeholder="Rahman" value="${ItemData.date}"/>
                                                                 </div>
                                                             </div>
 
@@ -666,7 +666,7 @@
                                                                     <h5 class="card-title">Tell us more about yourself</h5>
                                                                 </div>
                                                                 <div class="col-8">
-                                                                    <textarea name="message" class="form-control" rows="3" placeholder="What motivates you?"></textarea>
+                                                                    <textarea name="message" class="form-control" rows="3" placeholder="What motivates you?"></textarea value="${ItemData.description}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -682,8 +682,8 @@
                                                                     <h5 class="card-title">Passport Country</h5>
                                                                 </div>
                                                                 <div class="col-7">
-                                                                    <select class="form-select" id="country" name="country">
-                                                                        <option value="">Enter Your Country</option>
+                                                                    <select class="form-select" id="country" name="country" value="${ItemData.country_passport}">
+                                                                        <option value="">${ItemData.country_passport}</option>
                                                                         <option value="AF">Afghanistan</option>
                                                                         <option value="AX">Aland Islands</option>
                                                                         <option value="AL">Albania</option>
@@ -700,7 +700,7 @@
                                                                 </div>
                                                                 <div class="col-7">
                                                                     <input type="text" class="form-control" id="exampleInputNumber"
-                                                                        placeholder="Enter Passport Number">
+                                                                        placeholder="Enter Passport Number" value="${ItemData.passport_num}">
                                                                     <small id="phone" class="form-text text-muted">We'll never share your
                                                                         number
                                                                         with
@@ -715,7 +715,7 @@
                                                                 </div>
                                                                 <div class="col-7">
                                                                     <input    name="date" type="date" class="form-control"
-                                                                        placeholder="Rahman" />
+                                                                    value="${ItemData.issueDate}" />
                                                                 </div>
                                                             </div>
                                                             <hr>
@@ -725,7 +725,7 @@
                                                                 </div>
                                                                 <div class="col-7">
                                                                     <input    name="date" type="date" class="form-control"
-                                                                        placeholder="Rahman" />
+                                                                    value="${ItemData.expiryDate}" />
                                                                 </div>
                                                             </div>
                                                             <hr>
@@ -735,7 +735,7 @@
                                                                 </div>
                                                                 <div class="col-7">
                                                                     <input    name="date" type="date" class="form-control"
-                                                                        placeholder="Rahman" />
+                                                                    value="${ItemData.intendDate}" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -748,15 +748,15 @@
                                                                     <h5 class="card-title">Criminal Record</h5>
                                                                 </div>
                                                                 <div class="col-7">
-                                                                    <div class="form-check form-check-inline">
-                                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                                            id="inlineRadio1" value="option1">
-                                                                        <label class="form-check-label" for="inlineRadio1">Yes</label>
-                                                                    </div>
-                                                                    <div class="form-check form-check-inline">
-                                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                                            id="inlineRadio2" value="option2">
-                                                                        <label class="form-check-label" for="inlineRadio2">No</label>
+                                                                    <div class="col-7">
+                                                                        <div class="form-check form-check-inline">
+                                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" ${ItemData.intendDate === 'option1' ? 'checked' : ''}>
+                                                                            <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                                                        </div>
+                                                                        <div class="form-check form-check-inline">
+                                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" ${ItemData.intendDate === 'option2' ? 'checked' : ''}>
+                                                                            <label class="form-check-label" for="inlineRadio2">No</label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
