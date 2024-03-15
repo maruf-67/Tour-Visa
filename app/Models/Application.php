@@ -47,8 +47,7 @@ class Application extends Model
         'is_criminal_record' => 'boolean',
         'is_payment' => 'boolean',
         'is_refund' => 'boolean',
-        'status' => 'boolean',
-    ];
+        ];
 
     public function birthCountry()
     {

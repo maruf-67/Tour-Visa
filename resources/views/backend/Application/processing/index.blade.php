@@ -47,33 +47,33 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>ETAN4683</td>
-                                        <td>Regular</td>
-                                        <td>Aju</td>
-                                        <td>aju@gmail.com</td>
-                                        <td>01976756465</td>
-                                        <td>Bangladesh</td>
-                                        <td>Processing</td>
-                                        <td>Not paid</td>
-                                        <td>31 march 2023 12:24pm</td>
-                                        <td class="d-flex justify-content-between">
-
-                                            <a href="{{ route('admin.application.view') }}"><button class="btn btn-primary">View</button></a>
-                                            <a href="#"><button class="btn btn-primary">Edit</button></a>
-
-                                            <form action="#"
-                                                method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                            </form>
-                                        </td>
-
-                                    </tr>
+                                    @foreach ($applications as $application)
+                                        <tr>
+                                            <td>{{ $loop->index + 1 }}</td>
+                                            <td>{{ $application->reference_id }}</td>
+                                            <td>{{ $application->service->name }}</td>
+                                            <td>{{ $application->first_name }} {{ $application->last_name }}</td>
+                                            <td>{{ $application->email }}</td>
+                                            <td>{{ $application->phone }}</td>
+                                            <td>{{ $application->citizenCountry->name }}</td>
+                                            <td>{{ $application->status==1 ? 'Pending' : ''}}</td>
+                                            <td>{{ $application->is_payment ? 'Paid' : 'Unpaid' }}</td>
+                                            <td>{{ $application->created_at }}</td>
+                                            <td class="d-flex justify-content-between">
+                                                <a href="#"><button
+                                                        class="btn btn-primary">View</button></a>
+                                                <a href="#"><button
+                                                        class="btn btn-primary">Edit</button></a>
+                                                <form action="#"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                     <tbody>
-
 
 
 

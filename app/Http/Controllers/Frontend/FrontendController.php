@@ -10,14 +10,19 @@ use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
-    public function view()
+    public function view($reference_id)
     {
-
-        return view('frontend.application.application_view');
+        $sum = 0;
+        $applications = Application::with(['service'])->where('reference_id', $reference_id)->get();
+                foreach($applications as $application) {
+                    $sum += $application->service->price;
+        }
+        return view('frontend.application.application_view', compact('applications', 'sum', 'reference_id'));
     }
 
     public function application()
     {
+
 
         $services = Service::where('status', 1)->get();
         $countries = Country::where('status', 1)->get();
@@ -38,13 +43,24 @@ class FrontendController extends Controller
         $reference_id = $this->generateRefNumber();
         // dd(request()->all(), $formData, $reference_id);
 
+
         foreach($formData as &$data) {
             $data['reference_id'] = $reference_id;
             $application = Application::create($data);
         }
 
-        return redirect()->route('home')
-            ->with('success', 'Application created successfully');
+        // $sum = 0;
+        // $applications = Application::with(['service'])->where('reference_id', $reference_id)->get();
+        //         foreach($applications as $application) {
+        //             $sum += $application->amount;
+        // }
+
+        return response()->json(['reference_id' => $reference_id]);
+        // return view('frontend.application.application_view', compact('applications', 'sum', 'reference_id'));
+        // return redirect()->route('view')->with('success', 'Application created successfully');
+
+        // return redirect()->route('view',compact('applications', 'sum', 'reference_id') )->with('success', 'Application created successfully');
+
     }
 
     public function application_view()

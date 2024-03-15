@@ -497,7 +497,7 @@
                                                                                             <label class="form-check-label" for="criminal1">Yes</label>
                                                                                         </div>
                                                                                         <div class="form-check form-check-inline">
-                                                                                            <input class="form-check-input" type="radio" name="criminal" id="criminal2" value="2" ${ItemData.criminal ==='No' ? 'checked' : ''}>
+                                                                                            <input class="form-check-input" type="radio" name="criminal" id="criminal2" value="0" ${ItemData.criminal ==='No' ? 'checked' : ''}>
                                                                                             <label class="form-check-label" for="criminal2">No</label>
                                                                                         </div>
                                                                                     </div>
@@ -942,7 +942,9 @@
                         },
                         success: function(response) {
                             // Handle success response
+                            // ref = response.reference_id;
                             console.log(response);
+                            window.location.href = "{{ url('app-view') }}/" + encodeURIComponent(response.reference_id);
                         },
                         error: function(xhr, status, error) {
                             // Handle error

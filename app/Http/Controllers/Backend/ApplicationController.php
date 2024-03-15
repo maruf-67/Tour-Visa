@@ -14,27 +14,31 @@ class ApplicationController extends Controller
     // }
     public function view()
     {
-        return view('backend.Application.approved.view');
+        return view('backend.Application.approved.view',compact('applications'));
     }
     public function onHold()
     {
-        return view('backend.Application.onHold.index');
+        return view('backend.Application.onHold.index',compact('applications'));
     }
     public function paid()
     {
-        return view('backend.Application.paid.index');
+        $applications = Application::with('service', 'citizenCountry')->where('status', 1)->where('is_payment', 1)->get();
+        return view('backend.Application.paid.index',compact('applications'));
     }
     public function processing()
     {
-        return view('backend.Application.processing.index');
+        $applications = Application::with('service', 'citizenCountry')->where('status', 2)->where('is_payment', 1)->get();
+        // dd($application);
+        return view('backend.Application.processing.index',compact('applications'));
     }
     public function rejected()
     {
-        return view('backend.Application.rejected.index');
+        return view('backend.Application.rejected.index',compact('applications'));
     }
     public function unpaid()
     {
-        return view('backend.Application.unpaid.index');
+        $applications = Application::with('service', 'citizenCountry')->where('status', 1)->where('is_payment', 0)->get();
+        return view('backend.Application.unpaid.index',compact('applications'));
     }
 
     public function create()
