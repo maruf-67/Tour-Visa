@@ -50,7 +50,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12">
-                                        <H1 class="card-text text-center text-primary">Preview Form 1</H1>
+                                        <H1 class="card-text text-center text-primary">ETAVA37846873</H1>
                                     </div>
                                 </div>
                             </div>
@@ -60,221 +60,45 @@
 
 
                 <div class="row">
-                    <div class="col-6 col-md-12 col-xl-6">
+                    <div class="col-6 col-md-12 col-xl-12 col-sm-6">
                         <div class="card mt-3">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-4">
-                                        <h5 class="card-title">Reference Id</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <p class="card-text">Etajs45646</p>
-                                    </div>
+                                    <table class="table table-light">
+                                        <thead>
+                                          <tr>
+                                            <th scope="col">SL</th>
+                                            <th scope="col">Application ID</th>
+                                            <th scope="col">Applicant Name</th>
+                                            <th scope="col">Service Type</th>
+                                            <th scope="col">Payable</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <th scope="row">1</th>
+                                            <td>ETA123434324</td>
+                                            <td>Maruf</td>
+                                            <td>Super</td>
+                                            <td>1500</td>
+                                          </tr>
+                                          <tr>
+                                              <td></td>
+                                              <td></td>
+                                              <td></td>
+                                              <td  class="d-flex justify-content-end">SUM =</th>
+                                              <td></td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
                                 </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-4">
-                                        <h5 class="card-title">Service Type</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <select class="form-select" id="service" name="service">
-                                            <option>Rush</option>
-                                            <option>Fast</option>
-                                            <option>Normal</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card mt-3">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-5">
-                                        <h5 class="">Full Name</h5>
-                                    </div>
-                                    <div class="col-7">
-                                        <input type="text" class="form-control" name="name" id="name"
-                                            required placeholder="Ajmain Akash">
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-5">
-                                        <h5 class="card-title">Email</h5>
-                                    </div>
-                                    <div class="col-7">
-                                        <input type="mail" class="form-control" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp" placeholder="Enter Your Email Here"
-                                            name="email">
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-5">
-                                        <h5 class="card-title">Phone</h5>
-                                    </div>
-                                    <div class="col-7">
-                                        <input type="tel" class="form-control" id="exampleInputNumber"
-                                            placeholder="Enter Phone Number" name="phone">
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-5">
-                                        <h5 class="card-title">Sex</h5>
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                id="inlineRadio1" value="option1">
-                                            <label class="form-check-label" for="inlineRadio1">Male</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                id="inlineRadio2" value="option2">
-                                            <label class="form-check-label" for="inlineRadio2">Female</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-5">
-                                        <h5 class="card-title">Birth Country</h5>
-                                    </div>
-                                    <div class="col-7">
-                                        <select class="form-select" id="country" name="country">
-                                            <option value="">Enter Your Country</option>
-                                            <option value="AF">Afghanistan</option>
-                                            <option value="AX">Aland Islands</option>
-                                            <option value="AL">Albania</option>
-                                            <option value="DZ">Algeria</option>
-                                            <option value="AS">American Samoa</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-5">
-                                        <h5 class="card-title">Citizen Country</h5>
-                                    </div>
-                                    <div class="col-7">
-                                        <select class="form-select" id="country" name="country">
-                                            <option value="">Enter Your Country</option>
-                                            <option value="AF">Afghanistan</option>
-                                            <option value="AX">Aland Islands</option>
-                                            <option value="AL">Albania</option>
-                                            <option value="DZ">Algeria</option>
-                                            <option value="AS">American Samoa</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-5">
-                                        <h5 class="card-title">Address</h5>
-                                    </div>
-                                    <div class="col-7">
-                                        <p class="card-text">123 Main St, City, Country</p>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-5">
-                                        <h5 class="card-title">Date of Birth</h5>
-                                    </div>
-                                    <div class="col-7">
-                                        <input required name="date" type="date" class="form-control"
-                                            placeholder="Rahman" />
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="col-6 col-md-12 col-xl-6">
-
-                        <div class="card mt-3">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-5">
-                                        <h5 class="card-title">Passport Country</h5>
-                                    </div>
-                                    <div class="col-7">
-                                        <select class="form-select" id="country" name="country">
-                                            <option value="">Enter Your Country</option>
-                                            <option value="AF">Afghanistan</option>
-                                            <option value="AX">Aland Islands</option>
-                                            <option value="AL">Albania</option>
-                                            <option value="DZ">Algeria</option>
-                                            <option value="AS">American Samoa</option>
-                                            <option value="AD">Andorra</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-5">
-                                        <h5 class="card-title">Passport Number</h5>
-                                    </div>
-                                    <div class="col-7">
-                                        <input type="text" class="form-control" id="exampleInputNumber"
-                                            placeholder="Enter Passport Number">
-                                        <small id="phone" class="form-text text-muted">We'll never share your
-                                            number
-                                            with
-                                            anyone
-                                            else.</small>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-5">
-                                        <h5 class="card-title">Issue Date</h5>
-                                    </div>
-                                    <div class="col-7">
-                                        <input required name="date" type="date" class="form-control"
-                                            placeholder="Rahman" />
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-5">
-                                        <h5 class="card-title">Expiry Date</h5>
-                                    </div>
-                                    <div class="col-7">
-                                        <input required name="date" type="date" class="form-control"
-                                            placeholder="Rahman" />
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-5">
-                                        <h5 class="card-title">Intended Date</h5>
-                                    </div>
-                                    <div class="col-7">
-                                        <input required name="date" type="date" class="form-control"
-                                            placeholder="Rahman" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card mt-3">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-12 text-center">
-                                        <button class="btn btn-primary col-12">Confirm Submit</button>
-                                    </div>
+                                <div class="d-flex justify-content-end mt-4">
+                                    <input type="button" class="btn btn-primary" value="Proceed To Payment">
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>
