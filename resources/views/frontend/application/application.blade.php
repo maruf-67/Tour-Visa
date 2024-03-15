@@ -91,7 +91,7 @@
                 <input id="generateForms" type="button" name="next-step" class="next-step me-4" value="Next" />
             </fieldset>
         </div>
-        {{-- <button id="generateForms" class="btn btn-primary">Generate Forms</button> --}}
+
         <div id="formsContainer" style="display: none;"></div> <!-- Initially hidden -->
         <div class="progress mt-4">
             <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
@@ -115,26 +115,26 @@
                     url: "{{ route('countries') }}",
                     type: "GET",
                     success: function(response) {
-                        // Handle successful response here
-                        countries = response;
+                            // Handle successful response here
+                            countries = response;
 
-                        // countries.forEach(function(country) {
-                        //     console.log(country);
-                        // });
-                        var numForms = 1;
-                        var formsFilled = 0;
-                        var drafts = [];
+                            // countries.forEach(function(country) {
+                            //     console.log(country);
+                            // });
+                            var numForms = 1;
+                            var formsFilled = 0;
+                            var drafts = [];
 
-                        function updateProgressBar() {
-                            var completionPercentage = (formsFilled / numForms) * 100;
-                            $progressBar.css('width', completionPercentage + '%').attr('aria-valuenow',
-                                completionPercentage);
-                        }
+                            function updateProgressBar() {
+                                var completionPercentage = (formsFilled / numForms) * 100;
+                                $progressBar.css('width', completionPercentage + '%').attr('aria-valuenow',
+                                    completionPercentage);
+                            }
 
-                        function generateForm(formIndex) {
+                            function generateForm(formIndex) {
 
-                            // console.log(formIndex);
-                            let formHtml = `
+                                // console.log(formIndex);
+                                let formHtml = `
                             <form class="form app" id="form${formIndex}" style="display: ${formIndex === 1 ? 'block' : 'none'};">
                                 <h2>Form ${formIndex}</h2>
 
@@ -215,13 +215,13 @@
 
                                                                     <option value="">Enter Your Country</option>`;
 
-                            // Add options for each country
-                            countries.forEach(function(country) {
-                                formHtml +=
-                                    `<option value="${country.name}">${country.name}</option>`;
-                            });
+                                // Add options for each country
+                                countries.forEach(function(country) {
+                                    formHtml +=
+                                        `<option value="${country.name}">${country.name}</option>`;
+                                });
 
-                            formHtml += `
+                                formHtml += `
 
                                                                 </select>
                                                             </label>
@@ -234,12 +234,12 @@
                                                                     <option value="">Enter Your Country</option>`;
 
 
-                            countries.forEach(function(country) {
-                                formHtml +=
-                                    `<option value="${country.name}">${country.name}</option>`;
-                            });
+                                countries.forEach(function(country) {
+                                    formHtml +=
+                                        `<option value="${country.name}">${country.name}</option>`;
+                                });
 
-                            formHtml += `
+                                formHtml += `
 
                                                                 </select>
                                                             </label>
@@ -318,12 +318,12 @@
                                                             <option value="">Enter Your Country</option>`;
 
 
-                            countries.forEach(function(country) {
-                                formHtml +=
-                                    `<option value="${country.name}">${country.name}</option>`;
-                            });
+                                countries.forEach(function(country) {
+                                    formHtml +=
+                                        `<option value="${country.name}">${country.name}</option>`;
+                                });
 
-                            formHtml += `
+                                formHtml += `
 
                                                         </select>
                                                     </label>
@@ -460,437 +460,55 @@
 
 
                             `;
-                            return formHtml;
+                                return formHtml;
+                            }
+
+
+
+
+                    function generateForms() {
+                        numForms = parseInt($numFormsInput.val());
+                        $formsContainer.empty();
+                        // drafts = []; // Reset drafts when generating new forms
+                        for (var i = 1; i <= numForms; i++) {
+                            $formsContainer.append(generateForm(i));
                         }
-                        // function generateFinalForm(formIndex,ItemData) {
-                        //     console.log(formIndex);
-                        //     return `
-
-
-
-                $('#generateForms').click(function() {
-                    numForms = parseInt($numFormsInput.val());
-                    $formsContainer.empty();
-                    drafts = []; // Reset drafts when generating new forms
-                    for (var i = 1; i <= numForms; i++) {
-                        $formsContainer.append(generateForm(i));
+                        $formsContainer.show(); // Show forms container after generating forms
+                        formsFilled = 0; // Reset formsFilled when generating new forms
+                        updateProgressBar(); // Update progress bar after generating forms
                     }
-                    $formsContainer.show(); // Show forms container after generating forms
-                    formsFilled = 0; // Reset formsFilled when generating new forms
-                    updateProgressBar(); // Update progress bar after generating forms
-                });
 
-                document.getElementById("generateForms").addEventListener("click", function() {
-                    // Hide the code block
-                    document.querySelector("div.generateForms").style.display = "none";
-                    document.getElementById("generateForms").style.display = "none";
-                });
+                    $('#generateForms').click(generateForms);
 
-                $(document).on('click', '.next-btn', function() {
-                    var $form = $(this).closest('.form.app');
-                    var formIndex = $form.attr('id').replace('form', '');
-                    $form.find('.form-step').hide();
-                    $('#step2' + formIndex).show();
-                    $('#progressBar' + formIndex).show();
-                    $form.find('.form-progress').css('width', '33%').attr('aria-valuenow',
-                        33);
+                    document.getElementById("generateForms").addEventListener("click", function() {
+                        // Hide the code block
+                        document.querySelector("div.generateForms").style.display = "none";
+                        document.getElementById("generateForms").style.display = "none";
+                    });
 
-                });
+                    $(document).on('click', '.next-btn', function() {
+                        var $form = $(this).closest('.form.app');
+                        var formIndex = $form.attr('id').replace('form', '');
+                        $form.find('.form-step').hide();
+                        $('#step2' + formIndex).show();
+                        $('#progressBar' + formIndex).show();
+                        $form.find('.form-progress').css('width', '33%').attr('aria-valuenow',
+                            33);
 
-                $(document).on('click', '.next-btn1', function() {
-                    var $form = $(this).closest('.form.app');
-                    var formIndex = $form.attr('id').replace('form', '');
-                    $form.find('.form-step').hide();
-                    $('#step3' + formIndex).show();
-                    $('#progressBar' + formIndex).show();
-                    $form.find('.form-progress').css('width', '66%').attr('aria-valuenow',
-                        66);
+                    });
 
-                });
+                    $(document).on('click', '.next-btn1', function() {
+                        var $form = $(this).closest('.form.app');
+                        var formIndex = $form.attr('id').replace('form', '');
+                        $form.find('.form-step').hide();
+                        $('#step3' + formIndex).show();
+                        $('#progressBar' + formIndex).show();
+                        $form.find('.form-progress').css('width', '66%').attr('aria-valuenow',
+                            66);
 
-                $(document).on('click', '.next-btn2', function() {
-                    var $form = $(this).closest('.form.app');
-                    var formIndex = $form.attr('id').replace('form', '');
-                    $form.find('.form-step').hide();
-                    $('#step4' + formIndex).show();
-                    $('#progressBar' + formIndex).show();
-                    $form.find('.form-progress').css('width', '100%').attr('aria-valuenow',
-                        100);
+                    });
 
-                });
-
-                $(document).on('click', '.prev-btn', function() {
-                    var $form = $(this).closest('.form.app');
-                    var formIndex = $form.attr('id').replace('form', '');
-                    $form.find('.form-step').hide();
-                    $('#step1' + formIndex).show();
-                    $('#progressBar' + formIndex).show();
-                    $form.find('.form-progress').css('width', '50%').attr('aria-valuenow',
-                        50);
-                });
-
-                $(document).on('click', '.prev-btn1', function() {
-                    var $form = $(this).closest('.form.app');
-                    var formIndex = $form.attr('id').replace('form', '');
-                    $form.find('.form-step').hide();
-                    $('#step2' + formIndex).show();
-                    $('#progressBar' + formIndex).show();
-                    $form.find('.form-progress').css('width', '0%').attr('aria-valuenow',
-                        0);
-                });
-
-                $(document).on('submit', '.form.app', function(event) {
-                    event.preventDefault();
-                    // console.log('submit working');
-                    var currentFormData = new FormData(
-                        this); // Create FormData object with the form data
-                    var formIndex = $(this).attr('id').replace('form', '');
-                    var formObject = {}; // Object to store form data
-                    for (var pair of currentFormData.entries()) {
-                        formObject[pair[0]] = pair[
-                            1]; // Store form input values with their names as keys
-                    }
-                    formData[formIndex - 1] =
-                        formObject; // Save form data into the correct index of formData array
-                    drafts[formIndex - 1] =
-                        formObject; // Also save form data into the drafts array
-                    console.log(formData[formData.length - 1]);
-                        $('#finalform').empty();
-                            var formIndex = $('#finalform').closest('[id^="step"]').attr('id')
-                                .replace('step', '')
-                                .slice(-1);
-                            var ItemData = formData[formData.length - 1];
-                            var service = $('#service').val();
-                            var services = @json($services);
-                            console.log(services);
-
-
-
-                            var htmlContent =
-                                `
-                                                                    <div class="page-content">
-                                                                        <div class="col-md-12 grid-margin stretch-card">
-                                                                            <div class="card">
-                                                                                <div class="card-body container">
-                                                                                    <form id="application">
-                                                                                        <div class="row">
-                                                                                            <div class="col-12 col-md-12 col-xl-12">
-                                                                                                <div class="card mt-3">
-                                                                                                    <div class="card-body">
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-12">
-                                                                                                                <H1 class="card-text text-center text-primary">Preview Form ${formIndex}</H1>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-
-
-                                                                                        <div class="row">
-                                                                                            <div class="col-6 col-md-12 col-xl-6">
-                                                                                                <div class="card mt-3">
-                                                                                                    <div class="card-body">
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-4">
-                                                                                                                <h5 class="card-title">Reference Id</h5>
-                                                                                                            </div>
-                                                                                                            <div class="col-8">
-                                                                                                                <p class="card-text">${ItemData.l_name}</p>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <hr>
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-4">
-                                                                                                                <h5 class="card-title">Service Type</h5>
-                                                                                                            </div>
-                                                                                                            <div class="col-8">
-                                                                                                                <select class="form-select" id="service1" name="service">`;
-                                                                                                                    services.forEach(function(item) {
-                                                                                                                    if (item.id == service) {
-                                                                                                                        htmlContent += `<option value="${item.id}" selected>${item.name}</option>`;
-                                                                                                                    } else {
-                                                                                                                        htmlContent += `<option value="${item.id}">${item.name}</option>`;
-                                                                                                                    }
-                                                                                                                });
-
-                                                                                                                htmlContent += `</select>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-
-                                                                                                <div class="card mt-3">
-                                                                                                    <div class="card-body">
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-5">
-                                                                                                                <h5 class="card-title">Full Name</h5>
-                                                                                                            </div>
-                                                                                                            <div class="col-7">
-                                                                                                                <input type="text" class="form-control" name="name" id="name"
-                                                                                                                value='${ItemData.f_name} ${ItemData.l_name}'>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <hr>
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-5">
-                                                                                                                <h5 class="card-title">Email</h5>
-                                                                                                            </div>
-                                                                                                            <div class="col-7">
-                                                                                                                <input type="mail" class="form-control" id="exampleInputEmail1"
-                                                                                                                    aria-describedby="emailHelp" placeholder="Enter Your Email Here"
-                                                                                                                    name="email" value='${ItemData.email}'>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <hr>
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-5">
-                                                                                                                <h5 class="card-title">Phone</h5>
-                                                                                                            </div>
-                                                                                                            <div class="col-7">
-                                                                                                                <input type="tel" class="form-control" id="exampleInputNumber"
-                                                                                                                    placeholder="Enter Phone Number" name="phone" value='${ItemData.phone}'>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <hr>
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-5">
-                                                                                                                <h5 class="card-title">Sex</h5>
-                                                                                                            </div>
-                                                                                                            <div class="col-7">
-                                                                                                                <div class="form-check form-check-inline">
-                                                                                                                    <input class="form-check-input" type="radio" name="sex" id="sex1"
-                                                                                                                        id="inlineRadio1" value="option1" value="Male" ${ItemData.sex==='Male' ? 'checked' : ''}>
-                                                                                                                    <label class="form-check-label" for="sex1">Male</label>
-                                                                                                                </div>
-                                                                                                                <div class="form-check form-check-inline">
-                                                                                                                    <input class="form-check-input" type="radio" name="sex" id="sex2"
-                                                                                                                        value="Female" ${ItemData.sex==='Female' ? 'checked':''}>
-                                                                                                                    <label class="form-check-label" for="sex2">Female</label>
-                                                                                                                </div>
-
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <hr>
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-5">
-                                                                                                                <h5 class="card-title">Birth Country</h5>
-                                                                                                            </div>
-                                                                                                            <div class="col-7">
-                                                                                                                <select class="form-select" id="country_birth" name="country_birth" value="${ItemData.country_birth}">
-                                                                                                                    <option value="">${ItemData.country_birth}</option>`;
-
-                            countries.forEach(function(country) {
-                                htmlContent +=
-                                    `<option value="${country.id}">${country.name}</option>`;
-                            });
-
-                            htmlContent +=
-                                `
-                                                                                                                </select>
-
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <hr>
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-5">
-                                                                                                                <h5 class="card-title">Citizen Country</h5>
-                                                                                                            </div>
-                                                                                                            <div class="col-7">
-                                                                                                                <select class="form-select" id="country" name="country" value="${ItemData.country_citizen}">
-                                                                                                                    <option value="">${ItemData.country_citizen}</option>`;
-
-                            countries.forEach(function(country) {
-                                htmlContent +=
-                                    `<option value="${country.id}">${country.name}</option>`;
-                            });
-
-                            htmlContent +=
-                                `
-
-                                                                                                                </select>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <hr>
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-5">
-                                                                                                                <h5 class="card-title">Address</h5>
-                                                                                                            </div>
-                                                                                                            <div class="col-7">
-
-                                                                                                                <div class="form-group mb-3">
-                                                                                                                    <label class="d-block mb-4">
-                                                                                                                        <textarea name="address" class="form-control" rows="2" placeholder="San Franscisko 7/2A Austria" value="${ItemData.address}">${ItemData.address}</textarea>
-                                                                                                                    </label>
-                                                                                                                </div>
-
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <hr>
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-5">
-                                                                                                                <h5 class="card-title">Date of Birth</h5>
-                                                                                                            </div>
-                                                                                                            <div class="col-7">
-                                                                                                                <input    name="date" type="date" class="form-control"
-                                                                                                                    placeholder="Rahman" value="${ItemData.date}"/>
-                                                                                                            </div>
-                                                                                                        </div>
-
-                                                                                                    </div>
-                                                                                                </div>
-
-                                                                                                <div class="card mt-3">
-                                                                                                    <div class="card-body">
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-5">
-                                                                                                                <h5 class="card-title">Tell us more about yourself</h5>
-                                                                                                            </div>
-                                                                                                            <div class="col-7">
-                                                                                                                <textarea name="message" class="form-control" rows="3" placeholder="What motivates you?" value="${ItemData.message}">${ItemData.message}</textarea>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-
-                                                                                            <div class="col-6 col-md-12 col-xl-6">
-
-                                                                                                <div class="card mt-3">
-                                                                                                    <div class="card-body">
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-5">
-                                                                                                                <h5 class="card-title">Passport Country</h5>
-                                                                                                            </div>
-                                                                                                            <div class="col-7">
-                                                                                                                <select class="form-select" id="country" name="country" value="${ItemData.country_passport}">
-                                                                                                                    <option value="">${ItemData.country_passport}</option>`;
-
-                            countries.forEach(function(country) {
-
-                                htmlContent +=
-                                    `<option value="${country.id}">${country.name}</option>`;
-                            });
-
-                            htmlContent += `
-
-                                                                                                                </select>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <hr>
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-5">
-                                                                                                                <h5 class="card-title">Passport Number</h5>
-                                                                                                            </div>
-                                                                                                            <div class="col-7">
-                                                                                                                <input type="text" class="form-control" id="exampleInputNumber"
-                                                                                                                    placeholder="Enter Passport Number" value="${ItemData.passport_num}">
-                                                                                                                <small id="phone" class="form-text text-muted">We'll never share your
-                                                                                                                    number
-                                                                                                                    with
-                                                                                                                    anyone
-                                                                                                                    else.</small>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <hr>
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-5">
-                                                                                                                <h5 class="card-title">Issue Date</h5>
-                                                                                                            </div>
-                                                                                                            <div class="col-7">
-                                                                                                                <input    name="date" type="date" class="form-control"
-                                                                                                                value="${ItemData.issueDate}" />
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <hr>
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-5">
-                                                                                                                <h5 class="card-title">Expiry Date</h5>
-                                                                                                            </div>
-                                                                                                            <div class="col-7">
-                                                                                                                <input    name="date" type="date" class="form-control"
-                                                                                                                value="${ItemData.expiryDate}" />
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <hr>
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-5">
-                                                                                                                <h5 class="card-title">Intended Date</h5>
-                                                                                                            </div>
-                                                                                                            <div class="col-7">
-                                                                                                                <input    name="date" type="date" class="form-control"
-                                                                                                                value="${ItemData.intendDate}" />
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-
-                                                                                                <div class="card mt-3">
-                                                                                                    <div class="card-body">
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-5">
-                                                                                                                <h5 class="card-title">Criminal Record</h5>
-                                                                                                            </div>
-                                                                                                            <div class="col-7">
-                                                                                                                <div class="col-7">
-                                                                                                                    <div class="form-check form-check-inline">
-                                                                                                                        <input class="form-check-input" type="radio" name="criminal" id="criminal1" value="Yes" ${ItemData.criminal ==='Yes' ? 'checked' : ''}>
-                                                                                                                        <label class="form-check-label" for="criminal1">Yes</label>
-                                                                                                                    </div>
-                                                                                                                    <div class="form-check form-check-inline">
-                                                                                                                        <input class="form-check-input" type="radio" name="criminal" id="criminal2" value="No" ${ItemData.criminal ==='No' ? 'checked' : ''}>
-                                                                                                                        <label class="form-check-label" for="criminal2">No</label>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <hr>
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-5">
-                                                                                                                <h5 class="card-title">War Crime</h5>
-                                                                                                            </div>
-                                                                                                            <div class="col-7">
-                                                                                                                <div class="form-check form-check-inline">
-                                                                                                                    <input class="form-check-input" type="radio" name="war"
-                                                                                                                        id="war1" value="Yes" ${ItemData.war ==='Yes' ? 'checked' : ''}>
-                                                                                                                    <label class="form-check-label" for="war1">Yes</label>
-                                                                                                                </div>
-                                                                                                                <div class="form-check form-check-inline">
-                                                                                                                    <input class="form-check-input" type="radio" name="war"
-                                                                                                                        id="war2" value="No" ${ItemData.war === 'No' ? 'checked' : ''}>
-                                                                                                                    <label class="form-check-label" for="war2">No</label>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-
-                                                                                                <div class="card mt-3">
-                                                                                                    <div class="card-body">
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-12 text-center">
-                                                                                                                <input type="submit" class="btn btn-primary col-12 next-btn" value="Confirm Submit" />
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </form>
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    `;
-
-
-
-
-                        $('#finalform').append(htmlContent);
-
+                    $(document).on('click', '.next-btn2', function() {
                         var $form = $(this).closest('.form.app');
                         var formIndex = $form.attr('id').replace('form', '');
                         $form.find('.form-step').hide();
@@ -898,74 +516,463 @@
                         $('#progressBar' + formIndex).show();
                         $form.find('.form-progress').css('width', '100%').attr('aria-valuenow',
                             100);
-                        // formsFilled++;
-                        // updateProgressBar();
-                        // $(this).hide(); // Hide the submitted form
-                        // // Show next form if available
-                        // if (formsFilled < numForms) {
-                        //     $('#form' + (parseInt(formIndex) + 1)).show();
-                        // }
-                        });
-                        $('#submitAll').click(function() {
-                            console.log('Submitting all forms:');
-                            // console.log(formData);
-                            for (var i = 0; i < formData.length; i++) {
-                                var formIndex = i + 1;
-                                var currentFormData = formData[i];
-                                console.log('Form ' + formIndex + ' data:', currentFormData);
-                                // Here you can send currentFormData to the server for further processing
+
+                    });
+
+                    $(document).on('click', '.prev-btn', function() {
+                        var $form = $(this).closest('.form.app');
+                        var formIndex = $form.attr('id').replace('form', '');
+                        $form.find('.form-step').hide();
+                        $('#step1' + formIndex).show();
+                        $('#progressBar' + formIndex).show();
+                        $form.find('.form-progress').css('width', '50%').attr('aria-valuenow',
+                            50);
+                    });
+
+                    $(document).on('click', '.prev-btn1', function() {
+                        var $form = $(this).closest('.form.app');
+                        var formIndex = $form.attr('id').replace('form', '');
+                        $form.find('.form-step').hide();
+                        $('#step2' + formIndex).show();
+                        $('#progressBar' + formIndex).show();
+                        $form.find('.form-progress').css('width', '0%').attr('aria-valuenow',
+                            0);
+                    });
+
+                    $(document).on('submit', '.form.app', function(event) {
+                        event.preventDefault();
+                        // console.log('submit working');
+                        var currentFormData = new FormData(
+                            this); // Create FormData object with the form data
+                        var formIndex = $(this).attr('id').replace('form', '');
+                        var formObject = {}; // Object to store form data
+                        for (var pair of currentFormData.entries()) {
+                            formObject[pair[0]] = pair[
+                                1]; // Store form input values with their names as keys
+                        }
+                        formData[formIndex - 1] =
+                            formObject; // Save form data into the correct index of formData array
+                        drafts[formIndex - 1] =
+                            formObject; // Also save form data into the drafts array
+                        console.log(formData[formData.length - 1]);
+                        $('#finalform').empty();
+                        var formIndex = $('#finalform').closest('[id^="step"]').attr('id')
+                            .replace('step', '')
+                            .slice(-1);
+                        var ItemData = formData[formData.length - 1];
+                        var service = $('#service').val();
+                        var services = @json($services);
+
+
+
+
+                        var htmlContent =
+                            `
+                                                                            <div class="page-content">
+                                                                                <div class="col-md-12 grid-margin stretch-card">
+                                                                                    <div class="card">
+                                                                                        <div class="card-body container">
+                                                                                            <form id="application">
+                                                                                                <div class="row">
+                                                                                                    <div class="col-12 col-md-12 col-xl-12">
+                                                                                                        <div class="card mt-3">
+                                                                                                            <div class="card-body">
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-12">
+                                                                                                                        <H1 class="card-text text-center text-primary">Preview Form ${formIndex}</H1>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+
+                                                                                                <div class="row">
+                                                                                                    <div class="col-6 col-md-12 col-xl-6">
+                                                                                                        <div class="card mt-3">
+                                                                                                            <div class="card-body">
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-4">
+                                                                                                                        <h5 class="card-title">Reference Id</h5>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-8">
+                                                                                                                        <p class="card-text">${ItemData.l_name}</p>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <hr>
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-4">
+                                                                                                                        <h5 class="card-title">Service Type</h5>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-8">
+                                                                                                                        <select class="form-select" id="service1" name="service">`;
+                        services.forEach(function(item) {
+                            if (item.id == service) {
+                                htmlContent +=
+                                    `<option value="${item.id}" selected>${item.name}</option>`;
+                            } else {
+                                htmlContent +=
+                                    `<option value="${item.id}">${item.name}</option>`;
                             }
                         });
 
+                        htmlContent +=
+                            `</select>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
 
-                        $(document).on('submit', '#application', function(event) {
-                            console.log('working');
-                            event.preventDefault();
-                            // console.log($(this).parent().parent().parent().parent().parent().parent().parent().closest('.form.app'));
-                            // var $form = $(this).closest('.form.app');
-                            // var formIndex = $form.attr('id').replace('form', '');
-                            var formData = {
-                                "service": $('#service1').val(),
-                                "name": $('#name').val(),
-                                "email": $('#exampleInputEmail1').val(),
-                                "phone": $('#exampleInputNumber').val(),
-                                "sex": $('input[name="sex"]:checked').val(),
-                                "country_birth": $('#country_birth').val(),
-                                "country_citizen": $('#country').val(),
-                                "address": $('textarea[name="address"]').val(),
-                                "date_of_birth": $('input[name="date"]').val(),
-                                "message": $('textarea[name="message"]').val(),
-                                "passport_country": $('#country')
-                                    .val(), // Note: Ensure unique IDs for country select fields
-                                "passport_number": $('#exampleInputNumber')
-                                    .val(), // Note: Ensure unique IDs for input fields
-                                "issue_date": $('input[name="date"]')
-                                    .val(), // Note: Ensure unique IDs for input fields
-                                "expiry_date": $('input[name="date"]')
-                                    .val(), // Note: Ensure unique IDs for input fields
-                                "intended_date": $('input[name="date"]')
-                                    .val(), // Note: Ensure unique IDs for input fields
-                                "criminal_record": $('input[name="criminal"]:checked').val(),
-                                "war_crime": $('input[name="war"]:checked').val()
-                            };
+                                                                                                        <div class="card mt-3">
+                                                                                                            <div class="card-body">
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-5">
+                                                                                                                        <h5 class="card-title">Full Name</h5>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-7">
+                                                                                                                        <input type="text" class="form-control" name="name" id="name"
+                                                                                                                        value='${ItemData.f_name} ${ItemData.l_name}'>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <hr>
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-5">
+                                                                                                                        <h5 class="card-title">Email</h5>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-7">
+                                                                                                                        <input type="mail" class="form-control" id="exampleInputEmail1"
+                                                                                                                            aria-describedby="emailHelp" placeholder="Enter Your Email Here"
+                                                                                                                            name="email" value='${ItemData.email}'>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <hr>
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-5">
+                                                                                                                        <h5 class="card-title">Phone</h5>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-7">
+                                                                                                                        <input type="tel" class="form-control" id="exampleInputNumber"
+                                                                                                                            placeholder="Enter Phone Number" name="phone" value='${ItemData.phone}'>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <hr>
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-5">
+                                                                                                                        <h5 class="card-title">Sex</h5>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-7">
+                                                                                                                        <div class="form-check form-check-inline">
+                                                                                                                            <input class="form-check-input" type="radio" name="sex" id="sex1"
+                                                                                                                                id="inlineRadio1" value="option1" value="Male" ${ItemData.sex==='Male' ? 'checked' : ''}>
+                                                                                                                            <label class="form-check-label" for="sex1">Male</label>
+                                                                                                                        </div>
+                                                                                                                        <div class="form-check form-check-inline">
+                                                                                                                            <input class="form-check-input" type="radio" name="sex" id="sex2"
+                                                                                                                                value="Female" ${ItemData.sex==='Female' ? 'checked':''}>
+                                                                                                                            <label class="form-check-label" for="sex2">Female</label>
+                                                                                                                        </div>
 
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <hr>
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-5">
+                                                                                                                        <h5 class="card-title">Birth Country</h5>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-7">
+                                                                                                                        <select class="form-select" id="country_birth" name="country_birth" value="${ItemData.country_birth}">
+                                                                                                                            <option value="">${ItemData.country_birth}</option>`;
 
-
-                            formDataArray.push(formData);
-
-
-                            console.log(formDataArray);
-                        //     formsFilled++;
-                        // updateProgressBar();
-                        // $(this).hide(); // Hide the submitted form
-                        // // Show next form if available
-                        // if (formsFilled < numForms) {
-                        //     $('#form' + (parseInt(formIndex) + 1)).show();
-                        // }
+                        countries.forEach(function(country) {
+                            htmlContent +=
+                                `<option value="${country.id}">${country.name}</option>`;
                         });
-                    }
 
-                    ,
+                        htmlContent +=
+                            `
+                                                                                                                        </select>
+
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <hr>
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-5">
+                                                                                                                        <h5 class="card-title">Citizen Country</h5>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-7">
+                                                                                                                        <select class="form-select" id="country" name="country" value="${ItemData.country_citizen}">
+                                                                                                                            <option value="">${ItemData.country_citizen}</option>`;
+
+                        countries.forEach(function(country) {
+                            htmlContent +=
+                                `<option value="${country.id}">${country.name}</option>`;
+                        });
+
+                        htmlContent +=
+                            `
+
+                                                                                                                        </select>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <hr>
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-5">
+                                                                                                                        <h5 class="card-title">Address</h5>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-7">
+
+                                                                                                                        <div class="form-group mb-3">
+                                                                                                                            <label class="d-block mb-4">
+                                                                                                                                <textarea name="address" class="form-control" rows="2" placeholder="San Franscisko 7/2A Austria" value="${ItemData.address}">${ItemData.address}</textarea>
+                                                                                                                            </label>
+                                                                                                                        </div>
+
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <hr>
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-5">
+                                                                                                                        <h5 class="card-title">Date of Birth</h5>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-7">
+                                                                                                                        <input    name="date" type="date" class="form-control"
+                                                                                                                            placeholder="Rahman" value="${ItemData.date}"/>
+                                                                                                                    </div>
+                                                                                                                </div>
+
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <div class="card mt-3">
+                                                                                                            <div class="card-body">
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-5">
+                                                                                                                        <h5 class="card-title">Tell us more about yourself</h5>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-7">
+                                                                                                                        <textarea name="message" class="form-control" rows="3" placeholder="What motivates you?" value="${ItemData.message}">${ItemData.message}</textarea>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                    <div class="col-6 col-md-12 col-xl-6">
+
+                                                                                                        <div class="card mt-3">
+                                                                                                            <div class="card-body">
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-5">
+                                                                                                                        <h5 class="card-title">Passport Country</h5>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-7">
+                                                                                                                        <select class="form-select" id="country" name="country" value="${ItemData.country_passport}">
+                                                                                                                            <option value="">${ItemData.country_passport}</option>`;
+
+                        countries.forEach(function(country) {
+
+                            htmlContent +=
+                                `<option value="${country.id}">${country.name}</option>`;
+                        });
+
+                        htmlContent += `
+
+                                                                                                                        </select>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <hr>
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-5">
+                                                                                                                        <h5 class="card-title">Passport Number</h5>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-7">
+                                                                                                                        <input type="text" class="form-control" id="exampleInputNumber"
+                                                                                                                            placeholder="Enter Passport Number" value="${ItemData.passport_num}">
+                                                                                                                        <small id="phone" class="form-text text-muted">We'll never share your
+                                                                                                                            number
+                                                                                                                            with
+                                                                                                                            anyone
+                                                                                                                            else.</small>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <hr>
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-5">
+                                                                                                                        <h5 class="card-title">Issue Date</h5>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-7">
+                                                                                                                        <input    name="date" type="date" class="form-control"
+                                                                                                                        value="${ItemData.issueDate}" />
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <hr>
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-5">
+                                                                                                                        <h5 class="card-title">Expiry Date</h5>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-7">
+                                                                                                                        <input    name="date" type="date" class="form-control"
+                                                                                                                        value="${ItemData.expiryDate}" />
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <hr>
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-5">
+                                                                                                                        <h5 class="card-title">Intended Date</h5>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-7">
+                                                                                                                        <input    name="date" type="date" class="form-control"
+                                                                                                                        value="${ItemData.intendDate}" />
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <div class="card mt-3">
+                                                                                                            <div class="card-body">
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-5">
+                                                                                                                        <h5 class="card-title">Criminal Record</h5>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-7">
+                                                                                                                        <div class="col-7">
+                                                                                                                            <div class="form-check form-check-inline">
+                                                                                                                                <input class="form-check-input" type="radio" name="criminal" id="criminal1" value="Yes" ${ItemData.criminal ==='Yes' ? 'checked' : ''}>
+                                                                                                                                <label class="form-check-label" for="criminal1">Yes</label>
+                                                                                                                            </div>
+                                                                                                                            <div class="form-check form-check-inline">
+                                                                                                                                <input class="form-check-input" type="radio" name="criminal" id="criminal2" value="No" ${ItemData.criminal ==='No' ? 'checked' : ''}>
+                                                                                                                                <label class="form-check-label" for="criminal2">No</label>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <hr>
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-5">
+                                                                                                                        <h5 class="card-title">War Crime</h5>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-7">
+                                                                                                                        <div class="form-check form-check-inline">
+                                                                                                                            <input class="form-check-input" type="radio" name="war"
+                                                                                                                                id="war1" value="Yes" ${ItemData.war ==='Yes' ? 'checked' : ''}>
+                                                                                                                            <label class="form-check-label" for="war1">Yes</label>
+                                                                                                                        </div>
+                                                                                                                        <div class="form-check form-check-inline">
+                                                                                                                            <input class="form-check-input" type="radio" name="war"
+                                                                                                                                id="war2" value="No" ${ItemData.war === 'No' ? 'checked' : ''}>
+                                                                                                                            <label class="form-check-label" for="war2">No</label>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <div class="card mt-3">
+                                                                                                            <div class="card-body">
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-12 text-center">
+                                                                                                                        <input type="submit" class="btn btn-primary col-12 next-btn" value="Confirm Submit" />
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                </div>
+                                                                                            </form>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            `;
+
+
+
+
+                                $('#finalform').append(htmlContent);
+
+                                var $form = $(this).closest('.form.app');
+                                var formIndex = $form.attr('id').replace('form', '');
+                                console.log(formIndex);
+                                $form.find('.form-step').hide();
+                                $('#step4' + formIndex).show();
+                                $('#progressBar' + formIndex).show();
+                                $form.find('.form-progress').css('width', '100%').attr('aria-valuenow',
+                                    100);
+                                // formsFilled++;
+                                // updateProgressBar();
+                                // $(this).hide(); // Hide the submitted form
+                                // // Show next form if available
+                                // if (formsFilled < numForms) {
+                                //     $('#form' + (parseInt(formIndex) + 1)).show();
+                                // }
+                            });
+                            $('#submitAll').click(function() {
+                                console.log('Submitting all forms:');
+                                // console.log(formData);
+                                for (var i = 0; i < formData.length; i++) {
+                                    var formIndex = i + 1;
+                                    var currentFormData = formData[i];
+                                    console.log('Form ' + formIndex + ' data:', currentFormData);
+                                    // Here you can send currentFormData to the server for further processing
+                                }
+                            });
+
+
+                            $(document).on('submit', '#application', function(event) {
+                                console.log('working');
+                                event.preventDefault();
+                                // console.log();
+                                var $form = $(this).parent().parent().parent().parent().parent()
+                                .parent();
+                                var formIndex = $form.closest('[id^="step"]').attr('id')
+                                    .replace('step', '')
+                                    .slice(-1);
+                                var formData = {
+                                    "service": $('#service1').val(),
+                                    "name": $('#name').val(),
+                                    "email": $('#exampleInputEmail1').val(),
+                                    "phone": $('#exampleInputNumber').val(),
+                                    "sex": $('input[name="sex"]:checked').val(),
+                                    "country_birth": $('#country_birth').val(),
+                                    "country_citizen": $('#country').val(),
+                                    "address": $('textarea[name="address"]').val(),
+                                    "date_of_birth": $('input[name="date"]').val(),
+                                    "message": $('textarea[name="message"]').val(),
+                                    "passport_country": $('#country')
+                                        .val(), // Note: Ensure unique IDs for country select fields
+                                    "passport_number": $('#exampleInputNumber')
+                                        .val(), // Note: Ensure unique IDs for input fields
+                                    "issue_date": $('input[name="date"]')
+                                        .val(), // Note: Ensure unique IDs for input fields
+                                    "expiry_date": $('input[name="date"]')
+                                        .val(), // Note: Ensure unique IDs for input fields
+                                    "intended_date": $('input[name="date"]')
+                                        .val(), // Note: Ensure unique IDs for input fields
+                                    "criminal_record": $('input[name="criminal"]:checked').val(),
+                                    "war_crime": $('input[name="war"]:checked').val()
+                                };
+
+
+
+                                formDataArray.push(formData);
+
+
+                                console.log(formIndex);
+                                formsFilled++;
+                                updateProgressBar();
+                                $(this).empty(); // Hide the submitted form
+                                // Show next form if available
+                                if (formsFilled < numForms) {
+                                    $('#form' + (parseInt(formIndex) + 1)).show();
+                                }
+                            });
+                        }
+
+                        ,
                     error: function(xhr, status, error) {
                         // Handle errors here
                         console.error("Error:", error);
