@@ -32,6 +32,7 @@ Route::post('/application/store', [FrontendController::class, 'application_store
 Route::get('/home', [FrontendController::class, 'application'])->name('home');
 Route::get('/view', [FrontendController::class, 'application_view'])->name('application_view');
 Route::get('/countries', [FrontendController::class, 'countries'])->name('countries');
+Route::get('/appview', [FrontendController::class, 'view'])->name('view');
 
 
 Auth::routes();
