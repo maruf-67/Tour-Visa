@@ -52,13 +52,18 @@
 
                             <div class="row">
                                 <div class="col-md-6 col-sm-12">
+
                                     <!-- Country names and Country Code -->
                                     <label class="d-block mb-4 ">
                                         <span class="form-label d-block">Service Type *</span>
                                         <select class="form-select" id="service" name="service">
-                                            <option>Rush</option>
+
+                                            @foreach ($services as $service)
+                                                <option value="{{ $service->id }}">{{ $service->name }}</option>
+                                            @endforeach
+                                            {{-- <option>Rush</option>
                                             <option>Fast</option>
-                                            <option>Normal</option>
+                                            <option>Normal</option> --}}
                                         </select>
                                     </label>
                                 </div>
@@ -555,6 +560,11 @@
                                 .replace('step', '')
                                 .slice(-1);
                             var ItemData = formData[formData.length - 1];
+                            var service = $('#service').val();
+                            var services = @json($services);
+                            console.log(services);
+
+
 
                             var htmlContent =
                                 `
@@ -596,11 +606,16 @@
                                                                                                                 <h5 class="card-title">Service Type</h5>
                                                                                                             </div>
                                                                                                             <div class="col-8">
-                                                                                                                <select class="form-select" id="service" name="service">
-                                                                                                                    <option>Rush</option>
-                                                                                                                    <option>Fast</option>
-                                                                                                                    <option>Normal</option>
-                                                                                                                </select>
+                                                                                                                <select class="form-select" id="service1" name="service">`;
+                                                                                                                    services.forEach(function(item) {
+                                                                                                                    if (item.id == service) {
+                                                                                                                        htmlContent += `<option value="${item.id}" selected>${item.name}</option>`;
+                                                                                                                    } else {
+                                                                                                                        htmlContent += `<option value="${item.id}">${item.name}</option>`;
+                                                                                                                    }
+                                                                                                                });
+
+                                                                                                                htmlContent += `</select>
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
@@ -906,9 +921,11 @@
                         $(document).on('submit', '#application', function(event) {
                             console.log('working');
                             event.preventDefault();
-
+                            // console.log($(this).parent().parent().parent().parent().parent().parent().parent().closest('.form.app'));
+                            // var $form = $(this).closest('.form.app');
+                            // var formIndex = $form.attr('id').replace('form', '');
                             var formData = {
-                                "service": $('#service').val(),
+                                "service": $('#service1').val(),
                                 "name": $('#name').val(),
                                 "email": $('#exampleInputEmail1').val(),
                                 "phone": $('#exampleInputNumber').val(),
@@ -938,6 +955,13 @@
 
 
                             console.log(formDataArray);
+                        //     formsFilled++;
+                        // updateProgressBar();
+                        // $(this).hide(); // Hide the submitted form
+                        // // Show next form if available
+                        // if (formsFilled < numForms) {
+                        //     $('#form' + (parseInt(formIndex) + 1)).show();
+                        // }
                         });
                     }
 

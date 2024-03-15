@@ -20,6 +20,8 @@ class FrontendController extends Controller
 
         $services = Service::where('status',1)->get();
         $countries = Country::where('status',1)->get();
+        // dd($services);
+        // dd($countries);)
         return view ('frontend.application.application',compact('services', 'countries'));
     }
 
