@@ -33,34 +33,35 @@ class FrontendController extends Controller
 
     public function application_store(Request $request)
     {
-        $validatedData = $request->validate([
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'email' => 'required|email',
-            'phone' => 'required|string',
-            'dob' => 'required|date',
-            'gender' => 'required|string|in:Male,Female,Other',
-            'address' => 'nullable|string',
-            'birth_country_id' => 'required|exists:countries,id',
-            'citizen_country_id' => 'required|exists:countries,id',
-            'details' => 'nullable|string',
-            'passport_country_id' => 'required|exists:countries,id',
-            'passport_number' => 'required|string',
-            'passport_issue' => 'required|date',
-            'passport_expiry' => 'required|date',
-            'passport_image' => 'nullable|string',
-            'intended_date' => 'required|date',
-            'visa_image' => 'nullable|string',
-            'is_war_crime' => 'boolean',
-            'is_criminal_record' => 'boolean',
-            'is_payment' => 'boolean',
-            'is_refund' => 'boolean',
-            'service_id' => 'required|exists:services,id',
-            // 'user_id' => 'required|exists:users,id',
-            // 'transaction_id' => 'required|exists:transactions,id',
-            'status' => 'boolean',
-        ]);
-
+        // $validatedData = $request->validate([
+        //     'first_name' => 'required|string',
+        //     'last_name' => 'required|string',
+        //     'email' => 'required|email',
+        //     'phone' => 'required|string',
+        //     'dob' => 'required|date',
+        //     'gender' => 'required|string|in:Male,Female,Other',
+        //     'address' => 'nullable|string',
+        //     'birth_country_id' => 'required|exists:countries,id',
+        //     'citizen_country_id' => 'required|exists:countries,id',
+        //     'details' => 'nullable|string',
+        //     'passport_country_id' => 'required|exists:countries,id',
+        //     'passport_number' => 'required|string',
+        //     'passport_issue' => 'required|date',
+        //     'passport_expiry' => 'required|date',
+        //     'passport_image' => 'nullable|string',
+        //     'intended_date' => 'required|date',
+        //     'visa_image' => 'nullable|string',
+        //     'is_war_crime' => 'boolean',
+        //     'is_criminal_record' => 'boolean',
+        //     'is_payment' => 'boolean',
+        //     'is_refund' => 'boolean',
+        //     'service_id' => 'required|exists:services,id',
+        //     // 'user_id' => 'required|exists:users,id',
+        //     // 'transaction_id' => 'required|exists:transactions,id',
+        //     'status' => 'boolean',
+        // ]);
+        $formData = json_decode($request->getContent(), true);
+        dd(request()->all(), $formData);
         $requestData = $request->all();
         $file1 = $request->file('passport_image');
         if ($file1) {
@@ -72,7 +73,7 @@ class FrontendController extends Controller
             $path1 = null;
         }
         $requestData['passport_image'] = $path1;
-        $requestData['user_id'] = auth()->user()->id;
+        // $requestData['user_id'] = auth()->user()->id;
         $application = Application::create($requestData);
 
         return redirect()->route('home')

@@ -93,7 +93,7 @@
             <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
                 aria-valuemin="0" aria-valuemax="100"></div>
         </div>
-        {{-- <button id="submitAll" class="btn btn-primary mt-3">Submit All</button> --}}
+
     </div>
     @push('script')
         <script>
@@ -111,7 +111,6 @@
 
                 document.getElementById("generateForms").addEventListener("click", function() {
                     totalform = parseInt($('#numFormsInput').val());
-                    // console.log(totalform);
                     generateForms();
                     document.querySelector("div.generateForms").style.display = "none";
                     document.getElementById("generateForms").style.display = "none";
@@ -142,17 +141,6 @@
 
                 });
 
-                // $(document).on('click', '.next-btn2', function() {
-                //     var $form = $(this).closest('.form.app');
-
-                //     $form.find('.form-step').hide();
-                //     $('#step4' + numForms).show();
-                //     $('#progressBar' + numForms).show();
-                //     $form.find('.form-progress').css('width', '100%').attr('aria-valuenow',
-                //         100);
-
-                // });
-
                 $(document).on('click', '.prev-btn', function() {
                     var $form = $(this).closest('.form.app');
 
@@ -179,7 +167,7 @@
 
                 $(document).on('submit', '.form.app', function(event) {
                     event.preventDefault();
-                    // console.log('submit working');
+
                     var currentFormData = new FormData(
                         this); // Create FormData object with the form data
 
@@ -189,19 +177,18 @@
                             1]; // Store form input values with their names as keys
                     }
                     formData[numForms - 1] =
-                        formObject; // Save form data into the correct index of formData array
-                    // drafts[numForms - 1] =
-                    //     formObject; // Also save form data into the drafts array
+                        formObject;
+
                     console.log(formData[formData.length - 1]);
                     $('#finalform').empty();
 
                     var ItemData = formData[formData.length - 1];
                     var service = $('#service').val();
-                    var services = @json($services);
+                    // var services = @json($services);
 
 
                     $formsContainer.empty();
-                    // console.log(numForms);
+
                     var htmlContent =
                         `
                         <h2>Form ${numForms}</h2>
@@ -246,8 +233,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-
-
                                                             <div class="row">
                                                                 <div class="col-6 col-md-12 col-xl-6">
                                                                     <div class="card mt-3">
@@ -257,7 +242,7 @@
                                                                                     <h5 class="card-title">Reference Id</h5>
                                                                                 </div>
                                                                                 <div class="col-8">
-                                                                                    <p class="card-text">${ItemData.l_name}</p>
+                                                                                    <p class="card-text">Not Available</p>
                                                                                 </div>
                                                                             </div>
                                                                             <hr>
@@ -288,11 +273,21 @@
                                                                         <div class="card-body">
                                                                             <div class="row">
                                                                                 <div class="col-5">
-                                                                                    <h5 class="card-title">Full Name</h5>
+                                                                                    <h5 class="card-title">First Name</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <input type="text" class="form-control" name="name" id="name"
-                                                                                    value='${ItemData.f_name} ${ItemData.l_name}'>
+                                                                                    <input type="text" class="form-control" name="f_name" id="f_name"
+                                                                                    value='${ItemData.f_name} '>
+                                                                                </div>
+                                                                            </div>
+                                                                            <hr>
+                                                                            <div class="row">
+                                                                                <div class="col-5">
+                                                                                    <h5 class="card-title">Last Name</h5>
+                                                                                </div>
+                                                                                <div class="col-7">
+                                                                                    <input type="text" class="form-control" name="l_name" id="l_name"
+                                                                                    value='${ItemData.l_name}'>
                                                                                 </div>
                                                                             </div>
                                                                             <hr>
@@ -301,7 +296,7 @@
                                                                                     <h5 class="card-title">Email</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <input type="mail" class="form-control" id="exampleInputEmail1"
+                                                                                    <input type="mail" class="form-control" id="email"
                                                                                         aria-describedby="emailHelp" placeholder="Enter Your Email Here"
                                                                                         name="email" value='${ItemData.email}'>
                                                                                 </div>
@@ -312,7 +307,7 @@
                                                                                     <h5 class="card-title">Phone</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <input type="tel" class="form-control" id="exampleInputNumber"
+                                                                                    <input type="tel" class="form-control" id="phone"
                                                                                         placeholder="Enter Phone Number" name="phone" value='${ItemData.phone}'>
                                                                                 </div>
                                                                             </div>
@@ -449,7 +444,7 @@
                                                                                 <div class="col-7">
                                                                                     <input type="text" class="form-control" id="exampleInputNumber"
                                                                                         placeholder="Enter Passport Number" value="${ItemData.passport_num}">
-                                                                                    <small id="phone" class="form-text text-muted">We'll never share your
+                                                                                    <small id="phone1" class="form-text text-muted">We'll never share your
                                                                                         number
                                                                                         with
                                                                                         anyone
@@ -554,47 +549,26 @@
                     $formsContainer.append(htmlContent);
 
                     var $form = $(this).closest('.form.app');
-                    // var formIndex = $form.attr('id').replace('form', '');
-                    console.log(numForms);
-                    // $form.find('.form-step').hide();
+
                     $('#step4' + numForms).show();
                     $('#progressBar' + numForms).show();
 
-                    // formsFilled++;
-                    // updateProgressBar();
-                    // $(this).hide(); // Hide the submitted form
-                    // // Show next form if available
-                    // if (formsFilled < numForms) {
-                    //     $('#form' + (parseInt(formIndex) + 1)).show();
-                    // }
+
                 });
-                // $('#submitAll').click(function() {
-                //     console.log('Submitting all forms:');
-                //     // console.log(formData);
-                //     for (var i = 0; i < formData.length; i++) {
-                //         var formIndex = i + 1;
-                //         var currentFormData = formData[i];
-                //         console.log('Form ' + formIndex + ' data:', currentFormData);
-                //         // Here you can send currentFormData to the server for further processing
-                //     }
-                // });
+
 
 
                 $(document).on('submit', '#application', function(event) {
-                    console.log('working');
+                    // console.log('working');
                     event.preventDefault();
-                    // console.log();
-                    // var $form = $(this).parent().parent().parent().parent().parent()
-                    //     .parent();
-                    // var formIndex = $form.closest('[id^="step"]').attr('id')
-                    //     .replace('step', '')
-                    //     .slice(-1);
+
                     var formData = {
                         "service": $('#service1').val(),
-                        "name": $('#name').val(),
-                        "email": $('#exampleInputEmail1').val(),
-                        "phone": $('#exampleInputNumber').val(),
-                        "sex": $('input[name="sex"]:checked').val(),
+                        "f_name": $('#f_name').val(),
+                        "l_name": $('#l_name').val(),
+                        "email": $('#email').val(),
+                        "phone": $('#phone1').val(),
+                        "gender": $('input[name="sex"]:checked').val(),
                         "country_birth": $('#country_birth').val(),
                         "country_citizen": $('#country').val(),
                         "address": $('textarea[name="address"]').val(),
@@ -617,7 +591,6 @@
 
 
                     formDataArray.push(formData);
-
                     numForms++;
                     generateForms();
 
@@ -766,7 +739,7 @@
                                                         <label for="exampleInputNumber" class="form-label">Phone Number</label>
                                                         <input type="tel" class="form-control" id="exampleInputNumber"
                                                             placeholder="Enter Phone Number" name="phone">
-                                                        <small id="phone" class="form-text text-muted">We'll never share your
+                                                        <small id="phoneno" class="form-text text-muted">We'll never share your
                                                             number with anyone else.</small>
                                                     </div>
                                                 </div>
@@ -833,7 +806,7 @@
                                                 <label for="exampleInputNumber" class="form-label">Passport Number</label>
                                                 <input type="text" class="form-control" id="exampleInputNumber" name="passport_num"
                                                     placeholder="Enter Passport Number">
-                                                <small id="phone" class="form-text text-muted">We'll never share your number
+                                                <small id="passno" class="form-text text-muted">We'll never share your number
                                                     with
                                                     anyone
                                                     else.</small>
@@ -957,7 +930,27 @@
             function generateForms() {
                 console.log(numForms, totalform);
                 if (numForms > totalform) {
-                    console.log('end');
+                    var jsonData = JSON.stringify(formDataArray);
+                    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+                    // Send the JSON data using jQuery AJAX
+                    $.ajax({
+                        url: "{{ route('application.store') }}", // Laravel route
+                        type: "POST",
+                        data: jsonData, // Send JSON data
+                        contentType: "application/json",
+                        dataType: "json",
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken // Include CSRF token in the headers
+                        },
+                        success: function(response) {
+                            // Handle success response
+                            console.log(response);
+                        },
+                        error: function(xhr, status, error) {
+                            // Handle error
+                            console.error(xhr.responseText);
+                        }
+                    });
                 } else {
                     $formsContainer.empty();
                     // drafts = []; // Reset drafts when generating new forms
