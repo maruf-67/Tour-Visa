@@ -38,7 +38,7 @@ class FrontendController extends Controller
         $reference_id = $this->generateRefNumber();
         // dd(request()->all(), $formData, $reference_id);
 
-        foreach ($formData as &$data) {
+        foreach($formData as &$data) {
             $data['reference_id'] = $reference_id;
             $application = Application::create($data);
         }
