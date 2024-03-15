@@ -251,19 +251,19 @@
                                                                                     <h5 class="card-title">Service Type</h5>
                                                                                 </div>
                                                                                 <div class="col-8">
-                                                                                    <select class="form-select" id="service1" name="service">`;
-                    services.forEach(function(item) {
-                        if (item.id == service) {
-                            htmlContent +=
-                                `<option value="${item.id}" selected>${item.name}</option>`;
-                        } else {
-                            htmlContent +=
-                                `<option value="${item.id}">${item.name}</option>`;
-                        }
-                    });
+                                                                                    <select class="form-select" id="service" name="service" required> `;
+                                                                                        services.forEach(function(item) {
+                                                                                            if (item.id == service) {
+                                                                                                htmlContent +=
+                                                                                                    `<option value="${item.id}" selected>${item.name}</option>`;
+                                                                                            } else {
+                                                                                                htmlContent +=
+                                                                                                    `<option value="${item.id}">${item.name}</option>`;
+                                                                                            }
+                                                                                        });
 
-                    htmlContent +=
-                        `</select>
+                                                                                        htmlContent +=
+                                                                                            `</select>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -277,7 +277,7 @@
                                                                                 </div>
                                                                                 <div class="col-7">
                                                                                     <input type="text" class="form-control" name="f_name" id="f_name"
-                                                                                    value='${ItemData.f_name} '>
+                                                                                    value='${ItemData.f_name}' required>
                                                                                 </div>
                                                                             </div>
                                                                             <hr>
@@ -287,7 +287,7 @@
                                                                                 </div>
                                                                                 <div class="col-7">
                                                                                     <input type="text" class="form-control" name="l_name" id="l_name"
-                                                                                    value='${ItemData.l_name}'>
+                                                                                    value='${ItemData.l_name}' required>
                                                                                 </div>
                                                                             </div>
                                                                             <hr>
@@ -298,7 +298,7 @@
                                                                                 <div class="col-7">
                                                                                     <input type="mail" class="form-control" id="email"
                                                                                         aria-describedby="emailHelp" placeholder="Enter Your Email Here"
-                                                                                        name="email" value='${ItemData.email}'>
+                                                                                        name="email" value='${ItemData.email}' required>
                                                                                 </div>
                                                                             </div>
                                                                             <hr>
@@ -308,7 +308,7 @@
                                                                                 </div>
                                                                                 <div class="col-7">
                                                                                     <input type="tel" class="form-control" id="phone"
-                                                                                        placeholder="Enter Phone Number" name="phone" value='${ItemData.phone}'>
+                                                                                        placeholder="Enter Phone Number" name="phone" value='${ItemData.phone}' required>
                                                                                 </div>
                                                                             </div>
                                                                             <hr>
@@ -318,9 +318,9 @@
                                                                                 </div>
                                                                                 <div class="col-7">
                                                                                     <div class="form-check form-check-inline">
-                                                                                        <input class="form-check-input" type="radio" name="sex" id="sex1"
+                                                                                        <input class="form-check-input" type="radio" name="sex" id="sex"
                                                                                             id="inlineRadio1" value="option1" value="Male" ${ItemData.sex==='Male' ? 'checked' : ''}>
-                                                                                        <label class="form-check-label" for="sex1">Male</label>
+                                                                                        <label class="form-check-label" for="sex">Male</label>
                                                                                     </div>
                                                                                     <div class="form-check form-check-inline">
                                                                                         <input class="form-check-input" type="radio" name="sex" id="sex2"
@@ -336,16 +336,16 @@
                                                                                     <h5 class="card-title">Birth Country</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <select class="form-select" id="country_birth" name="country_birth" value="${ItemData.country_birth}">
+                                                                                    <select class="form-select" id="country_birth" name="country_birth" value="${ItemData.country_birth}" required>
                                                                                         <option value="">${ItemData.country_birth}</option>`;
 
-                    countries.forEach(function(country) {
-                        htmlContent +=
-                            `<option value="${country.id}">${country.name}</option>`;
-                    });
+                                                                                            countries.forEach(function(country) {
+                                                                                                htmlContent +=
+                                                                                                    `<option value="${country.id}">${country.name}</option>`;
+                                                                                            });
 
-                    htmlContent +=
-                        `
+                                                                                            htmlContent +=
+                                                                                                `
                                                                                     </select>
 
                                                                                 </div>
@@ -356,15 +356,15 @@
                                                                                     <h5 class="card-title">Citizen Country</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <select class="form-select" id="country" name="country" value="${ItemData.country_citizen}">
+                                                                                    <select class="form-select" id="country_citizen" name="country_citizen" value="${ItemData.country_citizen}" required>
                                                                                         <option value="">${ItemData.country_citizen}</option>`;
 
-                    countries.forEach(function(country) {
-                        htmlContent +=
-                            `<option value="${country.id}">${country.name}</option>`;
-                    });
+                                                                                            countries.forEach(function(country) {
+                                                                                                htmlContent +=
+                                                                                                    `<option value="${country.id}">${country.name}</option>`;
+                                                                                            });
 
-                    htmlContent +=
+                                                                                            htmlContent +=
                         `
 
                                                                                     </select>
@@ -379,7 +379,7 @@
 
                                                                                     <div class="form-group mb-3">
                                                                                         <label class="d-block mb-4">
-                                                                                            <textarea name="address" class="form-control" rows="2" placeholder="San Franscisko 7/2A Austria" value="${ItemData.address}">${ItemData.address}</textarea>
+                                                                                            <textarea name="address" class="form-control" rows="2" placeholder="San Franscisko 7/2A Austria" value="${ItemData.address}" required>${ItemData.address}</textarea>
                                                                                         </label>
                                                                                     </div>
 
@@ -391,8 +391,8 @@
                                                                                     <h5 class="card-title">Date of Birth</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <input    name="date" type="date" class="form-control"
-                                                                                        placeholder="Rahman" value="${ItemData.date}"/>
+                                                                                    <input name="date" type="date" class="form-control"
+                                                                                        placeholder="Rahman" value="${ItemData.date}" required>
                                                                                 </div>
                                                                             </div>
 
@@ -422,16 +422,16 @@
                                                                                     <h5 class="card-title">Passport Country</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <select class="form-select" id="country" name="country" value="${ItemData.country_passport}">
+                                                                                    <select class="form-select" id="passport_country" name="passport_country" value="${ItemData.country_passport}" required>
                                                                                         <option value="">${ItemData.country_passport}</option>`;
 
-                    countries.forEach(function(country) {
+                                                                                            countries.forEach(function(country) {
 
-                        htmlContent +=
-                            `<option value="${country.id}">${country.name}</option>`;
-                    });
+                                                                                                htmlContent +=
+                                                                                                    `<option value="${country.id}">${country.name}</option>`;
+                                                                                            });
 
-                    htmlContent += `
+                                                                                            htmlContent += `
 
                                                                                     </select>
                                                                                 </div>
@@ -442,9 +442,9 @@
                                                                                     <h5 class="card-title">Passport Number</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <input type="text" class="form-control" id="exampleInputNumber"
-                                                                                        placeholder="Enter Passport Number" value="${ItemData.passport_num}">
-                                                                                    <small id="phone1" class="form-text text-muted">We'll never share your
+                                                                                    <input type="text" class="form-control" id="passport_number"
+                                                                                        placeholder="Enter Passport Number" value="${ItemData.passport_num}" required>
+                                                                                    <small id="phone" class="form-text text-muted">We'll never share your
                                                                                         number
                                                                                         with
                                                                                         anyone
@@ -457,8 +457,8 @@
                                                                                     <h5 class="card-title">Issue Date</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <input    name="date" type="date" class="form-control"
-                                                                                    value="${ItemData.issueDate}" />
+                                                                                    <input    name="issue_date" type="date" class="form-control"
+                                                                                    value="${ItemData.issueDate}" required>
                                                                                 </div>
                                                                             </div>
                                                                             <hr>
@@ -467,8 +467,8 @@
                                                                                     <h5 class="card-title">Expiry Date</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <input    name="date" type="date" class="form-control"
-                                                                                    value="${ItemData.expiryDate}" />
+                                                                                    <input    name="expiry_date" type="date" class="form-control"
+                                                                                    value="${ItemData.expiryDate}" required>
                                                                                 </div>
                                                                             </div>
                                                                             <hr>
@@ -477,8 +477,8 @@
                                                                                     <h5 class="card-title">Intended Date</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <input    name="date" type="date" class="form-control"
-                                                                                    value="${ItemData.intendDate}" />
+                                                                                    <input    name="intended_date" type="date" class="form-control"
+                                                                                    value="${ItemData.intendDate}" required>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -563,32 +563,30 @@
                     event.preventDefault();
 
                     var formData = {
-                        "service": $('#service1').val(),
-                        "f_name": $('#f_name').val(),
-                        "l_name": $('#l_name').val(),
+                        "service_id": $('#service').val(),
+                        "first_name": $('#f_name').val(),
+                        "last_name": $('#l_name').val(),
                         "email": $('#email').val(),
-                        "phone": $('#phone1').val(),
+                        "phone": $('#phone').val(),
                         "gender": $('input[name="sex"]:checked').val(),
-                        "country_birth": $('#country_birth').val(),
-                        "country_citizen": $('#country').val(),
+                        "birth_country_id": $('#country_birth').val(),
+                        "citizen_country_id": $('#country_citizen').val(),
                         "address": $('textarea[name="address"]').val(),
                         "date_of_birth": $('input[name="date"]').val(),
-                        "message": $('textarea[name="message"]').val(),
-                        "passport_country": $('#country')
+                        "details": $('textarea[name="message"]').val(),
+                        "passport_country_id": $('#passport_country')
                             .val(), // Note: Ensure unique IDs for country select fields
-                        "passport_number": $('#exampleInputNumber')
+                        "passport_number": $('#passport_number')
                             .val(), // Note: Ensure unique IDs for input fields
-                        "issue_date": $('input[name="date"]')
+                        "passport_issue": $('input[name="issue_date"]')
                             .val(), // Note: Ensure unique IDs for input fields
-                        "expiry_date": $('input[name="date"]')
+                        "passport_expiry": $('input[name="expiry_date"]')
                             .val(), // Note: Ensure unique IDs for input fields
-                        "intended_date": $('input[name="date"]')
+                        "intended_date": $('input[name="intended_date"]')
                             .val(), // Note: Ensure unique IDs for input fields
-                        "criminal_record": $('input[name="criminal"]:checked').val(),
-                        "war_crime": $('input[name="war"]:checked').val()
+                        "is_criminal_record": $('input[name="criminal"]:checked').val(),
+                        "is_war_crime": $('input[name="war"]:checked').val()
                     };
-
-
 
                     formDataArray.push(formData);
                     numForms++;
@@ -644,7 +642,7 @@
                                                     <label class="d-block mb-4">
                                                         <span class="form-label d-block">First Name *</span>
                                                         <input name="f_name" type="text" class="form-control"
-                                                            placeholder="Mahfujur" />
+                                                            placeholder="Mahfujur">
                                                     </label>
                                                 </div>
 
@@ -669,8 +667,8 @@
                                                     <label class="d-block mb-4">
                                                         <span class="form-label d-block">Sex *</span>
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name='sex' id="sex1" value="Male">
-                                                            <label class="form-check-label" for="sex1">Male</label>
+                                                            <input class="form-check-input" type="radio" name='sex' id="sex" value="Male" checked>
+                                                            <label class="form-check-label" for="sex">Male</label>
                                                         </div>
                                                         <div class="form-check form-check-inline">
                                                             <input class="form-check-input" type="radio" name="sex" id="sex2" value="Female">
@@ -689,13 +687,13 @@
 
                                                             <option value="">Enter Your Country</option>`;
 
-                // Add options for each country
-                countries.forEach(function(country) {
-                    formHtml +=
-                        `<option value="${country.name}">${country.name}</option>`;
-                });
+                                                            // Add options for each country
+                                                            countries.forEach(function(country) {
+                                                                formHtml +=
+                                                                    `<option value="${country.name}">${country.name}</option>`;
+                                                            });
 
-                formHtml += `
+                                                            formHtml += `
 
                                                         </select>
                                                     </label>
@@ -708,12 +706,12 @@
                                                             <option value="">Enter Your Country</option>`;
 
 
-                countries.forEach(function(country) {
-                    formHtml +=
-                        `<option value="${country.name}">${country.name}</option>`;
-                });
+                                                                countries.forEach(function(country) {
+                                                                    formHtml +=
+                                                                        `<option value="${country.name}">${country.name}</option>`;
+                                                                });
 
-                formHtml += `
+                                                                formHtml += `
 
                                                         </select>
                                                     </label>
@@ -724,7 +722,7 @@
                                             <div class="row">
                                                 <div class="col-md-6 col-sm-12">
                                                     <div class="mb-3">
-                                                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                                        <label for="exampleInputEmail1" class="form-label">Email address *</label>
                                                         <input type="mail" class="form-control" id="exampleInputEmail1"
                                                             aria-describedby="emailHelp" placeholder="Enter Your Email Here"
                                                             name="email">
@@ -736,7 +734,7 @@
                                                 </div>
                                                 <div class="col-md-6 col-sm-12">
                                                     <div class="form-group mb-3">
-                                                        <label for="exampleInputNumber" class="form-label">Phone Number</label>
+                                                        <label for="exampleInputNumber" class="form-label">Phone Number *</label>
                                                         <input type="tel" class="form-control" id="exampleInputNumber"
                                                             placeholder="Enter Phone Number" name="phone">
                                                         <small id="phoneno" class="form-text text-muted">We'll never share your
@@ -748,7 +746,7 @@
                                                 <div class="col-md-6 col-sm-12">
                                                     <div class="form-group mb-3">
                                                         <label class="d-block mb-4">
-                                                            <span class="form-label d-block">Address</span>
+                                                            <span class="form-label d-block">Address *</span>
                                                             <textarea name="address" class="form-control" rows="2" placeholder="Where do you live?"></textarea>
                                                         </label>
                                                     </div>
@@ -792,18 +790,18 @@
                                                     <option value="">Enter Your Country</option>`;
 
 
-                countries.forEach(function(country) {
-                    formHtml +=
-                        `<option value="${country.name}">${country.name}</option>`;
-                });
+                                                        countries.forEach(function(country) {
+                                                            formHtml +=
+                                                                `<option value="${country.name}">${country.name}</option>`;
+                                                        });
 
-                formHtml += `
+                                                        formHtml += `
 
                                                 </select>
                                             </label>
 
                                             <div class="form-group mb-3">
-                                                <label for="exampleInputNumber" class="form-label">Passport Number</label>
+                                                <label for="exampleInputNumber" class="form-label">Passport Number *</label>
                                                 <input type="text" class="form-control" id="exampleInputNumber" name="passport_num"
                                                     placeholder="Enter Passport Number">
                                                 <small id="passno" class="form-text text-muted">We'll never share your number
@@ -860,7 +858,7 @@
                                                     <label class="form-check-label" for="criminal1">Yes</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="criminal" id="criminal2" value="No">
+                                                    <input class="form-check-input" type="radio" name="criminal" id="criminal2" value="No" checked>
                                                     <label class="form-check-label" for="criminal2">No</label>
                                                 </div>
                                             </label>
@@ -879,8 +877,8 @@
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" name="war"
-                                                        id="war2" value="No">
-                                                    <label class="form-check-label" for="war2">No</label>
+                                                        id="war2" value="No" checked>
+                                                    <label class="form-check-label" for="war2" >No</label>
                                                 </div>
                                             </label>
 

@@ -16,6 +16,11 @@ class FrontendController extends Controller
     //     return view('backend.Application.approved.index');
     // }
 
+    public function view(){
+
+        return view('frontend.application.application_view');
+    }
+
     public function application(){
 
         $services = Service::where('status',1)->get();
