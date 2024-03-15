@@ -11,6 +11,7 @@ class Application extends Model
     use HasFactory;
     use SoftDeletes;
     protected $fillable = [
+        'reference_id',
         'first_name',
         'last_name',
         'email',
@@ -33,7 +34,6 @@ class Application extends Model
         'is_payment',
         'is_refund',
         'service_id',
-        'user_id',
         'transaction_id',
         'status',
     ];

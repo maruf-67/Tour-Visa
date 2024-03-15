@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
+            $table->string('reference_id')->unique();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email');
@@ -48,11 +49,8 @@ return new class extends Migration
             $table->boolean('is_refund')->default(false);
             $table->unsignedBigInteger('service_id');
             $table->foreign('service_id')->references('id')->on('services')->onDelete('restrict');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
-            $table->unsignedBigInteger('transaction_id');
+            $table->unsignedBigInteger('transaction_id')->nullable();
             $table->foreign('transaction_id')->references('id')->on('transactions')->onDelete('restrict');
-
             $table->boolean('status')->default(true);
             $table->softDeletes();
             $table->timestamps();

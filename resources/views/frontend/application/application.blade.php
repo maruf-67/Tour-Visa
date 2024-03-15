@@ -296,7 +296,7 @@
                                                                                     <h5 class="card-title">Email</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <input type="mail" class="form-control" id="email"
+                                                                                    <input type="email" class="form-control" id="email"
                                                                                         aria-describedby="emailHelp" placeholder="Enter Your Email Here"
                                                                                         name="email" value='${ItemData.email}' required>
                                                                                 </div>
@@ -307,7 +307,7 @@
                                                                                     <h5 class="card-title">Phone</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <input type="tel" class="form-control" id="phone"
+                                                                                    <input type="text" class="form-control" id="phone"
                                                                                         placeholder="Enter Phone Number" name="phone" value='${ItemData.phone}' required>
                                                                                 </div>
                                                                             </div>
@@ -319,7 +319,7 @@
                                                                                 <div class="col-7">
                                                                                     <div class="form-check form-check-inline">
                                                                                         <input class="form-check-input" type="radio" name="sex" id="sex"
-                                                                                            id="inlineRadio1" value="option1" value="Male" ${ItemData.sex==='Male' ? 'checked' : ''}>
+                                                                                            id="inlineRadio1" value="Male" value="Male" ${ItemData.sex==='Male' ? 'checked' : ''}>
                                                                                         <label class="form-check-label" for="sex">Male</label>
                                                                                     </div>
                                                                                     <div class="form-check form-check-inline">
@@ -493,11 +493,11 @@
                                                                                 <div class="col-7">
                                                                                     <div class="col-7">
                                                                                         <div class="form-check form-check-inline">
-                                                                                            <input class="form-check-input" type="radio" name="criminal" id="criminal1" value="Yes" ${ItemData.criminal ==='Yes' ? 'checked' : ''}>
+                                                                                            <input class="form-check-input" type="radio" name="criminal" id="criminal1" value="1" ${ItemData.criminal ==='Yes' ? 'checked' : ''}>
                                                                                             <label class="form-check-label" for="criminal1">Yes</label>
                                                                                         </div>
                                                                                         <div class="form-check form-check-inline">
-                                                                                            <input class="form-check-input" type="radio" name="criminal" id="criminal2" value="No" ${ItemData.criminal ==='No' ? 'checked' : ''}>
+                                                                                            <input class="form-check-input" type="radio" name="criminal" id="criminal2" value="2" ${ItemData.criminal ==='No' ? 'checked' : ''}>
                                                                                             <label class="form-check-label" for="criminal2">No</label>
                                                                                         </div>
                                                                                     </div>
@@ -511,12 +511,12 @@
                                                                                 <div class="col-7">
                                                                                     <div class="form-check form-check-inline">
                                                                                         <input class="form-check-input" type="radio" name="war"
-                                                                                            id="war1" value="Yes" ${ItemData.war ==='Yes' ? 'checked' : ''}>
+                                                                                            id="war1" value="1" ${ItemData.war ==='Yes' ? 'checked' : ''}>
                                                                                         <label class="form-check-label" for="war1">Yes</label>
                                                                                     </div>
                                                                                     <div class="form-check form-check-inline">
                                                                                         <input class="form-check-input" type="radio" name="war"
-                                                                                            id="war2" value="No" ${ItemData.war === 'No' ? 'checked' : ''}>
+                                                                                            id="war2" value="0" ${ItemData.war === 'No' ? 'checked' : ''}>
                                                                                         <label class="form-check-label" for="war2">No</label>
                                                                                     </div>
                                                                                 </div>
@@ -572,7 +572,7 @@
                         "birth_country_id": $('#country_birth').val(),
                         "citizen_country_id": $('#country_citizen').val(),
                         "address": $('textarea[name="address"]').val(),
-                        "date_of_birth": $('input[name="date"]').val(),
+                        "dob": $('input[name="date"]').val(),
                         "details": $('textarea[name="message"]').val(),
                         "passport_country_id": $('#passport_country')
                             .val(), // Note: Ensure unique IDs for country select fields
