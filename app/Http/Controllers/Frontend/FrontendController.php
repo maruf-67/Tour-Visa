@@ -61,7 +61,8 @@ class FrontendController extends Controller
         //     'status' => 'boolean',
         // ]);
         $formData = json_decode($request->getContent(), true);
-        dd(request()->all(), $formData);
+        $reference_id = $this->generateRefNumber();
+        dd(request()->all(), $formData, $reference_id);
         $requestData = $request->all();
         $file1 = $request->file('passport_image');
         if ($file1) {
@@ -85,13 +86,13 @@ class FrontendController extends Controller
         return view ('frontend.application.view');
     }
 
-    private function generateOrderNumber()
+    private function generateRefNumber()
     {
         $timestamp = now()->timestamp;
         $randomNumber = mt_rand(1000, 9999);
-        $randomString = Str::random(6);
-        $orderNumber = $timestamp . $randomNumber . $randomString;
-        $orderNumber = substr($orderNumber, 0, 12);
-        return $orderNumber;
+        $randomString = 'ETAVA';
+        $ref_no = $randomString.$timestamp.$randomNumber ;
+        $ref_no = substr($ref_no, 0, 15);
+        return $ref_no;
     }
 }
