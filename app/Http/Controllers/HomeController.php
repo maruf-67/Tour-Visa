@@ -26,6 +26,7 @@ class HomeController extends Controller
     {
         // $services = Service::where('status',1)->get();
         // return view ('frontend.application.application',compact('services'));
-        return view ('frontend.application.application');
+        return redirect()->route('admin.dashboard');
+        // return view ('frontend.application.application');
     }
 }

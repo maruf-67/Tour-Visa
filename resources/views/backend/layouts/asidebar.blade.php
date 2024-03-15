@@ -152,9 +152,9 @@
                         <li class="nav-item">
                             <a href="{{ route('admin.user.adminUser') }}" class="nav-link">Admin User List</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="{{ route('admin.user.index') }}" class="nav-link">All User</a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a href="{{ route('admin.country.index') }}" class="nav-link">Country</a>
                         </li>
