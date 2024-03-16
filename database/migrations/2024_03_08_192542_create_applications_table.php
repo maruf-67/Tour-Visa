@@ -52,8 +52,6 @@ return new class extends Migration
             $table->unsignedBigInteger('transaction_id')->nullable();
             $table->foreign('transaction_id')->references('id')->on('transactions')->onDelete('restrict');
             $table->tinyInteger('status')->default(1)->comment('(1) Pending, (2) Processing, (3) Approved, (4) On-Hold , (5) Rejected');
-            $table->unsignedBigInteger('created_by')->nullable();
-            $table->foreign('created_by')->references('id')->on('users')->onDelete('hold');
             $table->softDeletes();
             $table->timestamps();
         });
