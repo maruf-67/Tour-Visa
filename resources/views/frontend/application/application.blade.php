@@ -594,6 +594,15 @@
 
                 });
 
+                $(document).on('change', '#privacyPolicy', function() {
+                // $('#privacyPolicy').change(function() {
+                if($(this).is(":checked")) {
+                    $('#submitButton').removeClass('d-none');
+                } else {
+                    $('#submitButton').addClass('d-none');
+                }
+            });
+
 
             });
 
@@ -896,11 +905,9 @@
                                                 </div>
                                                 <div>
                                                     <label class="form-check">
-                                                        <input type="checkbox" class="form-check-input" name="remote"
-                                                            value="no" />
-                                                        <span class="form-check-label">I have read and understand the <b>Terms and
-                                                                conditions</b>, and the <b>Privacy Policy</b>.</span>
-                                                    </label>
+                                                    <input type="checkbox" class="form-check-input" id="privacyPolicy" value="no" />
+                                                    <span class="form-check-label">I have read and understand the <b>Terms and conditions</b>, and the <b>Privacy Policy</b>.</span>
+                                                </label>
                                                 </div>
                                             </div>
 
@@ -915,8 +922,10 @@
                                 </div>
 
 
-                                <input type="submit" class="next-step me-4" value="Next" />
+                                <div class="button-container mt-3">
+                                <input type="submit" class="next-step me-4 d-none" value="Next" id="submitButton"/>
                                 <input type="button" name="previous-step" class="previous-step prev-btn1" value="Previous " />
+                            </div>
                             </fieldset>
                         </div>
                         </form>
