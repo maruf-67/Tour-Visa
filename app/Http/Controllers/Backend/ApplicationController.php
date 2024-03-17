@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Carbon\Carbon;
+use App\Models\Country;
 use App\Models\Service;
 use App\Models\application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Country;
 
 class ApplicationController extends Controller
 {
@@ -51,6 +52,43 @@ class ApplicationController extends Controller
     {
         $applications = Application::with('service', 'citizenCountry')->where('is_payment', 0)->get();
         return view('backend.Application.unpaid.index',compact('applications'));
+    }
+    public function today()
+    {
+        $currentDate = Carbon::today();
+
+        $applications = Application::with('service', 'citizenCountry')->whereDate('created_at', $currentDate)->get();
+        return view('backend.Filters.today.index',compact('applications'));
+    }
+
+    public function last_week()
+    {
+        $oneWeekAgo = Carbon::today()->subWeek();
+
+        $applications =Application::with('service', 'citizenCountry')
+        ->whereDate('created_at', '>=', $oneWeekAgo)
+        ->get();
+        return view('backend.Filters.last-week.index',compact('applications'));
+    }
+
+    public function last_month()
+    {
+        $oneMonthAgo = Carbon::today()->subMonth();
+
+        $applications =Application::with('service', 'citizenCountry')
+        ->whereDate('created_at', '>=', $oneMonthAgo)
+        ->get();
+        return view('backend.Filters.last-month.index',compact('applications'));
+    }
+
+    public function last_year()
+    {
+        $oneMonthAgo = Carbon::today()->subYear();
+
+        $applications =Application::with('service', 'citizenCountry')
+        ->whereDate('created_at', '>=', $oneMonthAgo)
+        ->get();
+        return view('backend.Filters.last-year.index',compact('applications'));
     }
 
     public function create()
