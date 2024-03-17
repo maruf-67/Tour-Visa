@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Service;
 use App\Models\application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Country;
 
 class ApplicationController extends Controller
 {
@@ -12,17 +14,26 @@ class ApplicationController extends Controller
     // {
     //     return view('backend.Application.approved.index');
     // }
-    public function view()
+    public function view(string $id)
     {
-        return view('backend.Application.approved.view',compact('applications'));
+        $services = Service::where('status', 1)->get();
+        $countries = Country::where('status', 1)->get();
+        $application = Application::with('service', 'citizenCountry')->find($id);
+        return view('backend.Application.view',compact('application', 'services', 'countries'));
+    }
+    public function approved()
+    {
+        $applications = Application::with('service', 'citizenCountry')->where('status', 3)->where('is_payment', 1)->get();
+        return view('backend.Application.approved.index',compact('applications'));
     }
     public function onHold()
     {
+        $applications = Application::with('service', 'citizenCountry')->where('status', 4)->where('is_payment', 0)->get();
         return view('backend.Application.onHold.index',compact('applications'));
     }
     public function paid()
     {
-        $applications = Application::with('service', 'citizenCountry')->where('status', 1)->where('is_payment', 1)->get();
+        $applications = Application::with('service', 'citizenCountry')->where('is_payment', 1)->get();
         return view('backend.Application.paid.index',compact('applications'));
     }
     public function processing()
@@ -33,11 +44,12 @@ class ApplicationController extends Controller
     }
     public function rejected()
     {
+        $applications = Application::with('service', 'citizenCountry')->where('status', 5)->where('is_payment', 1)->get();
         return view('backend.Application.rejected.index',compact('applications'));
     }
     public function unpaid()
     {
-        $applications = Application::with('service', 'citizenCountry')->where('status', 1)->where('is_payment', 0)->get();
+        $applications = Application::with('service', 'citizenCountry')->where('is_payment', 0)->get();
         return view('backend.Application.unpaid.index',compact('applications'));
     }
 
@@ -46,52 +58,52 @@ class ApplicationController extends Controller
         // Return view for creating a new application
     }
 
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'email' => 'required|email',
-            'phone' => 'required|string',
-            'dob' => 'required|date',
-            'gender' => 'required|string|in:Male,Female,Other',
-            'address' => 'nullable|string',
-            'birth_country_id' => 'required|exists:countries,id',
-            'citizen_country_id' => 'required|exists:countries,id',
-            'details' => 'nullable|string',
-            'passport_country_id' => 'required|exists:countries,id',
-            'passport_number' => 'required|string',
-            'passport_issue' => 'required|date',
-            'passport_expiry' => 'required|date',
-            'passport_image' => 'nullable|string',
-            'intended_date' => 'required|date',
-            'visa_image' => 'nullable|string',
-            'is_war_crime' => 'boolean',
-            'is_criminal_record' => 'boolean',
-            'is_payment' => 'boolean',
-            'is_refund' => 'boolean',
-            'service_id' => 'required|exists:services,id',
-            'user_id' => 'required|exists:users,id',
-            'transaction_id' => 'required|exists:transactions,id',
-            'status' => 'boolean',
-        ]);
+    // public function store(Request $request)
+    // {
+    //     $validatedData = $request->validate([
+    //         'first_name' => 'required|string',
+    //         'last_name' => 'required|string',
+    //         'email' => 'required|email',
+    //         'phone' => 'required|string',
+    //         'dob' => 'required|date',
+    //         'gender' => 'required|string|in:Male,Female,Other',
+    //         'address' => 'nullable|string',
+    //         'birth_country_id' => 'required|exists:countries,id',
+    //         'citizen_country_id' => 'required|exists:countries,id',
+    //         'details' => 'nullable|string',
+    //         'passport_country_id' => 'required|exists:countries,id',
+    //         'passport_number' => 'required|string',
+    //         'passport_issue' => 'required|date',
+    //         'passport_expiry' => 'required|date',
+    //         'passport_image' => 'nullable|string',
+    //         'intended_date' => 'required|date',
+    //         'visa_image' => 'nullable|string',
+    //         'is_war_crime' => 'boolean',
+    //         'is_criminal_record' => 'boolean',
+    //         'is_payment' => 'boolean',
+    //         'is_refund' => 'boolean',
+    //         'service_id' => 'required|exists:services,id',
+    //         'user_id' => 'required|exists:users,id',
+    //         'transaction_id' => 'required|exists:transactions,id',
+    //         'status' => 'boolean',
+    //     ]);
 
-        $requestData = $request->all();
-        $file1 = $request->file('passport_image');
-        if ($file1) {
-            $extension = $file1->getClientOriginalExtension();
-            $file1Name = time() . rand(1, 999999) . '.' . $extension;
-            $file1->move('images/passports', $file1Name);
-            $path1 = '/images/passports/' . $file1Name;
-        } else {
-            $path1 = null;
-        }
-        $requestData['passport_image'] = $path1;
-        $application = Application::create($requestData);
+    //     $requestData = $request->all();
+    //     $file1 = $request->file('passport_image');
+    //     if ($file1) {
+    //         $extension = $file1->getClientOriginalExtension();
+    //         $file1Name = time() . rand(1, 999999) . '.' . $extension;
+    //         $file1->move('images/passports', $file1Name);
+    //         $path1 = '/images/passports/' . $file1Name;
+    //     } else {
+    //         $path1 = null;
+    //     }
+    //     $requestData['passport_image'] = $path1;
+    //     $application = Application::create($requestData);
 
-        return redirect()->route('home')
-                         ->with('success', 'Application created successfully');
-    }
+    //     return redirect()->route('home')
+    //                      ->with('success', 'Application created successfully');
+    // }
 
     public function edit(Application $application)
     {
@@ -100,14 +112,18 @@ class ApplicationController extends Controller
 
     public function update(Request $request, string $id)
     {
-        // $validatedData = $request->validate([
-        //     'first_name' => 'required|string',
-        //     'last_name' => 'required|string',
-        //     'email' => 'required|email',
-        //     // Add validation rules for other fields here
-        // ]);
+        $validatedData = $request->validate([
+            'first_name' => 'nullable|string',
+            'last_name' => 'nullable|string',
+            'email' => 'nullable|email',
+            'passport_image' => 'nullable|image|max:2048',
+            'visa_image' => 'nullable|image|max:2048',
+            // Add validation rules for other fields here
+        ]);
         $application = Application::findOrFail($id);
         $requestData = $request->all();
+        // dd($requestData);
+
         $file1 = $request->file('passport_image');
         if ($file1) {
             $extension = $file1->getClientOriginalExtension();
@@ -140,7 +156,8 @@ class ApplicationController extends Controller
 
         $application->update($requestData);
 
-        return redirect()->route('home')
+
+        return redirect()->back()
                          ->with('success', 'Application updated successfully');
     }
 

@@ -66,7 +66,7 @@
                 <div class="collapse" id="Application">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="{{ route('admin.application.index') }}" class="nav-link">Approved</a>
+                            <a href="{{ route('admin.application.approved') }}" class="nav-link">Approved</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.application.processing') }}" class="nav-link">Processing</a>

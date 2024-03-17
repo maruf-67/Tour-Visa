@@ -1,5 +1,5 @@
 @extends('backend.layouts.master')
-@section('title', 'Basic Setting')
+@section('title', 'Processing Application')
 
 @section('content')
 
@@ -30,7 +30,7 @@
 
                         {{-- Content --}}
                         <div class="col-12 mt-4">
-                            <table id="admintable" class="table table-striped" style="width:100%">
+                            <table id="processing-table" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr style="text-align:center">
                                         <th>#ID</th>
@@ -56,12 +56,11 @@
                                             <td>{{ $application->email }}</td>
                                             <td>{{ $application->phone }}</td>
                                             <td>{{ $application->citizenCountry->name }}</td>
-                                            <td>{{ $application->status==1 ? 'Pending' : ''}}</td>
+                                            <td>{{ $application->status==2 ? 'Processing' : ''}}</td>
                                             <td>{{ $application->is_payment ? 'Paid' : 'Unpaid' }}</td>
                                             <td>{{ $application->created_at }}</td>
                                             <td class="d-flex justify-content-between">
-                                                <a href="#"><button
-                                                        class="btn btn-primary">View</button></a>
+                                                <a href="{{ route('admin.application.view', $application->id) }}"><button class="btn btn-primary">View</button></a>
                                                 <a href="#"><button
                                                         class="btn btn-primary">Edit</button></a>
                                                 <form action="#"
@@ -95,7 +94,7 @@
 
 @push('script')
     <script>
-        new DataTable('#admintable');
+        new DataTable('#processing-table');
         responsive;
     </script>
 @endpush

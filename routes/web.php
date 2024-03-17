@@ -79,13 +79,16 @@ Route::middleware(['auth', 'user-access:administrator,admin,moderator'])->name('
     });
 
     Route::controller(ApplicationController::class)->name('application.')->prefix('application')->group(function () {
-        Route::get('/index', 'index')->name('index');
-        Route::get('/view', 'view')->name('view');
+        Route::get('/approved', 'approved')->name('approved');
+        Route::get('/view/{id}', 'view')->name('view');
         Route::get('/onhold', 'onhold')->name('onhold');
         Route::get('/paid', 'paid')->name('paid');
         Route::get('/processing', 'processing')->name('processing');
         Route::get('/rejected', 'rejected')->name('rejected');
         Route::get('/unpaid', 'unpaid')->name('unpaid');
+        Route::get('/unpaid', 'unpaid')->name('unpaid');
+        Route::post('/update/{id}', 'update')->name('update');
+
     });
 
 });
