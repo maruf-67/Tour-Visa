@@ -61,7 +61,7 @@
                                         <td class="d-flex justify-content-between">
 
                                             <a href="{{ route('admin.application.view') }}"><button class="btn btn-primary">View</button></a>
-                                            <a href="#"><button class="btn btn-primary">Edit</button></a>
+                                            {{-- <a href="#"><button class="btn btn-primary">Edit</button></a> --}}
 
                                             <form action="#"
                                                 method="POST">

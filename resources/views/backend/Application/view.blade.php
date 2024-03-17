@@ -1,5 +1,5 @@
 @extends('backend.layouts.master')
-@section('title', 'Basic Setting')
+@section('title', 'Appliaction Details')
 
 @section('content')
 
