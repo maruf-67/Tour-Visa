@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\Service;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use Illuminate\Database\QueryException;
+use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ServiceController extends Controller
@@ -13,10 +13,9 @@ class ServiceController extends Controller
     public function index()
     {
         $services = Service::all();
-        return view('backend.service.index',compact('services'));
+        return view('backend.service.index', compact('services'));
 
     }
-
 
     public function create()
     {
@@ -39,11 +38,11 @@ class ServiceController extends Controller
         return redirect()->route('admin.service.index');
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $service = Service::find($id);
-        return view('backend.service.edit',compact('service'));
+        return view('backend.service.edit', compact('service'));
     }
-
 
     public function update(Request $request, $id)
     {
@@ -67,7 +66,7 @@ class ServiceController extends Controller
         $service->save();
 
         Alert::toast('Updated!', 'success');
-        session()->flash('success','Service has been updated successfully !!');
+        session()->flash('success', 'Service has been updated successfully !!');
         return redirect()->route('admin.service.index');
 
     }
@@ -75,14 +74,20 @@ class ServiceController extends Controller
     public function destroy($id)
     {
         try {
-        $service = Service::find($id);
-        $service->delete();
-        Alert::toast('Deleted!', 'error');
-        return redirect()->back();
+            $service = Service::find($id);
+            $service->delete();
+            Alert::toast('Deleted!', 'error');
+            return redirect()->back();
         } catch (QueryException $e) {
-        Alert::toast('Can\'t delete service. It is referenced by existing applications.!', 'error');
-        return redirect()->back()->with('error', 'Cannot delete service. It is referenced by existing applications.');
+            Alert::toast('Can\'t delete service. It is referenced by existing applications.!', 'error');
+            return redirect()->back()->with('error', 'Cannot delete service. It is referenced by existing applications.');
+        }
     }
+
+    public function service($id)
+    {
+        $service = Service::with('applications')->find($id);
+        return view('backend.service.application', compact('service'));
     }
 
 }

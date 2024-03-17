@@ -9,6 +9,7 @@
             <div>
                 <h4 class="mb-3 mb-md-0">Welcome to Dashboard</h4>
             </div>
+
             <div class="d-flex align-items-center flex-wrap text-nowrap">
                 <div class="input-group flatpickr wd-200 me-2 mb-2 mb-md-0" id="dashboardDate">
                     <span class="input-group-text input-group-addon bg-transparent border-primary" data-toggle><i
@@ -25,6 +26,29 @@
                     Download Report
                 </button>
             </div>
+        </div>
+        <div class="d-flex justify-content-start align-items-center flex-wrap grid-margin">
+            @foreach ($services as $service)
+            <div class="col-xl-3 col-sm-6 p-3 ">
+                        <a href="{{ route('admin.service.service', $service->id) }}">
+                        <div class="card mini-stat bg-primary">
+                            <div class="card-body mini-stat-img">
+                                <div class="mini-stat-icon">
+                                    {{-- <i class="mdi mdi-cart-arrow-right float-end"></i> --}}
+
+                                </div>
+                                <div class="text-white">
+                                    <h6 class="text-uppercase mb-3 font-size-16 text-white">{{ $service->name }}
+                                        Applications</h6>
+                                    <h2 class="mb-4 text-white">{{ $service->applications_count }}</h2>
+                                </div>
+                                <i class="me-2 icon-md" data-feather="arrow-right-circle"></i>
+                            </div>
+                        </div>
+                    </a>
+                    </div>
+            @endforeach
+
         </div>
 
         <div class="row">
@@ -224,7 +248,7 @@
         </div> <!-- row -->
 
         <div class="row">
-            <div class="col-lg-7 col-xl-8 grid-margin stretch-card">
+            <div class="col-lg-12 col-xl-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-baseline mb-2">
@@ -259,7 +283,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5 col-xl-4 grid-margin stretch-card">
+            {{-- <div class="col-lg-5 col-xl-4 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-baseline">
@@ -311,7 +335,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div> <!-- row -->
 
         <div class="row">
