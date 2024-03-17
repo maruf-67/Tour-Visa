@@ -32,16 +32,19 @@
                 <div class="collapse" id="emails">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Today</a>
+                            <a href="{{ route('admin.application.report') }}" class="nav-link">Report</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Weekly</a>
+                            <a href="{{ route('admin.application.today') }}" class="nav-link">Today</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Monthly</a>
+                            <a href="{{ route('admin.application.last_week') }}" class="nav-link">Weekly</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Yearly</a>
+                            <a href="{{ route('admin.application.last_month') }}" class="nav-link">Monthly</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.application.last_year') }}" class="nav-link">Yearly</a>
                         </li>
                     </ul>
                 </div>

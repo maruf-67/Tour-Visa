@@ -85,6 +85,11 @@ Route::middleware(['auth', 'user-access:administrator,admin,moderator'])->name('
         Route::get('/paid', 'paid')->name('paid');
         Route::get('/processing', 'processing')->name('processing');
         Route::get('/rejected', 'rejected')->name('rejected');
+        Route::get('/today', 'today')->name('today');
+        Route::get('/last-week', 'last_week')->name('last_week');
+        Route::get('/last-month', 'last_month')->name('last_month');
+        Route::get('/last-year', 'last_year')->name('last_year');
+        Route::get('/report', 'report')->name('report');
         Route::get('/unpaid', 'unpaid')->name('unpaid');
         Route::get('/unpaid', 'unpaid')->name('unpaid');
         Route::post('/update/{id}', 'update')->name('update');

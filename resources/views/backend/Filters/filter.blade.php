@@ -26,11 +26,26 @@
 
                             </div>
                         </div>
-
+                        <form action="{{ route('admin.application.report') }}" method="GET">
+                            <div class="row mt-4">
+                                <div class="col-md-5">
+                                    <label for="start_date">Start Date:</label>
+                                    <input type="date" class="form-control" id="start_date" name="start_date" value={{ $start_date ?? null }} >
+                                </div>
+                                <div class="col-md-5">
+                                    <label for="end_date">End Date:</label>
+                                    <input type="date" class="form-control" id="end_date" name="end_date" value={{ $end_date ?? null }} >
+                                </div>
+                                <div class="col-md-2">
+                                    <label>&nbsp;</label><br>
+                                    <button type="submit" class="btn btn-primary">Generate Report</button>
+                                </div>
+                            </div>
+                        </form>
 
                         {{-- Content --}}
                         <div class="col-12 mt-4">
-                            <table id="lastyear-table" class="table table-striped" style="width:100%">
+                            <table id="report-table" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr style="text-align:center">
                                         <th>#ID</th>
@@ -56,7 +71,21 @@
                                             <td>{{ $application->email }}</td>
                                             <td>{{ $application->phone }}</td>
                                             <td>{{ $application->citizenCountry->name }}</td>
-                                            <td>{{ $application->status == 4 ? 'onHold' : '' }}</td>
+                                            <td>
+                                                @if($application->status == 1)
+                                                    Pending
+                                                @elseif($application->status == 2)
+                                                    Processing
+                                                @elseif($application->status == 3)
+                                                    Approved
+                                                @elseif($application->status == 4)
+                                                    On-Hold
+                                                @elseif($application->status == 5)
+                                                    Rejected
+                                                @else
+                                                    Unknown Status
+                                                @endif
+                                            </td>
                                             <td>{{ $application->is_payment ? 'Paid' : 'Unpaid' }}</td>
                                             <td>{{ $application->created_at }}</td>
                                             <td class="d-flex justify-content-between">
@@ -93,7 +122,7 @@
 
 @push('script')
     <script>
-        new DataTable('#lastyear-table');
+        new DataTable('#report-table');
         responsive:true;
     </script>
 @endpush

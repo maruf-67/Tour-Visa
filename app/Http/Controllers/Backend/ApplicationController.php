@@ -91,6 +91,22 @@ class ApplicationController extends Controller
         return view('backend.Filters.last-year.index',compact('applications'));
     }
 
+    public function report(Request $request)
+    {
+
+        // if null get all data using latest
+        $start_date = ($request->has('start_date')) ? $request->start_date : Carbon::today()->subMonth();
+        // if null get all data using latest
+        $end_date = ($request->has('end_date')) ? $request->end_date : Carbon::today();
+
+        $applications= Application::with('service', 'citizenCountry')
+                                ->whereBetween('created_at', [$start_date, $end_date])
+                                ->latest()
+                                ->get();
+        return view('backend.Filters.filter',compact('applications', 'start_date', 'end_date'));
+    }
+
+
     public function create()
     {
         // Return view for creating a new application

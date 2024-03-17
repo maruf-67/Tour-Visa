@@ -56,7 +56,21 @@
                                             <td>{{ $application->email }}</td>
                                             <td>{{ $application->phone }}</td>
                                             <td>{{ $application->citizenCountry->name }}</td>
-                                            <td>{{ $application->status == 4 ? 'onHold' : '' }}</td>
+                                            <td>
+                                                @if($application->status == 1)
+                                                    Pending
+                                                @elseif($application->status == 2)
+                                                    Processing
+                                                @elseif($application->status == 3)
+                                                    Approved
+                                                @elseif($application->status == 4)
+                                                    On-Hold
+                                                @elseif($application->status == 5)
+                                                    Rejected
+                                                @else
+                                                    Unknown Status
+                                                @endif
+                                            </td>
                                             <td>{{ $application->is_payment ? 'Paid' : 'Unpaid' }}</td>
                                             <td>{{ $application->created_at }}</td>
                                             <td class="d-flex justify-content-between">
