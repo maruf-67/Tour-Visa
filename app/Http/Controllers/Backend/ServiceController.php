@@ -80,8 +80,6 @@ class ServiceController extends Controller
         Alert::toast('Deleted!', 'error');
         return redirect()->back();
         } catch (QueryException $e) {
-        // Handle the integrity constraint violation error
-        // Display an error message using toast or similar
         Alert::toast('Can\'t delete service. It is referenced by existing applications.!', 'error');
         return redirect()->back()->with('error', 'Cannot delete service. It is referenced by existing applications.');
     }
