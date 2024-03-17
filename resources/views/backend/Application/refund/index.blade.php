@@ -95,6 +95,6 @@
 @push('script')
     <script>
         new DataTable('#admintable');
-        responsive;
+        responsive:true;
     </script>
 @endpush

@@ -94,6 +94,6 @@
 @push('script')
     <script>
         new DataTable('#paid-application');
-        responsive;
+        responsive:true;
     </script>
 @endpush

@@ -28,7 +28,7 @@ class ApplicationController extends Controller
     }
     public function onHold()
     {
-        $applications = Application::with('service', 'citizenCountry')->where('status', 4)->where('is_payment', 0)->get();
+        $applications = Application::with('service', 'citizenCountry')->where('status', 4)->get();
         return view('backend.Application.onHold.index',compact('applications'));
     }
     public function paid()
@@ -166,7 +166,7 @@ class ApplicationController extends Controller
         $application = Application::findOrFail($id);
         $application->delete();
 
-        return redirect()->route('applications.index')
+        return redirect()->back()
                          ->with('success', 'Application deleted successfully');
     }
 

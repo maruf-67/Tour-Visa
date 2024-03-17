@@ -88,7 +88,7 @@ Route::middleware(['auth', 'user-access:administrator,admin,moderator'])->name('
         Route::get('/unpaid', 'unpaid')->name('unpaid');
         Route::get('/unpaid', 'unpaid')->name('unpaid');
         Route::post('/update/{id}', 'update')->name('update');
-        Route::delete('/destroy/{id}','destroy')->name('.destroy');
+        Route::delete('/destroy/{id}','destroy')->name('destroy');
 
     });
 

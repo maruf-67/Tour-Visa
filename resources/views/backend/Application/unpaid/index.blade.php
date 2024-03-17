@@ -56,16 +56,34 @@
                                             <td>{{ $application->email }}</td>
                                             <td>{{ $application->phone }}</td>
                                             <td>{{ $application->citizenCountry->name }}</td>
-                                            <td>{{ $application->status == 1 ? 'Pending' : '' }}</td>
+                                            <td>
+                                                @if($application->status == 1)
+                                                    Pending
+                                                @elseif($application->status == 2)
+                                                    Processing
+                                                @elseif($application->status == 3)
+                                                    Approved
+                                                @elseif($application->status == 4)
+                                                    On-Hold
+                                                @elseif($application->status == 5)
+                                                    Rejected
+                                                @else
+                                                    Unknown Status
+                                                @endif
+                                            </td>
+
                                             <td>{{ $application->is_payment ? 'Paid' : 'Unpaid' }}</td>
                                             <td>{{ $application->created_at }}</td>
                                             <td class="d-flex justify-content-between">
-                                                <a href="{{ route('admin.application.view', $application->id) }}"><button class="btn btn-primary">View</button></a>
+                                                <a href="{{ route('admin.application.view', $application->id) }}"><button
+                                                        class="btn btn-primary">View</button></a>
                                                 {{-- <a href="#"><button class="btn btn-primary">Edit</button></a> --}}
-                                                <form action="#" method="POST">
+                                                <form action="{{ route('admin.application.destroy', $application->id) }}"
+                                                    method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    <button type="submit" class="btn btn-danger delete-button"
+                                                        data-application-id={{ $application->id }}>Delete</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -94,6 +112,60 @@
 @push('script')
     <script>
         new DataTable('#unpaid-table');
-        responsive;
+        responsive: true;
+    </script>
+    <script>
+        $(document).ready(function() {
+            $(".delete-button").click(function() {
+                event.preventDefault();
+                var applicationId = $(this).data('application-id');
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('deleteForm' + applicationId).submit();
+                    }
+                });
+            });
+        });
+
+        function deleteConfirmation(applicationId) {
+            //prevent from submission
+
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'This will delete the cart!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, clear it!'
+            }).then((result) => {
+                // If user confirms the removal
+                if (result.isConfirmed) {
+                    // Remove the product from the cart
+                    $('.product-wrap').empty();
+                    productArray = [];
+                    $('.count').text(productArray.length);
+                    $('.product-info').removeClass('active');
+                    // Show 'Product removed' message
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Product cleared from the cart',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                }
+            });
+        }
     </script>
 @endpush

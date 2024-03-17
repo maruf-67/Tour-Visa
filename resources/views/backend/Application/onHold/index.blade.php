@@ -94,6 +94,6 @@
 @push('script')
     <script>
         new DataTable('#OnHold-table');
-        responsive;
+        responsive:true;
     </script>
 @endpush
