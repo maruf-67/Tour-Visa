@@ -96,7 +96,8 @@
                                       </table>
                                 </div>
                                 <div class="d-flex justify-content-end mt-4">
-                                    <input type="button" class="btn btn-primary" value="Proceed To Payment">
+                                    <a href="{{ route('paypal.payment') }}" class="btn btn-success">Pay with PayPal </a>
+                                    {{-- <input type="button" class="btn btn-primary" value="Proceed To Payment"> --}}
                                 </div>
                             </div>
                         </div>
