@@ -122,7 +122,7 @@
                                                 data-target="#editModal{{ $country->id }}">Edit</button> --}}
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                 data-bs-target="#editModal">Edit </button>
-                                            <form action="{{ route('admin.country.destroy', $country->id ) }}" method="POST">
+                                            <form action="{{ route('admin.application.destroy', $country->id ) }}" method="POST">
 
                                                 @csrf
                                                 @method('DELETE')

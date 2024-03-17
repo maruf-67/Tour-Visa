@@ -63,12 +63,11 @@
                                             <a href="{{ route('admin.application.view') }}"><button class="btn btn-primary">View</button></a>
                                             {{-- <a href="#"><button class="btn btn-primary">Edit</button></a> --}}
 
-                                            <form action="#"
-                                                method="POST">
+                                            <form action="#" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Delete</button>
-                                            </form>
+                                            </form>>
                                         </td>
 
                                     </tr>
