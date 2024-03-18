@@ -78,6 +78,10 @@ class FrontendController extends Controller
         $ref_no = substr($ref_no, 0, 15);
         return $ref_no;
     }
+    public function viewReference()
+    {
+        return view('frontend.application.viewReference');
+    }
 }
 
 // $validatedData = $request->validate([

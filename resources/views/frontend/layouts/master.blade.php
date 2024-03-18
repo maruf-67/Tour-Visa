@@ -27,22 +27,21 @@
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('assets/css/templatemo-villa-agency.css') }}">
+
     @stack('style')
-
-
 
 
 </head>
 
-@if (empty(View::hasSection('navbar')))
+{{-- @if (empty(View::hasSection('navbar')))
     @include('frontend.layouts.navbar')
-@endif
+@endif --}}
 
-@stack('nav')
+{{-- @stack('nav') --}}
 
 @yield('content')
 
-@include('frontend.layouts.footer')
+{{-- @include('frontend.layouts.footer') --}}
 
 
 

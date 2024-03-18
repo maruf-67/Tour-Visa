@@ -31,9 +31,10 @@ Route::get('/app', [FrontendController::class, 'index'])->name('app');
 Route::get('/', [FrontendController::class, 'application'])->name('application');
 Route::post('/application/store', [FrontendController::class, 'application_store'])->name('application.store');
 Route::get('/home', [FrontendController::class, 'application'])->name('home');
-// Route::get('/view', [FrontendController::class, 'application_view'])->name('application_view');
+Route::get('/view', [FrontendController::class, 'application_view'])->name('application_view');
 Route::get('/countries', [FrontendController::class, 'countries'])->name('countries');
 Route::get('/app-view/{reference_id}', [FrontendController::class, 'view'])->name('view');
+Route::get('/viewReference', [FrontendController::class, 'viewReference'])->name('viewReference');
 
 
 Auth::routes();

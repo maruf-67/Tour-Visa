@@ -38,12 +38,12 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container mt-5">
 
         <div class="mb-3 mt-5 generateForms">
 
             <fieldset>
-                <div class="container pt-4 px-4">
+                <div class="container mt-5 pt-4 px-4">
                     <h1 class="text-center mb-5 text-success">Application Information</h1>
                     <div class="row section-padding justify-content-center">
                         <div class="col-md-12">
