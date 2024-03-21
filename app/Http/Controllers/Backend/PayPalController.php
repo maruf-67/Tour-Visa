@@ -4,99 +4,78 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Transaction;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
-class PayPalController extends Controller
-{
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function index()
-    {
-        return view('paypal');
-    }
 
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function payment(Request $request)
+class PaypalController extends Controller
+{
+    public function paypal(Request $request)
     {
+        // dd($request->all());
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
         $paypalToken = $provider->getAccessToken();
-
         $response = $provider->createOrder([
             "intent" => "CAPTURE",
             "application_context" => [
-                "return_url" => route('paypal.payment.success'),
-                "cancel_url" => route('paypal.payment/cancel'),
+                "return_url" => route('paypal.success'),
+                "cancel_url" => route('paypal.cancel')
             ],
             "purchase_units" => [
-                0 => [
+                [
                     "amount" => [
                         "currency_code" => "USD",
-                        "value" => "100.00"
+                        "value" => $request->price
                     ]
                 ]
             ]
         ]);
-
-        if (isset($response['id']) && $response['id'] != null) {
-
-            foreach ($response['links'] as $links) {
-                if ($links['rel'] == 'approve') {
-                    return redirect()->away($links['href']);
+        // dd($response);
+        if(isset($response['id']) && $response['id']!=null) {
+            foreach($response['links'] as $link) {
+                if($link['rel'] === 'approve') {
+                    session()->put('reference_id', $request->reference_id);
+                    return redirect()->away($link['href']);
                 }
             }
-
-            return redirect()
-                ->route('cancel.payment')
-                ->with('error', 'Something went wrong.');
-
         } else {
-            return redirect()
-                ->route('create.payment')
-                ->with('error', $response['message'] ?? 'Something went wrong.');
+            return redirect()->route('paypal.cancel');
         }
-
     }
-
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function paymentCancel()
-    {
-        return redirect()
-              ->route('paypal')
-              ->with('error', $response['message'] ?? 'You have canceled the transaction.');
-    }
-
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function paymentSuccess(Request $request)
+    public function success(Request $request)
     {
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
-        $provider->getAccessToken();
-        $response = $provider->capturePaymentOrder($request['token']);
+        $paypalToken = $provider->getAccessToken();
+        $response = $provider->capturePaymentOrder($request->token);
 
-        if (isset($response['status']) && $response['status'] == 'COMPLETED') {
-            return redirect()
-                ->route('paypal')
-                ->with('success', 'Transaction complete.');
+        if(isset($response['status']) && $response['status'] == 'COMPLETED') {
+
+            // Insert data into database
+            $payment = new Transaction;
+
+            $payment->reference_id = session()->get('reference_id');
+            $payment->transaction_id = $response['purchase_units'][0]['payments']['captures'][0]['id'];
+            $payment->amount = $response['purchase_units'][0]['payments']['captures'][0]['amount']['value'];
+            $payment->currency = $response['purchase_units'][0]['payments']['captures'][0]['amount']['currency_code'];
+            $payment->payer_name = $response['payer']['name']['given_name'] . " " . $response['payer']['name']['surname'];
+            $payment->payer_email = $response['payer']['email_address'];
+            $payment->payment_status = $response['status'];
+            $payment->payment_method = "PayPal";
+            $payment->save();
+            return "Payment is successful ";
+
+            unset($_SESSION['reference_id']);
+
+
         } else {
-            return redirect()
-                ->route('paypal')
-                ->with('error', $response['message'] ?? 'Something went wrong.');
+            return redirect()->route('paypal.cancel');
         }
     }
+    public function cancel()
+    {
+        return "Payment is cancelled.";
+    }
 }
+

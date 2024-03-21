@@ -12,23 +12,22 @@ class Transaction extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        'transaction_id',
         'amount',
+        'currency',
+        'payer_name',
+        'payer_email',
         'payment_status',
         'payment_method',
-        'reference',
-        'service_id',
-        'user_id',
+        'reference_id'
     ];
 
     protected $dates = ['deleted_at'];
 
-    public function service()
+    public function application()
     {
-        return $this->belongsTo(Service::class);
+        return $this->hasMany(Application::class,'reference_id');
     }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+
 }

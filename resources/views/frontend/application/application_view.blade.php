@@ -40,64 +40,69 @@
 
 
 
-<div class="page-content">
-    <div class="col-md-12 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body container">
-                <div class="row">
-                    <div class="col-12 col-md-12 col-xl-12">
-                        <div class="card mt-3">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <H1 class="card-text text-center text-primary">{{ $reference_id  }}</H1>
+    <div class="page-content">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body container">
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12">
+                            <div class="card mt-3">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <H1 class="card-text text-center text-primary">{{ $reference_id }}</H1>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
 
-                <div class="row">
-                    <div class="col-6 col-md-12 col-xl-12 col-sm-6">
-                        <div class="card mt-3">
-                            <div class="card-body">
-                                <div class="row">
-                                    <table class="table table-light">
-                                        <thead>
-                                          <tr>
-                                            <th scope="col">SL</th>
-                                            <th scope="col">Application ID</th>
-                                            <th scope="col">Applicant Name</th>
-                                            <th scope="col">Service Type</th>
-                                            <th scope="col">Payable</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($applications as $application)
-                                                <tr>
-                                                    <th scope="row">{{ $loop->index + 1 }}</th>
-                                                    <td>{{ $application->id }}</td>
-                                                    <td>{{ $application->first_name }} {{ $application->last_name }}</td>
-                                                    <td>{{ $application->service->name }}</td>
-                                                    <td>{{ $application->service->price}}</td>
-                                                </tr>
-                                            @endforeach
+                    <div class="row">
+                        <div class="col-6 col-md-12 col-xl-12 col-sm-6">
+                            <div class="card mt-3">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <form action="{{ route('paypal.payment') }}" method="POST">
+                                            @csrf
+                                            <table class="table table-light">
+                                                <thead>
+                                                  <tr>
+                                                    <th scope="col">SL</th>
+                                                    <th scope="col">Application ID</th>
+                                                    <th scope="col">Applicant Name</th>
+                                                    <th scope="col">Service Type</th>
+                                                    <th scope="col">Payable</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($applications as $application)
+                                                        <tr>
+                                                            <th scope="row">{{ $loop->index + 1 }}</th>
+                                                            <td>{{ $application->id }}</td>
+                                                            <td>{{ $application->first_name }} {{ $application->last_name }}</td>
+                                                            <td>{{ $application->service->name }}</td>
+                                                            <td>{{ $application->service->price}}</td>
+                                                        </tr>
+                                                    @endforeach
 
-                                          <tr>
-                                              <td></td>
-                                              <td></td>
-                                              <td></td>
-                                              <td  class="d-flex justify-content-end">SUM =</th>
-                                              <td>{{ $sum }}</td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                </div>
-                                <div class="d-flex justify-content-end mt-4">
-                                    <a href="{{ route('paypal.payment') }}" class="btn btn-success">Pay with PayPal </a>
-                                    {{-- <input type="button" class="btn btn-primary" value="Proceed To Payment"> --}}
+                                                  <tr>
+                                                      <td></td>
+                                                      <td></td>
+                                                      <td></td>
+                                                      <td class="d-flex justify-content-end">SUM =</td>
+                                                      <td>{{ $sum }}</td>
+                                                  </tr>
+                                                </tbody>
+                                              </table>
+                                              <input type="hidden" name="price" value="{{ $sum }}">
+                                              <input type="hidden" name="reference_id" value="{{ $reference_id }}">
+                                              <div class="d-flex justify-content-end mt-4">
+                                                  <button type="submit" class="btn btn-success">Submit Payment</button>
+                                              </div>
+                                          </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -106,6 +111,5 @@
             </div>
         </div>
     </div>
-</div>
 
 @endsection

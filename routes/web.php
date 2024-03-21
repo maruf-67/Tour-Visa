@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\PayPalController;
@@ -21,7 +20,7 @@ use App\Http\Controllers\Backend\ApplicationController;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
+ */
 
 Route::get('/welcome', function () {
     return view('welcome');
@@ -35,7 +34,6 @@ Route::get('/view', [FrontendController::class, 'application_view'])->name('appl
 Route::get('/countries', [FrontendController::class, 'countries'])->name('countries');
 Route::get('/app-view/{reference_id}', [FrontendController::class, 'view'])->name('view');
 Route::get('/viewReference', [FrontendController::class, 'viewReference'])->name('viewReference');
-
 
 Auth::routes();
 
@@ -96,7 +94,7 @@ Route::middleware(['auth', 'user-access:administrator,admin,moderator'])->name('
         Route::get('/unpaid', 'unpaid')->name('unpaid');
         Route::get('/unpaid', 'unpaid')->name('unpaid');
         Route::post('/update/{id}', 'update')->name('update');
-        Route::delete('/destroy/{id}','destroy')->name('destroy');
+        Route::delete('/destroy/{id}', 'destroy')->name('destroy');
 
     });
 
@@ -105,11 +103,12 @@ Route::middleware(['auth', 'user-access:administrator,admin,moderator'])->name('
 Route::controller(FrontendController::class)->name('user.')->prefix('user')->group(function () {
     Route::get('/index', 'index')->name('index');
     // Route::post('/store', 'store')->name('store');
-    Route::get('/application','application')->name('application');
-    Route::post('/application-store','application_store')->name('application_store');
+    Route::get('/application', 'application')->name('application');
+    Route::post('/application-store', 'application_store')->name('application_store');
 });
 
-Route::get('paypal', [PayPalController::class, 'index'])->name('paypal');
-Route::get('paypal/payment', [PayPalController::class, 'payment'])->name('paypal.payment');
-Route::get('paypal/payment/success', [PayPalController::class, 'paymentSuccess'])->name('paypal.payment.success');
-Route::get('paypal/payment/cancel', [PayPalController::class, 'paymentCancel'])->name('paypal.payment/cancel');
+Route::controller(PayPalController::class)->name('paypal.')->prefix('paypal')->group(function () {
+    Route::post('paypal/payment', 'paypal')->name('payment');
+    Route::get('paypal/payment/success', 'success')->name('success');
+    Route::get('paypal/payment/cancel', 'cancel')->name('cancel');
+});
