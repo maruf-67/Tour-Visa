@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="row">
 
-                                    <div class="col-5 col-md-10 col-xl-5">
+                                    <div class="col-5 col-md-10 col-xl-4">
                                         <div class="card mt-3">
                                             <div class="card-body">
                                                 <div class="row">
@@ -166,7 +166,7 @@
 
                                     </div>
 
-                                    <div class="col-5 col-md-10 col-xl-5">
+                                    <div class="col-5 col-md-10 col-xl-4">
 
                                         <div class="card mt-3">
                                             <div class="card-body">
@@ -262,20 +262,75 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-2 col-md-2 col-xl-2">
+                                    <div class="col-2 col-md-2 col-xl-4">
                                         <div class="card mt-3">
                                             <div class="card-body">
-                                                <div class="d-flex justify-content-between align-items-baseline">
-                                                    <h6 class="card-title mb-0">Applicaton</h6>
+                                                <div class="d-flex justify-content-center align-items-baseline">
+                                                    <h6 class="card-title mb-0 text-success">Applicaton</h6>
                                                 </div>
+
                                                 <div class="row">
-                                                    <div class="col-6 col-md-12 col-xl-7">
+                                                    <div class="col-6 col-md-12 col-xl-4">
                                                         <div class="d-flex align-items-baseline">
                                                             <p class="text-success">
                                                                 <span>Visitors ID</span>
-                                                                <i data-feather="arrow-down" class="icon-sm mb-1"></i>
+
                                                             </p>
                                                         </div>
+
+                                                        {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
+                                                    </div>
+                                                    <div class="col-6 col-md-12 col-xl-4">
+                                                        <div class="d-flex align-items-baseline">
+                                                            <p class="text-success">
+                                                                <span>Status</span>
+
+                                                            </p>
+                                                        </div>
+
+                                                        {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
+                                                    </div>
+                                                    <div class="col-6 col-md-12 col-xl-4">
+                                                        <div class="d-flex align-items-baseline">
+                                                            <p class="text-success">
+                                                                <span>Payment Status</span>
+
+                                                            </p>
+                                                        </div>
+
+                                                        {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-6 col-md-12 col-xl-4">
+                                                        <div class="d-flex align-items-baseline">
+                                                            <p >
+                                                                <span>1</span>
+
+                                                            </p>
+                                                        </div>
+
+                                                        {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
+                                                    </div>
+                                                    <div class="col-6 col-md-12 col-xl-4">
+                                                        <div class="d-flex align-items-baseline">
+                                                            <p >
+                                                                <span>Pending</span>
+
+                                                            </p>
+                                                        </div>
+
+                                                        {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
+                                                    </div>
+                                                    <div class="col-6 col-md-12 col-xl-4">
+                                                        <div class="d-flex align-items-baseline">
+                                                            <p >
+                                                                <span>Unpaid</span>
+
+                                                            </p>
+                                                        </div>
+
                                                         {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
                                                     </div>
                                                 </div>
