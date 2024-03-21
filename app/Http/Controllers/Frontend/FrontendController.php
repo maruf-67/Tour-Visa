@@ -78,9 +78,12 @@ class FrontendController extends Controller
         $ref_no = substr($ref_no, 0, 15);
         return $ref_no;
     }
-    public function viewReference()
+    public function viewReference(Request $request)
     {
-        return view('frontend.application.viewReference');
+        // dd($request->reference_id);
+        $applications = Application::with(['service','transaction','birthCountry','citizenCountry','passportCountry'])->where('reference_id', $request->reference_id)->get();
+        // dd($applications);
+        return view('frontend.application.viewReference', compact('applications'));
     }
 }
 

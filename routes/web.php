@@ -33,7 +33,7 @@ Route::get('/home', [FrontendController::class, 'application'])->name('home');
 Route::get('/view', [FrontendController::class, 'application_view'])->name('application_view');
 Route::get('/countries', [FrontendController::class, 'countries'])->name('countries');
 Route::get('/app-view/{reference_id}', [FrontendController::class, 'view'])->name('view');
-Route::get('/viewReference', [FrontendController::class, 'viewReference'])->name('viewReference');
+Route::post('/viewReference', [FrontendController::class, 'viewReference'])->name('viewReference');
 
 Auth::routes();
 

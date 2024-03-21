@@ -1,8 +1,8 @@
 @extends('frontend.layouts.master')
 @section('title', 'Appliaction Details')
 
-@push("style")
-<link rel="stylesheet" href="{{ asset('css/demo1/style.css') }}">
+@push('style')
+    <link rel="stylesheet" href="{{ asset('css/demo1/style.css') }}">
 @endpush
 
 @section('content')
@@ -301,39 +301,55 @@
                                                         {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
                                                     </div>
                                                 </div>
+                                                @foreach ($applications as $application)
+                                                    <div class="row">
+                                                        <div class="col-6 col-md-12 col-xl-4">
+                                                            <div class="d-flex align-items-baseline">
+                                                                <p>
+                                                                    <span>{{ $application->id }}</span>
 
-                                                <div class="row">
-                                                    <div class="col-6 col-md-12 col-xl-4">
-                                                        <div class="d-flex align-items-baseline">
-                                                            <p >
-                                                                <span>1</span>
+                                                                </p>
+                                                            </div>
 
-                                                            </p>
+                                                            {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
                                                         </div>
+                                                        <div class="col-6 col-md-12 col-xl-4">
+                                                            <div class="d-flex align-items-baseline">
+                                                                <p>
+                                                                    <span>
+                                                                        @if ($application->status == 1)
+                                                                            Pending
+                                                                        @elseif($application->status == 2)
+                                                                            Processing
+                                                                        @elseif($application->status == 3)
+                                                                            Approved
+                                                                        @elseif($application->status == 4)
+                                                                            On-Hold
+                                                                        @elseif($application->status == 5)
+                                                                            Rejected
+                                                                        @else
+                                                                            Unknown Status
+                                                                        @endif
+                                                                    </span>
 
-                                                        {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
-                                                    </div>
-                                                    <div class="col-6 col-md-12 col-xl-4">
-                                                        <div class="d-flex align-items-baseline">
-                                                            <p >
-                                                                <span>Pending</span>
+                                                                </p>
+                                                            </div>
 
-                                                            </p>
+                                                            {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
                                                         </div>
+                                                        <div class="col-6 col-md-12 col-xl-4">
+                                                            <div class="d-flex align-items-baseline">
+                                                                <p>
+                                                                    <span>{{ $application->is_payment ? 'Paid' : 'Unpaid' }}</span>
 
-                                                        {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
-                                                    </div>
-                                                    <div class="col-6 col-md-12 col-xl-4">
-                                                        <div class="d-flex align-items-baseline">
-                                                            <p >
-                                                                <span>Unpaid</span>
+                                                                </p>
+                                                            </div>
 
-                                                            </p>
+                                                            {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
                                                         </div>
-
-                                                        {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
                                                     </div>
-                                                </div>
+                                                @endforeach
+
                                             </div>
                                         </div>
                                     </div>

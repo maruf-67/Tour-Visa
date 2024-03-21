@@ -62,28 +62,24 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <h5 class="card-title text-center fs-3 text-secondary"><b>What is your Reference Number??</b></h5>
-                                            <input type="text" class="form-control" id="exampleInputNumber"
-                                                placeholder="Enter Your ETA Reference Number Here..">
-                                            <small id="phone" class="form-text text-muted ms-1">We'll never share your
-                                                information
-                                                with
-                                                anyone
-                                                else.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card mt-3">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12 text-center">
-                                            <a href="{{ route('viewReference') }}"><button class="btn btn-primary col-6">Check Now</button></a>
+                                            <!-- Begin Form -->
+                                            <form action="{{ route('viewReference') }}" method="POST">
+                                                @csrf
+                                                <input type="text" name="reference_id" class="form-control" id="exampleInputNumber" placeholder="Enter Your ETA Reference Number Here..">
+                                                <small id="phone" class="form-text text-muted ms-1">We'll never share your information with anyone else.</small>
+                                                <!-- Submit Button -->
+                                                <div class="text-center mt-3">
+                                                    <button type="submit" class="btn btn-primary col-6">Check Now</button>
+                                                </div>
+                                            </form>
+                                            <!-- End Form -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
