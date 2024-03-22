@@ -48,7 +48,11 @@
 
                         <div class="col-lg-3 pe-0">
                             <h4 class="fw-bolder text-uppercase text-end mt-4 mb-2">invoice</h4>
-                            <h6 class="text-end mb-5 pb-4"># INV-002308</h6>
+                            @foreach ($applications as $application)
+                                <p class="text-end mb-5 pb-4"># {{ $application->reference_id }}</p>
+                                @break <!-- Stop the loop after printing the first reference_id -->
+                            @endforeach
+
                             <h6 class="mb-0 mt-3 text-end fw-normal mb-2"><span class="text-muted">Invoice Date :</span>
                                 {{ date('Y-m-d H:i:s') }}</h6>
                             {{-- <h6 class="text-end fw-normal"><span class="text-muted">Due Date :</span> 12th Jul 2022</h6> --}}
@@ -56,23 +60,23 @@
                     </div>
                     <div class="container-fluid mt-5 d-flex justify-content-center w-100">
                         <div class="table-responsive w-100">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered text-center">
                                 <thead>
                                     <tr>
                                         <th>SL No</th>
                                         <th>Reference No</th>
-                                        <th class="text-end">Applicant Name</th>
-                                        <th class="text-end">Passport Number</th>
-                                        <th class="text-end">Service Name</th>
-                                        <th class="text-end">Unit cost</th>
+                                        <th >Applicant Name</th>
+                                        <th >Passport Number</th>
+                                        <th >Service Name</th>
+                                        <th >Unit cost</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($applications as $application)
-                                    <tr class="text-end">
-                                        <td class="text-start"> {{ $loop->index + 1 }} </td>
-                                        <td class="text-start">{{ $application->id }}</td>
-                                        <td class="text-start">{{ $application->first_name }} {{ $application->last_name }}</td>
+                                    <tr class="text-center">
+                                        <td> {{ $loop->index + 1 }} </td>
+                                        <td>{{ $application->id }}</td>
+                                        <td>{{ $application->first_name }} {{ $application->last_name }}</td>
                                         <td>{{ $application->passport_number }}</td>
                                         <td>{{ $application->service->name }}</td>
                                         <td>{{ $application->service->price }}</td>
