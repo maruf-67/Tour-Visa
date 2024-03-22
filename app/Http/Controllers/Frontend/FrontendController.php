@@ -9,6 +9,7 @@ use App\Models\Service;
 use App\Models\Homepage;
 use Illuminate\Http\Request;
 
+
 class FrontendController extends Controller
 {
     public function view($reference_id)
@@ -93,7 +94,7 @@ class FrontendController extends Controller
         $applications = Application::with(['service','transaction','birthCountry','citizenCountry','passportCountry'])->where('reference_id', $id)->get();
         $homedata = Homepage::first();
         // dd($homedata);
-        dd($applications);
+        // dd($applications);
         return view('frontend.application.invoice', compact('applications','homedata'));
 
     }
