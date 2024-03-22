@@ -22,15 +22,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('frontend.layouts.master', function ($view) {
-            $settings = Homepage::first();
-            $favicon = $settings ? $settings->fav_icon : '';
-            $view->with('favicon', $favicon);
+            $homedata = Homepage::first();
+            $view->with('homedata', $homedata);
         });
 
         View::composer('backend.layouts.master', function ($view) {
-            $settings = Homepage::first();
-            $favicon = $settings ? $settings->fav_icon : '';
-            $view->with('favicon', $favicon);
+            $homedata = Homepage::first();
+
+            $view->with('homedata', $homedata);
         });
     }
 }
