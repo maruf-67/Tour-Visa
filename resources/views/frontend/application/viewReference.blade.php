@@ -47,221 +47,225 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="row">
-
-                                    <div class="col-5 col-md-10 col-xl-4">
-                                        <div class="card mt-3">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-4">
-                                                        <h5 class="card-title">Reference ID:</h5>
+                                    @foreach ($applications as $application)
+                                        <div class="col-5 col-md-10 col-xl-4" id="details-a{{ $application->id }}"
+                                            style="display: {{ $loop->first ? 'block' : 'none' }};">
+                                            <div class="card mt-3">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <h5 class="card-title">Reference ID:</h5>
+                                                        </div>
+                                                        <div class="col-8">
+                                                            <p class="card-text">{{ $application->reference_id }}</p>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-8">
-                                                        {{-- <p class="card-text">{{ $application->reference_id }}</p> --}}
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <h5 class="card-title">Service Type</h5>
+                                                        </div>
+                                                        <div class="col-8">
+                                                            <p class="card-text">{{ $application->service->name }}</p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-4">
-                                                        <h5 class="card-title">Service Type</h5>
+                                            </div>
+
+                                            <div class="card mt-3">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Full Name</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">{{ $application->first_name }} {{ $application->last_name }}<h5 class="card-title"></h5>
+                                                            </p>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-8">
-                                                        {{-- <p class="card-text">{{ $application->service->name }}</p> --}}
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Email</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">{{ $application->email }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Phone</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">{{ $application->phone }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Sex</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">{{ $application->gender }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Birth Country</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">{{ $application->birthCountry->name }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Citizen Country</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">{{ $application->citizenCountry->name }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Address</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">{{ $application->address }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Date of Birth</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">{{ $application->dob }}</p>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="card mt-3">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <h5 class="card-title">Details</h5>
+                                                        </div>
+                                                        <div class="col-8">
+                                                            {{-- <p class="card-text">{{ $application->details }}</p> --}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="col-5 col-md-10 col-xl-4" id="details-b{{ $application->id }}"
+                                            style="display: {{ $loop->first ? 'block' : 'none' }};">
+
+                                            <div class="card mt-3">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Passport Country</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">{{ $application->passportCountry->name }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Passport Number</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">{{ $application->passport_number }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Issue Date</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">{{ $application->passport_issue }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Expiry Date</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">{{ $application->passport_expiry }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Intended Date</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">{{ $application->intended_date }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card mt-3">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Criminal Record</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">{{ $application->is_criminal_record==1 ? 'Yes' : 'No' }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">War Crime</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">{{ $application->is_war_crime==1 ? 'Yes' : 'No' }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card mt-3">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Payment Status</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">{{ $application->is_payment==1 ? 'Paid' : 'Unpaid' }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Payment Details</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text"><button class="btn btn-primary">Check</button></p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="card mt-3">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <h5 class="card-title">Full Name</h5>
-                                                    </div>
-                                                    <div class="col-7">
-                                                        {{-- <p class="card-text">{{ $application->first_name }} {{ $application->last_name }}<h5 class="card-title"></h5> --}}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <h5 class="card-title">Email</h5>
-                                                    </div>
-                                                    <div class="col-7">
-                                                        {{-- <p class="card-text">{{ $application->email }}</p> --}}
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <h5 class="card-title">Phone</h5>
-                                                    </div>
-                                                    <div class="col-7">
-                                                        {{-- <p class="card-text">{{ $application->phone }}</p> --}}
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <h5 class="card-title">Sex</h5>
-                                                    </div>
-                                                    <div class="col-7">
-                                                        {{-- <p class="card-text">{{ $application->gender }}</p> --}}
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <h5 class="card-title">Birth Country</h5>
-                                                    </div>
-                                                    <div class="col-7">
-                                                        {{-- <p class="card-text">{{ $application->birthCountry->name }}</p> --}}
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <h5 class="card-title">Citizen Country</h5>
-                                                    </div>
-                                                    <div class="col-7">
-                                                        {{-- <p class="card-text">{{ $application->citizenCountry->name }}</p> --}}
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <h5 class="card-title">Address</h5>
-                                                    </div>
-                                                    <div class="col-7">
-                                                        {{-- <p class="card-text">{{ $application->address }}</p> --}}
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <h5 class="card-title">Date of Birth</h5>
-                                                    </div>
-                                                    <div class="col-7">
-                                                        {{-- <p class="card-text">{{ $application->dob }}</p> --}}
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="card mt-3">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-4">
-                                                        <h5 class="card-title">Details</h5>
-                                                    </div>
-                                                    <div class="col-8">
-                                                        {{-- <p class="card-text">{{ $application->details }}</p> --}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-
-                                    <div class="col-5 col-md-10 col-xl-4">
-
-                                        <div class="card mt-3">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <h5 class="card-title">Passport Country</h5>
-                                                    </div>
-                                                    <div class="col-7">
-                                                        {{-- <p class="card-text">{{ $application->passportCountry->name }}</p> --}}
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <h5 class="card-title">Passport Number</h5>
-                                                    </div>
-                                                    <div class="col-7">
-                                                        {{-- <p class="card-text">{{ $application->passport_number }}</p> --}}
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <h5 class="card-title">Issue Date</h5>
-                                                    </div>
-                                                    <div class="col-7">
-                                                        {{-- <p class="card-text">{{ $application->passport_issue }}</p> --}}
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <h5 class="card-title">Expiry Date</h5>
-                                                    </div>
-                                                    <div class="col-7">
-                                                        {{-- <p class="card-text">{{ $application->passport_expiry }}</p> --}}
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <h5 class="card-title">Intended Date</h5>
-                                                    </div>
-                                                    <div class="col-7">
-                                                        {{-- <p class="card-text">{{ $application->intended_date }}</p> --}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="card mt-3">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <h5 class="card-title">Criminal Record</h5>
-                                                    </div>
-                                                    <div class="col-7">
-                                                        {{-- <p class="card-text">{{ $application->is_criminal_record==1 ? 'Yes' : 'No' }}</p> --}}
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <h5 class="card-title">War Crime</h5>
-                                                    </div>
-                                                    <div class="col-7">
-                                                        {{-- <p class="card-text">{{ $application->is_war_crime==1 ? 'Yes' : 'No' }}</p> --}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="card mt-3">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <h5 class="card-title">Payment Status</h5>
-                                                    </div>
-                                                    <div class="col-7">
-                                                        {{-- <p class="card-text">{{ $application->is_payment==1 ? 'Paid' : 'Unpaid' }}</p> --}}
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <h5 class="card-title">Payment Details</h5>
-                                                    </div>
-                                                    <div class="col-7">
-                                                        {{-- <p class="card-text"><button class="btn btn-primary">Check</button></p> --}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                    @endforeach
+                                    {{-- Application loop --}}
                                     <div class="col-2 col-md-2 col-xl-4">
                                         <div class="card mt-3">
                                             <div class="card-body">
@@ -306,7 +310,9 @@
                                                         <div class="col-6 col-md-12 col-xl-4">
                                                             <div class="d-flex align-items-baseline">
                                                                 <p>
-                                                                    <span>{{ $application->id }}</span>
+                                                                    <span><button class="btn btn-link"
+                                                                            onclick="toggleDetails('{{ $application->id }}')">
+                                                                            {{ $application->id }} </button></span>
 
                                                                 </p>
                                                             </div>
@@ -354,6 +360,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -362,3 +369,42 @@
         </div> <!-- row -->
     </div>
 @endsection
+@push('script')
+    <script>
+        // function showDetails(id) {
+        //     var details = document.getElementById(id);
+        //     var allDetails = document.querySelectorAll('[id^="details"]');
+        //     allDetails.forEach(function(element) {
+        //         if (element.id === id) {
+        //             if (element.style.display === "none") {
+        //                 element.style.display = "block";
+        //             } else {
+        //                 element.style.display = "none";
+        //             }
+        //         } else {
+        //             element.style.display = "none";
+        //         }
+        //     });
+        // }
+        function toggleDetails(detailsId) {
+            console.log(detailsId);
+            // Select all elements with IDs starting with "details-a" or "details-b"
+            var detailsBlocksA = document.querySelectorAll('[id^="details-a"]');
+            var detailsBlocksB = document.querySelectorAll('[id^="details-b"]');
+
+            // Iterate over each element and toggle its display property
+            detailsBlocksA.forEach(function(detailsBlock) {
+                detailsBlock.style.display =  "none";
+            });
+
+            detailsBlocksB.forEach(function(detailsBlock) {
+                detailsBlock.style.display =  "none";
+            });
+
+            var detailsBlockA = document.getElementById("details-a" + detailsId);
+            var detailsBlockB = document.getElementById("details-b" + detailsId);
+            detailsBlockA.style.display = "block";
+            detailsBlockB.style.display = "block";
+        }
+    </script>
+@endpush
