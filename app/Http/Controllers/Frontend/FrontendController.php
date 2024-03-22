@@ -85,6 +85,15 @@ class FrontendController extends Controller
         // dd($applications);
         return view('frontend.application.viewReference', compact('applications'));
     }
+
+
+    public function invoice($id)
+    {
+        $applications = Application::with(['service','transaction','birthCountry','citizenCountry','passportCountry'])->where('reference_id', $id)->get();
+        // dd($applications);
+        return view('frontend.application.invoice', compact('applications'));
+
+    }
 }
 
 // $validatedData = $request->validate([

@@ -26,7 +26,7 @@ class Transaction extends Model
 
     public function application()
     {
-        return $this->hasMany(Application::class,'reference_id');
+        return $this->hasMany(Application::class);
     }
 
 

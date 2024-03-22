@@ -15,6 +15,11 @@
         rel="stylesheet">
 
     <title>Villa Agency - Real Estate HTML5 Template</title>
+    @if (isset($favicon))
+    <link rel="icon" type="image/x-icon" href="{{ asset($favicon) }}">
+    @else
+    <link rel="shortcut icon" href="{{ asset("images/favicon.png") }}" />
+    @endif
 
 
     <!-- Additional CSS Files -->

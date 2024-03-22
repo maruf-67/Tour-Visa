@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Application;
 use App\Models\Transaction;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
 
@@ -64,6 +65,15 @@ class PaypalController extends Controller
             $payment->payment_status = $response['status'];
             $payment->payment_method = "PayPal";
             $payment->save();
+
+            $applications = Application::where('reference_id', session()->get('reference_id'))->get();
+            foreach ($applications as $application) {
+
+                $application->is_payment = 1;
+                $application->transaction_id = $payment->id;
+
+                $application->save();
+            }
             return "Payment is successful ";
 
             unset($_SESSION['reference_id']);

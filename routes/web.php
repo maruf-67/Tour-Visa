@@ -1,15 +1,15 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\AdminController;
-use App\Http\Controllers\Backend\PayPalController;
+use App\Http\Controllers\Backend\ApplicationController;
 use App\Http\Controllers\Backend\CountryController;
+use App\Http\Controllers\Backend\PayPalController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\FrontendController;
-use App\Http\Controllers\Backend\ApplicationController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,15 +25,6 @@ use App\Http\Controllers\Backend\ApplicationController;
 Route::get('/welcome', function () {
     return view('welcome');
 });
-
-Route::get('/app', [FrontendController::class, 'index'])->name('app');
-Route::get('/', [FrontendController::class, 'application'])->name('application');
-Route::post('/application/store', [FrontendController::class, 'application_store'])->name('application.store');
-Route::get('/home', [FrontendController::class, 'application'])->name('home');
-Route::get('/view', [FrontendController::class, 'application_view'])->name('application_view');
-Route::get('/countries', [FrontendController::class, 'countries'])->name('countries');
-Route::get('/app-view/{reference_id}', [FrontendController::class, 'view'])->name('view');
-Route::post('/viewReference', [FrontendController::class, 'viewReference'])->name('viewReference');
 
 Auth::routes();
 
@@ -105,6 +96,18 @@ Route::controller(FrontendController::class)->name('user.')->prefix('user')->gro
     // Route::post('/store', 'store')->name('store');
     Route::get('/application', 'application')->name('application');
     Route::post('/application-store', 'application_store')->name('application_store');
+});
+
+Route::controller(FrontendController::class)->group(function () {
+    Route::get('/app', 'index')->name('app');
+    Route::get('/', 'application')->name('application');
+    Route::post('/application/store', 'application_store')->name('application.store');
+    Route::get('/home', 'application')->name('home');
+    Route::get('/view', 'application_view')->name('application_view');
+    Route::get('/countries', 'countries')->name('countries');
+    Route::get('/app-view/{reference_id}', 'view')->name('view');
+    Route::post('/viewReference', 'viewReference')->name('viewReference');
+    Route::get('/invoice/{id}', 'invoice')->name('invoice');
 });
 
 Route::controller(PayPalController::class)->name('paypal.')->prefix('paypal')->group(function () {

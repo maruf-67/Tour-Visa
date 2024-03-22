@@ -258,7 +258,9 @@
                                                             <h5 class="card-title">Payment Details</h5>
                                                         </div>
                                                         <div class="col-7">
-                                                            <p class="card-text"><button class="btn btn-primary">Check</button></p>
+                                                            <p class="card-text">
+                                                                <a href="{{ route('invoice',$application->reference_id) }}" class="btn btn-primary">Check</a>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>

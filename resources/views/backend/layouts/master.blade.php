@@ -42,8 +42,13 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{ asset('css/demo1/style.css') }}">
     <!-- End layout styles -->
-
+    @if (isset($favicon))
+    <link rel="icon" type="image/x-icon" href="{{ asset($favicon) }}">
+    @else
     <link rel="shortcut icon" href="{{ asset("images/favicon.png") }}" />
+    @endif
+
+
 
 </head>
 <body class="sidebar-dark">

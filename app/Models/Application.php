@@ -69,9 +69,9 @@ class Application extends Model
         return $this->belongsTo(Service::class);
     }
 
- 
+
     public function transaction()
     {
-        return $this->belongsTo(Transaction::class,'reference_id');
+        return $this->belongsTo(Transaction::class);
     }
 }
