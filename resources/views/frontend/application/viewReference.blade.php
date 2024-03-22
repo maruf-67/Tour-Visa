@@ -371,23 +371,8 @@
 @endsection
 @push('script')
     <script>
-        // function showDetails(id) {
-        //     var details = document.getElementById(id);
-        //     var allDetails = document.querySelectorAll('[id^="details"]');
-        //     allDetails.forEach(function(element) {
-        //         if (element.id === id) {
-        //             if (element.style.display === "none") {
-        //                 element.style.display = "block";
-        //             } else {
-        //                 element.style.display = "none";
-        //             }
-        //         } else {
-        //             element.style.display = "none";
-        //         }
-        //     });
-        // }
         function toggleDetails(detailsId) {
-            console.log(detailsId);
+            // console.log(detailsId);
             // Select all elements with IDs starting with "details-a" or "details-b"
             var detailsBlocksA = document.querySelectorAll('[id^="details-a"]');
             var detailsBlocksB = document.querySelectorAll('[id^="details-b"]');
