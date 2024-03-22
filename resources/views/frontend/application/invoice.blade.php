@@ -42,11 +42,8 @@
                 <div class="card-body">
                     <div class="container-fluid d-flex justify-content-between">
                         <div class="col-lg-3 ps-0">
-                            <a href="#" class="noble-ui-logo d-block mt-3"></a>
-                            <p class="mt-1 mb-1"><b>NobleUI Themes</b></p>
-                            <p>108,<br> Great Russell St,<br>London, WC1B 3NA.</p>
-                            <h5 class="mt-5 mb-2 text-muted">Invoice to :</h5>
-                            <p>Joseph&nbsp;E&nbsp;Carr,<br> 102, 102 Crown Street,<br> London, W3 3PR.</p>
+                            <a href="#" ><img src="{{ asset($homedata->logo) }}" alt="Logo" style="width:80px;"/></a>
+
                         </div>
                         <div class="col-lg-3 pe-0">
                             <h4 class="fw-bolder text-uppercase text-end mt-4 mb-2">invoice</h4>

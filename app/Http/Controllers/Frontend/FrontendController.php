@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Application;
 use App\Models\Country;
 use App\Models\Service;
+use App\Models\Homepage;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -90,8 +91,10 @@ class FrontendController extends Controller
     public function invoice($id)
     {
         $applications = Application::with(['service','transaction','birthCountry','citizenCountry','passportCountry'])->where('reference_id', $id)->get();
-        // dd($applications);
-        return view('frontend.application.invoice', compact('applications'));
+        $homedata = Homepage::first();
+        // dd($homedata);
+        dd($applications);
+        return view('frontend.application.invoice', compact('applications','homedata'));
 
     }
 }
