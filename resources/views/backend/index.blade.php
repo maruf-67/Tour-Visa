@@ -27,28 +27,62 @@
                 </button>
             </div>
         </div>
-        <div class="d-flex justify-content-start align-items-center flex-wrap grid-margin">
-            @foreach ($services as $service)
-            <div class="col-xl-3 col-sm-6 p-3 ">
-                        <a href="{{ route('admin.service.service', $service->id) }}">
-                        <div class="card mini-stat bg-primary">
-                            <div class="card-body mini-stat-img">
-                                <div class="mini-stat-icon">
-                                    {{-- <i class="mdi mdi-cart-arrow-right float-end"></i> --}}
+        <div class="row">
+            <div class="card mb-3">
+                <h2> Services</h1>
+                <div class="d-flex justify-content-start align-items-center flex-wrap grid-margin mt-3 ">
+                    @foreach ($services as $service)
+                    <div class="col-xl-3 col-sm-6 p-3 ">
+                                <a href="{{ route('admin.service.service', $service->id) }}">
+                                <div class="card mini-stat bg-primary">
+                                    <div class="card-body mini-stat-img">
+                                        <div class="mini-stat-icon">
+                                            {{-- <i class="mdi mdi-cart-arrow-right float-end"></i> --}}
 
+                                        </div>
+                                        <div class="text-white">
+                                            <h6 class="text-uppercase mb-3 font-size-16 text-white">{{ $service->name }}
+                                                Applications</h6>
+                                            <h2 class="mb-4 text-white">{{ $service->applications_count }}</h2>
+                                        </div>
+                                        <i class="me-2 icon-md" data-feather="arrow-right-circle"></i>
+                                    </div>
                                 </div>
-                                <div class="text-white">
-                                    <h6 class="text-uppercase mb-3 font-size-16 text-white">{{ $service->name }}
-                                        Applications</h6>
-                                    <h2 class="mb-4 text-white">{{ $service->applications_count }}</h2>
-                                </div>
-                                <i class="me-2 icon-md" data-feather="arrow-right-circle"></i>
+                            </a>
                             </div>
-                        </div>
-                    </a>
-                    </div>
-            @endforeach
+                    @endforeach
 
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="card">
+                <h2> Application Data Filter</h1>
+                <div class="d-flex justify-content-start align-items-center flex-wrap grid-margin mt-3">
+                    @foreach ($todays as $today)
+                    <div class="col-xl-3 col-sm-6 p-3 ">
+                                <a href="{{ route('admin.service.service', $service->id) }}">
+                                <div class="card mini-stat bg-primary">
+                                    <div class="card-body mini-stat-img">
+                                        <div class="mini-stat-icon">
+                                            {{-- <i class="mdi mdi-cart-arrow-right float-end"></i> --}}
+
+                                        </div>
+                                        <div class="text-white">
+                                            <h6 class="text-uppercase mb-3 font-size-16 text-white">{{ $service->name }}
+                                                Applications</h6>
+                                            <h2 class="mb-4 text-white">{{ $today->today_Count }}</h2>
+                                        </div>
+                                        <i class="me-2 icon-md" data-feather="arrow-right-circle"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            </div>
+                    @endforeach
+
+                </div>
+            </div>
         </div>
 {{--
         <div class="row">
