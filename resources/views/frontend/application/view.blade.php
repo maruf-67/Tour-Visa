@@ -48,7 +48,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-12">
-                                            <H1 class="card-text text-center text-primary">Preview Form 1</H1>
+                                            <H1 class="card-text text-center text-primary">Check Your Visa Status</H1>
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@
                                             <!-- Begin Form -->
                                             <form action="{{ route('viewReference') }}" method="POST">
                                                 @csrf
-                                                <input type="text" name="reference_id" class="form-control" id="exampleInputNumber" placeholder="Enter Your ETA Reference Number Here..">
+                                                <input type="text" name="reference_id" class="form-control" id="exampleInputNumber" placeholder="Input Your Reference Number!!">
                                                 <small id="phone" class="form-text text-muted ms-1">We'll never share your information with anyone else.</small>
                                                 <!-- Submit Button -->
                                                 <div class="text-center mt-3">

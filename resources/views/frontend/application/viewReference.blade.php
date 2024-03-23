@@ -50,7 +50,7 @@
 
                                 <div class="row">
                                     @foreach ($applications as $application)
-                                        <div class="col-5 col-md-10 col-xl-4" id="details-a{{ $application->id }}"
+                                        <div class="col-12 col-md-6 col-xl-4" id="details-a{{ $application->id }}"
                                             style="display: {{ $loop->first ? 'block' : 'none' }};">
                                             <div class="card mt-3">
                                                 <div class="card-body">
@@ -159,7 +159,7 @@
                                                             <h5 class="card-title">Details</h5>
                                                         </div>
                                                         <div class="col-8">
-                                                            {{-- <p class="card-text">{{ $application->details }}</p> --}}
+                                                            <p class="card-text">{{ $application->details }}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -168,7 +168,7 @@
 
                                         </div>
 
-                                        <div class="col-5 col-md-10 col-xl-4" id="details-b{{ $application->id }}"
+                                        <div class="col-12 col-md-6 col-xl-4" id="details-b{{ $application->id }}"
                                             style="display: {{ $loop->first ? 'block' : 'none' }};">
 
                                             <div class="card mt-3">
@@ -268,7 +268,7 @@
                                         </div>
                                     @endforeach
                                     {{-- Application loop --}}
-                                    <div class="col-2 col-md-2 col-xl-4">
+                                    <div class="col-12 col-md-12 col-xl-4">
                                         <div class="card mt-3">
                                             <div class="card-body">
                                                 <div class="d-flex justify-content-center align-items-baseline">
@@ -276,7 +276,7 @@
                                                 </div>
 
                                                 <div class="row">
-                                                    <div class="col-6 col-md-12 col-xl-4">
+                                                    <div class="col-4 col-md-4 col-xl-4">
                                                         <div class="d-flex align-items-baseline">
                                                             <p class="text-success">
                                                                 <span>Visitors ID</span>
@@ -286,7 +286,7 @@
 
                                                         {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
                                                     </div>
-                                                    <div class="col-6 col-md-12 col-xl-4">
+                                                    <div class="col-4 col-md-4 col-xl-4">
                                                         <div class="d-flex align-items-baseline">
                                                             <p class="text-success">
                                                                 <span>Status</span>
@@ -296,7 +296,7 @@
 
                                                         {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
                                                     </div>
-                                                    <div class="col-6 col-md-12 col-xl-4">
+                                                    <div class="col-4 col-md-4 col-xl-4">
                                                         <div class="d-flex align-items-baseline">
                                                             <p class="text-success">
                                                                 <span>Payment Status</span>
@@ -309,7 +309,7 @@
                                                 </div>
                                                 @foreach ($applications as $application)
                                                     <div class="row">
-                                                        <div class="col-6 col-md-12 col-xl-4">
+                                                        <div class="col-4 col-md-4 col-xl-4">
                                                             <div class="d-flex align-items-baseline">
                                                                 <p>
                                                                     <span><button class="btn btn-link"
@@ -321,7 +321,7 @@
 
                                                             {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
                                                         </div>
-                                                        <div class="col-6 col-md-12 col-xl-4">
+                                                        <div class="col-4 col-md-4 col-xl-4">
                                                             <div class="d-flex align-items-baseline">
                                                                 <p>
                                                                     <span>
@@ -345,7 +345,7 @@
 
                                                             {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
                                                         </div>
-                                                        <div class="col-6 col-md-12 col-xl-4">
+                                                        <div class="col-4 col-md-4 col-xl-4">
                                                             <div class="d-flex align-items-baseline">
                                                                 <p>
                                                                     <span>{{ $application->is_payment ? 'Paid' : 'Unpaid' }}</span>

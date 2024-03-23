@@ -214,7 +214,6 @@
                         </div>
                         <div id="step4${numForms}" class="form-step" style="display:none;">
                                     <fieldset id="finalform">
-
                                         <div class="page-content">
                                             <div class="col-md-12 grid-margin stretch-card">
                                                 <div class="card">
@@ -234,7 +233,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="row">
-                                                                <div class="col-6 col-md-12 col-xl-6">
+                                                                <div class="col-12 col-md-12 col-xl-6">
                                                                     <div class="card mt-3">
                                                                         <div class="card-body">
                                                                             <div class="row">
@@ -413,7 +412,7 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="col-6 col-md-12 col-xl-6">
+                                                                <div class="col-12 col-md-12 col-xl-6">
 
                                                                     <div class="card mt-3">
                                                                         <div class="card-body">

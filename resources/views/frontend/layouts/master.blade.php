@@ -38,11 +38,11 @@
 
 </head>
 
-{{-- @if (empty(View::hasSection('navbar')))
+@if (empty(View::hasSection('navbar')))
     @include('frontend.layouts.navbar')
-@endif --}}
+@endif
 
-{{-- @stack('nav') --}}
+@stack('nav')
 
 @yield('content')
 

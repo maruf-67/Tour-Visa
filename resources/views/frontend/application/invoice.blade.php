@@ -129,9 +129,6 @@
                             class="me-3 icon-md"></i>Send Invoice</a>
                     <a href="javascript:;" class="btn btn-outline-primary float-end mt-4"><i data-feather="printer"
                             class="me-2 icon-md"></i>Print</a>
-                            <a href="{{ route('generate-pdf') }}" class="btn btn-outline-primary float-end mt-4" target="_blank">
-                                <i data-feather="printer" class="me-2 icon-md"></i>Print PDF
-                            </a>
                 </div>
             </div>
         </div>
