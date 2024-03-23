@@ -33,22 +33,22 @@
                     <div class="d-flex justify-content-start align-items-center flex-wrap grid-margin mt-3 ">
                         @foreach ($services as $service)
                             <div class="col-xl-3 col-sm-6 p-3 ">
-                                <a href="{{ route('admin.service.service', $service->application) }}">
-                                    <div class="card mini-stat bg-primary">
-                                        <div class="card-body mini-stat-img">
-                                            <div class="mini-stat-icon">
-                                                {{-- <i class="mdi mdi-cart-arrow-right float-end"></i> --}}
+                                {{-- <a href="{{ route('admin.service.service', $service->applications) }}"> --}}
+                                <div class="card mini-stat bg-primary">
+                                    <div class="card-body mini-stat-img">
+                                        <div class="mini-stat-icon">
+                                            {{-- <i class="mdi mdi-cart-arrow-right float-end"></i> --}}
 
-                                            </div>
-                                            <div class="text-white">
-                                                <h6 class="text-uppercase mb-3 font-size-16 text-white">
-                                                    Applications</h6>
-                                                <h2 class="mb-4 text-white">{{ $lastWeekOrderCount }}</h2>
-                                            </div>
-                                            <i class="me-2 icon-md" data-feather="arrow-right-circle"></i>
                                         </div>
+                                        <div class="text-white">
+                                            <h6 class="text-uppercase mb-3 font-size-16 text-white">
+                                                Applications</h6>
+                                            <h2 class="mb-4 text-white">{{ $lastWeekOrderCount }}</h2>
+                                        </div>
+                                        <i class="me-2 icon-md" data-feather="arrow-right-circle"></i>
                                     </div>
-                                </a>
+                                </div>
+                                {{-- </a> --}}
                             </div>
                         @endforeach
 
@@ -60,53 +60,103 @@
 
             <div class="card">
                 <h2> Application Data Filter</h1>
-                    <div class="d-flex justify-content-start align-items-center flex-wrap grid-margin mt-3">
+                    <div class="row">
+                        <div class="d-flex justify-content-start align-items-center flex-wrap grid-margin mt-3">
 
-                        <div class="col-xl-3 col-sm-6 p-3 ">
-                            <a href="{{ route('admin.service.service', $service->id) }}">
-                                <div class="card mini-stat bg-primary">
-                                    <div class="card-body mini-stat-img">
-                                        <div class="mini-stat-icon">
-                                            {{-- <i class="mdi mdi-cart-arrow-right float-end"></i> --}}
+                            <div class="col-xl-3 col-sm-6 p-3 ">
+                                <a href="{{ route('admin.application.today') }}">
+                                    <div class="card mini-stat bg-primary">
+                                        <div class="card-body mini-stat-img">
+                                            <div class="mini-stat-icon">
+                                                {{-- <i class="mdi mdi-cart-arrow-right float-end"></i> --}}
 
+                                            </div>
+                                            <div class="text-white">
+                                                <h6 class="text-uppercase mb-3 font-size-16 text-white">
+                                                    {{-- {{ $todaysOrderCount->name }} --}}
+                                                    Todays Application</h6>
+                                                <h2 class="mb-4 text-white">{{ $todaysOrderCount }}</h2>
+                                            </div>
+                                            <i class="me-2 icon-md" data-feather="arrow-right-circle"></i>
                                         </div>
-                                        <div class="text-white">
-                                            <h6 class="text-uppercase mb-3 font-size-16 text-white">
-                                                {{ $todaysOrderCount->name }}
-                                                Applications</h6>
-                                            <h2 class="mb-4 text-white">{{ $todaysOrderCount }}</h2>
-                                        </div>
-                                        <i class="me-2 icon-md" data-feather="arrow-right-circle"></i>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
+
+
                         </div>
+                        <div class="d-flex justify-content-start align-items-center flex-wrap grid-margin mt-3">
 
+                            <div class="col-xl-3 col-sm-6 p-3 ">
+                                <a href="{{ route('admin.application.last_week') }}">
+                                    <div class="card mini-stat bg-primary">
+                                        <div class="card-body mini-stat-img">
+                                            <div class="mini-stat-icon">
+                                                {{-- <i class="mdi mdi-cart-arrow-right float-end"></i> --}}
 
-                    </div>
-                    <div class="d-flex justify-content-start align-items-center flex-wrap grid-margin mt-3">
-
-                        <div class="col-xl-3 col-sm-6 p-3 ">
-                            <a href="{{ route('admin.service.service', $service->id) }}">
-                                <div class="card mini-stat bg-primary">
-                                    <div class="card-body mini-stat-img">
-                                        <div class="mini-stat-icon">
-                                            {{-- <i class="mdi mdi-cart-arrow-right float-end"></i> --}}
-
+                                            </div>
+                                            <div class="text-white">
+                                                <h6 class="text-uppercase mb-3 font-size-16 text-white">
+                                                    {{-- {{ $todaysOrderCount->name }} --}}
+                                                    Weekly Applications</h6>
+                                                <h2 class="mb-4 text-white">{{ $lastWeekOrderCount }}</h2>
+                                            </div>
+                                            <i class="me-2 icon-md" data-feather="arrow-right-circle"></i>
                                         </div>
-                                        <div class="text-white">
-                                            <h6 class="text-uppercase mb-3 font-size-16 text-white">
-                                                {{ $todaysOrderCount->name }}
-                                                Applications</h6>
-                                            <h2 class="mb-4 text-white">{{ $todaysOrderCount }}</h2>
-                                        </div>
-                                        <i class="me-2 icon-md" data-feather="arrow-right-circle"></i>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
+
+
                         </div>
+                        <div class="d-flex justify-content-start align-items-center flex-wrap grid-margin mt-3">
+
+                            <div class="col-xl-3 col-sm-6 p-3 ">
+                                <a href="{{ route('admin.application.last_month') }}">
+                                    <div class="card mini-stat bg-primary">
+                                        <div class="card-body mini-stat-img">
+                                            <div class="mini-stat-icon">
+                                                {{-- <i class="mdi mdi-cart-arrow-right float-end"></i> --}}
+
+                                            </div>
+                                            <div class="text-white">
+                                                <h6 class="text-uppercase mb-3 font-size-16 text-white">
+                                                    {{-- {{ $todaysOrderCount->name }} --}}
+                                                    Monthly Applications</h6>
+                                                <h2 class="mb-4 text-white">{{ $lastMonthOrderCount }}</h2>
+                                            </div>
+                                            <i class="me-2 icon-md" data-feather="arrow-right-circle"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
 
 
+                        </div>
+                        <div class="d-flex justify-content-start align-items-center flex-wrap grid-margin mt-3">
+
+                            <div class="col-xl-3 col-sm-6 p-3 ">
+                                <a href="{{ route('admin.application.last_year') }}">
+                                    <div class="card mini-stat bg-primary">
+                                        <div class="card-body mini-stat-img">
+                                            <div class="mini-stat-icon">
+                                                {{-- <i class="mdi mdi-cart-arrow-right float-end"></i> --}}
+
+                                            </div>
+                                            <div class="text-white">
+                                                <h6 class="text-uppercase mb-3 font-size-16 text-white">
+                                                    {{-- {{ $todaysOrderCount->name }} --}}
+                                                    Yearly Applications</h6>
+                                                <h2 class="mb-4 text-white">{{ $lastYearOrderCount }}</h2>
+                                            </div>
+                                            <i class="me-2 icon-md" data-feather="arrow-right-circle"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+
+                        </div>
                     </div>
             </div>
         </div>

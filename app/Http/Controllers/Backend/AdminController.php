@@ -16,16 +16,15 @@ class AdminController extends Controller
         $todaysOrderCount = Application::whereDate('created_at', $currentDate->toDateString())->count();
 
 
-        $lastWeekOrderCount = Application::whereBetween('created_at', [$currentDate->copy()->subWeek()->startOfWeek(), $currentDate->copy()->subWeek()->endOfWeek()])->count();
+        $lastWeekOrderCount = Application::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
 
 
-        $lastMonthOrderCount = Application::whereYear('created_at', $currentDate->year)
-            ->whereMonth('created_at', $currentDate->subMonth()->month)
-            ->count();
+        $lastMonthOrderCount = Application::whereBetween('created_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])->count();
+        $lastYearOrderCount = Application::whereBetween('created_at', [Carbon::now()->startOfYear(), Carbon::now()->endOfYear()])->count();
 
         $services = Service::withCount('applications')->with('applications')->where('status', 1)->get();
 
-        // dd($todays);
-        return view('backend.index', compact('services', "todaysOrderCount", "lastMonthOrderCount", "lastMonthOrderCount"));
+
+        return view('backend.index', compact('services', "todaysOrderCount", "lastWeekOrderCount", "lastMonthOrderCount",'lastYearOrderCount'));
     }
 }
