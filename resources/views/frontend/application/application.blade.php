@@ -17,7 +17,7 @@
     <div class="sub-header">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-md-8">
+                <div class=" col-lg-8 col-md-8">
                     <ul class="info">
                         <li><i class="fa fa-envelope"></i> info@company.com</li>
                         <li><i class="fa fa-map"></i> Sunny Isles Beach, FL 33160</li>
@@ -38,7 +38,7 @@
 
 @section('content')
 
-    <div class="container mt-5">
+    <div class="container mt-5" style=" height: 100vh; overflow: scroll;">
 
         <div class="mb-3 mt-5 generateForms">
 
