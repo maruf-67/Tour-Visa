@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Carbon\Carbon;
-use App\Models\Service;
-use App\Models\Application;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Application;
+use App\Models\Service;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -14,11 +13,19 @@ class AdminController extends Controller
     {
 
         $currentDate = Carbon::today();
-        $todays = Application::withCount('service', 'citizenCountry')->whereDate('created_at', $currentDate)->get();
+        $todaysOrderCount = Application::whereDate('created_at', $currentDate->toDateString())->count();
 
-        $services = Service::withCount('applications')->where('status',1)->get();
+
+        $lastWeekOrderCount = Application::whereBetween('created_at', [$currentDate->copy()->subWeek()->startOfWeek(), $currentDate->copy()->subWeek()->endOfWeek()])->count();
+
+
+        $lastMonthOrderCount = Application::whereYear('created_at', $currentDate->year)
+            ->whereMonth('created_at', $currentDate->subMonth()->month)
+            ->count();
+
+        $services = Service::withCount('applications')->with('applications')->where('status', 1)->get();
 
         // dd($todays);
-        return view('backend.index',compact('services',"todays"));
+        return view('backend.index', compact('services', "todaysOrderCount", "lastMonthOrderCount", "lastMonthOrderCount"));
     }
 }

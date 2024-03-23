@@ -7,6 +7,13 @@
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}" /> --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/demo1/style.css') }}" />
+    <style>
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
 @endpush
 
 @section('navbar')
@@ -50,12 +57,13 @@
 
                         <div class="col-lg-3 pe-0">
                             <h4 class="fw-bolder text-uppercase text-end mt-4 mb-2">invoice</h4>
-                            @foreach ($applications as $application)
-                                <p class="text-end mb-5 pb-4"># {{ $application->reference_id }}</p>
+                            <p class="text-end mb-5 pb-4"># {{ $applications->first()->reference_id }}</p>
+                            {{-- @foreach ($applications as $application)
+                                 {{ $application->reference_id }}
                             @break
 
                             <!-- Stop the loop after printing the first reference_id -->
-                        @endforeach
+                        @endforeach --}}
 
                         <h6 class="mb-0 mt-3 text-end fw-normal mb-2"><span class="text-muted">Invoice Date :</span>
                             {{ date('Y-m-d H:i:s') }}</h6>
@@ -83,7 +91,7 @@
                                         <td>{{ $application->first_name }} {{ $application->last_name }}</td>
                                         <td>{{ $application->passport_number }}</td>
                                         <td>{{ $application->service->name }}</td>
-                                        <td>{{ $application->service->price }}</td>
+                                        <td class="price">{{ $application->service->price }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -127,11 +135,9 @@
                 <div class="container-fluid w-100">
                     <a href="javascript:;" class="btn btn-primary float-end mt-4 ms-2"><i data-feather="send"
                             class="me-3 icon-md"></i>Send Invoice</a>
-                    <a href="javascript:;" class="btn btn-outline-primary float-end mt-4"><i data-feather="printer"
+                    <a href="javascript:;" onclick="printInvoice()" class="btn btn-outline-primary float-end mt-4"><i data-feather="printer"
                             class="me-2 icon-md"></i>Print</a>
-                            <a href="{{ route('generate-pdf') }}" class="btn btn-outline-primary float-end mt-4" target="_blank">
-                                <i data-feather="printer" class="me-2 icon-md"></i>Print PDF
-                            </a>
+
                 </div>
             </div>
         </div>
@@ -140,7 +146,7 @@
 @endsection
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+ document.addEventListener("DOMContentLoaded", function() {
         // JavaScript to calculate and display total price
         var applications = @json($applications); // Convert PHP array to JavaScript array
 
@@ -158,4 +164,12 @@
         // Display total price in the div element
         document.getElementById('totalPrice').textContent = ' $' + totalPrice;
     });
+    function printInvoice() {
+        var buttons = document.getElementsByClassName('btn');
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].style.display = 'none';
+        }
+
+        window.print();
+    }
 </script>
