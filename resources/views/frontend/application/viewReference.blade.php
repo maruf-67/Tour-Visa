@@ -7,7 +7,7 @@
 
 @section('content')
 
-    <div class="page-content mx-5 mt-5">
+    <div class="page-content mx-5 mt-5" style=" height: 100vh; overflow-x:hidden;">
 
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
             <div>
