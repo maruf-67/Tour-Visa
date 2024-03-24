@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\Application;
+use App\Mail\SendMail;
+use App\Jobs\SendEmail;
 use App\Models\Country;
 use App\Models\Service;
 use App\Models\Homepage;
+use App\Models\Application;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Queue;
 
 
 class FrontendController extends Controller
@@ -49,19 +53,21 @@ class FrontendController extends Controller
         foreach($formData as &$data) {
             $data['reference_id'] = $reference_id;
             $application = Application::create($data);
+
+            $data = [
+                'email' => $application->email,
+                'subject' => 'Application Submission',
+                // 'title' => 'Application Submission',
+                'message' => 'Your application has been submitted successfully!'
+            ];
+            // Queue::connection('email')->push(new SendEmail($data));
+            SendEmail::dispatch($data);
+            // Mail::to($data['email'])->send(new SendMail($data));
         }
 
-        // $sum = 0;
-        // $applications = Application::with(['service'])->where('reference_id', $reference_id)->get();
-        //         foreach($applications as $application) {
-        //             $sum += $application->amount;
-        // }
 
         return response()->json(['reference_id' => $reference_id]);
-        // return view('frontend.application.application_view', compact('applications', 'sum', 'reference_id'));
-        // return redirect()->route('view')->with('success', 'Application created successfully');
 
-        // return redirect()->route('view',compact('applications', 'sum', 'reference_id') )->with('success', 'Application created successfully');
 
     }
 

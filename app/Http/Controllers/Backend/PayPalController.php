@@ -74,8 +74,9 @@ class PaypalController extends Controller
 
                 $application->save();
             }
-            // return "Payment is successful ";
-            
+
+            return redirect()->route('invoice', $payment->reference_id);
+
             unset($_SESSION['reference_id']);
 
 
