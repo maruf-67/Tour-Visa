@@ -129,47 +129,48 @@
                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                             </form>
 
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="editModal" tabindex="-1"
-                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form
-                                                                action="{{ route('admin.country.update', $country->id) }}"
-                                                                method="post">
-                                                                @csrf
-                                                                @method('PATCH')
-                                                                <div class="form-group row mt-4">
-                                                                    <label class="col-md-3 col-form-label">Status</label>
-                                                                    <div class="col-md-9">
-                                                                        {{-- <input type="text" class="form-control" id="staticEmail"> --}}
-                                                                        <select class="form-control" name="status">
-                                                                            <option value="1">Active</option>
-                                                                            <option value="0">Inactive</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
 
-
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Close</button>
-                                                                    <button type="submit" class="btn btn-primary">Save
-                                                                        changes</button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </td>
                                     </tr>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="editModal" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form
+                                                    action="{{ route('admin.country.update', $country->id) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <div class="form-group row mt-4">
+                                                        <label class="col-md-3 col-form-label">Status</label>
+                                                        <div class="col-md-9">
+                                                            {{-- <input type="text" class="form-control" id="staticEmail"> --}}
+                                                            <select class="form-control" name="status">
+                                                                <option value="1" {{ $country->status ==1 ? 'selected' : '' }}>Active</option>
+                                                                <option value="0" {{ $country->status ==0 ? 'selected' : '' }}>Inactive</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Save
+                                                            changes</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 @endforeach
                             </table>
                         </div>
