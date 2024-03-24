@@ -106,7 +106,7 @@
                                 </tbody> --}}
 
                                 @foreach ($countries as $country)
-                                    <tr >
+                                    <tr>
                                         <td valign='middle'>{{ $loop->index + 1 }}</td>
                                         <td valign='middle'>{{ $country->iso ?? '' }}</td>
                                         <td valign='middle'>{{ $country->name ?? '' }}</td>
@@ -114,15 +114,26 @@
                                         <td valign='middle'>{{ $country->iso3 ?? '' }}</td>
                                         <td valign='middle'>{{ $country->numcode ?? '' }}</td>
                                         <td valign='middle'>{{ $country->phonecode ?? '' }}</td>
-                                        <td valign='middle'><span
-                                                class="badge badge bg-{{ $country->status ? 'success' : 'danger' }}">{{ $country->status ? 'Active' : 'Inactive' }}</span>
+                                        <td valign='middle'>
+                                            {{-- <span class="badge badge bg-{{ $country->status ? 'success' : 'danger' }}">{{ $country->status ? 'Active' : 'Inactive' }}</span> --}}
+                                            <div class="row justify-content-center">
+                                                <div class="col-md-6">
+                                                    <div class="form-check form-switch text-center">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="toggleButton">
+                                                        <label class="form-check-label" for="toggleButton"
+                                                            id="toggleLabel">Inactive</label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
                                         <td valign='middle' class="d-flex justify-content-around">
                                             {{-- <button class="btn btn-primary" data-toggle="modal"
                                                 data-target="#editModal{{ $country->id }}">Edit</button> --}}
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                 data-bs-target="#editModal">Edit </button>
-                                            <form action="{{ route('admin.application.destroy', $country->id ) }}" method="POST">
+                                            <form action="{{ route('admin.application.destroy', $country->id) }}"
+                                                method="POST">
 
                                                 @csrf
                                                 @method('DELETE')
@@ -140,15 +151,15 @@
                                                                 aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form
-                                                                action="{{ route('admin.country.update', $country->id) }}"
+                                                            <form action="{{ route('admin.country.update', $country->id) }}"
                                                                 method="post">
                                                                 @csrf
                                                                 @method('PATCH')
                                                                 <div class="form-group row mt-4">
                                                                     <label class="col-md-3 col-form-label">Status</label>
                                                                     <div class="col-md-9">
-                                                                        {{-- <input type="text" class="form-control" id="staticEmail"> --}}
+                                                                        <input type="text" class="form-control"
+                                                                            id="staticEmail">
                                                                         <select class="form-control" name="status">
                                                                             <option value="1">Active</option>
                                                                             <option value="0">Inactive</option>
@@ -186,7 +197,22 @@
 @push('script')
     <script>
         new DataTable('#admintable', {
-        responsive: true
+            responsive: true
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const toggleButton = document.getElementById('toggleButton');
+            const toggleLabel = document.getElementById('toggleLabel');
+
+            toggleButton.addEventListener('change', function() {
+                if (this.checked) {
+                    toggleLabel.textContent = 'Active';
+                } else {
+                    toggleLabel.textContent = 'Inactive';
+                }
+            });
         });
     </script>
 @endpush
