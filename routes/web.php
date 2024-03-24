@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\ApplicationController;
 use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\PayPalController;
+use App\Http\Controllers\Backend\SendMailController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\UserController;
@@ -114,4 +115,10 @@ Route::controller(PayPalController::class)->name('paypal.')->prefix('paypal')->g
     Route::post('paypal/payment', 'paypal')->name('payment');
     Route::get('paypal/payment/success', 'success')->name('success');
     Route::get('paypal/payment/cancel', 'cancel')->name('cancel');
+});
+
+Route::controller(SendMailController::class)->name('mail.')->prefix('mail')->group(function () {
+    Route::get('submit/{id}', 'submit_application')->name('submit');
+    // Route::get('paypal/payment/success', 'success')->name('success');
+    // Route::get('paypal/payment/cancel', 'cancel')->name('cancel');
 });

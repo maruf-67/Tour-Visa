@@ -70,6 +70,12 @@ return [
             'block_for' => null,
             'after_commit' => false,
         ],
+        'email' => [
+            'driver' => 'redis', // Or any other queue driver you're using
+            'connection' => 'default',
+            'queue' => 'emails',
+            'retry_after' => 60,
+        ],
 
     ],
 
