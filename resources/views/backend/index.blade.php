@@ -60,9 +60,8 @@
 
             <div class="card">
                 <h2> Application Data Filter</h1>
-                    <div class="row">
-                        <div class="d-flex justify-content-start align-items-center flex-wrap grid-margin mt-3">
-
+                    <div class="row d-flex justify-content-center flex-row">
+                        <div class="mt-3 d-flex justify-content-center">
                             <div class="col-xl-3 col-sm-6 p-3 ">
                                 <a href="{{ route('admin.application.today') }}">
                                     <div class="card mini-stat bg-primary">
@@ -83,9 +82,6 @@
                                 </a>
                             </div>
 
-
-                        </div>
-                        <div class="d-flex justify-content-start align-items-center flex-wrap grid-margin mt-3">
 
                             <div class="col-xl-3 col-sm-6 p-3 ">
                                 <a href="{{ route('admin.application.last_week') }}">
@@ -108,8 +104,7 @@
                             </div>
 
 
-                        </div>
-                        <div class="d-flex justify-content-start align-items-center flex-wrap grid-margin mt-3">
+
 
                             <div class="col-xl-3 col-sm-6 p-3 ">
                                 <a href="{{ route('admin.application.last_month') }}">
@@ -132,9 +127,6 @@
                             </div>
 
 
-                        </div>
-                        <div class="d-flex justify-content-start align-items-center flex-wrap grid-margin mt-3">
-
                             <div class="col-xl-3 col-sm-6 p-3 ">
                                 <a href="{{ route('admin.application.last_year') }}">
                                     <div class="card mini-stat bg-primary">
@@ -154,8 +146,6 @@
                                     </div>
                                 </a>
                             </div>
-
-
                         </div>
                     </div>
             </div>
