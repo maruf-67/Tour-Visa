@@ -116,7 +116,7 @@
                                         <td valign='middle'>{{ $country->phonecode ?? '' }}</td>
                                         <td valign='middle'>
                                             {{-- <span class="badge badge bg-{{ $country->status ? 'success' : 'danger' }}">{{ $country->status ? 'Active' : 'Inactive' }}</span> --}}
-                                            <div class="row justify-content-center">
+                                            <div class="row justify-content-start">
                                                 <div class="col-md-6">
                                                     <div class="form-check form-switch text-center">
                                                         <input class="form-check-input" type="checkbox"
@@ -127,10 +127,10 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td valign='middle' class="d-flex justify-content-around">
+                                        <td valign='middle' class="d-flex justify-content-between">
                                             {{-- <button class="btn btn-primary" data-toggle="modal"
                                                 data-target="#editModal{{ $country->id }}">Edit</button> --}}
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal"
                                                 data-bs-target="#editModal">Edit </button>
                                             <form action="{{ route('admin.application.destroy', $country->id) }}"
                                                 method="POST">
