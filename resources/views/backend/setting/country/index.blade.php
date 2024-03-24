@@ -64,10 +64,10 @@
 
 
                         {{-- Content --}}
-                        <div class="col-12 mt-4">
-                            <table id="admintable" class="table table-striped" style="width:100%">
+                        <div class="col-12 mt-4" style="overflow-y: hidden;">
+                            <table id="admintable" class="table table-striped" style="width:100%;" >
                                 <thead>
-                                    <tr style="text-align:center">
+                                    <tr style="text-align:center;">
                                         <th>#</th>
                                         <th>Iso</th>
                                         <th>Name</th>
@@ -79,34 +79,9 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                {{-- <tbody>
-                                    @foreach ($users as $user)
-                                    <tr style="text-align:center">
-                                    <td valign='middle'>{{ $loop->index +1 }}</td>
-                                    <td valign='middle'>{{ $user->name }}</td>
-                                    <td valign='middle'>{{ $user->email }}</td>
-
-                                    <td valign='middle'><img src="{{ asset($user->email) ?? ''}}" height="60px" alt="Image"></td>
-                                    <td valign='middle'>{{ $user->type }}</td>
-                                    <td valign='middle'>{{ $user->created_at }}</td>
-                                    <td class="d-flex justify-content-around">
-                                        @if (auth()->user()->type == 'administrator')
-                                        <a href="{{ route('admin.user.edit',$user->id) }}"><button class="btn btn-primary">Edit</button></a>
-                                        <a href="{{ route('admin.user.edit',$user->id) }}"><button class="btn btn-primary">View</button></a>
-                                        <form action="{{ route('admin.user.destroy', $user->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                        @endif
-
-                                    </td>
-                                </tr>
-                                    @endforeach
-                                </tbody> --}}
 
                                 @foreach ($countries as $country)
-                                    <tr>
+                                    <tr style="overflow-y: hidden;">
                                         <td valign='middle'>{{ $loop->index + 1 }}</td>
                                         <td valign='middle'>{{ $country->iso ?? '' }}</td>
                                         <td valign='middle'>{{ $country->name ?? '' }}</td>
@@ -130,8 +105,8 @@
                                         <td valign='middle' class="d-flex justify-content-between">
                                             {{-- <button class="btn btn-primary" data-toggle="modal"
                                                 data-target="#editModal{{ $country->id }}">Edit</button> --}}
-                                            <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal"
-                                                data-bs-target="#editModal">Edit </button>
+                                            {{-- <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal"
+                                                data-bs-target="#editModal">Edit </button> --}}
                                             <form action="{{ route('admin.application.destroy', $country->id) }}"
                                                 method="POST">
 
@@ -139,49 +114,9 @@
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                             </form>
-
-
                                         </td>
                                     </tr>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="editModal" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form
-                                                    action="{{ route('admin.country.update', $country->id) }}"
-                                                    method="post">
-                                                    @csrf
-                                                    @method('PATCH')
-                                                    <div class="form-group row mt-4">
-                                                        <label class="col-md-3 col-form-label">Status</label>
-                                                        <div class="col-md-9">
-                                                            {{-- <input type="text" class="form-control" id="staticEmail"> --}}
-                                                            <select class="form-control" name="status">
-                                                                <option value="1" {{ $country->status ==1 ? 'selected' : '' }}>Active</option>
-                                                                <option value="0" {{ $country->status ==0 ? 'selected' : '' }}>Inactive</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
 
-
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary">Save
-                                                            changes</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 @endforeach
                             </table>
                         </div>

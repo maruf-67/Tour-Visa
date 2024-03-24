@@ -68,7 +68,7 @@
 
 
                         {{-- Content --}}
-                        <div class="col-12 mt-4">
+                        <div class="col-12 mt-4" style="overflow-y: hidden;">
                             <table id="admintable" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr style="text-align:center">
