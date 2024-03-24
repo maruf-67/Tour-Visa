@@ -93,7 +93,8 @@
 
 @push('script')
     <script>
-        new DataTable('#approve-table');
-        responsive:true;
+        new DataTable('#approve-table', {
+        responsive: true
+        });
     </script>
 @endpush

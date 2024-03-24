@@ -107,7 +107,8 @@
 
 @push('script')
     <script>
-        new DataTable('#lastyear-table');
-        responsive:true;
+        new DataTable('#lastyear-table', {
+        responsive: true
+        });
     </script>
 @endpush

@@ -95,7 +95,8 @@
 
 @push('script')
     <script>
-        new DataTable('#processing-table');
-        responsive:true;
+        new DataTable('#processing-table', {
+        responsive: true
+        });
     </script>
 @endpush

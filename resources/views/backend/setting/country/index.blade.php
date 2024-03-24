@@ -185,6 +185,8 @@
 
 @push('script')
     <script>
-        new DataTable('#admintable');
+        new DataTable('#admintable', {
+        responsive: true
+        });
     </script>
 @endpush

@@ -93,7 +93,8 @@
 
 @push('script')
     <script>
-        new DataTable('#paid-application');
-        responsive:true;
+        new DataTable('#paid-application', {
+        responsive: true
+        });
     </script>
 @endpush

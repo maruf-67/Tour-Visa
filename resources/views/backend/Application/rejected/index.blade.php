@@ -95,7 +95,8 @@
 
 @push('script')
     <script>
-        new DataTable('#rejected-table');
-        responsive:true;
+        new DataTable('#rejected-table', {
+        responsive: true
+        });
     </script>
 @endpush

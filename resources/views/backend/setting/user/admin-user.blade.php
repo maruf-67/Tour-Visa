@@ -62,7 +62,6 @@
                             </div>
                         </div>
 
-
                         {{-- Content --}}
                         <div class="col-12 mt-4">
                             <table id="admintable" class="table table-striped nowrap" style="width:100%">

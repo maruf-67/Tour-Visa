@@ -111,8 +111,9 @@
 
 @push('script')
     <script>
-        new DataTable('#unpaid-table');
-        responsive: true;
+        new DataTable('#unpaid-table', {
+        responsive: true
+        });
     </script>
     <script>
         $(document).ready(function() {

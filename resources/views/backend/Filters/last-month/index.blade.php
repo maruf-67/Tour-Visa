@@ -26,7 +26,7 @@
 
                             </div>
                         </div>
-                        
+
                         {{-- Content --}}
                         <div class="col-12 mt-4">
                             <table id="lastmonth-table" class="table table-striped" style="width:100%">
@@ -106,7 +106,8 @@
 
 @push('script')
     <script>
-        new DataTable('#lastmonth-table');
-        responsive:true;
+        new DataTable('#lastmonth-table', {
+        responsive: true
+        });
     </script>
 @endpush

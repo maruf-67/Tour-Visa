@@ -122,7 +122,8 @@
 
 @push('script')
     <script>
-        new DataTable('#report-table');
-        responsive:true;
+        new DataTable('#report-table', {
+        responsive: true
+        });
     </script>
 @endpush
