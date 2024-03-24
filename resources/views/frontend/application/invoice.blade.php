@@ -49,15 +49,16 @@
             <div class="card p-5 m-5" style="height: 90vh">
                 <div class="card-body">
                     <div class="container-fluid d-flex justify-content-between">
-                        <div class="col-lg-3 ps-0">
-                            <a href="#"><img src="{{ asset($homedata->logo) }}" alt="Logo"
-                                    style="width:80px;" /></a>
-
-                        </div>
-
                         <div class="col-lg-3 pe-0">
-                            <h4 class="fw-bolder text-uppercase text-end mt-4 mb-2">invoice</h4>
-                            <p class="text-end mb-5 pb-4"># {{ $applications->first()->reference_id }}</p>
+                            <h4 class="fw-bolder text-uppercase text-start mt-4 mb-2">invoice</h4>
+                            <p class="text-start "><b>Reference :</b> {{ $applications->first()->reference_id }}</p>
+                            <p class="text-start "><b>Name :</b> {{ $applications->first()->first_name }}
+                                {{ $applications->first()->last_name }}</p>
+                            <p class="text-start "><b>Email :</b> {{ $applications->first()->email }}</p>
+                            <p class="text-start "><b>Transaction Id :</b> {{ $applications->first()->transaction->transaction_id }}
+                            </p>
+                            <p class="text-start"><b>Transaction Time :</b>
+                                {{ $applications->first()->transaction->created_at }}</p>
                             {{-- @foreach ($applications as $application)
                                  {{ $application->reference_id }}
                             @break
@@ -65,46 +66,51 @@
                             <!-- Stop the loop after printing the first reference_id -->
                         @endforeach --}}
 
-                        <h6 class="mb-0 mt-3 text-end fw-normal mb-2"><span class="text-muted">Invoice Date :</span>
-                            {{ date('Y-m-d H:i:s') }}</h6>
-                        {{-- <h6 class="text-end fw-normal"><span class="text-muted">Due Date :</span> 12th Jul 2022</h6> --}}
+                        <p class="mb-0 text-start fw-normal mb-2"><span><b>Invoice Date :</b></span>
+                                {{ date('Y-m-d H:i:s') }}</p>
+                            {{-- <h6 class="text-end fw-normal"><span class="text-muted">Due Date :</span> 12th Jul 2022</h6> --}}
+                        </div>
+
+                        <div class="col-lg-3 ps-0 text-end">
+                            <a href="#"><img src="{{ asset($homedata->logo) }}" alt="Logo" style="width:80px;" /></a>
+                        </div>
+
                     </div>
-                </div>
-                <div class="container-fluid mt-5 d-flex justify-content-center w-100">
-                    <div class="table-responsive w-100">
-                        <table class="table table-bordered text-center">
-                            <thead>
-                                <tr>
-                                    <th>SL No</th>
-                                    <th>Reference No</th>
-                                    <th>Applicant Name</th>
-                                    <th>Passport Number</th>
-                                    <th>Service Name</th>
-                                    <th>Unit cost</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($applications as $application)
-                                    <tr class="text-center">
-                                        <td> {{ $loop->index + 1 }} </td>
-                                        <td>{{ $application->id }}</td>
-                                        <td>{{ $application->first_name }} {{ $application->last_name }}</td>
-                                        <td>{{ $application->passport_number }}</td>
-                                        <td>{{ $application->service->name }}</td>
-                                        <td class="price">{{ $application->service->price }}</td>
+                    <div class="container-fluid mt-5 d-flex justify-content-center w-100">
+                        <div class="table-responsive w-100">
+                            <table class="table table-bordered text-center">
+                                <thead>
+                                    <tr>
+                                        <th>SL No</th>
+                                        <th>Reference No</th>
+                                        <th>Applicant Name</th>
+                                        <th>Passport Number</th>
+                                        <th>Service Name</th>
+                                        <th>Unit cost</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($applications as $application)
+                                        <tr class="text-center">
+                                            <td> {{ $loop->index + 1 }} </td>
+                                            <td>{{ $application->id }}</td>
+                                            <td>{{ $application->first_name }} {{ $application->last_name }}</td>
+                                            <td>{{ $application->passport_number }}</td>
+                                            <td>{{ $application->service->name }}</td>
+                                            <td class="price">{{ $application->service->price }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
-                <div class="container-fluid mt-5 w-100">
-                    <div class="row">
-                        <div class="col-md-6 ms-auto">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <tbody>
-                                        {{-- <tr>
+                    <div class="container-fluid mt-5 w-100">
+                        <div class="row">
+                            <div class="col-md-6 ms-auto">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                            {{-- <tr>
                                                 <td>Sub Total</td>
                                                 <td class="text-end">$ 14,900.00</td>
                                             </tr>
@@ -112,13 +118,13 @@
                                                 <td>TAX (12%)</td>
                                                 <td class="text-end">$ 1,788.00</td>
                                             </tr> --}}
-                                        <tr>
-                                            <td class="text-bold-800">Total</td>
-                                            <td class="text-bold-800 text-end">
-                                                <div id="totalPrice"></div>
-                                            </td>
-                                        </tr>
-                                        {{-- <tr>
+                                            <tr>
+                                                <td class="text-bold-800">Total</td>
+                                                <td class="text-bold-800 text-end">
+                                                    <div id="totalPrice"></div>
+                                                </td>
+                                            </tr>
+                                            {{-- <tr>
                                                 <td>Payment Made</td>
                                                 <td class="text-danger text-end">(-) $ 4,688.00</td>
                                             </tr>
@@ -126,49 +132,50 @@
                                                 <td class="text-bold-800">Balance Due</td>
                                                 <td class="text-bold-800 text-end">$ 12,000.00</td>
                                             </tr> --}}
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="container-fluid w-100">
-                    <a href="javascript:;" class="btn btn-primary float-end mt-4 ms-2"><i data-feather="send"
-                            class="me-3 icon-md"></i>Send Invoice</a>
-                    <a href="javascript:;" onclick="printInvoice()" class="btn btn-outline-primary float-end mt-4"><i data-feather="printer"
-                            class="me-2 icon-md"></i>Print</a>
+                    <div class="container-fluid w-100">
+                        <a href="javascript:;" class="btn btn-primary float-end mt-4 ms-2"><i data-feather="send"
+                                class="me-3 icon-md"></i>Send Invoice</a>
+                        <a href="javascript:;" onclick="printInvoice()" class="btn btn-outline-primary float-end mt-4"><i
+                                data-feather="printer" class="me-2 icon-md"></i>Print</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-@endsection
+    @endsection
 
-<script>
- document.addEventListener("DOMContentLoaded", function() {
-        // JavaScript to calculate and display total price
-        var applications = @json($applications); // Convert PHP array to JavaScript array
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // JavaScript to calculate and display total price
+            var applications = @json($applications); // Convert PHP array to JavaScript array
 
-        function calculateSum() {
-            var sum = 0;
-            for (var i = 0; i < applications.length; i++) {
-                sum += parseFloat(applications[i].service.price);
+            function calculateSum() {
+                var sum = 0;
+                for (var i = 0; i < applications.length; i++) {
+                    sum += parseFloat(applications[i].service.price);
+                }
+                return sum;
             }
-            return sum;
+
+            // Call the function to get the sum
+            var totalPrice = calculateSum();
+
+            // Display total price in the div element
+            document.getElementById('totalPrice').textContent = ' $' + totalPrice;
+        });
+
+        function printInvoice() {
+            var buttons = document.getElementsByClassName('btn');
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].style.display = 'none';
+            }
+
+            window.print();
         }
-
-        // Call the function to get the sum
-        var totalPrice = calculateSum();
-
-        // Display total price in the div element
-        document.getElementById('totalPrice').textContent = ' $' + totalPrice;
-    });
-    function printInvoice() {
-        var buttons = document.getElementsByClassName('btn');
-        for (var i = 0; i < buttons.length; i++) {
-            buttons[i].style.display = 'none';
-        }
-
-        window.print();
-    }
-</script>
+    </script>
