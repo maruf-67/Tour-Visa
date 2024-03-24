@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="{{ asset('css/demo1/style.css') }}" />
 @endpush
 
-@section('navbar')
+{{-- @section('navbar')
 
-@endsection
+@endsection --}}
 
-@push('nav')
+{{-- @push('nav')
     <div class="sub-header">
         <div class="container">
             <div class="row">
@@ -34,11 +34,11 @@
             </div>
         </div>
     </div>
-@endpush
+@endpush --}}
 
 @section('content')
 
-    <div class="container mt-5" style=" height: 100vh; overflow: scroll;">
+    <div class="container mt-5" style=" height: 100vh; overflow-x: hidden;">
 
         <div class="mb-3 mt-5 generateForms">
 

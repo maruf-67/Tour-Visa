@@ -98,6 +98,8 @@ class FrontendController extends Controller
         return view('frontend.application.invoice', compact('applications','homedata'));
 
     }
+
+
 }
 
 // $validatedData = $request->validate([

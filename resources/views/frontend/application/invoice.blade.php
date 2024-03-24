@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/demo1/style.css') }}" />
 @endpush
 
-@section('navbar')
+{{-- @section('navbar')
 
 @endsection
 
@@ -34,7 +34,7 @@
             </div>
         </div>
     </div>
-@endpush
+@endpush --}}
 
 @section('content')
     <div class="row">
