@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\Backend\AdminController;
-use App\Http\Controllers\Backend\ApplicationController;
-use App\Http\Controllers\Backend\CountryController;
-use App\Http\Controllers\Backend\PayPalController;
-use App\Http\Controllers\Backend\ServiceController;
-use App\Http\Controllers\Backend\SettingController;
-use App\Http\Controllers\Backend\UserController;
-use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\PayPalController;
+use App\Http\Controllers\Backend\CountryController;
+use App\Http\Controllers\Backend\ServiceController;
+use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Backend\ApplicationController;
+use App\Http\Controllers\Backend\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,6 +87,11 @@ Route::middleware(['auth', 'user-access:administrator,admin,moderator'])->name('
         Route::get('/unpaid', 'unpaid')->name('unpaid');
         Route::post('/update/{id}', 'update')->name('update');
         Route::delete('/destroy/{id}', 'destroy')->name('destroy');
+
+    });
+
+    Route::controller(TransactionController::class)->name('transaction.')->prefix('transaction')->group(function () {
+        Route::get('/paypal', 'index')->name('transaction');
 
     });
 

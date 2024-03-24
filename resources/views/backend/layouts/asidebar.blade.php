@@ -130,7 +130,7 @@
                 <div class="collapse" id="transaction">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Paypal</a>
+                            <a href="{{ route('admin.transaction.transaction') }}" class="nav-link">Paypal</a>
                         </li>
                     </ul>
                 </div>
