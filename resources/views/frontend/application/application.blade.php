@@ -5,8 +5,8 @@
 @push('style')
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}" /> --}}
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/demo1/style.css') }}" />
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/demo1/style.css') }}" /> --}}
 @endpush
 
 {{-- @section('navbar')
@@ -38,12 +38,12 @@
 
 @section('content')
 
-    <div class="container mt-2" style=" overflow-x: hidden;">
+    <div class="container mt-2" style="overflow-x: hidden;">
 
         <div class="mb-3 mt-5 generateForms">
 
             <fieldset>
-                <div class="container mt-5 pt-4 px-4">
+                <div class="container mt-5 pt-4 px-4" style="height: 40vh">
                     <h1 class="text-center mb-5 text-success">Application Information</h1>
                     <div class="row section-padding justify-content-center">
                         <div class="col-md-12">
