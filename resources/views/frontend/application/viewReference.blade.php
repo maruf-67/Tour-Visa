@@ -7,7 +7,7 @@
 
 @section('content')
 
-    <div class="page-content mx-5 mt-5" style=" height: 100vh; overflow-x:hidden;">
+    <div class="page-content mx-0 mt-5" style=" height: 100vh; overflow-x:hidden;">
 
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
             <div>
@@ -49,6 +49,103 @@
                                 </div>
 
                                 <div class="row">
+
+                                    {{-- Application loop --}}
+                                    <div class="col-12 col-md-12 col-xl-4">
+                                        <div class="card mt-3">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-center align-items-baseline">
+                                                    <h6 class="card-title mb-0 text-success">Applicaton</h6>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-4 col-md-4 col-xl-4">
+                                                        <div class="d-flex align-items-baseline">
+                                                            <p class="text-success">
+                                                                <span>Visitors ID</span>
+
+                                                            </p>
+                                                        </div>
+
+                                                        {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
+                                                    </div>
+                                                    <div class="col-4 col-md-4 col-xl-4">
+                                                        <div class="d-flex align-items-baseline">
+                                                            <p class="text-success">
+                                                                <span>Status</span>
+
+                                                            </p>
+                                                        </div>
+
+                                                        {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
+                                                    </div>
+                                                    <div class="col-4 col-md-4 col-xl-4">
+                                                        <div class="d-flex align-items-baseline">
+                                                            <p class="text-success">
+                                                                <span>Payment Status</span>
+
+                                                            </p>
+                                                        </div>
+
+                                                        {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
+                                                    </div>
+                                                </div>
+                                                @foreach ($applications as $application)
+                                                    <div class="row">
+                                                        <div class="col-4 col-md-4 col-xl-4">
+                                                            <div class="d-flex align-items-baseline">
+                                                                <p>
+                                                                    <span><button class="btn btn-link"
+                                                                            onclick="toggleDetails('{{ $application->id }}')">
+                                                                            {{ $application->id }} </button></span>
+
+                                                                </p>
+                                                            </div>
+
+                                                            {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
+                                                        </div>
+                                                        <div class="col-4 col-md-4 col-xl-4">
+                                                            <div class="d-flex align-items-baseline">
+                                                                <p>
+                                                                    <span>
+                                                                        @if ($application->status == 1)
+                                                                            Pending
+                                                                        @elseif($application->status == 2)
+                                                                            Processing
+                                                                        @elseif($application->status == 3)
+                                                                            Approved
+                                                                        @elseif($application->status == 4)
+                                                                            On-Hold
+                                                                        @elseif($application->status == 5)
+                                                                            Rejected
+                                                                        @else
+                                                                            Unknown Status
+                                                                        @endif
+                                                                    </span>
+
+                                                                </p>
+                                                            </div>
+
+                                                            {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
+                                                        </div>
+                                                        <div class="col-4 col-md-4 col-xl-4">
+                                                            <div class="d-flex align-items-baseline">
+                                                                <p>
+                                                                    <span>{{ $application->is_payment ? 'Paid' : 'Unpaid' }}</span>
+
+                                                                </p>
+                                                            </div>
+
+                                                            {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                     @foreach ($applications as $application)
                                         <div class="col-12 col-md-6 col-xl-4" id="details-a{{ $application->id }}"
                                             style="display: {{ $loop->first ? 'block' : 'none' }};">
@@ -267,100 +364,7 @@
                                             </div>
                                         </div>
                                     @endforeach
-                                    {{-- Application loop --}}
-                                    <div class="col-12 col-md-12 col-xl-4">
-                                        <div class="card mt-3">
-                                            <div class="card-body">
-                                                <div class="d-flex justify-content-center align-items-baseline">
-                                                    <h6 class="card-title mb-0 text-success">Applicaton</h6>
-                                                </div>
 
-                                                <div class="row">
-                                                    <div class="col-4 col-md-4 col-xl-4">
-                                                        <div class="d-flex align-items-baseline">
-                                                            <p class="text-success">
-                                                                <span>Visitors ID</span>
-
-                                                            </p>
-                                                        </div>
-
-                                                        {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
-                                                    </div>
-                                                    <div class="col-4 col-md-4 col-xl-4">
-                                                        <div class="d-flex align-items-baseline">
-                                                            <p class="text-success">
-                                                                <span>Status</span>
-
-                                                            </p>
-                                                        </div>
-
-                                                        {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
-                                                    </div>
-                                                    <div class="col-4 col-md-4 col-xl-4">
-                                                        <div class="d-flex align-items-baseline">
-                                                            <p class="text-success">
-                                                                <span>Payment Status</span>
-
-                                                            </p>
-                                                        </div>
-
-                                                        {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
-                                                    </div>
-                                                </div>
-                                                @foreach ($applications as $application)
-                                                    <div class="row">
-                                                        <div class="col-4 col-md-4 col-xl-4">
-                                                            <div class="d-flex align-items-baseline">
-                                                                <p>
-                                                                    <span><button class="btn btn-link"
-                                                                            onclick="toggleDetails('{{ $application->id }}')">
-                                                                            {{ $application->id }} </button></span>
-
-                                                                </p>
-                                                            </div>
-
-                                                            {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
-                                                        </div>
-                                                        <div class="col-4 col-md-4 col-xl-4">
-                                                            <div class="d-flex align-items-baseline">
-                                                                <p>
-                                                                    <span>
-                                                                        @if ($application->status == 1)
-                                                                            Pending
-                                                                        @elseif($application->status == 2)
-                                                                            Processing
-                                                                        @elseif($application->status == 3)
-                                                                            Approved
-                                                                        @elseif($application->status == 4)
-                                                                            On-Hold
-                                                                        @elseif($application->status == 5)
-                                                                            Rejected
-                                                                        @else
-                                                                            Unknown Status
-                                                                        @endif
-                                                                    </span>
-
-                                                                </p>
-                                                            </div>
-
-                                                            {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
-                                                        </div>
-                                                        <div class="col-4 col-md-4 col-xl-4">
-                                                            <div class="d-flex align-items-baseline">
-                                                                <p>
-                                                                    <span>{{ $application->is_payment ? 'Paid' : 'Unpaid' }}</span>
-
-                                                                </p>
-                                                            </div>
-
-                                                            {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
 
                             </div>

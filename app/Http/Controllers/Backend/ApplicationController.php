@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use Carbon\Carbon;
 use App\Models\Country;
 use App\Models\Service;
-use App\Models\application;
+use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 

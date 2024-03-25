@@ -64,7 +64,7 @@
                     </div>
 
                     <div class="col-xl-3 col-sm-6 col-12 p-3 ">
-                        <a href="{{ route('admin.application.today') }}">
+                        <a href="{{ route('admin.application.last_week') }}">
                             <div class="card mini-stat bg-primary">
                                 <div class="card-body mini-stat-img">
                                     <div class="mini-stat-icon">
@@ -83,7 +83,7 @@
                         </a>
                     </div>
                     <div class="col-xl-3 col-sm-6 col-12 p-3 ">
-                        <a href="{{ route('admin.application.today') }}">
+                        <a href="{{ route('admin.application.last_month') }}">
                             <div class="card mini-stat bg-primary">
                                 <div class="card-body mini-stat-img">
                                     <div class="mini-stat-icon">
@@ -102,7 +102,7 @@
                         </a>
                     </div>
                     <div class="col-xl-3 col-sm-6 col-12 p-3 ">
-                        <a href="{{ route('admin.application.today') }}">
+                        <a href="{{ route('admin.application.last_year') }}">
                             <div class="card mini-stat bg-primary">
                                 <div class="card-body mini-stat-img">
                                     <div class="mini-stat-icon">

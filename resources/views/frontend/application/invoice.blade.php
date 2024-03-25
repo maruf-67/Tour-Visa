@@ -138,12 +138,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container-fluid w-100">
+                    {{-- <div class="container-fluid w-100">
                         <a href="javascript:;" class="btn btn-primary float-end mt-4 ms-2"><i data-feather="send"
                                 class="me-3 icon-md"></i>Send Invoice</a>
                         <a href="javascript:;" onclick="printInvoice()" class="btn btn-outline-primary float-end mt-4"><i
                                 data-feather="printer" class="me-2 icon-md"></i>Print</a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

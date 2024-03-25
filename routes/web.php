@@ -6,7 +6,6 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\PayPalController;
 use App\Http\Controllers\Backend\CountryController;
-use App\Http\Controllers\Backend\PayPalController;
 use App\Http\Controllers\Backend\SendMailController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\SettingController;
