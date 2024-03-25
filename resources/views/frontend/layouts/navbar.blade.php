@@ -38,12 +38,12 @@
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li><a href="{{ route('application_view') }}"><i class="fa fa-calendar"></i>Check Status</a>
+                        <li class="text-primary"><a href="{{ route('application_view') }}"><i class="fa fa-calendar"></i>Check Status</a>
                         </li>
                     </ul>
-                    {{-- <a class='menu-trigger'>
+                    <a class='menu-trigger'>
                         <span>Menu</span>
-                    </a> --}}
+                    </a>
                     <!-- ***** Menu End ***** -->
                 </nav>
             </div>

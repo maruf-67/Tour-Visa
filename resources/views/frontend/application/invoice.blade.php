@@ -21,42 +21,36 @@
 @endsection
 
 @push('nav')
+<!-- ***** Header Area Start ***** -->
 <header class="header-area header-sticky">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
-
-                    {{-- <a href="{{ route('application') }}">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="{{ route('application') }}" class="logo mt-3">
                         @if (isset($homedata->logo))
-                            <h1 ><img src="{{ asset($homedata->logo) }}" alt="TourVisa" style="width:50px;"></h1>
+                            <h1><img src="{{ asset($homedata->logo) }}" alt="TourVisa" style="width:50px"></h1>
                         @else
                             <h1>TourVisa</h1>
                         @endif
-                    </a> --}}
-
+                    </a>
+                    <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
-                    <ul class="nav d-flex justify-content-between" >
-                        <a href="{{ route('application') }}">
-                            @if (isset($homedata->logo))
-                                <h1 ><img src="{{ asset($homedata->logo) }}" alt="TourVisa" style="width:50px;"></h1>
-                            @else
-                                <h1>TourVisa</h1>
-                            @endif
-                        </a>
-
-                        <li><a href="{{ route('application_view') }}"><i class="fa fa-calendar"></i>Check Status</a>
+                    <ul class="nav">
+                        <li class="text-primary"><a href="{{ route('application_view') }}"><i class="fa fa-calendar"></i>Check Status</a>
                         </li>
                     </ul>
-                    {{-- <a class='menu-trigger'>
+                    <a class='menu-trigger'>
                         <span>Menu</span>
-                    </a> --}}
+                    </a>
                     <!-- ***** Menu End ***** -->
                 </nav>
             </div>
         </div>
     </div>
 </header>
+<!-- ***** Header Area End ***** -->
 @endpush
 
 @section('content')
@@ -65,7 +59,7 @@
             <div class="card p-5 m-5" style="height: 90vh">
                 <div class="card-body">
                     <div class="container-fluid d-flex justify-content-between">
-                        <div class="col-lg-3 pe-0">
+                        <div class="col-lg-6 col-8 pe-0">
                             <h4 class="fw-bolder text-uppercase text-start mt-4 mb-2">invoice</h4>
                             <p class="text-start "><b>Reference :</b> {{ $applications->first()->reference_id }}</p>
                             <p class="text-start "><b>Name :</b> {{ $applications->first()->first_name }}
@@ -87,7 +81,7 @@
                             {{-- <h6 class="text-end fw-normal"><span class="text-muted">Due Date :</span> 12th Jul 2022</h6> --}}
                         </div>
 
-                        <div class="col-lg-3 ps-0 text-end">
+                        <div class="col-lg-6 col-2 ps-0 text-end">
                             <a href="#"><img src="{{ asset($homedata->logo) }}" alt="Logo" style="width:80px;" /></a>
                         </div>
 
