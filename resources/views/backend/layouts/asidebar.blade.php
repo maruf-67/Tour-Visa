@@ -2,7 +2,12 @@
 <nav class="sidebar">
     <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
-            Tour<span>Visa</span>
+            @if(isset($homedata->logo))
+                        <img src="{{ asset($homedata->logo) }}" alt="Villa">
+                        @else
+                        Tour<span>Visa</span>
+                        @endif
+
         </a>
         <div class="sidebar-toggler not-active">
             <span></span>
@@ -119,6 +124,8 @@
             {{-- Tools End --}}
 
             {{-- Transaction Start --}}
+            @if (Auth::user()->role == 'administrator')
+
             <li class="nav-item nav-category">Transaction</li>
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#transaction" role="button" aria-expanded="false"
@@ -135,6 +142,7 @@
                     </ul>
                 </div>
             </li>
+            @endif
 
             {{-- Transaction End --}}
 

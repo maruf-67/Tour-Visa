@@ -60,6 +60,8 @@ Route::middleware(['auth', 'user-access:administrator,admin,moderator'])->name('
         Route::post('/store', 'store')->name('store');
         Route::patch('/{id}', 'update')->name('update');
         Route::delete('/{id}', 'destroy')->name('destroy');
+
+        route::post('/status/{id}', 'status')->name('status');
     });
 
     Route::controller(ServiceController::class)->name('service.')->prefix('service')->group(function () {
