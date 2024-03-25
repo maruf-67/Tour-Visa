@@ -104,7 +104,7 @@ Route::controller(FrontendController::class)->name('user.')->prefix('user')->gro
     Route::get('/index', 'index')->name('index');
     // Route::post('/store', 'store')->name('store');
     Route::get('/application', 'application')->name('application');
-    Route::post('/application-store', 'application_store')->name('application_store');
+    // Route::post('/application-store', 'application_store')->name('application_store');
 });
 
 Route::controller(FrontendController::class)->group(function () {

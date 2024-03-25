@@ -24,7 +24,7 @@ class SendMailController extends Controller
                 'message' => 'Your application has been submitted successfully!'
             ];
             SendEmail::dispatch($data);
-            
+
         }
 
 
@@ -32,14 +32,14 @@ class SendMailController extends Controller
         return back()->with('success', 'Email has been sent successfully!');
     }
 
-    public function sendMail()
-    {
-        $mailData = [
-            'title' => 'Mail from ItSolutionStuff.com',
-            'url' => 'https://www.itsolutionstuff.com',
-        ];
+    // public function sendMail()
+    // {
+    //     $mailData = [
+    //         'title' => 'Mail from ItSolutionStuff.com',
+    //         'url' => 'https://www.itsolutionstuff.com',
+    //     ];
 
-        Mail::to('hassan_alam198@yahoo.com')->send(new SendMail($mailData));
-         return "Email has been sent successfully!";
-    }
+    //     Mail::to('hassan_alam198@yahoo.com')->send(new SendMail($mailData));
+    //      return "Email has been sent successfully!";
+    // }
 }
