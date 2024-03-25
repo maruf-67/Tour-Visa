@@ -29,7 +29,6 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('backend.layouts.master', function ($view) {
             $homedata = Homepage::first();
-
             $view->with('homedata', $homedata);
         });
 

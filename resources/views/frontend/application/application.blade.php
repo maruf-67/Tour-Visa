@@ -5,8 +5,8 @@
 @push('style')
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}" /> --}}
-    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/demo1/style.css') }}" /> --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/demo1/style.css') }}" />
 @endpush
 
 {{-- @section('navbar')
