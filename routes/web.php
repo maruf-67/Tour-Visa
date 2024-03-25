@@ -37,43 +37,6 @@ Route::middleware(['auth', 'user-access:administrator,admin,moderator'])->name('
 
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
-    Route::controller(SettingController::class)->name('setting.')->prefix('setting')->group(function () {
-        Route::get('/index', 'index')->name('index');
-        Route::post('/store', 'store')->name('store');
-    });
-
-    Route::controller(UserController::class)->name('user.')->prefix('user')->group(function () {
-        Route::get('/index', 'index')->name('index');
-        Route::get('/admin-list', 'admin_user')->name('adminUser');
-        Route::get('/create', 'admin_create')->name('create');
-        Route::post('/store', 'store')->name('store');
-        Route::get('/edit/{id}', 'edit')->name('edit');
-        Route::patch('/{id}', 'update')->name('update');
-        Route::delete('/{id}', 'destroy')->name('destroy');
-        Route::get('/password', 'change_password')->name('password');
-        Route::post('/update-password', 'update_password')->name('update_password');
-    });
-
-    Route::controller(CountryController::class)->name('country.')->prefix('country')->group(function () {
-        Route::get('/index', 'index')->name('index');
-        Route::get('/create', 'create')->name('create');
-        Route::post('/store', 'store')->name('store');
-        Route::patch('/{id}', 'update')->name('update');
-        Route::delete('/{id}', 'destroy')->name('destroy');
-
-        route::post('/status/{id}', 'status')->name('status');
-    });
-
-    Route::controller(ServiceController::class)->name('service.')->prefix('service')->group(function () {
-        Route::get('/index', 'index')->name('index');
-        Route::get('/create', 'create')->name('create');
-        Route::post('/store', 'store')->name('store');
-        Route::get('/edit/{id}', 'edit')->name('edit');
-        Route::patch('/{id}', 'update')->name('update');
-        Route::delete('/{id}', 'destroy')->name('destroy');
-        Route::get('/service/{id}', 'service')->name('service');
-    });
-
     Route::controller(ApplicationController::class)->name('application.')->prefix('application')->group(function () {
         Route::get('/approved', 'approved')->name('approved');
         Route::get('/view/{id}', 'view')->name('view');
@@ -93,12 +56,61 @@ Route::middleware(['auth', 'user-access:administrator,admin,moderator'])->name('
 
     });
 
+});
+
+Route::middleware(['auth', 'user-access:administrator,admin'])->name('admin.')->group(function () {
+
+
+    Route::controller(ServiceController::class)->name('service.')->prefix('service')->group(function () {
+        Route::get('/index', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::patch('/{id}', 'update')->name('update');
+        Route::delete('/{id}', 'destroy')->name('destroy');
+        Route::get('/service/{id}', 'service')->name('service');
+    });
+
+
+
+});
+
+
+Route::middleware(['auth', 'user-access:administrator'])->name('admin.')->group(function () {
+
+    Route::controller(UserController::class)->name('user.')->prefix('user')->group(function () {
+        Route::get('/index', 'index')->name('index');
+        Route::get('/admin-list', 'admin_user')->name('adminUser');
+        Route::get('/create', 'admin_create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::patch('/{id}', 'update')->name('update');
+        Route::delete('/{id}', 'destroy')->name('destroy');
+        Route::get('/password', 'change_password')->name('password');
+        Route::post('/update-password', 'update_password')->name('update_password');
+    });
+
+    Route::controller(SettingController::class)->name('setting.')->prefix('setting')->group(function () {
+        Route::get('/index', 'index')->name('index');
+        Route::post('/store', 'store')->name('store');
+    });
+
+    Route::controller(CountryController::class)->name('country.')->prefix('country')->group(function () {
+        Route::get('/index', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::patch('/{id}', 'update')->name('update');
+        Route::delete('/{id}', 'destroy')->name('destroy');
+
+        route::post('/status/{id}', 'status')->name('status');
+    });
+
     Route::controller(TransactionController::class)->name('transaction.')->prefix('transaction')->group(function () {
         Route::get('/paypal', 'index')->name('transaction');
 
     });
-
 });
+
 
 Route::controller(FrontendController::class)->name('user.')->prefix('user')->group(function () {
     Route::get('/index', 'index')->name('index');
