@@ -26,6 +26,7 @@
             </li>
 
             {{-- Application data Filter Start --}}
+            @if (Auth::user()->type == 'administrator' || Auth::user()->type == 'admin' || Auth::user()->type == 'moderator')
             <li class="nav-item nav-category">Application Data Filter</li>
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false"
@@ -54,6 +55,8 @@
                     </ul>
                 </div>
             </li>
+            @endif
+
             {{-- <li class="nav-item">
                 <a href="pages/apps/chat.html" class="nav-link">
                     <i class="link-icon" data-feather="message-square"></i>
@@ -63,6 +66,7 @@
             {{-- Application data Filter End --}}
 
             {{-- Application  Start --}}
+            @if (Auth::user()->type == 'administrator' || Auth::user()->type == 'admin' || Auth::user()->type == 'moderator')
             <li class="nav-item nav-category">Application</li>
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#Application" role="button" aria-expanded="false"
@@ -97,10 +101,13 @@
                     </ul>
                 </div>
             </li>
+            @endif
+
             {{-- Application End --}}
 
 
             {{-- Tools Start --}}
+            @if (Auth::user()->type == 'administrator' || Auth::user()->type == 'admin')
             <li class="nav-item nav-category">Tools</li>
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#tools" role="button" aria-expanded="false"
@@ -120,11 +127,11 @@
                     </ul>
                 </div>
             </li>
-
+            @endif
             {{-- Tools End --}}
 
             {{-- Transaction Start --}}
-            @if (Auth::user()->role == 'administrator')
+            @if (Auth::user()->type == 'administrator')
 
             <li class="nav-item nav-category">Transaction</li>
             <li class="nav-item">
@@ -147,6 +154,8 @@
             {{-- Transaction End --}}
 
             {{-- Settings Start --}}
+
+            @if (Auth::user()->type == 'administrator')
             <li class="nav-item nav-category">Settings</li>
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#setting" role="button" aria-expanded="false"
@@ -172,6 +181,7 @@
                     </ul>
                 </div>
             </li>
+            @endif
             {{-- Settings End --}}
 
 
