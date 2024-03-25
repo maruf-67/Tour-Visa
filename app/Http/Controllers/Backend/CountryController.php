@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use App\Models\Country;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class CountryController extends Controller
@@ -13,7 +13,7 @@ class CountryController extends Controller
     public function index()
     {
         $countries = Country::all();
-        return view('backend.setting.country.index',compact('countries'));
+        return view('backend.setting.country.index', compact('countries'));
 
     }
 
@@ -24,7 +24,7 @@ class CountryController extends Controller
         $country->save();
 
         Alert::toast('Updated!', 'success');
-        session()->flash('success','Country has been updated successfully !!');
+        session()->flash('success', 'Country has been updated successfully !!');
         return redirect()->route('admin.country.index');
 
     }
@@ -57,6 +57,20 @@ class CountryController extends Controller
         $Country->delete();
         Alert::toast('Delete!', 'error');
         return redirect()->back();
+    }
+
+    public function status(Request $request, $id)
+    {
+        // dd($request->all());
+        $country = Country::find($id);
+        if (!$country) {
+            return response()->json(['success' => false, 'message' => 'Country not found'], 404);
+        }
+
+        $country->status = $request->input('status');
+        $country->save();
+
+        return response()->json(['success' => true, 'status' => $country->status]);
     }
 
 }

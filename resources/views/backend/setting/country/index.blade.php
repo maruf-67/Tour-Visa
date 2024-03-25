@@ -65,7 +65,7 @@
 
                         {{-- Content --}}
                         <div class="col-12 mt-4" style="overflow-y: hidden;">
-                            <table id="admintable" class="table table-striped" style="width:100%;" >
+                            <table id="admintable" class="table table-striped" style="width:100%;">
                                 <thead>
                                     <tr style="text-align:center;">
                                         <th>#</th>
@@ -94,10 +94,11 @@
                                             <div class="row justify-content-start">
                                                 <div class="col-md-6">
                                                     <div class="form-check form-switch text-center">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            id="toggleButton">
-                                                        <label class="form-check-label" for="toggleButton"
-                                                            id="toggleLabel">Inactive</label>
+                                                        <input class="form-check-input toggle-button" type="checkbox"
+                                                            data-country-id="{{ $country->id }}"
+                                                            {{ $country->status ? 'checked' : '' }}>
+                                                        <label class="form-check-label toggle-label" for="toggleButton"
+                                                            id="country-lebel{{ $country->id }}">{{ $country->status ? 'Active' : 'Inactive' }}</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -116,7 +117,6 @@
                                             </form>
                                         </td>
                                     </tr>
-
                                 @endforeach
                             </table>
                         </div>
@@ -138,16 +138,40 @@
     </script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const toggleButton = document.getElementById('toggleButton');
-            const toggleLabel = document.getElementById('toggleLabel');
+        $(document).ready(function() {
+            $('.toggle-button').change(function() {
+                const checkbox = $(this);
+                const countryId = checkbox.data('country-id');
+                const status = checkbox.prop('checked') ? 1 : 0;
+                console.log(status);
+                $.ajax({
+                    url: "{{ route('admin.country.status', '') }}/" + countryId,
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    data: {
+                        status: status
+                    },
+                    success: function(data) {
+                        if (data.success) {
+                            const toggleLabel = $(
+                                `.toggle-label[data-country-id="${countryId}"]`);
+                            //console.log("Status received:", data.status); // Log status received
+                            // Update the label text based on the received status
+                            $(`#country-lebel${countryId}`).text(parseInt(data.status) === 1 ?
+                                'Active' : 'Inactive');
+                            checkbox.prop('checked', parseInt(data.status) === 1 ? true :
+                            false);
 
-            toggleButton.addEventListener('change', function() {
-                if (this.checked) {
-                    toggleLabel.textContent = 'Active';
-                } else {
-                    toggleLabel.textContent = 'Inactive';
-                }
+                        } else {
+                            console.log('Invalid Country');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
             });
         });
     </script>
