@@ -30,7 +30,12 @@
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
                     <a href="{{ route('application') }}" class="logo">
+                        @if(isset($homedata->logo))
+                        <img src="{{ asset($homedata->logo) }}" alt="Villa">
+                        @else
                         <h1>Villa</h1>
+                        @endif
+
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->

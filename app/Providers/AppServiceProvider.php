@@ -21,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        //fav icon
         View::composer('frontend.layouts.master', function ($view) {
             $homedata = Homepage::first();
             $view->with('homedata', $homedata);
@@ -29,6 +30,18 @@ class AppServiceProvider extends ServiceProvider
         View::composer('backend.layouts.master', function ($view) {
             $homedata = Homepage::first();
 
+            $view->with('homedata', $homedata);
+        });
+
+        //logo
+        View::composer('frontend.layouts.navbar', function ($view) {
+            $homedata = Homepage::first();
+            $view->with('homedata', $homedata);
+        });
+
+
+        View::composer('backend.layouts.asidebar', function ($view) {
+            $homedata = Homepage::first();
             $view->with('homedata', $homedata);
         });
     }

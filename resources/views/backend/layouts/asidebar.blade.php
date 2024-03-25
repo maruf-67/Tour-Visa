@@ -2,7 +2,12 @@
 <nav class="sidebar">
     <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
-            Tour<span>Visa</span>
+            @if(isset($homedata->logo))
+                        <img src="{{ asset($homedata->logo) }}" alt="Villa">
+                        @else
+                        Tour<span>Visa</span>
+                        @endif
+
         </a>
         <div class="sidebar-toggler not-active">
             <span></span>
