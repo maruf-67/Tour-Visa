@@ -119,6 +119,8 @@
             {{-- Tools End --}}
 
             {{-- Transaction Start --}}
+            @if (Auth::user()->role == 'administrator')
+
             <li class="nav-item nav-category">Transaction</li>
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#transaction" role="button" aria-expanded="false"
@@ -135,6 +137,7 @@
                     </ul>
                 </div>
             </li>
+            @endif
 
             {{-- Transaction End --}}
 
