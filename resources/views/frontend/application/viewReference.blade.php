@@ -59,7 +59,7 @@
                                                 </div>
 
                                                 <div class="row">
-                                                    <div class="col-4 col-md-4 col-xl-4">
+                                                    <div class="col-4 col-md-4 col-xl-3">
                                                         <div class="d-flex align-items-baseline">
                                                             <p class="text-success">
                                                                 <span>Visitors ID</span>
@@ -69,7 +69,18 @@
 
                                                         {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
                                                     </div>
-                                                    <div class="col-4 col-md-4 col-xl-4">
+
+                                                    <div class="col-4 col-md-4 col-xl-3">
+                                                        <div class="d-flex align-items-baseline">
+                                                            <p class="text-success">
+                                                                <span>Applicant Name</span>
+
+                                                            </p>
+                                                        </div>
+
+                                                        {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
+                                                    </div>
+                                                    <div class="col-4 col-md-4 col-xl-3">
                                                         <div class="d-flex align-items-baseline">
                                                             <p class="text-success">
                                                                 <span>Status</span>
@@ -79,7 +90,7 @@
 
                                                         {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
                                                     </div>
-                                                    <div class="col-4 col-md-4 col-xl-4">
+                                                    <div class="col-4 col-md-4 col-xl-3">
                                                         <div class="d-flex align-items-baseline">
                                                             <p class="text-success">
                                                                 <span>Payment Status</span>
@@ -92,19 +103,34 @@
                                                 </div>
                                                 @foreach ($applications as $application)
                                                     <div class="row">
-                                                        <div class="col-4 col-md-4 col-xl-4">
+                                                        <div class="col-4 col-md-4 col-xl-3">
                                                             <div class="d-flex align-items-baseline">
+
                                                                 <p>
                                                                     <span><button class="btn btn-link"
                                                                             onclick="toggleDetails('{{ $application->id }}')">
-                                                                            {{ $application->id }} </button></span>
-
+                                                                            {{ $application->id }}</button></span>->
+                                                                    <span><button class="btn btn-link"
+                                                                            onclick="toggleDetails('{{ $application->id }}')">
+                                                                            View</button></span>
                                                                 </p>
                                                             </div>
 
                                                             {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
                                                         </div>
-                                                        <div class="col-4 col-md-4 col-xl-4">
+                                                        <div class="col-4 col-md-4 col-xl-3">
+                                                            <div class="d-flex align-items-baseline">
+
+                                                                <p>
+                                                                    <span>{{ $application->first_name}}</span>
+
+                                                                </p>
+
+                                                            </div>
+
+                                                            {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
+                                                        </div>
+                                                        <div class="col-4 col-md-4 col-xl-3">
                                                             <div class="d-flex align-items-baseline">
                                                                 <p>
                                                                     <span>
@@ -128,7 +154,7 @@
 
                                                             {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
                                                         </div>
-                                                        <div class="col-4 col-md-4 col-xl-4">
+                                                        <div class="col-4 col-md-4 col-xl-3">
                                                             <div class="d-flex align-items-baseline">
                                                                 <p>
                                                                     <span>{{ $application->is_payment ? 'Paid' : 'Unpaid' }}</span>
