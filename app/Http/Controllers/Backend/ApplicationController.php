@@ -209,7 +209,9 @@ class ApplicationController extends Controller
 
 
         $application->update($requestData);
-
+        if($application->status == 3 && $application->is_payment == 1){
+            return redirect()->route('mail.approved',$application->id);
+        }
 
         return redirect()->back()
                          ->with('success', 'Application updated successfully');

@@ -116,7 +116,7 @@ Route::controller(FrontendController::class)->name('user.')->prefix('user')->gro
     Route::get('/index', 'index')->name('index');
     // Route::post('/store', 'store')->name('store');
     Route::get('/application', 'application')->name('application');
-    Route::post('/application-store', 'application_store')->name('application_store');
+    // Route::post('/application-store', 'application_store')->name('application_store');
 });
 
 Route::controller(FrontendController::class)->group(function () {
@@ -139,6 +139,7 @@ Route::controller(PayPalController::class)->name('paypal.')->prefix('paypal')->g
 
 Route::controller(SendMailController::class)->name('mail.')->prefix('mail')->group(function () {
     Route::get('submit/{id}', 'submit_application')->name('submit');
+    Route::get('approved/{id}', 'approved_application')->name('approved');
     // Route::get('paypal/payment/success', 'success')->name('success');
     // Route::get('paypal/payment/cancel', 'cancel')->name('cancel');
 });
