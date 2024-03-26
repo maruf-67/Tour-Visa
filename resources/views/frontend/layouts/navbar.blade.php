@@ -1,4 +1,3 @@
-
 {{-- <div class="sub-header">
     <div class="container">
       <div class="row">
@@ -22,33 +21,33 @@
 
 
 
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
                     <a href="{{ route('application') }}" class="logo">
-                        @if(isset($homedata->logo))
-                        <img src="{{ asset($homedata->logo) }}" alt="Villa">
+                        @if (isset($homedata->logo))
+                            <h1><img src="{{ asset($homedata->logo) }}" alt="TourVisa" style="width:50px"></h1>
                         @else
-                        <h1>Villa</h1>
+                            <h1>TourVisa</h1>
                         @endif
-
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                      <li><a href="{{ route('application_view') }}"><i class="fa fa-calendar"></i>Check Status</a></li>
-                  </ul>
-                    {{-- <a class='menu-trigger'>
+                        <li class="text-primary"><a href="{{ route('application_view') }}"><i class="fa fa-calendar"></i>Check Status</a>
+                        </li>
+                    </ul>
+                    <a class='menu-trigger'>
                         <span>Menu</span>
-                    </a> --}}
+                    </a>
                     <!-- ***** Menu End ***** -->
                 </nav>
             </div>
         </div>
     </div>
-  </header>
-  <!-- ***** Header Area End ***** -->
+</header>
+<!-- ***** Header Area End ***** -->

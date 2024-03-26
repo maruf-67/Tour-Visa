@@ -729,7 +729,10 @@ Header Style
     padding-left: 0px !important;
     padding-right: 0px !important;
   }
+  .header-area .main-nav .nav li:last-child a{
+    color: #020000;
 
+  }
 }
 
 /*

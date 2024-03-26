@@ -16,32 +16,42 @@
     </style>
 @endpush
 
-{{-- @section('navbar')
+@section('navbar')
 
 @endsection
 
 @push('nav')
-    <div class="sub-header">
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-lg-8 col-md-8">
-                    <ul class="info">
-                        <li><i class="fa fa-envelope"></i> info@company.com</li>
-                        <li><i class="fa fa-map"></i> Sunny Isles Beach, FL 33160</li>
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="{{ route('application') }}" class="logo mt-3">
+                        @if (isset($homedata->logo))
+                            <h1><img src="{{ asset($homedata->logo) }}" alt="TourVisa" style="width:50px"></h1>
+                        @else
+                            <h1>TourVisa</h1>
+                        @endif
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li class="text-primary"><a href="{{ route('application_view') }}"><i class="fa fa-calendar"></i>Check Status</a>
+                        </li>
                     </ul>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <ul class="social-links">
-                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                        <li><a href="https://x.com/minthu" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    </ul>
-                </div>
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
             </div>
         </div>
     </div>
-@endpush --}}
+</header>
+<!-- ***** Header Area End ***** -->
+@endpush
 
 @section('content')
     <div class="row">
@@ -49,7 +59,7 @@
             <div class="card p-5 m-5" style="height: 90vh">
                 <div class="card-body">
                     <div class="container-fluid d-flex justify-content-between">
-                        <div class="col-lg-3 pe-0">
+                        <div class="col-lg-6 col-8 pe-0">
                             <h4 class="fw-bolder text-uppercase text-start mt-4 mb-2">invoice</h4>
                             <p class="text-start "><b>Reference :</b> {{ $applications->first()->reference_id }}</p>
                             <p class="text-start "><b>Name :</b> {{ $applications->first()->first_name }}
@@ -71,7 +81,7 @@
                             {{-- <h6 class="text-end fw-normal"><span class="text-muted">Due Date :</span> 12th Jul 2022</h6> --}}
                         </div>
 
-                        <div class="col-lg-3 ps-0 text-end">
+                        <div class="col-lg-6 col-2 ps-0 text-end">
                             <a href="#"><img src="{{ asset($homedata->logo) }}" alt="Logo" style="width:80px;" /></a>
                         </div>
 

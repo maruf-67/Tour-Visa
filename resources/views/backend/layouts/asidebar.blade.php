@@ -3,7 +3,7 @@
     <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
             @if(isset($homedata->logo))
-                        <img src="{{ asset($homedata->logo) }}" alt="Villa">
+                        <img src="{{ asset($homedata->logo) }}" alt="Villa" style="width:45px">
                         @else
                         Tour<span>Visa</span>
                         @endif

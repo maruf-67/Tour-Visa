@@ -13,7 +13,7 @@
 
         <div class="row">
             <div class="card mb-3">
-                <h2> Services</h2>
+                <h2 class="text-primary mt-3">Services</h2>
                 <div class="d-flex justify-content-start align-items-center flex-wrap grid-margin">
                     @foreach ($services as $service)
                         <div class="col-xl-3 col-sm-6 col-12 p-3 ">
@@ -40,7 +40,7 @@
 
         <div class="row">
             <div class="card mb-3">
-                <h2> Application Data Filter</h2>
+                <h2 class="text-primary mt-3">Application Data Filter</h2>
                 <div class="d-flex justify-content-start align-items-center flex-wrap grid-margin mt-3 ">
 
                     <div class="col-xl-3 col-sm-6 col-12 p-3 ">
