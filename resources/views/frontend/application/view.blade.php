@@ -45,7 +45,7 @@
                     <div class="row">
                         <div class="col-12 col-md-12 col-xl-12 mt-5">
                             <div class="card mt-3">
-                                <div class="card-body">
+                                <div class="card-body" style="background: aliceblue">
                                     <div class="row">
                                         <div class="col-12">
                                             <H1 class="card-text text-center text-primary">Check Your Visa Status</H1>
@@ -61,7 +61,10 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-12">
-                                            <h5 class="card-title text-center fs-3 text-secondary"><b>What is your Reference Number??</b></h5>
+                                            <h5 class="card-title text-center fs-3 text-secondary"><b>What is your <span style="color:#1fcc7b">Reference Number ?</span> </b></h5>
+                                            <h5 class="pb-2">Did you applied for your ETA/eVisitor Visa with us?</h5>
+                                            <p class="pb-2 text-justify">If you already applied through our website, you can check detailed information about your ETA status. When you applied with us we gave you reference number such as ( ETA AU00676504). You can check your ETA status anytime anywhere. Here is ETA status check box just put your reference number & get update your ETA. In that case if you lose it you can contact our customer care just mail us & mention your problem . Our customer care agent available
+                                                24/7. Or join our live check box for assistance. Thank you stay with us.</p>
                                             <!-- Begin Form -->
                                             <form action="{{ route('viewReference') }}" method="POST">
                                                 @csrf

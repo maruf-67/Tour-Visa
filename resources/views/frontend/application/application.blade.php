@@ -38,7 +38,7 @@
 
 @section('content')
 
-    <div class="container mt-2" style="overflow-x: hidden;">
+    <div class="container mt-5" style="overflow-x: hidden;">
 
         <div class="mb-3 mt-5 generateForms">
 

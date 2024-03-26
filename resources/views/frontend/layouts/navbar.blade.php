@@ -34,6 +34,7 @@
                         @else
                             <h1>TourVisa</h1>
                         @endif
+                            {{-- {{ dd($homedata->logo) }} --}}
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
