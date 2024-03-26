@@ -139,6 +139,7 @@ Route::controller(PayPalController::class)->name('paypal.')->prefix('paypal')->g
 
 Route::controller(SendMailController::class)->name('mail.')->prefix('mail')->group(function () {
     Route::get('submit/{id}', 'submit_application')->name('submit');
+    Route::get('approved/{id}', 'approved_application')->name('approved');
     // Route::get('paypal/payment/success', 'success')->name('success');
     // Route::get('paypal/payment/cancel', 'cancel')->name('cancel');
 });
