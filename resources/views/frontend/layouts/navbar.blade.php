@@ -39,7 +39,7 @@
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li class="text-primary"><a href="{{ route('application_view') }}"><i class="fa fa-calendar"></i>Visa Status</a>
+                        <li class="text-primary"><a href="{{ route('application_view') }}"><i class="fa fa-calendar"></i>Check Visa Status</a>
                         </li>
                     </ul>
                     <a class='menu-trigger'>
