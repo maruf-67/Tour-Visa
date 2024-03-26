@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use App\Mail\SendMail;
 use App\Jobs\SendEmail;
 use App\Models\Application;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class SendMailController extends Controller
 {
@@ -22,6 +24,8 @@ class SendMailController extends Controller
                 'message' => 'Your application has been submitted successfully!',
             ];
             SendEmail::dispatch($data);
+            // Mail::to($data['email'])->queue(new SendMail($data));
+
 
         }
 
@@ -39,6 +43,7 @@ class SendMailController extends Controller
             'message' => 'Your application has been Approved successfully!',
         ];
         SendEmail::dispatch($data);
+        // Mail::to($data['email'])->queue(new SendMail($data));
 
         return back()->with('success', 'Email has been sent successfully!');
     }
