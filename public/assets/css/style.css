@@ -4941,7 +4941,8 @@ div.tox .btn-group-vertical > .btn-group:not(:first-child) > .tox-button,
   color: var(--bs-progress-bar-color);
   text-align: center;
   white-space: nowrap;
-  background-color: var(--bs-progress-bar-bg);
+  /* background-color: var(--bs-progress-bar-bg); */
+  background-color: #102773;
   transition: var(--bs-progress-bar-transition);
 }
 @media (prefers-reduced-motion: reduce) {

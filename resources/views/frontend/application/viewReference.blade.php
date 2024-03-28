@@ -106,12 +106,61 @@
                                                         </div>
                                                     </div>
                                                     <hr>
-                                                    <div class="row">
+                                                    {{-- <div class="row">
                                                         <div class="col-4">
                                                             <h5 class="card-title">Service Type</h5>
                                                         </div>
                                                         <div class="col-8">
                                                             <p class="card-text">{{ $application->service->name }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr> --}}
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Phone</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">{{ $application->phone }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Email</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">{{ $application->email }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Citizen Country</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">{{ $application->citizenCountry->name }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Payment Details</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">
+                                                                <a href="{{ route('invoice',$application->reference_id) }}" class="btn btn-primary">Check</a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Payment Details</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">
+                                                                
+                                                                <p class="card-text">{{ $application->created_at }}</p>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>

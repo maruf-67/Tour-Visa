@@ -44,21 +44,26 @@
 
             <fieldset>
                 <div class="container mt-5 pt-4 px-4" style="height: 40vh">
-                    <h1 class="text-center mb-5 text-success">Application Information</h1>
+                    <h1 class="text-center mb-5 text-success"><span style="color:red">Let's Start Your Uk ETA</span> Application</h1>
                     <div class="row section-padding justify-content-center">
                         <div class="col-md-12">
 
                             <div class="row">
-                                <div class="col-md-6 col-sm-12">
 
+                                <div class="col-md-6 col-sm-12">
                                     <!-- Country names and Country Code -->
                                     <label class="d-block mb-4 ">
-                                        <span class="form-label d-block">Service Type *</span>
-                                        <select class="form-select" id="service" name="service">
+                                        <span class="form-label d-block">Country of Citizenship *</span>
+                                        <select class="form-select" id="country_citizen" name="country_citizen">
+                                            <option value="">Enter Your Country</option>`;
 
-                                            @foreach ($services as $service)
-                                                <option value="{{ $service->id }}">{{ $service->name }}</option>
-                                            @endforeach
+
+                                                countries.forEach(function(country) {
+                                                    formHtml +=
+                                                        `<option value="${country.name}">${country.name}</option>`;
+                                                });
+
+                                                formHtml += `
 
                                         </select>
                                     </label>
@@ -79,6 +84,29 @@
                                             <option value="9">9</option>
                                         </select>
                                     </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Email address *</label>
+                                        <input type="mail" class="form-control" id="exampleInputEmail1"
+                                            aria-describedby="emailHelp" placeholder="Enter Your Email Here"
+                                            name="email">
+                                        <div id="emailHelp" class="form-text">We'll never share your email with
+                                            anyone
+                                            else.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group mb-3">
+                                        <label for="exampleInputNumber" class="form-label">Phone Number *</label>
+                                        <input type="tel" class="form-control" id="exampleInputNumber"
+                                            placeholder="Enter Phone Number" name="phone">
+                                        <small id="phoneno" class="form-text text-muted">We'll never share your
+                                            number with anyone else.</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -615,200 +643,129 @@
 
                 // console.log(formIndex);
                 let formHtml = `
-                        <form class="form app" id="form${formIndex}">
-                        <h2>Form ${formIndex}</h2>
+                <form class="form app" id="form${formIndex}">
+                    <h2>Form ${formIndex}</h2>
 
-                        <div class="progress-container">
-                            <ul id="progressbar">
-                                <li class="active" id="step1">
-                                    <strong>Step 1</strong>
-                                </li>
-                                <li id="step2">
-                                    <strong>Step 2</strong>
-                                </li>
-                                <li id="step3">
-                                    <strong>Step 3</strong>
-                                </li>
-                                <li id="step4">
-                                    <strong>Step 4</strong>
-                                </li>
-                            </ul>
-                            <div class="progress mt-4" id="progressBar${formIndex}">
-                                <div class="progress-bar form-progress" role="progressbar" style="width: 25%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+                    <div class="progress-container">
+                        <ul id="progressbar">
+                            <li class="active" id="step1">
+                                <strong>Step 1</strong>
+                            </li>
+                            <li id="step2">
+                                <strong>Step 2</strong>
+                            </li>
+                            <li id="step3">
+                                <strong>Step 3</strong>
+                            </li>
+                            <li id="step4">
+                                <strong>Step 4</strong>
+                            </li>
+                        </ul>
+                        <div class="progress mt-4" id="progressBar${formIndex}">
+                            <div class="progress-bar form-progress" role="progressbar" style="width: 25%;" aria-valuenow="0"
+                                aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
+                    </div>
 
-                        <div id="step1${formIndex}" class="form-step">
-                            <fieldset>
-                                <div class="container py-4 px-4">
-                                    <h1 class="text-center mb-5 text-success">Personal Information</h1>
-                                    <div class="row section-padding justify-content-center">
-                                        <div class="col-md-12">
+                    <div id="step1${formIndex}" class="form-step">
+                        <fieldset>
+                            <div class="container py-4 px-4">
+                                <h1 class="text-center mb-5 text-success">Passport Information</h1>
+                                <div class="row section-padding justify-content-center">
+                                    <div class="col-md-12">
+                                        <!-- Country names and Country Code -->
+                                        <label class="d-block mb-4 ">
+                                            <span class="form-label d-block">Service Type *</span>
+                                            <select class="form-select" id="service" name="service">
 
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-12">
-                                                    <label class="d-block mb-4">
-                                                        <span class="form-label d-block">First Name *</span>
-                                                        <input name="f_name" type="text" class="form-control"
-                                                            placeholder="Mahfujur">
-                                                    </label>
-                                                </div>
+                                                @foreach ($services as $service)
+                                                <option value="{{ $service->id }}">{{ $service->name }}</option>
+                                                @endforeach
 
-                                                <div class="col-md-6 col-sm-12">
-                                                    <label class="d-block mb-4">
-                                                        <span class="form-label d-block">Last Name *</span>
-                                                        <input name="l_name" type="text" class="form-control"
-                                                            placeholder="Rahman" />
-                                                    </label>
-                                                </div>
+                                            </select>
+                                        </label>
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-12">
+                                                <label class="d-block mb-4">
+                                                    <span class="form-label d-block">First Name * / Given Name</span>
+                                                    <input name="f_name" type="text" class="form-control" placeholder="Mahfujur">
+                                                </label>
                                             </div>
 
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-12">
-                                                    <label class="d-block mb-4">
-                                                        <span class="form-label d-block">Date of Birth *</span>
-                                                        <input name="date" type="date" class="form-control"
-                                                            placeholder="Rahman" />
-                                                    </label>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12">
-                                                    <label class="d-block mb-4">
-                                                        <span class="form-label d-block">Sex *</span>
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name='sex' id="sex" value="Male" checked>
-                                                            <label class="form-check-label" for="sex">Male</label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="sex" id="sex2" value="Female">
-                                                            <label class="form-check-label" for="sex2">Female</label>
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-12">
-                                                    <!-- Country names and Country Code -->
-                                                    <label class="d-block mb-4 ">
-                                                        <span class="form-label d-block">Country of Birth *</span>
-                                                        <select class="form-select" id="country_birth" name="country_birth">
-
-                                                            <option value="">Enter Your Country</option>`;
-
-                                                            // Add options for each country
-                                                            countries.forEach(function(country) {
-                                                                formHtml +=
-                                                                    `<option value="${country.name}">${country.name}</option>`;
-                                                            });
-
-                                                            formHtml += `
-
-                                                        </select>
-                                                    </label>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12">
-                                                    <!-- Country names and Country Code -->
-                                                    <label class="d-block mb-4 ">
-                                                        <span class="form-label d-block">Country of Citizenship *</span>
-                                                        <select class="form-select" id="country_citizen" name="country_citizen">
-                                                            <option value="">Enter Your Country</option>`;
-
-
-                                                                countries.forEach(function(country) {
-                                                                    formHtml +=
-                                                                        `<option value="${country.name}">${country.name}</option>`;
-                                                                });
-
-                                                                formHtml += `
-
-                                                        </select>
-                                                    </label>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="mb-3">
-                                                        <label for="exampleInputEmail1" class="form-label">Email address *</label>
-                                                        <input type="mail" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp" placeholder="Enter Your Email Here"
-                                                            name="email">
-                                                        <div id="emailHelp" class="form-text">We'll never share your email with
-                                                            anyone
-                                                            else.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="form-group mb-3">
-                                                        <label for="exampleInputNumber" class="form-label">Phone Number *</label>
-                                                        <input type="tel" class="form-control" id="exampleInputNumber"
-                                                            placeholder="Enter Phone Number" name="phone">
-                                                        <small id="phoneno" class="form-text text-muted">We'll never share your
-                                                            number with anyone else.</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="form-group mb-3">
-                                                        <label class="d-block mb-4">
-                                                            <span class="form-label d-block">Address *</span>
-                                                            <textarea name="address" class="form-control" rows="2" placeholder="Where do you live?"></textarea>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="form-group mb-3">
-                                                        <label class="d-block mb-4">
-                                                            <span class="form-label d-block">Tell us more about yourself</span>
-                                                            <textarea name="message" class="form-control" rows="2" placeholder="What motivates you?"></textarea>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-
-                                            <div class="d-block text-end">
-                                                <div class="small">
-                                                    <a href="#" class="text-dark text-decoration-none"
-                                                        target="_blank">Developed By Mahfujur Rahman</a>
-                                                </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <label class="d-block mb-4">
+                                                    <span class="form-label d-block">Last Name * / Surename</span>
+                                                    <input name="l_name" type="text" class="form-control" placeholder="Rahman" />
+                                                </label>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <input type="button" class="next-step me-4 next-btn" value="Next" />
 
-                            </fieldset>
-                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-12">
+                                                <label class="d-block mb-4">
+                                                    <span class="form-label d-block">Date of Birth *</span>
+                                                    <input name="date" type="date" class="form-control" placeholder="Rahman" />
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <label class="d-block mb-4">
+                                                    <span class="form-label d-block">Sex *</span>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name='sex' id="sex" value="Male"
+                                                            checked>
+                                                        <label class="form-check-label" for="sex">Male</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="sex" id="sex2"
+                                                            value="Female">
+                                                        <label class="form-check-label" for="sex2">Female</label>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
 
-                        <div id="step2${formIndex}" class="form-step" style="display: none;">
-                            <fieldset>
-                                <div class="container py-4 px-4">
-                                    <h1 class="text-center mb-5 text-success">Passport & Travel Details</h1>
-                                    <div class="row section-padding justify-content-center">
-                                        <div class="col-md-12">
-                                            <!-- Country names and Country Code -->
-                                            <label class="d-block mb-4 ">
-                                                <span class="form-label d-block">Country of Passport *</span>
-                                                <select class="form-select" id="country_passport" name="country_passport">
-                                                    <option value="">Enter Your Country</option>`;
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-12">
+                                                <!-- Country names and Country Code -->
+                                                <label class="d-block mb-4 ">
+                                                    <span class="form-label d-block">Country of Birth *</span>
+                                                    <select class="form-select" id="country_birth" name="country_birth">
 
+                                                        <option value="">Enter Your Country</option>`;
 
+                                                        // Add options for each country
                                                         countries.forEach(function(country) {
-                                                            formHtml +=
-                                                                `<option value="${country.name}">${country.name}</option>`;
+                                                        formHtml +=
+                                                        `<option value="${country.name}">${country.name}</option>`;
                                                         });
 
                                                         formHtml += `
 
-                                                </select>
-                                            </label>
+                                                    </select>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <!-- Country names and Country Code -->
+                                                <label class="d-block mb-4 ">
+                                                    <span class="form-label d-block">Country of Passport *</span>
+                                                    <select class="form-select" id="country_passport" name="country_passport">
+                                                        <option value="">Enter Your Country</option>`;
 
-                                            <div class="form-group mb-3">
+
+                                                        countries.forEach(function(country) {
+                                                        formHtml +=
+                                                        `<option value="${country.name}">${country.name}</option>`;
+                                                        });
+
+                                                        formHtml += `
+
+                                                    </select>
+                                                </label>
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-12">
                                                 <label for="exampleInputNumber" class="form-label">Passport Number *</label>
                                                 <input type="text" class="form-control" id="exampleInputNumber" name="passport_num"
                                                     placeholder="Enter Passport Number">
@@ -817,117 +774,113 @@
                                                     anyone
                                                     else.</small>
                                             </div>
+                                            <div class="col-md-6 col-sm-12">
 
-                                            <label class="d-block mb-4">
-                                                <span class="form-label d-block">Issue Date *</span>
-                                                <input type="date" class="form-control" name="issueDate"
-                                                    placeholder="Rahman" />
-                                            </label>
-
-                                            <label class="d-block mb-4">
-                                                <span class="form-label d-block">Expiry Date *</span>
-                                                <input type="date" class="form-control" name="expiryDate"
-                                                    placeholder="Rahman" />
-                                            </label>
-
-                                            <label class="d-block mb-4">
-                                                <span class="form-label d-block">Intended Date of Entry *</span>
-                                                <input type="date" class="form-control" name="intendDate"
-                                                    placeholder="Rahman" />
-                                            </label>
-
-
-                                            <div class="d-block text-end">
-                                                <div class="small">
-                                                    <a href="#" class="text-dark text-decoration-none"
-                                                        target="_blank">Developed By Mahfujur Rahman</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <input type="button" class="next-step me-4 next-btn1" value="Next" />
-                                <input type="button" name="previous-step" class="previous-step prev-btn" value="Previous" />
-                            </fieldset>
-                        </div>
-
-                        <div id="step3${formIndex}" class="form-step" style="display: none;">
-                            <fieldset>
-                                <div class="container py-4 px-4">
-                                    <h1 class="text-center mb-5 text-success">Declaration of Application</h1>
-                                    <div class="row section-padding justify-content-center">
-                                        <div class="col-md-12">
-                                            <label class="d-block mb-4 ">
-                                                <span class="form-label d-block">Have you ever had a criminal conviction? *</span>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="criminal" id="criminal1" value="Yes">
-                                                    <label class="form-check-label" for="criminal1">Yes</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="criminal" id="criminal2" value="No" checked>
-                                                    <label class="form-check-label" for="criminal2">No</label>
-                                                </div>
-                                            </label>
-
-                                            <label class="d-block mb-4 ">
-                                                <span class="form-label d-block">Have you ever been involved in, or suspected of
-                                                    war
-                                                    crimes, genocide or crimes against humanity; terrosim including support for, or
-                                                    membership of, terrorist groups; supporting extremist groups or expressing
-                                                    extremist
-                                                    views? *</span>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="war"
-                                                        id="war1" value="Yes">
-                                                    <label class="form-check-label" for="war1">Yes</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="war"
-                                                        id="war2" value="No" checked>
-                                                    <label class="form-check-label" for="war2" >No</label>
-                                                </div>
-                                            </label>
-
-                                            <div class="mb-4">
-                                                <div>
-                                                    <div class="form-check">
-                                                        <label class="d-block">
-                                                            <input type="checkbox" class="form-check-input" name="remote"
-                                                                value="yes" checked />
-                                                            <span class="form-check-label">I declare that the information I have
-                                                                given
-                                                                in this application is truthful, complete and correct.</span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <label class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="privacyPolicy" value="no" />
-                                                    <span class="form-check-label">I have read and understand the <b>Terms and conditions</b>, and the <b>Privacy Policy</b>.</span>
+                                                <!-- Country names and Country Code -->
+                                                <label class="d-block mb-4">
+                                                    <span class="form-label d-block">Issue Date *</span>
+                                                    <input type="date" class="form-control" name="issueDate" placeholder="Rahman" />
                                                 </label>
-                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-12">
+
+                                                <label class="d-block mb-4">
+                                                    <span class="form-label d-block">Expiry Date *</span>
+                                                    <input type="date" class="form-control" name="expiryDate" placeholder="Rahman" />
+                                                </label>
+
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <label class="d-block mb-4">
+                                                    <span class="form-label d-block">Intended Date of Entry *</span>
+                                                    <input type="date" class="form-control" name="intendDate" placeholder="Rahman" />
+                                                </label>
+
+
                                             </div>
 
-                                            <div class="d-block text-end">
-                                                <div class="small">
-                                                    <a href="#" class="text-dark text-decoration-none"
-                                                        target="_blank">Developed By Mahfujur Rahman</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="button" class="next-step me-4 next-btn" value="Next" />
+
+                        </fieldset>
+                    </div>
+
+                    <div id="step2${formIndex}" class="form-step" style="display: none;">
+                        <fieldset>
+
+                            <div class="container py-4 px-4">
+                                <h1 class="text-center mb-5 text-success">Declaration of Application</h1>
+                                <div class="row section-padding justify-content-center">
+                                    <div class="col-md-12">
+                                        <label class="d-block mb-4 ">
+                                            <span class="form-label d-block">Phptograph of applicant? *</span>
+                                            <div class="mb-3">
+                                                <input class="form-control" type="file" id="formFile">
+                                            </div>
+                                        </label>
+
+                                        <label class="d-block mb-4 ">
+                                            <span class="form-label d-block">Phptograph of applicant? *</span>
+                                            <div class="mb-3">
+                                                <input class="form-control" type="file" id="formFile">
+                                            </div>
+                                        </label>
+
+                                        <div class="mb-4">
+                                            <div>
+                                                <div class="form-check">
+                                                    <label class="d-block">
+                                                        <input type="checkbox" class="form-check-input" name="remote" value="yes"
+                                                            checked />
+                                                        <span class="form-check-label">I declare that the information I have
+                                                            given
+                                                            in this application is truthful, complete and correct.</span>
+                                                    </label>
                                                 </div>
+                                            </div>
+                                            <div>
+                                                <label class="form-check">
+                                                    <input type="checkbox" class="form-check-input" id="privacyPolicy" value="no" />
+                                                    <span class="form-check-label">I have read and understand the <b>Terms and
+                                                            conditions</b>, and the <b>Privacy Policy</b>.</span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-block text-end">
+                                            <div class="small">
+                                                <a href="#" class="text-dark text-decoration-none" target="_blank">Developed By Mahfujur
+                                                    Rahman</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
 
-                                <div class="button-container mt-3">
-                                <input type="submit" class="next-step me-4 d-none" value="Next" id="submitButton"/>
+                            <input type="button" class="next-step me-4 next-btn1" value="Next" />
+                            <input type="button" name="previous-step" class="previous-step prev-btn" value="Previous" />
+                        </fieldset>
+                    </div>
+
+                    <div id="step3${formIndex}" class="form-step" style="display: none;">
+                        <fieldset>
+
+
+
+                            <div class="button-container mt-3">
+                                <input type="submit" class="next-step me-4 d-none" value="Next" id="submitButton" />
                                 <input type="button" name="previous-step" class="previous-step prev-btn1" value="Previous " />
                             </div>
-                            </fieldset>
-                        </div>
-                        </form>
+                        </fieldset>
+                    </div>
+                </form>
+
 
                         `;
                 return formHtml;
