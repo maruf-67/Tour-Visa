@@ -37,19 +37,16 @@
 @endpush --}}
 
 @section('content')
-
     <div class="container mt-5" style="overflow-x: hidden;">
 
         <div class="mb-3 mt-5 generateForms">
-
             <fieldset>
                 <div class="container mt-5 pt-4 px-4" style="height: 40vh">
-                    <h1 class="text-center mb-5 text-success"><span style="color:red">Let's Start Your Uk ETA</span> Application</h1>
+                    <h1 class="text-center mb-5 text-success"><span style="color:red">Let's Start Your Uk ETA</span>
+                        Application</h1>
                     <div class="row section-padding justify-content-center">
                         <div class="col-md-12">
-
                             <div class="row">
-
                                 <div class="col-md-6 col-sm-12">
                                     <!-- Country names and Country Code -->
                                     <label class="d-block mb-4 ">
@@ -58,12 +55,12 @@
                                             <option value="">Enter Your Country</option>`;
 
 
-                                                countries.forEach(function(country) {
-                                                    formHtml +=
-                                                        `<option value="${country.name}">${country.name}</option>`;
-                                                });
+                                            countries.forEach(function(country) {
+                                            formHtml +=
+                                            `<option value="${country.name}">${country.name}</option>`;
+                                            });
 
-                                                formHtml += `
+                                            formHtml += `
 
                                         </select>
                                     </label>
@@ -85,42 +82,42 @@
                                         </select>
                                     </label>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-6 col-sm-12">
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Email address *</label>
-                                        <input type="mail" class="form-control" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp" placeholder="Enter Your Email Here"
-                                            name="email">
+                                    <!-- Country names and Country Code -->
+                                    <label class="d-block mb-4 ">
+                                        <span class="form-label d-block">Email address *</span>
+                                        <input type="mail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                            placeholder="Enter Your Email Here" name="email">
                                         <div id="emailHelp" class="form-text">We'll never share your email with
                                             anyone
                                             else.
                                         </div>
-                                    </div>
+                                    </label>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
-                                    <div class="form-group mb-3">
-                                        <label for="exampleInputNumber" class="form-label">Phone Number *</label>
+                                    <!-- Country names and Country Code -->
+                                    <label class="d-block mb-4 ">
+                                        <span class="form-label d-block">Phone Number *</span>
                                         <input type="tel" class="form-control" id="exampleInputNumber"
                                             placeholder="Enter Phone Number" name="phone">
                                         <small id="phoneno" class="form-text text-muted">We'll never share your
                                             number with anyone else.</small>
-                                    </div>
+                                    </label>
                                 </div>
                             </div>
+                            <input id="generateForms" type="button" name="next-step" class="next-step" value="Next" />
                         </div>
                     </div>
                 </div>
-                <input id="generateForms" type="button" name="next-step" class="next-step me-4" value="Next" />
             </fieldset>
-        </div>
+        
+    </div>
 
-        <div id="formsContainer" style="display: none;"></div> <!-- Initially hidden -->
-        <div class="progress mt-4">
-            <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
-                aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
+    <div id="formsContainer" style="display: none;"></div> <!-- Initially hidden -->
+    <div class="progress mt-4">
+        <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0"
+            aria-valuemax="100"></div>
+    </div>
 
     </div>
     @push('script')
@@ -279,18 +276,18 @@
                                                                                 </div>
                                                                                 <div class="col-8">
                                                                                     <select class="form-select" id="service" name="service" required> `;
-                                                                                        services.forEach(function(item) {
-                                                                                            if (item.id == service) {
-                                                                                                htmlContent +=
-                                                                                                    `<option value="${item.id}" selected>${item.name}</option>`;
-                                                                                            } else {
-                                                                                                htmlContent +=
-                                                                                                    `<option value="${item.id}">${item.name}</option>`;
-                                                                                            }
-                                                                                        });
+                    services.forEach(function(item) {
+                        if (item.id == service) {
+                            htmlContent +=
+                                `<option value="${item.id}" selected>${item.name}</option>`;
+                        } else {
+                            htmlContent +=
+                                `<option value="${item.id}">${item.name}</option>`;
+                        }
+                    });
 
-                                                                                        htmlContent +=
-                                                                                            `</select>
+                    htmlContent +=
+                        `</select>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -366,13 +363,13 @@
                                                                                     <select class="form-select" id="country_birth" name="country_birth" value="${ItemData.country_birth}" required>
                                                                                         <option value="">${ItemData.country_birth}</option>`;
 
-                                                                                            countries.forEach(function(country) {
-                                                                                                htmlContent +=
-                                                                                                    `<option value="${country.id}">${country.name}</option>`;
-                                                                                            });
+                    countries.forEach(function(country) {
+                        htmlContent +=
+                            `<option value="${country.id}">${country.name}</option>`;
+                    });
 
-                                                                                            htmlContent +=
-                                                                                                `
+                    htmlContent +=
+                        `
                                                                                     </select>
 
                                                                                 </div>
@@ -386,12 +383,12 @@
                                                                                     <select class="form-select" id="country_citizen" name="country_citizen" value="${ItemData.country_citizen}" required>
                                                                                         <option value="">${ItemData.country_citizen}</option>`;
 
-                                                                                            countries.forEach(function(country) {
-                                                                                                htmlContent +=
-                                                                                                    `<option value="${country.id}">${country.name}</option>`;
-                                                                                            });
+                    countries.forEach(function(country) {
+                        htmlContent +=
+                            `<option value="${country.id}">${country.name}</option>`;
+                    });
 
-                                                                                            htmlContent +=
+                    htmlContent +=
                         `
 
                                                                                     </select>
@@ -452,13 +449,13 @@
                                                                                     <select class="form-select" id="passport_country" name="passport_country" value="${ItemData.country_passport}" required>
                                                                                         <option value="">${ItemData.country_passport}</option>`;
 
-                                                                                            countries.forEach(function(country) {
+                    countries.forEach(function(country) {
 
-                                                                                                htmlContent +=
-                                                                                                    `<option value="${country.id}">${country.name}</option>`;
-                                                                                            });
+                        htmlContent +=
+                            `<option value="${country.id}">${country.name}</option>`;
+                    });
 
-                                                                                            htmlContent += `
+                    htmlContent += `
 
                                                                                     </select>
                                                                                 </div>
@@ -622,13 +619,13 @@
                 });
 
                 $(document).on('change', '#privacyPolicy', function() {
-                // $('#privacyPolicy').change(function() {
-                if($(this).is(":checked")) {
-                    $('#submitButton').removeClass('d-none');
-                } else {
-                    $('#submitButton').addClass('d-none');
-                }
-            });
+                    // $('#privacyPolicy').change(function() {
+                    if ($(this).is(":checked")) {
+                        $('#submitButton').removeClass('d-none');
+                    } else {
+                        $('#submitButton').addClass('d-none');
+                    }
+                });
 
 
             });
@@ -733,13 +730,13 @@
 
                                                         <option value="">Enter Your Country</option>`;
 
-                                                        // Add options for each country
-                                                        countries.forEach(function(country) {
-                                                        formHtml +=
-                                                        `<option value="${country.name}">${country.name}</option>`;
-                                                        });
+                // Add options for each country
+                countries.forEach(function(country) {
+                    formHtml +=
+                        `<option value="${country.name}">${country.name}</option>`;
+                });
 
-                                                        formHtml += `
+                formHtml += `
 
                                                     </select>
                                                 </label>
@@ -752,12 +749,12 @@
                                                         <option value="">Enter Your Country</option>`;
 
 
-                                                        countries.forEach(function(country) {
-                                                        formHtml +=
-                                                        `<option value="${country.name}">${country.name}</option>`;
-                                                        });
+                countries.forEach(function(country) {
+                    formHtml +=
+                        `<option value="${country.name}">${country.name}</option>`;
+                });
 
-                                                        formHtml += `
+                formHtml += `
 
                                                     </select>
                                                 </label>
@@ -776,31 +773,25 @@
                                             </div>
                                             <div class="col-md-6 col-sm-12">
 
-                                                <!-- Country names and Country Code -->
                                                 <label class="d-block mb-4">
-                                                    <span class="form-label d-block">Issue Date *</span>
-                                                    <input type="date" class="form-control" name="issueDate" placeholder="Rahman" />
+                                                    <span class="form-label d-block">Intended Date of Travel *</span>
+                                                    <input type="date" class="form-control" name="intendDate" placeholder="Rahman" />
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6 col-sm-12">
-
                                                 <label class="d-block mb-4">
-                                                    <span class="form-label d-block">Expiry Date *</span>
-                                                    <input type="date" class="form-control" name="expiryDate" placeholder="Rahman" />
+                                                    <span class="form-label d-block">Passport Issue Date *</span>
+                                                    <input type="date" class="form-control" name="issueDate" placeholder="Rahman" />
                                                 </label>
-
                                             </div>
                                             <div class="col-md-6 col-sm-12">
                                                 <label class="d-block mb-4">
-                                                    <span class="form-label d-block">Intended Date of Entry *</span>
-                                                    <input type="date" class="form-control" name="intendDate" placeholder="Rahman" />
+                                                    <span class="form-label d-block">Passport Expiry Date *</span>
+                                                    <input type="date" class="form-control" name="expiryDate" placeholder="Rahman" />
                                                 </label>
-
-
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -818,14 +809,14 @@
                                 <div class="row section-padding justify-content-center">
                                     <div class="col-md-12">
                                         <label class="d-block mb-4 ">
-                                            <span class="form-label d-block">Phptograph of applicant? *</span>
+                                            <span class="form-label d-block">Photograph of applicant *</span>
                                             <div class="mb-3">
                                                 <input class="form-control" type="file" id="formFile">
                                             </div>
                                         </label>
 
                                         <label class="d-block mb-4 ">
-                                            <span class="form-label d-block">Phptograph of applicant? *</span>
+                                            <span class="form-label d-block">Passport Bio Data Page *</span>
                                             <div class="mb-3">
                                                 <input class="form-control" type="file" id="formFile">
                                             </div>
@@ -868,17 +859,7 @@
                         </fieldset>
                     </div>
 
-                    <div id="step3${formIndex}" class="form-step" style="display: none;">
-                        <fieldset>
 
-
-
-                            <div class="button-container mt-3">
-                                <input type="submit" class="next-step me-4 d-none" value="Next" id="submitButton" />
-                                <input type="button" name="previous-step" class="previous-step prev-btn1" value="Previous " />
-                            </div>
-                        </fieldset>
-                    </div>
                 </form>
 
 
@@ -905,7 +886,8 @@
                             // Handle success response
                             // ref = response.reference_id;
                             console.log(response);
-                            window.location.href = "{{ url('app-view') }}/" + encodeURIComponent(response.reference_id);
+                            window.location.href = "{{ url('app-view') }}/" + encodeURIComponent(response
+                                .reference_id);
                         },
                         error: function(xhr, status, error) {
                             // Handle error
