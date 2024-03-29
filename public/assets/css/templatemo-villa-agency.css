@@ -100,7 +100,7 @@ ul {
 }
 
 p {
-  font-size: 14px;
+  font-size: 1rem;
   line-height: 28px;
   color: #4a4a4a;
 }
@@ -389,7 +389,8 @@ Header Style
 
 .header-area {
   position: relative;
-  background-color: #fff;
+  /* background-color: #fff; */
+  background-color: #000421;
   height: 100px;
   z-index: 100;
   -webkit-transition: all .5s ease 0s;
@@ -466,7 +467,8 @@ Header Style
 }
 
 .header-area .main-nav .nav li:last-child a {
-  background-color: #1e1e1e;
+  /* background-color: #1e1e1e; */
+  background-color: #2f8d46;
   color: #fff;
   font-size: 14px;
   font-weight: 400;
@@ -1349,7 +1351,8 @@ footer.footer-no-gap {
 
 footer {
   margin-top: 50px;
-  background-color: #1e1e1e;
+  background-color: #000421;
+  /* background-color: #1e1e1e; */
   min-height: 100px;
 }
 

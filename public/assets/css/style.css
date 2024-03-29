@@ -2049,6 +2049,7 @@ progress {
 }
 .form-label {
   margin-bottom: 0.5rem;
+  font-size: 1rem;
 }
 
 .col-form-label {
@@ -4941,7 +4942,8 @@ div.tox .btn-group-vertical > .btn-group:not(:first-child) > .tox-button,
   color: var(--bs-progress-bar-color);
   text-align: center;
   white-space: nowrap;
-  background-color: var(--bs-progress-bar-bg);
+  /* background-color: var(--bs-progress-bar-bg); */
+  background-color: #102773;
   transition: var(--bs-progress-bar-transition);
 }
 @media (prefers-reduced-motion: reduce) {
@@ -20017,7 +20019,7 @@ body {
   background: #7987a1;
 }
 .sidebar-dark .sidebar .sidebar-body {
-  background: #0c1427;
+  background: #283c7c;
   border-right: 1px solid rgba(233, 236, 239, 0.1);
 }
 .sidebar-dark .sidebar .sidebar-body .nav .nav-item.nav-category {

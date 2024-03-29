@@ -15,7 +15,9 @@
         rel="stylesheet"> --}}
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
-    <title>Villa Agency - Real Estate HTML5 Template</title>
+    {{-- <title>TourVisa</title> --}}
+    <title>@yield('title', $homedata->title)</title>
+
     @if (isset($homedata->fav_icon))
     <link rel="icon" type="image/x-icon" href="{{ asset($homedata->fav_icon) }}">
     @else

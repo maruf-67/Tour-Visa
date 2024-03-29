@@ -23,124 +23,70 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-baseline">
                                     <h6 class="card-title mb-0">Personal Details</h6>
-                                    <div class="dropdown mb-2">
-                                        <a type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false">
-                                            <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                                    data-feather="eye" class="icon-sm me-2"></i> <span
-                                                    class="">View</span></a>
-                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                                    data-feather="edit-2" class="icon-sm me-2"></i> <span
-                                                    class="">Edit</span></a>
-                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                                    data-feather="trash" class="icon-sm me-2"></i> <span
-                                                    class="">Delete</span></a>
-                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                                    data-feather="printer" class="icon-sm me-2"></i> <span
-                                                    class="">Print</span></a>
-                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                                    data-feather="download" class="icon-sm me-2"></i> <span
-                                                    class="">Download</span></a>
-                                        </div>
-                                    </div>
                                 </div>
 
                                 <div class="row">
 
                                     {{-- Application loop --}}
-                                    <div class="col-12 col-md-12 col-xl-4">
+                                    <div class="col-12 col-md-12 col-xl-4 ">
                                         <div class="card mt-3">
-                                            <div class="card-body">
+                                            <div class="card-body pe-2">
                                                 <div class="d-flex justify-content-center align-items-baseline">
                                                     <h6 class="card-title mb-0 text-success">Applicaton</h6>
                                                 </div>
 
                                                 <div class="row">
-                                                    <div class="col-4 col-md-4 col-xl-4">
-                                                        <div class="d-flex align-items-baseline">
-                                                            <p class="text-success">
-                                                                <span>Visitors ID</span>
-
-                                                            </p>
+                                                    <div class="col-12 col-md-12">
+                                                        <div class="table-responsive">
+                                                            <table class="table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Visitors ID</th>
+                                                                        <th>Applicant Name</th>
+                                                                        <th>Status</th>
+                                                                        <th>Payment Status</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @foreach ($applications as $application)
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span>
+                                                                                    <button class="btn btn-link" onclick="toggleDetails('{{ $application->id }}')">
+                                                                                        {{ $application->id }}
+                                                                                    </button>
+                                                                                </span> -
+                                                                                <span>
+                                                                                    <button class="btn btn-link" onclick="toggleDetails('{{ $application->id }}')">
+                                                                                        View
+                                                                                    </button>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td valign='middle'>{{ $application->first_name }}</td>
+                                                                            <td valign='middle'>
+                                                                                @if ($application->status == 1)
+                                                                                    Pending
+                                                                                @elseif ($application->status == 2)
+                                                                                    Processing
+                                                                                @elseif ($application->status == 3)
+                                                                                    Approved
+                                                                                @elseif ($application->status == 4)
+                                                                                    On-Hold
+                                                                                @elseif ($application->status == 5)
+                                                                                    Rejected
+                                                                                @else
+                                                                                    Unknown Status
+                                                                                @endif
+                                                                            </td>
+                                                                            <td valign='middle'>{{ $application->is_payment ? 'Paid' : 'Unpaid' }}</td>
+                                                                        </tr>
+                                                                    @endforeach
+                                                                </tbody>
+                                                            </table>
                                                         </div>
 
-                                                        {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
-                                                    </div>
-                                                    <div class="col-4 col-md-4 col-xl-4">
-                                                        <div class="d-flex align-items-baseline">
-                                                            <p class="text-success">
-                                                                <span>Status</span>
-
-                                                            </p>
-                                                        </div>
-
-                                                        {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
-                                                    </div>
-                                                    <div class="col-4 col-md-4 col-xl-4">
-                                                        <div class="d-flex align-items-baseline">
-                                                            <p class="text-success">
-                                                                <span>Payment Status</span>
-
-                                                            </p>
-                                                        </div>
-
-                                                        {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
                                                     </div>
                                                 </div>
-                                                @foreach ($applications as $application)
-                                                    <div class="row">
-                                                        <div class="col-4 col-md-4 col-xl-4">
-                                                            <div class="d-flex align-items-baseline">
-                                                                <p>
-                                                                    <span><button class="btn btn-link"
-                                                                            onclick="toggleDetails('{{ $application->id }}')">
-                                                                            {{ $application->id }} </button></span>
-
-                                                                </p>
-                                                            </div>
-
-                                                            {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
-                                                        </div>
-                                                        <div class="col-4 col-md-4 col-xl-4">
-                                                            <div class="d-flex align-items-baseline">
-                                                                <p>
-                                                                    <span>
-                                                                        @if ($application->status == 1)
-                                                                            Pending
-                                                                        @elseif($application->status == 2)
-                                                                            Processing
-                                                                        @elseif($application->status == 3)
-                                                                            Approved
-                                                                        @elseif($application->status == 4)
-                                                                            On-Hold
-                                                                        @elseif($application->status == 5)
-                                                                            Rejected
-                                                                        @else
-                                                                            Unknown Status
-                                                                        @endif
-                                                                    </span>
-
-                                                                </p>
-                                                            </div>
-
-                                                            {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
-                                                        </div>
-                                                        <div class="col-4 col-md-4 col-xl-4">
-                                                            <div class="d-flex align-items-baseline">
-                                                                <p>
-                                                                    <span>{{ $application->is_payment ? 'Paid' : 'Unpaid' }}</span>
-
-                                                                </p>
-                                                            </div>
-
-                                                            {{-- <h3 class="mb-2 text-end">{{ $application->id }}</h3> --}}
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-
                                             </div>
                                         </div>
                                     </div>
@@ -160,12 +106,61 @@
                                                         </div>
                                                     </div>
                                                     <hr>
-                                                    <div class="row">
+                                                    {{-- <div class="row">
                                                         <div class="col-4">
                                                             <h5 class="card-title">Service Type</h5>
                                                         </div>
                                                         <div class="col-8">
                                                             <p class="card-text">{{ $application->service->name }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr> --}}
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Phone</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">{{ $application->phone }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Email</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">{{ $application->email }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Citizen Country</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">{{ $application->citizenCountry->name }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Payment Details</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">
+                                                                <a href="{{ route('invoice',$application->reference_id) }}" class="btn btn-primary">Check</a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <h5 class="card-title">Payment Details</h5>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p class="card-text">
+                                                                
+                                                                <p class="card-text">{{ $application->created_at }}</p>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>

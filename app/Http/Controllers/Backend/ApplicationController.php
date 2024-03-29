@@ -45,7 +45,8 @@ class ApplicationController extends Controller
     }
     public function rejected()
     {
-        $applications = Application::with('service', 'citizenCountry')->where('status', 5)->where('is_payment', 1)->get();
+        $applications = Application::with('service', 'citizenCountry')->where('status', 5)->get();
+        // dd($applications);
         return view('backend.Application.rejected.index',compact('applications'));
     }
     public function unpaid()
