@@ -28,7 +28,7 @@
                                 <div class="row">
 
                                     {{-- Application loop --}}
-                                    <div class="col-12 col-md-12 col-xl-4 ">
+                                    <div class="col-12 col-md-12 col-xl-6 ">
                                         <div class="card mt-3">
                                             <div class="card-body pe-2">
                                                 <div class="d-flex justify-content-center align-items-baseline">
@@ -93,15 +93,15 @@
 
 
                                     @foreach ($applications as $application)
-                                        <div class="col-12 col-md-6 col-xl-4" id="details-a{{ $application->id }}"
+                                        <div class="col-12 col-md-6 col-xl-6" id="details-a{{ $application->id }}"
                                             style="display: {{ $loop->first ? 'block' : 'none' }};">
                                             <div class="card mt-3">
                                                 <div class="card-body">
                                                     <div class="row">
-                                                        <div class="col-4">
+                                                        <div class="col-5">
                                                             <h5 class="card-title">Reference ID:</h5>
                                                         </div>
-                                                        <div class="col-8">
+                                                        <div class="col-7">
                                                             <p class="card-text">{{ $application->reference_id }}</p>
                                                         </div>
                                                     </div>
@@ -152,13 +152,14 @@
                                                             </p>
                                                         </div>
                                                     </div>
+                                                    <hr>
                                                     <div class="row">
                                                         <div class="col-5">
                                                             <h5 class="card-title">Payment Details</h5>
                                                         </div>
                                                         <div class="col-7">
                                                             <p class="card-text">
-                                                                
+
                                                                 <p class="card-text">{{ $application->created_at }}</p>
                                                             </p>
                                                         </div>
@@ -166,7 +167,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="card mt-3">
+                                            {{-- <div class="card mt-3">
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-5">
@@ -356,7 +357,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     @endforeach
 

@@ -7,10 +7,11 @@
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}" /> --}}
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/demo1/style.css') }}" /> --}}
+
 @endpush
 
 @section('content')
-    <div class="container mt-5" style="overflow-x: hidden;">
+<div class="container mt-5" style="overflow-x: hidden;">
 
         <div id="formsContainer" style="display: none;"></div>
         <div class="progress mt-4">
@@ -18,7 +19,9 @@
                 aria-valuemax="100"></div>
         </div>
 
-    </div>
+
+</div>
+
     @push('script')
         <script>
             var formData = [];
@@ -529,15 +532,21 @@
                                                                                 </div>
                                                                                 <div class="col-7">
                                                                                     <select class="form-select" id="birth_country_id" name="birth_country_id" value="${data.birth_country_id}" required>
-                                                                                        <option value="">${data.birth_country_id}</option>`;
+                                                                                    `;
 
-                    countries.forEach(function(country) {
-                        htmlContent +=
-                            `<option value="${country.id}">${country.name}</option>`;
-                    });
 
-                    htmlContent +=
-                        `
+                                                                                        countries.forEach(function(item) {
+                                                                                            if (item.id == data.birth_country_id) {
+                                                                                                htmlContent +=
+                                                                                                    `<option value="${item.id}" selected>${item.name}</option>`;
+                                                                                            } else {
+                                                                                                htmlContent +=
+                                                                                                    `<option value="${item.id}">${item.name}</option>`;
+                                                                                            }
+                                                                                        });
+
+                                                                                        htmlContent +=
+                                                                                            `
                                                                                     </select>
 
                                                                                 </div>
@@ -569,15 +578,20 @@
                                                                                 </div>
                                                                                 <div class="col-7">
                                                                                     <select class="form-select" id="passport_country" name="passport_country" value="${data.passport_country_id}" required>
-                                                                                        <option value="">${data.passport_country_id}</option>`;
+                                                                                       `;
 
-                    countries.forEach(function(country) {
 
-                        htmlContent +=
-                            `<option value="${country.id}">${country.name}</option>`;
-                    });
+                                                                                        countries.forEach(function(item) {
+                                                                                            if (item.id == data.passport_country_id) {
+                                                                                                htmlContent +=
+                                                                                                    `<option value="${item.id}" selected>${item.name}</option>`;
+                                                                                            } else {
+                                                                                                htmlContent +=
+                                                                                                    `<option value="${item.id}">${item.name}</option>`;
+                                                                                            }
+                                                                                        });
 
-                    htmlContent += `
+                                                                                        htmlContent +=`
 
                                                                                     </select>
                                                                                 </div>
@@ -636,7 +650,19 @@
                                                                             <hr>
                                                                             <div class="row">
                                                                                 <div class="col-5">
-                                                                                    <h5 class="card-title">War Crime</h5>
+                                                                                    <h5 class="card-title">Photograph of applicant</h5>
+                                                                                </div>
+                                                                                <div class="col-7">
+                                                                                    <h5 class="card-title"><img src="${data.image}" alt="" style="width:400px;"></h5>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-5">
+                                                                                    <h5 class="card-title">Passport Bio Data Page</h5>
+                                                                                </div>
+                                                                                <div class="col-7">
+                                                                                    <h5 class="card-title"><img src="${data.passport_bio_data}" alt="" style="width:400px;"></h5>
                                                                                 </div>
 
                                                                             </div>
