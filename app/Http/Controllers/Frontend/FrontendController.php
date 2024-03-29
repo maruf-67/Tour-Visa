@@ -10,6 +10,7 @@ use App\Models\Homepage;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Queue;
 
@@ -26,13 +27,12 @@ class FrontendController extends Controller
         return view('frontend.application.application_view', compact('applications', 'sum', 'reference_id'));
     }
 
-    public function application()
+    public function application($ref_id)
     {
-
-
         $services = Service::where('status', 1)->get();
         $countries = Country::where('status', 1)->get();
-        return view('frontend.application.application', compact('services', 'countries'));
+        $order = Order::where('reference_id', $ref_id)->first();
+        return view('frontend.application.application', compact('services', 'countries','order'));
     }
 
     public function countries()

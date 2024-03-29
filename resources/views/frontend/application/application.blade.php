@@ -9,138 +9,33 @@
     <link rel="stylesheet" href="{{ asset('css/demo1/style.css') }}" /> --}}
 @endpush
 
-{{-- @section('navbar')
-
-@endsection --}}
-
-{{-- @push('nav')
-    <div class="sub-header">
-        <div class="container">
-            <div class="row">
-                <div class=" col-lg-8 col-md-8">
-                    <ul class="info">
-                        <li><i class="fa fa-envelope"></i> info@company.com</li>
-                        <li><i class="fa fa-map"></i> Sunny Isles Beach, FL 33160</li>
-                    </ul>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <ul class="social-links">
-                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                        <li><a href="https://x.com/minthu" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-@endpush --}}
-
 @section('content')
     <div class="container mt-5" style="overflow-x: hidden;">
 
-        <div class="mb-3 mt-5 generateForms">
-            <fieldset>
-                <div class="container mt-5 pt-4 px-4" style="height: 40vh">
-                    <h1 class="text-center mb-5 text-success"><span style="color:red">Let's Start Your Uk ETA</span>
-                        Application</h1>
-                    <div class="row section-padding justify-content-center">
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-6 col-sm-12">
-                                    <!-- Country names and Country Code -->
-                                    <label class="d-block mb-4 ">
-                                        <span class="form-label d-block">Country of Citizenship *</span>
-                                        <select class="form-select" id="country_citizen" name="country_citizen">
-                                            <option value="">Enter Your Country</option>`;
-
-
-                                            countries.forEach(function(country) {
-                                            formHtml +=
-                                            `<option value="${country.name}">${country.name}</option>`;
-                                            });
-
-                                            formHtml += `
-
-                                        </select>
-                                    </label>
-                                </div>
-                                <div class="col-md-6 col-sm-12">
-                                    <!-- Country names and Country Code -->
-                                    <label class="d-block mb-4 ">
-                                        <span class="form-label d-block">No Off Applications *</span>
-                                        <select class="form-select" id="numFormsInput" name="application_count">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                        </select>
-                                    </label>
-                                </div>
-                                <div class="col-md-6 col-sm-12">
-                                    <!-- Country names and Country Code -->
-                                    <label class="d-block mb-4 ">
-                                        <span class="form-label d-block">Email address *</span>
-                                        <input type="mail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                            placeholder="Enter Your Email Here" name="email">
-                                        <div id="emailHelp" class="form-text">We'll never share your email with
-                                            anyone
-                                            else.
-                                        </div>
-                                    </label>
-                                </div>
-                                <div class="col-md-6 col-sm-12">
-                                    <!-- Country names and Country Code -->
-                                    <label class="d-block mb-4 ">
-                                        <span class="form-label d-block">Phone Number *</span>
-                                        <input type="tel" class="form-control" id="exampleInputNumber"
-                                            placeholder="Enter Phone Number" name="phone">
-                                        <small id="phoneno" class="form-text text-muted">We'll never share your
-                                            number with anyone else.</small>
-                                    </label>
-                                </div>
-                            </div>
-                            <input id="generateForms" type="button" name="next-step" class="next-step" value="Next" />
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
-        
-    </div>
-
-    <div id="formsContainer" style="display: none;"></div> <!-- Initially hidden -->
-    <div class="progress mt-4">
-        <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0"
-            aria-valuemax="100"></div>
-    </div>
+        <div id="formsContainer" style="display: none;"></div>
+        <div class="progress mt-4">
+            <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
+                aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
 
     </div>
     @push('script')
         <script>
             var formData = [];
-            var countries = @json($countries);;
+            var countries = @json($countries);
+            var order = @json($order);
             var formDataArray = [];
             var $formsContainer = $('#formsContainer');
             var $progressBar = $('#progressBar');
-            var totalform = 0;
+            var totalform = order.count;
 
             var numForms = 1;
             var services = @json($services);
 
             $(document).ready(function() {
 
-                document.getElementById("generateForms").addEventListener("click", function() {
-                    totalform = parseInt($('#numFormsInput').val());
-                    generateForms();
-                    document.querySelector("div.generateForms").style.display = "none";
-                    document.getElementById("generateForms").style.display = "none";
-                });
-
+                generateForms();
+               
                 $(document).on('click', '.next-btn', function() {
                     var $form = $(this).closest('.form.app');
                     $form.find('.form-step').hide();

@@ -2,13 +2,14 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\PayPalController;
 use App\Http\Controllers\Backend\CountryController;
-use App\Http\Controllers\Backend\SendMailController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Backend\SendMailController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Backend\ApplicationController;
 use App\Http\Controllers\Backend\TransactionController;
@@ -30,8 +31,14 @@ Route::get('/welcome', function () {
 
 Auth::routes();
 
-// Route::get('/home', [HomeController::class, 'index'])->name('home');
-// Route::get('/', [HomeController::class, 'index']);
+Route::controller(HomeController::class)->group(function () {
+
+    Route::get('/home', 'index')->name('home');
+    Route::post('/order/store', 'store')->name('order.store');
+    Route::get('/', 'index');
+
+});
+
 
 Route::middleware(['auth', 'user-access:administrator,admin,moderator'])->name('admin.')->group(function () {
 
@@ -115,15 +122,14 @@ Route::middleware(['auth', 'user-access:administrator'])->name('admin.')->group(
 Route::controller(FrontendController::class)->name('user.')->prefix('user')->group(function () {
     Route::get('/index', 'index')->name('index');
     // Route::post('/store', 'store')->name('store');
-    Route::get('/application', 'application')->name('application');
+    // Route::get('/application', 'application')->name('application');
     // Route::post('/application-store', 'application_store')->name('application_store');
 });
 
 Route::controller(FrontendController::class)->group(function () {
     Route::get('/app', 'index')->name('app');
-    Route::get('/', 'application')->name('application');
+    Route::get('/application/{ref_id}', 'application')->name('application');
     Route::post('/application/store', 'application_store')->name('application.store');
-    Route::get('/home', 'application')->name('home');
     Route::get('/view', 'application_view')->name('application_view');
     Route::get('/countries', 'countries')->name('countries');
     Route::get('/app-view/{reference_id}', 'view')->name('view');

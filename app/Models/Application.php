@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Country;
+use App\Models\Order;
+use App\Models\Service;
+use App\Models\Transaction;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Application extends Model
 {
@@ -47,7 +51,12 @@ class Application extends Model
         'is_criminal_record' => 'boolean',
         'is_payment' => 'boolean',
         'is_refund' => 'boolean',
-        ];
+    ];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 
     public function birthCountry()
     {
@@ -68,7 +77,6 @@ class Application extends Model
     {
         return $this->belongsTo(Service::class);
     }
-
 
     public function transaction()
     {
