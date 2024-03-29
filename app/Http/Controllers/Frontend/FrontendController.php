@@ -10,6 +10,7 @@ use App\Models\Homepage;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Queue;
 
@@ -26,13 +27,12 @@ class FrontendController extends Controller
         return view('frontend.application.application_view', compact('applications', 'sum', 'reference_id'));
     }
 
-    public function application()
+    public function application($ref_id)
     {
-
-
         $services = Service::where('status', 1)->get();
         $countries = Country::where('status', 1)->get();
-        return view('frontend.application.application', compact('services', 'countries'));
+        $order = Order::where('reference_id', $ref_id)->first();
+        return view('frontend.application.application', compact('services', 'countries','order'));
     }
 
     public function countries()
@@ -45,28 +45,51 @@ class FrontendController extends Controller
     public function application_store(Request $request)
     {
 
-        $formData = json_decode($request->getContent(), true);
-        $reference_id = $this->generateRefNumber();
-        // dd(request()->all(), $formData, $reference_id);
+        // dd(request()->all());
 
-
-        foreach($formData as &$data) {
-            $data['reference_id'] = $reference_id;
-            $application = Application::create($data);
-
-            $data = [
-                'email' => $application->email,
-                'subject' => 'Application Submission',
-                // 'title' => 'Application Submission',
-                'message' => 'Your application has been submitted successfully!'
-            ];
-            // Queue::connection('email')->push(new SendEmail($data));
-            SendEmail::dispatch($data);
-            // Mail::to($data['email'])->send(new SendMail($data));
+        $requestData = $request->all();
+        $file1 = $request->file('image');
+        if ($file1) {
+            $extension = $file1->getClientOriginalExtension();
+            $file1Name = time() . rand(1, 999999) . '.' . $extension;
+            $file1->move('images/applicant', $file1Name);
+            $path1 = '/images/applicant/' . $file1Name;
+        } else {
+            $path1 = null;
         }
+        $requestData['image'] = $path1;
+
+        $file2 = $request->file('passport_bio_data');
+        if ($file2) {
+            $extension = $file2->getClientOriginalExtension();
+            $file2Name = time() . rand(1, 999999) . '.' . $extension;
+            $file2->move('images/passport', $file2Name);
+            $path2 = '/images/passport/' . $file2Name;
+        } else {
+            $path2 = null;
+        }
+        $requestData['passport_bio_data'] = $path2;
+        // dd($requestData);
+        $application = Application::create($requestData);
 
 
-        return response()->json(['reference_id' => $reference_id]);
+        // // foreach($formData as &$data) {
+        // //     $data['reference_id'] = $reference_id;
+        // //     $application = Application::create($data);
+
+        // //     $data = [
+        // //         'email' => $application->email,
+        // //         'subject' => 'Application Submission',
+        // //         // 'title' => 'Application Submission',
+        // //         'message' => 'Your application has been submitted successfully!'
+        // //     ];
+        // //     // Queue::connection('email')->push(new SendEmail($data));
+        // //     SendEmail::dispatch($data);
+        // //     // Mail::to($data['email'])->send(new SendMail($data));
+        // // }
+        // $application = 'working';
+            // dd($application);
+        return response()->json($application);
 
 
     }

@@ -28,7 +28,7 @@
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
-                    <a href="{{ route('application') }}" class="logo mt-3">
+                    <a href="{{ route('home') }}" class="logo mt-3">
                         @if (isset($homedata->logo))
                             <h1><img src="{{ asset($homedata->logo) }}" alt="TourVisa" style="width:50px"></h1>
                         @else
