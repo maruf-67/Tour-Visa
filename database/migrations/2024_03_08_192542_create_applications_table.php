@@ -16,22 +16,13 @@ return new class extends Migration
             $table->string('reference_id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('email');
-            $table->string('phone');
             $table->date('dob');
-            $table->string('gender');
-            $table->text('address')->nullable();
+            $table->string('sex');
             $table->unsignedBigInteger('birth_country_id');
             $table->foreign('birth_country_id')
                 ->references('id')
                 ->on('countries')
                 ->onDelete('restrict');
-            $table->unsignedBigInteger('citizen_country_id');
-            $table->foreign('citizen_country_id')
-                ->references('id')
-                ->on('countries')
-                ->onDelete('restrict');
-            $table->text('details')->nullable();
             $table->unsignedBigInteger('passport_country_id');
             $table->foreign('passport_country_id')
                 ->references('id')
@@ -40,11 +31,10 @@ return new class extends Migration
             $table->string('passport_number');
             $table->date('passport_issue');
             $table->date('passport_expiry');
-            $table->text('passport_image')->nullable();
             $table->date('intended_date');
+            $table->text('image')->nullable();
+            $table->text('passport_bio_data')->nullable();
             $table->text('visa_image')->nullable();
-            $table->boolean('is_war_crime')->default(false);
-            $table->boolean('is_criminal_record')->default(false);
             $table->boolean('is_payment')->default(false);
             $table->boolean('is_refund')->default(false);
             $table->unsignedBigInteger('service_id');
