@@ -7,6 +7,7 @@
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}" /> --}}
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/demo1/style.css') }}" /> --}}
+
 @endpush
 
 {{-- @section('navbar')
@@ -37,89 +38,91 @@
 @endpush --}}
 
 @section('content')
-    <div class="container mt-5" style="overflow-x: hidden;">
+<div class="container mt-5" style="overflow-x: hidden;">
 
-        <div class="mb-3 mt-5 generateForms">
-            <fieldset>
-                <div class="container mt-5 pt-4 px-4" style="height: 40vh">
-                    <h1 class="text-center mb-5 text-success"><span style="color:red">Let's Start Your Uk ETA</span>
-                        Application</h1>
-                    <div class="row section-padding justify-content-center">
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-6 col-sm-12">
-                                    <!-- Country names and Country Code -->
-                                    <label class="d-block mb-4 ">
-                                        <span class="form-label d-block">Country of Citizenship *</span>
-                                        <select class="form-select" id="country_citizen" name="country_citizen">
-                                            <option value="">Enter Your Country</option>`;
+    <div class="mb-3 mt-5 generateForms">
+        <fieldset>
+            <div class="container pt-4 px-4" style="height: 60vh">
+                <h1 class="text-center mb-5 text-success"><span style="color:red">Let's Start Your Uk ETA</span>
+                    Application</h1>
+                <div class="row section-padding justify-content-center">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <!-- Country names and Country Code -->
+                                <label class="d-block mb-4 ">
+                                    <span class="form-label d-block">Country of Citizenship *</span>
+                                    <select class="form-select" id="country_citizen" name="country_citizen">
+                                        <option value="">Enter Your Country</option>`;
 
 
-                                            countries.forEach(function(country) {
-                                            formHtml +=
-                                            `<option value="${country.name}">${country.name}</option>`;
-                                            });
+                                        countries.forEach(function(country) {
+                                        formHtml +=
+                                        `<option value="${country.name}">${country.name}</option>`;
+                                        });
 
-                                            formHtml += `
+                                        formHtml += `
 
-                                        </select>
-                                    </label>
-                                </div>
-                                <div class="col-md-6 col-sm-12">
-                                    <!-- Country names and Country Code -->
-                                    <label class="d-block mb-4 ">
-                                        <span class="form-label d-block">No Off Applications *</span>
-                                        <select class="form-select" id="numFormsInput" name="application_count">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                        </select>
-                                    </label>
-                                </div>
-                                <div class="col-md-6 col-sm-12">
-                                    <!-- Country names and Country Code -->
-                                    <label class="d-block mb-4 ">
-                                        <span class="form-label d-block">Email address *</span>
-                                        <input type="mail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                            placeholder="Enter Your Email Here" name="email">
-                                        <div id="emailHelp" class="form-text">We'll never share your email with
-                                            anyone
-                                            else.
-                                        </div>
-                                    </label>
-                                </div>
-                                <div class="col-md-6 col-sm-12">
-                                    <!-- Country names and Country Code -->
-                                    <label class="d-block mb-4 ">
-                                        <span class="form-label d-block">Phone Number *</span>
-                                        <input type="tel" class="form-control" id="exampleInputNumber"
-                                            placeholder="Enter Phone Number" name="phone">
-                                        <small id="phoneno" class="form-text text-muted">We'll never share your
-                                            number with anyone else.</small>
-                                    </label>
-                                </div>
+                                    </select>
+                                </label>
                             </div>
-                            <input id="generateForms" type="button" name="next-step" class="next-step" value="Next" />
+                            <div class="col-md-6 col-sm-12">
+                                <!-- Country names and Country Code -->
+                                <label class="d-block mb-4 ">
+                                    <span class="form-label d-block">No Off Applications *</span>
+                                    <select class="form-select" id="numFormsInput" name="application_count">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <!-- Country names and Country Code -->
+                                <label class="d-block mb-4 ">
+                                    <span class="form-label d-block">Email address *</span>
+                                    <input type="mail" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" placeholder="Enter Your Email Here" name="email">
+                                    <div id="emailHelp" class="form-text">We'll never share your email with
+                                        anyone
+                                        else.
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <!-- Country names and Country Code -->
+                                <label class="d-block mb-4 ">
+                                    <span class="form-label d-block">Phone Number *</span>
+                                    <input type="tel" class="form-control" id="exampleInputNumber"
+                                        placeholder="Enter Phone Number" name="phone">
+                                    <small id="phoneno" class="form-text text-muted">We'll never share your
+                                        number with anyone else.</small>
+                                </label>
+                            </div>
                         </div>
+                        <input id="generateForms" type="button" name="next-step" class="next-step" value="Next" />
                     </div>
                 </div>
-            </fieldset>
-        
+            </div>
+        </fieldset>
+
     </div>
 
     <div id="formsContainer" style="display: none;"></div> <!-- Initially hidden -->
-    <div class="progress mt-4">
-        <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0"
-            aria-valuemax="100"></div>
+    <div class="progress mt-5" id="progressBarContainer">
+        <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
+            aria-valuemin="0" aria-valuemax="100"></div>
     </div>
 
-    </div>
+
+</div>
+
     @push('script')
         <script>
             var formData = [];
@@ -641,7 +644,7 @@
                 // console.log(formIndex);
                 let formHtml = `
                 <form class="form app" id="form${formIndex}">
-                    <h2>Form ${formIndex}</h2>
+                    <h2>Application No ${formIndex}</h2>
 
                     <div class="progress-container">
                         <ul id="progressbar">
