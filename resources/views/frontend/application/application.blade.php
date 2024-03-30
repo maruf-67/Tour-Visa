@@ -708,8 +708,9 @@
             function generateForms() {
                 console.log(numForms, totalform);
                 if (numForms > totalform) {
-                    window.location.href = "{{ url('app-view') }}/" + encodeURIComponent(order
-                                .reference_id);
+
+                    window.location.href = "{{ url('order/placed/') }}/" + encodeURIComponent(order
+                                .id);
                 } else {
                     $formsContainer.empty();
                     // drafts = []; // Reset drafts when generating new forms
