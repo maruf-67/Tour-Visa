@@ -25,7 +25,7 @@
                         <div class="col-md-6 col-sm-12">
                             <!-- Country names and Country Code -->
                             <label class="d-block mb-4 ">
-                                <span class="form-label d-block">Country of Citizenship *</span>
+                                <span class="form-label d-block">Citizen of *</span>
                                 <select class="form-select" id="country_citizen" name="citizen_country_id">
                                     <option value="">Enter Your Country</option>
                                     @foreach ($countries as $country)
@@ -38,7 +38,7 @@
                         <div class="col-md-6 col-sm-12">
                             <!-- Country names and Country Code -->
                             <label class="d-block mb-4 ">
-                                <span class="form-label d-block">No Off Applications *</span>
+                                <span class="form-label d-block">Number of Applicants *</span>
                                 <select class="form-select" id="numFormsInput" name="count">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -67,7 +67,7 @@
                         <div class="col-md-6 col-sm-12">
                             <!-- Country names and Country Code -->
                             <label class="d-block mb-4 ">
-                                <span class="form-label d-block">Phone Number *</span>
+                                <span class="form-label d-block">Contact Number *</span>
                                 <input type="tel" class="form-control" id="exampleInputNumber"
                                     placeholder="Enter Phone Number" name="phone">
                                 <small id="phoneno" class="form-text text-muted">We'll never share your

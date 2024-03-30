@@ -230,7 +230,7 @@
 
                                             <div class="col-md-6 col-sm-12">
                                                 <label class="d-block mb-4">
-                                                    <span class="form-label d-block">Last Name * / Surename</span>
+                                                    <span class="form-label d-block">Last Name * / Surname</span>
                                                     <input name="last_name" type="text" class="form-control" placeholder="Rahman" />
                                                 </label>
                                             </div>
@@ -283,7 +283,7 @@
                                             <div class="col-md-6 col-sm-12">
                                                 <!-- Country names and Country Code -->
                                                 <label class="d-block mb-4 ">
-                                                    <span class="form-label d-block">Country of Passport *</span>
+                                                    <span class="form-label d-block">Country of Citizenship / Passport *</span>
                                                     <select class="form-select" id="passport_country_id" name="passport_country_id">
                                                         <option value="">Enter Your Country</option>`;
 
@@ -344,11 +344,11 @@
                         <fieldset>
 
                             <div class="container py-4 px-4">
-                                <h1 class="text-center mb-5 text-success">Declaration of Application</h1>
+                                <h1 class="text-center mb-5 text-success">Required Documents of Applicant</h1>
                                 <div class="row section-padding justify-content-center">
                                     <div class="col-md-12">
                                         <label class="d-block mb-4 ">
-                                            <span class="form-label d-block">Photograph of applicant *</span>
+                                            <span class="form-label d-block">Photograph of Applicant *</span>
                                             <div class="mb-3">
                                                 <input class="form-control" type="file" id="image" name="image">
                                             </div>
@@ -439,7 +439,7 @@
                                                                         <div class="card-body">
                                                                             <div class="row">
                                                                                 <div class="col-12">
-                                                                                    <H1 class="card-text text-center text-primary">Preview Form ${numForms}</H1>
+                                                                                    <H1 class="card-text text-center text-primary">Please review the provided information, If need any correction please modify form below.</H1>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
