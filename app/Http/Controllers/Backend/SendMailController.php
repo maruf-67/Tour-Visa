@@ -14,30 +14,25 @@ class SendMailController extends Controller
     {
 
         // $reference_id = $request->reference_id;
-        $applications = Application::where('reference_id', $id)->get();
-
-        foreach ($applications as $application) {
-            $data = [
-                'email' => $application->email,
-                'subject' => 'Application Submission',
-                // 'title' => 'Application Submission',
-                'message' => 'Your application has been submitted successfully!',
-            ];
-            SendEmail::dispatch($data);
-            // Mail::to($data['email'])->queue(new SendMail($data));
-
-
-        }
+        $application = Application::with('order')->where('reference_id', $id)->first();
+        $data = [
+            'email' => $application->order->email,
+            'subject' => 'Application Submission',
+            // 'title' => 'Application Submission',
+            'message' => 'Your application has been submitted successfully!',
+        ];
+        // Mail::to($data['email'])->queue(new SendMail($data));
+        SendEmail::dispatch($data);
 
         return back()->with('success', 'Email has been sent successfully!');
     }
 
     public function approved_application($id)
     {
-        $application = Application::findOrFail($id);
-
+        $application = Application::with('order')->findOrFail($id);
+        // $application = Application::with('order')->where('reference_id', $id)->first();
         $data = [
-            'email' => $application->email,
+            'email' => $application->order->email,
             'subject' => 'Application Approved',
             // 'title' => 'Application Submission',
             'message' => 'Your application has been Approved successfully!',

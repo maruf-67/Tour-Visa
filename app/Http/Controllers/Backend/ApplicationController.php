@@ -171,11 +171,10 @@ class ApplicationController extends Controller
         $validatedData = $request->validate([
             'first_name' => 'nullable|string',
             'last_name' => 'nullable|string',
-            'email' => 'nullable|email',
-            'passport_image' => 'nullable|image|max:2048',
             'visa_image' => 'nullable|image|max:2048',
             // Add validation rules for other fields here
         ]);
+
         $application = Application::findOrFail($id);
         $requestData = $request->all();
         // dd($requestData);
