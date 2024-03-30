@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Country;
 use App\Models\Order;
+use App\Jobs\SendEmail;
+use App\Models\Country;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -47,6 +48,24 @@ class HomeController extends Controller
         $order = Order::create($request->all());
 
         return redirect()->route('application', $reference_id)
+            ->with('success', 'Order created successfully.');
+    }
+
+    public function placed($id)
+    {
+        $order = Order::find($id);
+
+        $data = [
+            'email' => $order->email,
+            'subject' => 'Application Submission',
+            // 'title' => 'Application Submission',
+            'message' => 'Your application has been submitted successfully!',
+        ];
+        // Queue::connection('email')->push(new SendEmail($data));
+        SendEmail::dispatch($data);
+        // Mail::to($data['email'])->send(new SendMail($data));
+
+        return redirect()->route('view', $order->reference_id)
             ->with('success', 'Order created successfully.');
     }
 

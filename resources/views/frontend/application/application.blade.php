@@ -86,7 +86,7 @@
                     var file2 = fileInput2.files[0];
                     formData.append('passport_bio_data', file2);
                     formData.append('reference_id', order.reference_id);
-
+                    console.log(formData);
                     // Send an AJAX request
                     $.ajax({
                         url: "{{ route('application.store') }}", // Laravel route
@@ -100,7 +100,7 @@
                         success: function(response) {
                             // Handle success response
                             // ref = response.reference_id;
-                            console.log(response);
+                            // console.log(response);
                             step3load(response)
 
                         },
@@ -135,7 +135,7 @@
                     formData.append('reference_id', order.reference_id);
                     console.log(formData);
                     $.ajax({
-                        url: "{{ route('application.update', ':id') }}".replace(':id', order.id),
+                        url: "{{ route('application.update', ':id') }}".replace(':id', formData.id),
                         type: "POST",
                         data: formData,
                         processData: false,
@@ -439,7 +439,7 @@
                                                         <form id="application" action enctype="multipart/form-data">
                                                             <form id="application" action="route('application.store')"  method="post" enctype="multipart/form-data">
                                                             @csrf
-                                                            <input type="hidden" name="reference_id" value="${data.reference_id}">
+                                                            <input type="hidden" name="id" value="${data.id}">
                                                             <div class="row">
                                                                 <div class="col-12 col-md-12 col-xl-12">
                                                                     <div class="card mt-3">
@@ -708,8 +708,9 @@
             function generateForms() {
                 console.log(numForms, totalform);
                 if (numForms > totalform) {
-                    window.location.href = "{{ url('app-view') }}/" + encodeURIComponent(order
-                                .reference_id);
+
+                    window.location.href = "{{ url('order/placed/') }}/" + encodeURIComponent(order
+                                .id);
                 } else {
                     $formsContainer.empty();
                     // drafts = []; // Reset drafts when generating new forms

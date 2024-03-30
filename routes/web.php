@@ -35,6 +35,7 @@ Route::controller(HomeController::class)->group(function () {
 
     Route::get('/home', 'index')->name('home');
     Route::post('/order/store', 'store')->name('order.store');
+    Route::get('/order/placed/{id}', 'placed')->name('order.placed');
     Route::get('/', 'index');
 
 });

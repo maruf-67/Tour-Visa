@@ -45,7 +45,7 @@ class Application extends Model
 
     public function order()
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsTo(Order::class,'reference_id','reference_id');
     }
 
     public function birthCountry()
