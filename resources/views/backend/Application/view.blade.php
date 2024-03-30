@@ -364,7 +364,7 @@
                                                         <h5 class="card-title">Citizen Country</h5>
                                                     </div>
                                                     <div class="col-7">
-                                                        <p class="card-text">{{ $application->citizenCountry->name }}</p>
+                                                        <p class="card-text">{{ $application->order->citizenCountry?->name }}</p>
                                                     </div>
                                                 </div>
                                                 <hr>

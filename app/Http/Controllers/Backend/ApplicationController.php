@@ -19,46 +19,46 @@ class ApplicationController extends Controller
     {
         $services = Service::where('status', 1)->get();
         $countries = Country::where('status', 1)->get();
-        $application = Application::with('service', 'citizenCountry')->find($id);
+        $application = Application::with('service', 'order')->find($id);
         return view('backend.Application.view',compact('application', 'services', 'countries'));
     }
     public function approved()
     {
-        $applications = Application::with('service', 'citizenCountry')->where('status', 3)->where('is_payment', 1)->get();
+        $applications = Application::with('service', 'order')->where('status', 3)->where('is_payment', 1)->get();
         return view('backend.Application.approved.index',compact('applications'));
     }
     public function onHold()
     {
-        $applications = Application::with('service', 'citizenCountry')->where('status', 4)->get();
+        $applications = Application::with('service', 'order')->where('status', 4)->get();
         return view('backend.Application.onHold.index',compact('applications'));
     }
     public function paid()
     {
-        $applications = Application::with('service', 'citizenCountry')->where('is_payment', 1)->get();
+        $applications = Application::with('service', 'order')->where('is_payment', 1)->get();
         return view('backend.Application.paid.index',compact('applications'));
     }
     public function processing()
     {
-        $applications = Application::with('service', 'citizenCountry')->where('status', 2)->where('is_payment', 1)->get();
+        $applications = Application::with('service', 'order')->where('status', 2)->where('is_payment', 1)->get();
         // dd($application);
         return view('backend.Application.processing.index',compact('applications'));
     }
     public function rejected()
     {
-        $applications = Application::with('service', 'citizenCountry')->where('status', 5)->get();
+        $applications = Application::with('service', 'order')->where('status', 5)->get();
         // dd($applications);
         return view('backend.Application.rejected.index',compact('applications'));
     }
     public function unpaid()
     {
-        $applications = Application::with('service', 'citizenCountry')->where('is_payment', 0)->get();
+        $applications = Application::with('service', 'order')->where('is_payment', 0)->get();
         return view('backend.Application.unpaid.index',compact('applications'));
     }
     public function today()
     {
         $currentDate = Carbon::today();
 
-        $applications = Application::with('service', 'citizenCountry')->whereDate('created_at', $currentDate)->get();
+        $applications = Application::with('service', 'order')->whereDate('created_at', $currentDate)->get();
         return view('backend.Filters.today.index',compact('applications'));
     }
 
@@ -66,7 +66,7 @@ class ApplicationController extends Controller
     {
         $oneWeekAgo = Carbon::today()->subWeek();
 
-        $applications =Application::with('service', 'citizenCountry')
+        $applications =Application::with('service', 'order')
         ->whereDate('created_at', '>=', $oneWeekAgo)
         ->get();
         return view('backend.Filters.last-week.index',compact('applications'));
@@ -76,7 +76,7 @@ class ApplicationController extends Controller
     {
         $oneMonthAgo = Carbon::today()->subMonth();
 
-        $applications =Application::with('service', 'citizenCountry')
+        $applications =Application::with('service', 'order')
         ->whereDate('created_at', '>=', $oneMonthAgo)
         ->get();
         return view('backend.Filters.last-month.index',compact('applications'));
@@ -86,7 +86,7 @@ class ApplicationController extends Controller
     {
         $oneMonthAgo = Carbon::today()->subYear();
 
-        $applications =Application::with('service', 'citizenCountry')
+        $applications =Application::with('service', 'order')
         ->whereDate('created_at', '>=', $oneMonthAgo)
         ->get();
         return view('backend.Filters.last-year.index',compact('applications'));
@@ -100,7 +100,7 @@ class ApplicationController extends Controller
         // if null get all data using latest
         $end_date = ($request->has('end_date')) ? $request->end_date : Carbon::today();
 
-        $applications= Application::with('service', 'citizenCountry')
+        $applications= Application::with('service', 'order')
                                 ->whereBetween('created_at', [$start_date, $end_date])
                                 ->latest()
                                 ->get();

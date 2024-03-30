@@ -14,7 +14,7 @@ class Order extends Model
     // Define the relationship with the Application model
     public function applications()
     {
-        return $this->hasMany(Application::class);
+        return $this->hasMany(Application::class,'reference_id','reference_id');
     }
 
 
