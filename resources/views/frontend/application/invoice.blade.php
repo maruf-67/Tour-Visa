@@ -64,7 +64,7 @@
                             <p class="text-start "><b>Reference :</b> {{ $applications->first()->reference_id }}</p>
                             <p class="text-start "><b>Name :</b> {{ $applications->first()->first_name }}
                                 {{ $applications->first()->last_name }}</p>
-                            <p class="text-start "><b>Email :</b> {{ $applications->first()->email }}</p>
+                            <p class="text-start "><b>Email :</b> {{ $applications->first()->order->email }}</p>
                             <p class="text-start "><b>Transaction Id :</b> {{ $applications->first()->transaction->transaction_id }}
                             </p>
                             <p class="text-start"><b>Transaction Time :</b>

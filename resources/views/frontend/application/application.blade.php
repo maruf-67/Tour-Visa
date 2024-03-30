@@ -381,13 +381,6 @@
                                                 </label>
                                             </div>
                                         </div>
-
-                                        <div class="d-block text-end">
-                                            <div class="small">
-                                                <a href="#" class="text-dark text-decoration-none" target="_blank">Developed By Mahfujur
-                                                    Rahman</a>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
