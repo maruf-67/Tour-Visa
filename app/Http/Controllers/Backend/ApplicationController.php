@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use Carbon\Carbon;
+use App\Models\Order;
 use App\Models\Country;
 use App\Models\Service;
 use App\Models\Application;
@@ -45,14 +46,22 @@ class ApplicationController extends Controller
     }
     public function rejected()
     {
-        $applications = Application::with('service', 'citizenCountry')->where('status', 5)->get();
-        // dd($applications);
+
+        $applications = Application::with('service')->where('status', 5)->get();
         return view('backend.Application.rejected.index',compact('applications'));
     }
     public function unpaid()
     {
-        $applications = Application::with('service', 'citizenCountry')->where('is_payment', 0)->get();
-        return view('backend.Application.unpaid.index',compact('applications'));
+        $order = Order::with('citizenCountry')->get();
+        $applications = Application::with('service', 'birthCountry')->where('is_payment', 0)->get();
+
+        $data = [
+            'orders' => $order,
+            'applications' => $applications
+        ];
+
+        // dd($data);
+        return view('backend.Application.unpaid.index',compact('data'));
     }
     public function today()
     {

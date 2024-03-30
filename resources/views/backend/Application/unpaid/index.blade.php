@@ -50,7 +50,7 @@
                                     @foreach ($applications as $application)
                                         <tr>
                                             <td>{{ $loop->index + 1 }}</td>
-                                            <td>{{ $application->reference_id }}</td>
+                                            <td>{{ $application->order->reference_id }}</td>
                                             <td>{{ $application->service->name }}</td>
                                             <td>{{ $application->first_name }} {{ $application->last_name }}</td>
                                             <td>{{ $application->email }}</td>

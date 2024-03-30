@@ -83,7 +83,7 @@
                     var fileInput1 = document.getElementById('image');
                     var file1 = fileInput1.files[0];
                     formData.append('image', file1);
-                    var fileInput2 = document.getElementById('image');
+                    var fileInput2 = document.getElementById('passport_bio_data');
                     var file2 = fileInput2.files[0];
                     formData.append('passport_bio_data', file2);
                     formData.append('reference_id', order.reference_id);
@@ -355,7 +355,7 @@
                                         <label class="d-block mb-4 ">
                                             <span class="form-label d-block">Passport Bio Data Page *</span>
                                             <div class="mb-3">
-                                                <input class="form-control" type="file" id="formFile" name"passport_bio_data">
+                                                <input class="form-control" type="file" id="passport_bio_data" name"passport_bio_data">
                                             </div>
                                         </label>
 
