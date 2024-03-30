@@ -112,7 +112,7 @@ class FrontendController extends Controller
     public function viewReference(Request $request)
     {
         // dd($request->reference_id);
-        $applications = Application::with(['service','transaction','birthCountry','citizenCountry','passportCountry'])->where('reference_id', $request->reference_id)->get();
+        $applications = Application::with(['service','transaction','birthCountry','passportCountry'])->where('reference_id', $request->reference_id)->get();
         // dd($applications);
         return view('frontend.application.viewReference', compact('applications'));
     }
@@ -120,7 +120,7 @@ class FrontendController extends Controller
 
     public function invoice($id)
     {
-        $applications = Application::with(['service','transaction','birthCountry','citizenCountry','passportCountry'])->where('reference_id', $id)->get();
+        $applications = Application::with(['service','transaction','birthCountry','passportCountry'])->where('reference_id', $id)->get();
         $homedata = Homepage::first();
         // dd($homedata);
         // dd($applications);

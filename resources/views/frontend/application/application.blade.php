@@ -124,7 +124,7 @@
                     // console.log('working');
                     event.preventDefault();
 
-                   
+
                     var formData = new FormData(this);
                     var fileInput1 = document.getElementById('image');
                     var file1 = fileInput1.files[0];
@@ -708,7 +708,7 @@
             function generateForms() {
                 console.log(numForms, totalform);
                 if (numForms > totalform) {
-                    window.location.href = "{{ url('app-view') }}/" + encodeURIComponent(response
+                    window.location.href = "{{ url('app-view') }}/" + encodeURIComponent(order
                                 .reference_id);
                 } else {
                     $formsContainer.empty();
