@@ -52,9 +52,9 @@
                                             <td>{{ $application->reference_id }}</td>
                                             <td>{{ $application->service->name }}</td>
                                             <td>{{ $application->first_name }} {{ $application->last_name }}</td>
-                                            <td>{{ $application->email }}</td>
-                                            <td>{{ $application->phone }}</td>
-                                            <td>{{ $application->citizenCountry->name }}</td>
+                                            <td>{{ $application->order->email }}</td>
+                                            <td>{{ $application->order->phone }}</td>
+                                            <td>{{ $application->order->citizenCountry?->name }}</td>
                                             <td>
                                                 @if($application->status == 1)
                                                     Pending
