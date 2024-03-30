@@ -163,8 +163,6 @@ class FrontendController extends Controller
             $path2 = $application->passport_bio_data;
         }
         $requestData['passport_bio_data'] = $path2;
-        // dd($requestData);
-        $application = Application::create($requestData);
         $application->update($requestData);
         return response()->json($application);
     }
