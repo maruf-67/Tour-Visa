@@ -12,7 +12,7 @@
 
 
 @section('content')
-    <div class="container mt-5 pt-4 px-4" style="height: 40vh">
+    <div class="container mt-5 pt-4 px-4" style="height: 60vh">
         <h1 class="text-center mb-5 text-success"><span style="color:red">Let's Start Your Uk ETA</span>
             Application</h1>
         <div class="row section-padding justify-content-center">
@@ -77,9 +77,9 @@
                     </div>
                     {{-- submit button --}}
 
-                    {{-- <div class="d-grid gap-2"> --}}
+                    <div class="text-end">
                         <button type="submit" class="btn btn-primary">Next</button>
-                    {{-- </div> --}}
+                    </div>
                 </form>
             </div>
         </div>

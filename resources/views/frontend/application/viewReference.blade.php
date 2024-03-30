@@ -7,7 +7,7 @@
 
 @section('content')
 
-    <div class="page-content mx-0 mt-5" style=" height: 100vh; overflow-x:hidden;">
+    <div class="page-content mx-0 mt-5" style=" height: 60vh; overflow-x:hidden;">
 
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
             <div>
@@ -120,7 +120,7 @@
                                                             <h5 class="card-title">Phone</h5>
                                                         </div>
                                                         <div class="col-7">
-                                                            <p class="card-text">{{ $application->phone }}</p>
+                                                            <p class="card-text">{{ $application->order->phone }}</p>
                                                         </div>
                                                     </div>
                                                     <hr>
@@ -129,7 +129,7 @@
                                                             <h5 class="card-title">Email</h5>
                                                         </div>
                                                         <div class="col-7">
-                                                            <p class="card-text">{{ $application->email }}</p>
+                                                            <p class="card-text">{{ $application->order->email }}</p>
                                                         </div>
                                                     </div>
                                                     <hr>
@@ -138,7 +138,7 @@
                                                             <h5 class="card-title">Citizen Country</h5>
                                                         </div>
                                                         <div class="col-7">
-                                                            <p class="card-text">{{ $application->citizenCountry->name }}</p>
+                                                            <p class="card-text">{{ $application->order->citizenCountry->name }}</p>
                                                         </div>
                                                     </div>
                                                     <hr>

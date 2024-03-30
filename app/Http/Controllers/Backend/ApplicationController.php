@@ -40,7 +40,7 @@ class ApplicationController extends Controller
     }
     public function processing()
     {
-        $applications = Application::with('service', 'order')->where('status', 2)->where('is_payment', 1)->get();
+        $applications = Application::with('service', 'order')->where('status', 2)->get();
         // dd($application);
         return view('backend.Application.processing.index',compact('applications'));
     }

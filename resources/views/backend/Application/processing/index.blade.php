@@ -26,8 +26,6 @@
 
                             </div>
                         </div>
-
-
                         {{-- Content --}}
                         <div class="col-12 mt-4" style="overflow-y: hidden;">
                             <table id="processing-table" class="table table-striped" style="width:100%">
@@ -53,9 +51,9 @@
                                             <td>{{ $application->reference_id }}</td>
                                             <td>{{ $application->service->name }}</td>
                                             <td>{{ $application->first_name }} {{ $application->last_name }}</td>
-                                            <td>{{ $application->email }}</td>
-                                            <td>{{ $application->phone }}</td>
-                                            <td>{{ $application->citizenCountry->name }}</td>
+                                            <td>{{ $application->order->email }}</td>
+                                            <td>{{ $application->order->phone }}</td>
+                                            <td>{{ $application->order->citizenCountry?->name }}</td>
                                             <td>{{ $application->status == 2 ? 'Processing' : '' }}</td>
                                             <td>{{ $application->is_payment ? 'Paid' : 'Unpaid' }}</td>
                                             <td>{{ $application->created_at }}</td>
