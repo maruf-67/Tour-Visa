@@ -100,7 +100,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-md-12 col-xl-12">
-                                        <form action="{{ route('admin.application.update', ['id' => $application->id]) }}" method="post">
+                                        <form action="{{ url('application/update/'. $application->id) }}" method="post" enctype=multipart/form-data>
+                                        {{-- <form action=""> --}}
                                             @csrf
                                             <div class="mb-3">
                                                 <div class="form-group row mt-4 {{ $errors->has('service_id') ? 'has-error' : '' }}">
@@ -137,11 +138,24 @@
                                                 </div>
                                             </div>
 
+                                            <div class="mb-3"></div>
+                                            <div class="d-grid gap-2">
+                                                <button type="submit" class="btn btn-primary">Update Information</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-12 col-xl-12">
+                                        <form action="{{ route('order.update',$application->id) }}" method="post" enctype=multipart/form-data>
+                                        {{-- <form action=""> --}}
+                                            @csrf
+
                                             <div class="mb-3">
                                                 <div class="form-group row mt-4 {{ $errors->has('phone') ? 'has-error' : '' }}">
                                                     <label class="col-md-3 col-form-label">Phone</label>
                                                     <div class="col-md-9">
-                                                        <input type="text" name="phone" class="form-control" value="{{ $application->phone }}">
+                                                        <input type="text" name="phone" class="form-control" value="{{ $application->order->phone }}">
                                                         {!! $errors->first('phone', '<p class="help-block text-danger">:message</p>') !!}
                                                     </div>
                                                 </div>
@@ -151,7 +165,7 @@
                                                 <div class="form-group row mt-4 {{ $errors->has('email') ? 'has-error' : '' }}">
                                                     <label class="col-md-3 col-form-label">Email</label>
                                                     <div class="col-md-9">
-                                                        <input type="email" name="email" class="form-control" value="{{ $application->email }}">
+                                                        <input type="email" name="email" class="form-control" value="{{ $application->order->email }}">
                                                         {!! $errors->first('email', '<p class="help-block text-danger">:message</p>') !!}
                                                     </div>
                                                 </div>
@@ -199,7 +213,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-md-12 col-xl-12">
-                                        <form action="{{ route('admin.application.update', ['id' => $application->id]) }}" method="post" enctype="multipart/form-data">
+                                        <form action="{{ url('application/update/'. $application->id) }}" method="post" enctype=multipart/form-data>
+                                        {{-- <form action=""> --}}
                                             @csrf
                                             <div class="mb-3">
                                                 <div
@@ -328,7 +343,7 @@
                                                         <h5 class="card-title">Email</h5>
                                                     </div>
                                                     <div class="col-7">
-                                                        <p class="card-text">{{ $application->email }}</p>
+                                                        <p class="card-text">{{ $application->order->email }}</p>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -337,7 +352,7 @@
                                                         <h5 class="card-title">Phone</h5>
                                                     </div>
                                                     <div class="col-7">
-                                                        <p class="card-text">{{ $application->phone }}</p>
+                                                        <p class="card-text">{{ $application->order->phone }}</p>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -364,19 +379,11 @@
                                                         <h5 class="card-title">Citizen Country</h5>
                                                     </div>
                                                     <div class="col-7">
-                                                        <p class="card-text">{{ $application->order->citizenCountry?->name }}</p>
+                                                        <p class="card-text">{{ $application->order->citizenCountry->name }}</p>
                                                     </div>
                                                 </div>
                                                 <hr>
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <h5 class="card-title">Address</h5>
-                                                    </div>
-                                                    <div class="col-7">
-                                                        <p class="card-text">{{ $application->address }}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
+
                                                 <div class="row">
                                                     <div class="col-5">
                                                         <h5 class="card-title">Date of Birth</h5>

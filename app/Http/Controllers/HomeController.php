@@ -69,6 +69,23 @@ class HomeController extends Controller
             ->with('success', 'Order created successfully.');
     }
 
+    public function update(Request $request,$id)
+    {
+        $order = Order::find($id);
+        $order->update($request->all());
+        // $data = [
+        //     'email' => $order->email,
+        //     'subject' => 'Application Submission',
+        //     // 'title' => 'Application Submission',
+        //     'message' => 'Your application has been submitted successfully!',
+        // ];
+        // // Queue::connection('email')->push(new SendEmail($data));
+        // SendEmail::dispatch($data);
+        // // Mail::to($data['email'])->send(new SendMail($data));
+
+        return redirect()->back();
+    }
+
     // private function generateRefNumber()
     // {
     //     $timestamp = now()->timestamp;

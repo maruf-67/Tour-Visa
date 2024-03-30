@@ -35,6 +35,7 @@ Route::controller(HomeController::class)->group(function () {
 
     Route::get('/home', 'index')->name('home');
     Route::post('/order/store', 'store')->name('order.store');
+    Route::post('/order/update/{id}', 'update')->name('order.update');
     Route::get('/order/placed/{id}', 'placed')->name('order.placed');
     Route::get('/', 'index');
 
@@ -131,7 +132,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/app', 'index')->name('app');
     Route::get('/application/{ref_id}', 'application')->name('application');
     Route::post('/application/store', 'application_store')->name('application.store');
-    Route::post('/application/update/{id}', 'application_update')->name('application.update');
+    Route::post('/application-front/update/{id}', 'application_update')->name('application.update');
     Route::get('/view', 'application_view')->name('application_view');
     Route::get('/countries', 'countries')->name('countries');
     Route::get('/app-view/{reference_id}', 'view')->name('view');
