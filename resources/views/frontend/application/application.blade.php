@@ -7,11 +7,10 @@
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}" /> --}}
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/demo1/style.css') }}" /> --}}
-
 @endpush
 
 @section('content')
-<div class="container mt-5" style="overflow-x: hidden;">
+    <div class="container mt-5" style="overflow-x: hidden;">
 
         <div id="formsContainer" style="display: none;"></div>
         <div class="progress mt-4">
@@ -20,7 +19,7 @@
         </div>
 
 
-</div>
+    </div>
 
     @push('script')
         <script>
@@ -125,33 +124,36 @@
                     // console.log('working');
                     event.preventDefault();
 
-                    var formData = {
-                        "service_id": $('#service').val(),
-                        "first_name": $('#first_name').val(),
-                        "last_name": $('#last_name').val(),
-                        "email": $('#email').val(),
-                        "phone": $('#phone').val(),
-                        "gender": $('input[name="sex"]:checked').val(),
-                        "birth_country_id": $('#birth_country_id').val(),
-                        "citizen_country_id": $('#citizen_country_id').val(),
-                        "address": $('textarea[name="address"]').val(),
-                        "dob": $('input[name="dob"]').val(),
-                        "details": $('textarea[name="message"]').val(),
-                        "passport_country_id": $('#passport_country')
-                            .val(), // Note: Ensure unique IDs for country select fields
-                        "passport_number": $('#passport_number')
-                            .val(), // Note: Ensure unique IDs for input fields
-                        "passport_issue": $('input[name="passport_issue"]')
-                            .val(), // Note: Ensure unique IDs for input fields
-                        "passport_expiry": $('input[name="passport_expiry"]')
-                            .val(), // Note: Ensure unique IDs for input fields
-                        "intended_date": $('input[name="intended_date"]')
-                            .val(), // Note: Ensure unique IDs for input fields
-                        "is_criminal_record": $('input[name="criminal"]:checked').val(),
-                        "is_war_crime": $('input[name="war"]:checked').val()
-                    };
 
-                    formDataArray.push(formData);
+                    var formData = new FormData(this);
+                    var fileInput1 = document.getElementById('image');
+                    var file1 = fileInput1.files[0];
+                    formData.append('image', file1);
+                    var fileInput2 = document.getElementById('image');
+                    var file2 = fileInput2.files[0];
+                    formData.append('passport_bio_data', file2);
+                    formData.append('reference_id', order.reference_id);
+                    console.log(formData);
+                    $.ajax({
+                        url: "{{ route('application.update', ':id') }}".replace(':id', order.id),
+                        type: "POST",
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken // Include CSRF token in the headers
+                        },
+                        success: function(response) {
+                            // Handle success response
+                            // ref = response.reference_id;
+                            console.log(response);
+
+                        },
+                        error: function(xhr, status, error) {
+                            // Handle error
+                            console.error(xhr.responseText);
+                        }
+                    });
                     numForms++;
                     generateForms();
 
@@ -404,13 +406,12 @@
                 return formHtml;
             }
 
-            function step3load(data)
-            {
+            function step3load(data) {
                 console.log(data);
                 $formsContainer.empty();
 
-                    var htmlContent =
-                        `
+                var htmlContent =
+                    `
                         <h2>Form ${numForms}</h2>
 
                         <div class="progress-container">
@@ -435,7 +436,10 @@
                                             <div class="col-md-12 grid-margin stretch-card">
                                                 <div class="card">
                                                     <div class="card-body container">
-                                                        <form id="application">
+                                                        <form id="application" action enctype="multipart/form-data">
+                                                            <form id="application" action="route('application.store')"  method="post" enctype="multipart/form-data">
+                                                            @csrf
+                                                            <input type="hidden" name="reference_id" value="${data.reference_id}">
                                                             <div class="row">
                                                                 <div class="col-12 col-md-12 col-xl-12">
                                                                     <div class="card mt-3">
@@ -467,19 +471,19 @@
                                                                                     <h5 class="card-title">Service Type</h5>
                                                                                 </div>
                                                                                 <div class="col-8">
-                                                                                    <select class="form-select" id="service" name="service_id" required> `;
-                    services.forEach(function(item) {
-                        if (item.id == data.service_id) {
-                            htmlContent +=
-                                `<option value="${item.id}" selected>${item.name}</option>`;
-                        } else {
-                            htmlContent +=
-                                `<option value="${item.id}">${item.name}</option>`;
-                        }
-                    });
+                                                                                                                                                    <select class="form-select" id="service" name="service_id" required> `;
+                                                                                services.forEach(function(item) {
+                                                                                    if (item.id == data.service_id) {
+                                                                                        htmlContent +=
+                                                                                            `<option value="${item.id}" selected>${item.name}</option>`;
+                                                                                    } else {
+                                                                                        htmlContent +=
+                                                                                            `<option value="${item.id}">${item.name}</option>`;
+                                                                                    }
+                                                                                });
 
-                    htmlContent +=
-                        `</select>
+                                                                                htmlContent +=
+                                                                                    `</select>
                                                                                                                                                     </div>
                                                                             </div>
                                                                         </div>
@@ -535,18 +539,18 @@
                                                                                     `;
 
 
-                                                                                        countries.forEach(function(item) {
-                                                                                            if (item.id == data.birth_country_id) {
-                                                                                                htmlContent +=
-                                                                                                    `<option value="${item.id}" selected>${item.name}</option>`;
-                                                                                            } else {
-                                                                                                htmlContent +=
-                                                                                                    `<option value="${item.id}">${item.name}</option>`;
-                                                                                            }
-                                                                                        });
+                                                                                    countries.forEach(function(item) {
+                                                                                        if (item.id == data.birth_country_id) {
+                                                                                            htmlContent +=
+                                                                                                `<option value="${item.id}" selected>${item.name}</option>`;
+                                                                                        } else {
+                                                                                            htmlContent +=
+                                                                                                `<option value="${item.id}">${item.name}</option>`;
+                                                                                        }
+                                                                                    });
 
-                                                                                        htmlContent +=
-                                                                                            `
+                                                                                    htmlContent +=
+                                                                                        `
                                                                                     </select>
 
                                                                                 </div>
@@ -577,21 +581,21 @@
                                                                                     <h5 class="card-title">Passport Country</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <select class="form-select" id="passport_country" name="passport_country" value="${data.passport_country_id}" required>
+                                                                                    <select class="form-select" id="passport_country" name="passport_country_id" value="${data.passport_country_id}" required>
                                                                                        `;
 
 
-                                                                                        countries.forEach(function(item) {
-                                                                                            if (item.id == data.passport_country_id) {
-                                                                                                htmlContent +=
-                                                                                                    `<option value="${item.id}" selected>${item.name}</option>`;
-                                                                                            } else {
-                                                                                                htmlContent +=
-                                                                                                    `<option value="${item.id}">${item.name}</option>`;
-                                                                                            }
-                                                                                        });
+                                                                                    countries.forEach(function(item) {
+                                                                                        if (item.id == data.passport_country_id) {
+                                                                                            htmlContent +=
+                                                                                                `<option value="${item.id}" selected>${item.name}</option>`;
+                                                                                        } else {
+                                                                                            htmlContent +=
+                                                                                                `<option value="${item.id}">${item.name}</option>`;
+                                                                                        }
+                                                                                    });
 
-                                                                                        htmlContent +=`
+                                                                                    htmlContent += `
 
                                                                                     </select>
                                                                                 </div>
@@ -602,7 +606,7 @@
                                                                                     <h5 class="card-title">Passport Number</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <input type="text" class="form-control" id="passport_number"
+                                                                                    <input type="text" class="form-control" id="passport_number" name="passport_number"
                                                                                         placeholder="Enter Passport Number" value="${data.passport_number}" required>
                                                                                     <small id="phone" class="form-text text-muted">We'll never share your
                                                                                         number
@@ -617,7 +621,7 @@
                                                                                     <h5 class="card-title">Issue Date</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <input    name="passport_issue" type="date" class="form-control"
+                                                                                    <input name="passport_issue" type="date" class="form-control"
                                                                                     value="${data.passport_issue}" required>
                                                                                 </div>
                                                                             </div>
@@ -653,6 +657,7 @@
                                                                                     <h5 class="card-title">Photograph of applicant</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
+                                                                                    <input class="form-control" type="file" id="image" name="image">
                                                                                     <h5 class="card-title"><img src="${data.image}" alt="" style="width:400px;"></h5>
                                                                                 </div>
 
@@ -662,6 +667,7 @@
                                                                                     <h5 class="card-title">Passport Bio Data Page</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
+                                                                                    <input class="form-control" type="file" id="passport_bio_data" name="passport_bio_data">
                                                                                     <h5 class="card-title"><img src="${data.passport_bio_data}" alt="" style="width:400px;"></h5>
                                                                                 </div>
 
@@ -691,41 +697,19 @@
                                         </div>
                                 `;
 
-                    $formsContainer.append(htmlContent);
+                $formsContainer.append(htmlContent);
 
-                    var $form = $(this).closest('.form.app');
+                var $form = $(this).closest('.form.app');
 
-                    $('#step3' + numForms).show();
-                    $('#progressBar' + numForms).show();
+                $('#step3' + numForms).show();
+                $('#progressBar' + numForms).show();
             }
 
             function generateForms() {
                 console.log(numForms, totalform);
                 if (numForms > totalform) {
-                    var jsonData = JSON.stringify(formDataArray);
-
-                    // Send the JSON data using jQuery AJAX
-                    $.ajax({
-                        url: "{{ route('application.store') }}", // Laravel route
-                        type: "POST",
-                        data: jsonData, // Send JSON data
-                        contentType: "application/json",
-                        dataType: "json",
-                        headers: {
-                            'X-CSRF-TOKEN': csrfToken // Include CSRF token in the headers
-                        },
-                        success: function(response) {
-                            // Handle success response
-                            // ref = response.reference_id;
-                            console.log(response);
-                            window.location.href = "{{ url('app-view') }}/" + encodeURIComponent(response
+                    window.location.href = "{{ url('app-view') }}/" + encodeURIComponent(order
                                 .reference_id);
-                        },
-                        error: function(xhr, status, error) {
-                            // Handle error
-                            console.error(xhr.responseText);
-                        }
-                    });
                 } else {
                     $formsContainer.empty();
                     // drafts = []; // Reset drafts when generating new forms

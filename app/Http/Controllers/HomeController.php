@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
 use App\Models\Country;
-use App\Models\Service;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,8 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $countries = Country::where('status',1)->get();
-        return view('frontend.home',compact('countries'));
+        $countries = Country::where('status', 1)->get();
+        return view('frontend.home', compact('countries'));
 
     }
 
@@ -48,16 +47,36 @@ class HomeController extends Controller
         $order = Order::create($request->all());
 
         return redirect()->route('application', $reference_id)
-                        ->with('success','Order created successfully.');
+            ->with('success', 'Order created successfully.');
     }
 
+    // private function generateRefNumber()
+    // {
+    //     $timestamp = now()->timestamp;
+    //     $randomNumber = mt_rand(1000, 9999);
+    //     $randomString = 'ETAVA';
+    //     $ref_no = $randomString . $timestamp . $randomNumber;
+    //     $ref_no = substr($ref_no, 0, 15);
+    //     return $ref_no;
+    // }
     private function generateRefNumber()
     {
+        // Get current timestamp
         $timestamp = now()->timestamp;
+
+        // Generate a random number
         $randomNumber = mt_rand(1000, 9999);
-        $randomString = 'ETAVA';
-        $ref_no = $randomString . $timestamp . $randomNumber;
+
+        // Unique identifier (you can use something more robust like UUID)
+        $uniqueIdentifier = uniqid();
+
+        // Concatenate the parts to form the reference number
+        $ref_no = 'ETAVA' . $timestamp . $randomNumber . $uniqueIdentifier;
+
+        // Trim if the length exceeds 15 characters
         $ref_no = substr($ref_no, 0, 15);
+
         return $ref_no;
     }
+
 }

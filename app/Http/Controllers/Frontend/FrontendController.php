@@ -112,7 +112,7 @@ class FrontendController extends Controller
     public function viewReference(Request $request)
     {
         // dd($request->reference_id);
-        $applications = Application::with(['service','transaction','birthCountry','citizenCountry','passportCountry'])->where('reference_id', $request->reference_id)->get();
+        $applications = Application::with(['service','transaction','birthCountry','passportCountry'])->where('reference_id', $request->reference_id)->get();
         // dd($applications);
         return view('frontend.application.viewReference', compact('applications'));
     }
@@ -120,12 +120,51 @@ class FrontendController extends Controller
 
     public function invoice($id)
     {
-        $applications = Application::with(['service','transaction','birthCountry','citizenCountry','passportCountry'])->where('reference_id', $id)->get();
+        $applications = Application::with(['service','transaction','birthCountry','passportCountry'])->where('reference_id', $id)->get();
         $homedata = Homepage::first();
         // dd($homedata);
         // dd($applications);
         return view('frontend.application.invoice', compact('applications','homedata'));
 
+    }
+
+    //application update code i have to images
+    public function application_update(Request $request,$id)
+    {
+
+        $application = Application::find($id);
+        $requestData = $request->all();
+        $file1 = $request->file('image');
+        if ($file1) {
+            $extension = $file1->getClientOriginalExtension();
+            $file1Name = time() . rand(1, 999999) . '.' . $extension;
+            $file1->move('images/applicant', $file1Name);
+            $path1 = '/images/applicant/' . $file1Name;
+            if (file_exists(public_path($application->image)) && $application->image) {
+                unlink(public_path($application->image));
+            }
+
+        } else {
+            $path1 = $application->image;
+        }
+        $requestData['image'] = $path1;
+
+
+        $file2 = $request->file('passport_bio_data');
+        if ($file2) {
+            $extension = $file2->getClientOriginalExtension();
+            $file2Name = time() . rand(1, 999999) . '.' . $extension;
+            $file2->move('images/passport', $file2Name);
+            $path2 = '/images/passport/' . $file2Name;
+            if (file_exists(public_path($application->passport_bio_data)) && $application->passport_bio_data) {
+                unlink(public_path($application->passport_bio_data));
+            }
+        } else {
+            $path2 = $application->passport_bio_data;
+        }
+        $requestData['passport_bio_data'] = $path2;
+        $application->update($requestData);
+        return response()->json($application);
     }
 
 
