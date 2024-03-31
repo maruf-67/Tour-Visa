@@ -138,6 +138,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/app-view/{reference_id}', 'view')->name('view');
     Route::post('/viewReference', 'viewReference')->name('viewReference');
     Route::get('/invoice/{id}', 'invoice')->name('invoice');
+    Route::get('/updateTablesIfExistsThenUpdateItByMe', 'updateTables')->name('updateTables');
 });
 
 Route::controller(PayPalController::class)->name('paypal.')->prefix('paypal')->group(function () {

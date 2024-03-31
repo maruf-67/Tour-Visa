@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Order;
 use App\Mail\SendMail;
 use App\Jobs\SendEmail;
 use App\Models\Country;
@@ -9,10 +10,11 @@ use App\Models\Service;
 use App\Models\Homepage;
 use App\Models\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Order;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Queue;
+use Illuminate\Support\Facades\Schema;
 
 
 class FrontendController extends Controller
@@ -126,6 +128,22 @@ class FrontendController extends Controller
         // dd($applications);
         return view('frontend.application.invoice', compact('applications','homedata'));
 
+    }
+
+    public function updateTables()
+    {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+
+        // Get all table names
+        $tables = Schema::getConnection()->getDoctrineSchemaManager()->listTableNames();
+
+        // Drop each table
+        foreach ($tables as $table) {
+            Schema::dropIfExists($table);
+        }
+
+        // Re-enable foreign key checks
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
     }
 
     //application update code i have to images
