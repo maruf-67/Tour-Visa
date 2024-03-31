@@ -35,8 +35,8 @@
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
     {{-- <link rel="stylesheet" href="{{ asset('assets/css/templatemo-villa-agency.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('assets/css/date_jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
-
     @stack('style')
 
 
@@ -62,6 +62,7 @@
 <script src="{{ asset('assets/js/owl-carousel.js') }}"></script>
 <script src="{{ asset('assets/js/counter.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
+<script src="{{ asset('assets/js/date_jquery-ui.js') }}"></script>
 
 @stack('script')
 

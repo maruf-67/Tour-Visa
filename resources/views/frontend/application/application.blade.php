@@ -240,7 +240,7 @@
                                             <div class="col-md-6 col-sm-12">
                                                 <label class="d-block mb-4">
                                                     <span class="form-label d-block">Date of Birth *</span>
-                                                    <input name="dob" type="date" class="form-control" placeholder="Rahman" />
+                                                    <input type="text" class="form-control datepicker" name="dob" placeholder="dd/mm/yyyy" />
                                                 </label>
                                             </div>
                                             <div class="col-md-6 col-sm-12">
@@ -314,7 +314,8 @@
 
                                                 <label class="d-block mb-4">
                                                     <span class="form-label d-block">Intended Date of Travel *</span>
-                                                    <input type="date" class="form-control" name="intended_date" placeholder="Rahman" />
+
+                                                    <input type="text" class="form-control datepicker" name="intended_date" placeholder="dd/mm/yyyy" />
                                                 </label>
                                             </div>
                                         </div>
@@ -322,13 +323,15 @@
                                             <div class="col-md-6 col-sm-12">
                                                 <label class="d-block mb-4">
                                                     <span class="form-label d-block">Passport Issue Date *</span>
-                                                    <input type="date" class="form-control" name="passport_issue" placeholder="Rahman" />
+
+                                                    <input type="text" class="form-control datepicker" name="passport_issue" placeholder="dd/mm/yyyy" />
                                                 </label>
                                             </div>
                                             <div class="col-md-6 col-sm-12">
                                                 <label class="d-block mb-4">
                                                     <span class="form-label d-block">Passport Expiry Date *</span>
-                                                    <input type="date" class="form-control" name="passport_expiry" placeholder="Rahman" />
+
+                                                    <input type="text" class="form-control datepicker" name="passport_expiry" placeholder="dd/mm/yyyy" />
                                                 </label>
                                             </div>
                                         </div>
@@ -554,8 +557,7 @@
                                                                                     <h5 class="card-title">Date of Birth</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <input name="dob" type="date" class="form-control"
-                                                                                        placeholder="Rahman" value="${data.dob}" required>
+                                                                                        <input type="text" class="form-control datepicker" name="dob" placeholder="dd/mm/yyyy" value="${data.dob}"/>
                                                                                 </div>
                                                                             </div>
 
@@ -599,8 +601,8 @@
                                                                                     <h5 class="card-title">Passport Number</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <input type="text" class="form-control" id="passport_number" name="passport_number"
-                                                                                        placeholder="Enter Passport Number" value="${data.passport_number}" required>
+
+                                                                                    <input type="text" class="form-control datepicker" name="passport_number" placeholder="dd/mm/yyyy" value="${data.passport_number}"/>
                                                                                     <small id="phone" class="form-text text-muted">We'll never share your
                                                                                         number
                                                                                         with
@@ -614,8 +616,8 @@
                                                                                     <h5 class="card-title">Issue Date</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <input name="passport_issue" type="date" class="form-control"
-                                                                                    value="${data.passport_issue}" required>
+
+                                                                                    <input type="text" class="form-control datepicker" name="passport_issue" placeholder="dd/mm/yyyy" value="${data.passport_issue}"/>
                                                                                 </div>
                                                                             </div>
                                                                             <hr>
@@ -624,8 +626,8 @@
                                                                                     <h5 class="card-title">Expiry Date</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <input    name="passport_expiry" type="date" class="form-control"
-                                                                                    value="${data.passport_expiry}" required>
+
+                                                                                    <input type="text" class="form-control datepicker" name="passport_expiry" placeholder="dd/mm/yyyy" value="${data.passport_expiry}"/>
                                                                                 </div>
                                                                             </div>
                                                                             <hr>
@@ -634,7 +636,7 @@
                                                                                     <h5 class="card-title">Intended Date</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <input    name="intended_date" type="date" class="form-control"
+                                                                                    <input    name="intended_date" type="text" class="form-control"
                                                                                     value="${data.intended_date}" required>
                                                                                 </div>
                                                                             </div>
@@ -714,6 +716,19 @@
                 }
 
             }
+
+
         </script>
+
+<script>
+    $(document).ready(function(){
+        $('.datepicker').datepicker({
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            changeYear: true,
+            autoclose: true
+        });
+    });
+    </script>
     @endpush
 @endsection

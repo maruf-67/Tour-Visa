@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('reference_id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->date('dob');
+            $table->string('dob');
             $table->string('sex');
             $table->unsignedBigInteger('birth_country_id');
             $table->foreign('birth_country_id')
@@ -29,9 +29,9 @@ return new class extends Migration
                 ->on('countries')
                 ->onDelete('restrict');
             $table->string('passport_number');
-            $table->date('passport_issue');
-            $table->date('passport_expiry');
-            $table->date('intended_date');
+            $table->string('passport_issue');
+            $table->string('passport_expiry');
+            $table->string('intended_date');
             $table->text('image')->nullable();
             $table->text('passport_bio_data')->nullable();
             $table->text('visa_image')->nullable();

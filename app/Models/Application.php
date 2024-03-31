@@ -36,13 +36,6 @@ class Application extends Model
         'status',
     ];
 
-    protected $dates = [
-        'dob',
-        'passport_issue',
-        'passport_expiry',
-        'intended_date',
-    ];
-
     public function order()
     {
         return $this->belongsTo(Order::class,'reference_id','reference_id');
