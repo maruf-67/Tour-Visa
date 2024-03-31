@@ -405,6 +405,12 @@
             function step3load(data) {
                 console.log(data);
                 $formsContainer.empty();
+                $(document).ready(function(){
+                    $('.datepicker').datepicker({
+                        dateFormat: 'dd/mm/yy',
+                        autoclose: true
+                    });
+                });
 
                 var htmlContent =
                     `
@@ -557,6 +563,7 @@
                                                                                     <h5 class="card-title">Date of Birth</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
+
                                                                                         <input type="text" class="form-control datepicker" name="dob" placeholder="dd/mm/yyyy" value="${data.dob}"/>
                                                                                 </div>
                                                                             </div>
@@ -601,8 +608,8 @@
                                                                                     <h5 class="card-title">Passport Number</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-
-                                                                                    <input type="text" class="form-control datepicker" name="passport_number" placeholder="dd/mm/yyyy" value="${data.passport_number}"/>
+                                                                                    <input type="text" class="form-control" id="passport_number" name="passport_number"
+                                                                                        placeholder="Enter Passport Number" value="${data.passport_number}" required>
                                                                                     <small id="phone" class="form-text text-muted">We'll never share your
                                                                                         number
                                                                                         with
@@ -636,8 +643,8 @@
                                                                                     <h5 class="card-title">Intended Date</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <input    name="intended_date" type="text" class="form-control"
-                                                                                    value="${data.intended_date}" required>
+
+                                                                                    <input type="text" class="form-control datepicker" name="intended_date" placeholder="dd/mm/yyyy" value="="${data.intended_date}"/>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -696,6 +703,8 @@
 
                 var $form = $(this).closest('.form.app');
 
+
+
                 $('#step3' + numForms).show();
                 $('#progressBar' + numForms).show();
             }
@@ -719,16 +728,15 @@
 
 
         </script>
-
+        <!-- jQuery -->
 <script>
     $(document).ready(function(){
         $('.datepicker').datepicker({
             dateFormat: 'dd/mm/yy',
-            changeMonth: true,
-            changeYear: true,
             autoclose: true
         });
     });
+
     </script>
     @endpush
 @endsection
