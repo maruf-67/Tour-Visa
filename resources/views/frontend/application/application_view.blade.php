@@ -50,7 +50,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-12">
-                                            <H1 class="card-text text-center text-primary">{{ $reference_id }}</H1>
+                                            <H1 class="card-text text-center text-success">{{ $reference_id }}</H1>
                                         </div>
                                     </div>
                                 </div>

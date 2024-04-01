@@ -206,7 +206,7 @@
                     <div id="step1${formIndex}" class="form-step">
                         <fieldset>
                             <div class="container py-4 px-4">
-                                <h1 class="text-center mb-5 text-success">Passport Information</h1>
+                                <h1 class="text-center mb-5 " style="color:#383838">Passport Information</h1>
                                 <div class="row section-padding justify-content-center">
                                     <div class="col-md-12">
                                         <!-- Country names and Country Code -->
@@ -347,7 +347,7 @@
                         <fieldset>
 
                             <div class="container py-4 px-4">
-                                <h1 class="text-center mb-5 text-success">Required Documents of Applicant</h1>
+                                <h1 class="text-center mb-5 " style="color:#383838">Required Documents of Applicant</h1>
                                 <div class="row section-padding justify-content-center">
                                     <div class="col-md-12">
                                         <label class="d-block mb-4 ">
@@ -448,7 +448,7 @@
                                                                         <div class="card-body">
                                                                             <div class="row">
                                                                                 <div class="col-12">
-                                                                                    <H1 class="card-text text-center text-primary">Please review the provided information, If need any correction please modify form below.</H1>
+                                                                                    <H1 class="card-text text-center" style="color:#383838" >Please review the provided information, If need any correction please modify form below.</H1>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
