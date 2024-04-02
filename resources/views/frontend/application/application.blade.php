@@ -439,7 +439,7 @@
                                                 <div class="card">
                                                     <div class="card-body container">
                                                         <form id="application" action enctype="multipart/form-data">
-                                                            <form id="application" action="route('application.store')"  method="post" enctype="multipart/form-data">
+                                                            <form id="application" action="route('application.update',${data.id})"  method="post" enctype="multipart/form-data">
                                                             @csrf
                                                             <input type="hidden" name="id" value="${data.id}">
                                                             <div class="row">
@@ -659,7 +659,8 @@
                                                                                     <h5 class="card-title">Photograph of applicant</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <input class="form-control" type="file" id="image" name="image">
+                                                                                    <input class="form-control" type="file" id="image" name="image" >
+                                                                                    <h5 class="card-title text-center" id="iamge2">${data.image}</h5>
                                                                                     <h5 class="card-title"><img src="${data.image}" alt="" style="width:400px;"></h5>
                                                                                 </div>
 
@@ -669,7 +670,8 @@
                                                                                     <h5 class="card-title">Passport Bio Data Page</h5>
                                                                                 </div>
                                                                                 <div class="col-7">
-                                                                                    <input class="form-control" type="file" id="passport_bio_data" name="passport_bio_data">
+                                                                                    <input class="form-control" type="file" id="passport_bio_data" name="passport_bio_data" >
+                                                                                    <h5 class="card-title text-center" id="passport_bio_data2">${data.passport_bio_data}</h5>
                                                                                     <h5 class="card-title"><img src="${data.passport_bio_data}" alt="" style="width:400px;"></h5>
                                                                                 </div>
 

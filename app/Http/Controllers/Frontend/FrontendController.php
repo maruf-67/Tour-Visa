@@ -15,6 +15,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Validator;
 
 
 class FrontendController extends Controller
@@ -46,6 +47,16 @@ class FrontendController extends Controller
 
     public function application_store(Request $request)
     {
+        //give me validation for image with max 2mb and only jpg,png,jpeg and pdf
+        //give me validation for passport_bio_data with max 2mb and only jpg,png,jpeg and pdf
+        $validator = Validator::make($request->all(), [
+            'image' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
+            'passport_bio_data' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()->all()]);
+        }
 
         // dd(request()->all());
 
@@ -149,6 +160,15 @@ class FrontendController extends Controller
     //application update code i have to images
     public function application_update(Request $request,$id)
     {
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'image' => 'mimes:jpeg,png,jpg,pdf|max:2048',
+            'passport_bio_data' => 'mimes:jpeg,png,jpg,pdf|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()->all()]);
+        }
 
         $application = Application::find($id);
         $requestData = $request->all();
