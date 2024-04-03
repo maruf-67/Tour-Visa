@@ -123,6 +123,11 @@
                 $(document).on('submit', '#application', function(event) {
                     // console.log('working');
                     event.preventDefault();
+                    // Disable the button to prevent multiple clicks
+                    this.disabled = true;
+
+                    // Change the text to indicate processing
+                    this.value = 'Processing...';
 
 
                     var formData = new FormData(this);
@@ -473,10 +478,12 @@
                 $('.datepicker').datepicker({
                     dateFormat: 'dd/mm/yy',
                     changeMonth: true,
-            changeYear: true,
-            autoclose: true
+                    changeYear: true,
+                    autoclose: true
                 });
             });
         </script>
+
+{{-- php artisan queue:work --}}
     @endpush
 @endsection
