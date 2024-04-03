@@ -9,6 +9,7 @@ use App\Models\Service;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ApplicationController extends Controller
 {
@@ -220,8 +221,15 @@ class ApplicationController extends Controller
 
     public function destroy(string $id)
     {
+
         $application = Application::findOrFail($id);
-        $application->delete();
+
+        if ($application->is_payment == 0) {
+            $application->delete();
+            Alert::toast('Application deleted successfully', 'success');
+        } else {
+            Alert::error('Error', 'Cannot delete application with payment')->persistent(true)->autoClose(false);
+        }
 
         return redirect()->back()
                          ->with('success', 'Application deleted successfully');
