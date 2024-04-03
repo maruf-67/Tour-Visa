@@ -210,16 +210,19 @@
                                 <div class="row section-padding justify-content-center">
                                     <div class="col-md-12">
                                         <!-- Country names and Country Code -->
-                                        <label class="d-block mb-4 ">
-                                            <span class="form-label d-block">Service Type *</span>
-                                            <select class="form-select" id="service" name="service_id">
+                                        <div class="col-md-6 col-sm-12" style="display: none;>
+                                            <label class="d-block mb-4 ">
+                                                <span class="form-label d-block">Service Type *</span>
+                                                <select class="form-select" id="service" name="service_id">
 
-                                                @foreach ($services as $service)
-                                                <option value="{{ $service->id }}">{{ $service->name }}</option>
-                                                @endforeach
+                                                    @foreach ($services as $service)
+                                                    <option value="{{ $service->id }}">{{ $service->name }}</option>
+                                                    @endforeach
 
-                                            </select>
-                                        </label>
+                                                </select>
+                                            </label>
+                                        </div>
+
                                         <div class="row">
                                             <div class="col-md-6 col-sm-12">
                                                 <label class="d-block mb-4">
@@ -353,14 +356,14 @@
                                         <label class="d-block mb-4 ">
                                             <span class="form-label d-block">Photograph of Applicant *</span>
                                             <div class="mb-3">
-                                                <input class="form-control" type="file" id="image" name="image">
+                                                <input class="form-control" type="file" id="image" name="image" required>
                                             </div>
                                         </label>
 
                                         <label class="d-block mb-4 ">
                                             <span class="form-label d-block">Passport Bio Data Page *</span>
                                             <div class="mb-3">
-                                                <input class="form-control" type="file" id="passport_bio_data" name"passport_bio_data">
+                                                <input class="form-control" type="file" id="passport_bio_data" name"passport_bio_data" required>
                                             </div>
                                         </label>
 
@@ -408,6 +411,8 @@
                 $(document).ready(function() {
                     $('.datepicker').datepicker({
                         dateFormat: 'dd/mm/yy',
+                        changeMonth: true,
+                        changeYear: true,
                         autoclose: true
                     });
                 });
@@ -467,7 +472,9 @@
             $(document).ready(function() {
                 $('.datepicker').datepicker({
                     dateFormat: 'dd/mm/yy',
-                    autoclose: true
+                    changeMonth: true,
+            changeYear: true,
+            autoclose: true
                 });
             });
         </script>
