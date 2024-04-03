@@ -139,6 +139,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::post('/viewReference', 'viewReference')->name('viewReference');
     Route::get('/invoice/{id}', 'invoice')->name('invoice');
     Route::get('/updateTablesIfExistsThenUpdateItByMe', 'updateTables')->name('updateTables');
+    Route::get('/step3/{id}', 'step3')->name('step3');
 });
 
 Route::controller(PayPalController::class)->name('paypal.')->prefix('paypal')->group(function () {

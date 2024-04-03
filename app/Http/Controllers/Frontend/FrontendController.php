@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
@@ -47,8 +48,10 @@ class FrontendController extends Controller
 
     public function application_store(Request $request)
     {
+
         //give me validation for image with max 2mb and only jpg,png,jpeg and pdf
         //give me validation for passport_bio_data with max 2mb and only jpg,png,jpeg and pdf
+
         $validator = Validator::make($request->all(), [
             'image' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
             'passport_bio_data' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
@@ -58,7 +61,6 @@ class FrontendController extends Controller
             return response()->json(['error' => $validator->errors()->all()]);
         }
 
-        // dd(request()->all());
 
         $requestData = $request->all();
         $file1 = $request->file('image');
@@ -86,24 +88,22 @@ class FrontendController extends Controller
         $application = Application::create($requestData);
 
 
-        // // foreach($formData as &$data) {
-        // //     $data['reference_id'] = $reference_id;
-        // //     $application = Application::create($data);
-
-        // //     $data = [
-        // //         'email' => $application->email,
-        // //         'subject' => 'Application Submission',
-        // //         // 'title' => 'Application Submission',
-        // //         'message' => 'Your application has been submitted successfully!'
-        // //     ];
-        // //     // Queue::connection('email')->push(new SendEmail($data));
-        // //     SendEmail::dispatch($data);
-        // //     // Mail::to($data['email'])->send(new SendMail($data));
-        // // }
-        // $application = 'working';
-            // dd($application);
         return response()->json($application);
 
+
+    }
+
+
+    public function step3(Request $request,$id)
+    {
+        $data = Application::find($id);
+        $services = Service::where('status', 1)->get();
+        $countries = Country::where('status', 1)->get();
+        $numForms = $request->numForms;
+        $html = View::make('frontend.application.step3', ['data' => $data, 'services' => $services,'countries' => $countries, 'numForms' => $numForms])->render();
+        // $html = view('frontend.application.step3', compact('data', 'services', 'countries','numForms'))->render();
+        // dd($html);
+        return response()->json(['html' => $html]);
 
     }
 
