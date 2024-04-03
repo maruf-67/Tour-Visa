@@ -236,6 +236,7 @@
                                                     <div class="col-7">
                                                         <input class="form-control" type="file" id="image"
                                                             name="image">
+                                                        <h5 class="card-title text-center" id="iamge2">{{ basename(asset($data->image)) }}</h5>
                                                         <h5 class="card-title"><img src="{{ asset($data->image)}}"
                                                                 alt="" style="width:400px;"></h5>
                                                     </div>
@@ -248,6 +249,7 @@
                                                     <div class="col-7">
                                                         <input class="form-control" type="file"
                                                             id="passport_bio_data" name="passport_bio_data">
+                                                        <h5 class="card-title text-center" id="passport_bio_data2">{{ basename(asset($data->passport_bio_data)) }}</h5>
                                                         <h5 class="card-title"><img src="{{ asset($data->passport_bio_data)}}"
                                                                 alt="" style="width:400px;"></h5>
                                                     </div>
@@ -277,3 +279,15 @@
         </div>
     </fieldset>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('.datepicker').datepicker({
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+    changeYear: true,
+    autoclose: true
+        });
+    });
+</script>
+
