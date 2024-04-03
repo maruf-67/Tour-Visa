@@ -41,6 +41,8 @@
 
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{ asset('css/demo1/style.css') }}">
+    <link href="{{ asset('css/sweetalert2.min.css') }}" rel="stylesheet">
+
     <!-- End layout styles -->
     @if (isset($homedata->fav_icon))
     <link rel="icon" type="image/x-icon" href="{{ asset($homedata->fav_icon) }}">
@@ -96,6 +98,7 @@
     <script src="{{ asset('js/dataTable/dataTables.bootstrap5.js') }}"></script>
     <script src="{{ asset('js/dataTable/dataTables.responsive.js') }}"></script>
     <script src="{{ asset('js/dataTable/responsive.bootstrap5.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 
     @stack('script')
 
