@@ -109,7 +109,7 @@ class HomeController extends Controller
 
         // Concatenate the parts to form the reference number
         $ref_no = 'UKETA' . $timestamp . $country->iso;
-        dd($ref_no);
+        // dd($reref_no);
         // Trim if the length exceeds 15 characters
         // $ref_no = substr($ref_no, 0, 15);
 
