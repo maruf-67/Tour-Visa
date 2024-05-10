@@ -489,6 +489,37 @@
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-5">
+                                                        <h5 class="card-title">Image</h5>
+                                                    </div>
+                                                    <div class="col-7">
+                                                        @if(isset($application->image) && pathinfo($application->image, PATHINFO_EXTENSION) == 'pdf')
+                                                            <embed src="{{ $application->image }}" type="application/pdf" width="300px" height="200px" />
+                                                        @else
+                                                            <img src="{{ isset($application->image) ? $application->image : '' }}" alt="" width="300px">
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-5">
+                                                        <h5 class="card-title">Passport Bio Data</h5>
+                                                    </div>
+                                                    <div class="col-7">
+                                                        @if(isset($application->passport_bio_data) && pathinfo($application->passport_bio_data, PATHINFO_EXTENSION) == 'pdf')
+                                                            <embed src="{{ $application->passport_bio_data }}" type="application/pdf" width="300px" height="200px" />
+                                                        @else
+                                                            <img src="{{ isset($application->passport_bio_data) ? $application->passport_bio_data : '' }}" alt="" width="300px">
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="card mt-3">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-5">
                                                         <h5 class="card-title">Payment Status</h5>
                                                     </div>
                                                     <div class="col-7">
