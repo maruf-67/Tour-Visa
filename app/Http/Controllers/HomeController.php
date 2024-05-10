@@ -41,7 +41,7 @@ class HomeController extends Controller
             'count' => 'required',
         ]);
 
-        $reference_id = $this->generateRefNumber();
+        $reference_id = $this->generateRefNumber($request->citizen_country_id);
         //add this reference_id to the request
         $request->request->add(['reference_id' => $reference_id]);
 
@@ -95,8 +95,9 @@ class HomeController extends Controller
     //     $ref_no = substr($ref_no, 0, 15);
     //     return $ref_no;
     // }
-    private function generateRefNumber()
+    private function generateRefNumber($country_id)
     {
+        $country = Country::find($country_id);
         // Get current timestamp
         $timestamp = now()->timestamp;
 
@@ -107,10 +108,10 @@ class HomeController extends Controller
         $uniqueIdentifier = uniqid();
 
         // Concatenate the parts to form the reference number
-        $ref_no = 'ETAVA' . $timestamp . $randomNumber . $uniqueIdentifier;
-
+        $ref_no = 'UKETA' . $timestamp . $country->iso;
+        dd($ref_no);
         // Trim if the length exceeds 15 characters
-        $ref_no = substr($ref_no, 0, 15);
+        // $ref_no = substr($ref_no, 0, 15);
 
         return $ref_no;
     }
