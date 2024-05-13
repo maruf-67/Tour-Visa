@@ -13,7 +13,7 @@
 
 @section('content')
     <div class="container mt-5 pt-4 px-4" style="height: 60vh">
-        <h1 class="text-center mb-5 text-success"><span style="color:#383838">Let's Start Your Uk ETA</span>
+        <h1 class="text-center mb-5 text-success"><span style="color:#383838">Let's Start Your UK ETA</span>
             <span style="#b0cf72">Application</span></h1>
         <div class="row section-padding justify-content-center">
             <div class="col-md-12">

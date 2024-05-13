@@ -68,7 +68,7 @@
                 <h4 class="text-muted mb-1 mb-md-0"><strong>Copyright &copy; <a href="#" target="_blank">S. M. Mahfujur Rahman</a>. All rights reserved.</strong></h4>
             </footer> --}}
             <footer class="d-flex flex-column flex-md-row align-items-center justify-content-center border-top text-center text-primary" style="min-height: 80px">
-                <h4 class="text-muted mb-1 mb-md-0"><strong>&copy; 2014-2024 Malaysia. All rights reserved.</strong></h4>
+                <h4 class="text-muted mb-1 mb-md-0"><strong>&copy; 2022-2024 ETA UK. All rights reserved.</strong></h4>
             </footer>
         </footer>
     </div>

@@ -41,7 +41,7 @@
     <div class="page-content">
         <div class="col-md-12 grid-margin stretch-card ">
             <div class="card">
-                <div class="card-body container" style="height:100vh">
+                <div class="card-body container" style="height:100dvh, overflow-x:hidden">
                     <div class="row">
                         <div class="col-12 col-md-12 col-xl-12 mt-5">
                             <div class="card mt-3">
