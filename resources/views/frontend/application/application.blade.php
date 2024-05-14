@@ -188,7 +188,7 @@
                 let formHtml = `
                 <form class="form app" id="form${formIndex}" action="route('application.store')"  method="post" enctype="multipart/form-data">
                     @csrf
-                    <h2>Form ${formIndex}</h2>
+                    <h2>Applicant ${formIndex}</h2>
 
                     <div class="progress-container">
                         <ul id="progressbar">
@@ -232,14 +232,14 @@
                                             <div class="col-md-6 col-sm-12">
                                                 <label class="d-block mb-4">
                                                     <span class="form-label d-block">First Name * / Given Name</span>
-                                                    <input name="first_name" type="text" class="form-control" placeholder="Mahfujur">
+                                                    <input name="first_name" type="text" class="form-control">
                                                 </label>
                                             </div>
 
                                             <div class="col-md-6 col-sm-12">
                                                 <label class="d-block mb-4">
                                                     <span class="form-label d-block">Last Name * / Surname</span>
-                                                    <input name="last_name" type="text" class="form-control" placeholder="Rahman" />
+                                                    <input name="last_name" type="text" class="form-control"/>
                                                 </label>
                                             </div>
                                         </div>

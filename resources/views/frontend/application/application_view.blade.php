@@ -83,7 +83,7 @@
                                                             <td>{{ $application->id }}</td>
                                                             <td>{{ $application->first_name }} {{ $application->last_name }}</td>
                                                             <td>{{ $application->service->name }}</td>
-                                                            <td>{{ $application->service->price}}</td>
+                                                            <td>{{ $application->service->price}} $</td>
                                                         </tr>
                                                     @endforeach
 
@@ -92,7 +92,7 @@
                                                       <td></td>
                                                       <td></td>
                                                       <td class="d-flex justify-content-end">SUM =</td>
-                                                      <td>{{ $sum }}</td>
+                                                      <td>{{ $sum }} $</td>
                                                   </tr>
                                                 </tbody>
                                               </table>
