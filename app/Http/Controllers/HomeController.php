@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Mail\SendMail;
 use App\Jobs\SendEmail;
 use App\Models\Country;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -62,8 +64,8 @@ class HomeController extends Controller
             'message' => 'Your application has been submitted successfully!',
         ];
         // Queue::connection('email')->push(new SendEmail($data));
-        SendEmail::dispatch($data);
-        // Mail::to($data['email'])->send(new SendMail($data));
+        // SendEmail::dispatch($data);
+        Mail::to($data['email'])->send(new SendMail($data));
 
         return redirect()->route('view', $order->reference_id)
             ->with('success', 'Order created successfully.');
