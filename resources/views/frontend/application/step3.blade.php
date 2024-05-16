@@ -1,4 +1,4 @@
-<h2>Form {{ $numForms }}</h2>
+<h2>Applicant {{ $numForms }}</h2>
 
 <div class="progress-container">
     <ul id="progressbar">
